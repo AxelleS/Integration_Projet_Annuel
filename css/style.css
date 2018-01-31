@@ -1,0 +1,589 @@
+/* DEFAULT */
+
+h1{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p{
+    font-size: 14px;
+}
+
+/* CARROUSEL - HOME */
+
+@keyframes AutoSlide {
+	0% {
+		left: 0px; /*1ère image*/
+	}
+	15% {
+		left: 0px; /*idem pour attente*/
+	}
+	35% {
+		left: -100%; /*2ème image*/
+	}
+	50% {
+		left: -100%; /*idem pour attente*/
+	}
+	70% {
+		left: -200%; /*3ème image*/
+	}
+	85% {
+		left: -200%; /*idem pour attente*/
+	}
+	100% {
+		left: 0px; /*1ère image*/
+	}
+}
+
+.carrousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.carrousel img {
+	width: 100%;
+    height: 500px;
+}
+
+.carrousel img {
+	position: relative;
+    width: 100%;
+	
+	/*CSS3 keyframes animation*/
+	animation-name: AutoSlide;
+	animation-duration: 15s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+/* INTRODUCTION - HOME */
+
+.introduction h1{
+    margin-top:20px;
+    text-align: center;
+}
+
+.introduction p{
+    font-size:19px;
+    margin-top:20px;
+    margin-bottom:60px;
+    width:676px;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+/* YOUTUBE - HOME */
+
+.video iframe{
+    height: 600px;
+}
+
+/* ESCAPE ROOM - HOME */
+
+.escape-room{
+    margin-top: 50px;
+    height: 322px;
+}
+
+.escape-back img, .room, .escape-front{
+    width:100%;
+    height: 100%;
+}
+
+.room{
+    position: relative;
+}
+
+.room-title {
+    position: absolute;
+    bottom: 40%;
+    left: 25%;
+    width:50%;
+    height: 20%;
+    background-color: #333333;
+    display: flex;
+    border-radius: 10px;
+}
+
+.room-title p{
+    margin: auto;
+    color:white;
+    font-size: 17px;
+}
+
+.escape-room section .escape-back{
+    position: absolute;
+}
+
+/* ESCAPE ROOM HOVER - HOME */
+
+.escape-front{
+    position: absolute;
+    display: none;
+    background-color: #4F4F4F;
+    opacity: 0.8;
+}
+
+.escape-room section:hover .escape-front{
+    display: block;
+}
+
+.escape-front{
+    color: white;
+}
+
+.escape-front h2{
+    margin-top: 15px;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.escape-front hr{
+    width: 10%;
+    margin:auto;
+    margin-top: 15px;
+}
+
+.escape-front p{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.see-more{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.see-more a{
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration:none;
+    color: white;
+    text-transform:uppercase;
+}
+
+/* GOOGLE MAP - HOME */
+
+.map{
+    margin-top: 40px;
+    background-color: #C4C4C4;
+    width:100%;
+    height: 400px;
+}
+
+.map article iframe{
+    width: 100%;
+    height: 100%;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.address p, .address h2{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.address{
+    padding-top:35%;
+}
+
+.address h2 {
+    font-size: 28px;
+}
+
+.address p {
+    font-size: 17px;
+}
+
+/* PROMOTION - ROOM */
+.title-room{
+    margin-top: 80px;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    padding-top:1%;
+}
+
+.description-room{
+    margin-top:20px;
+    text-align: center;
+}
+
+.order{
+    margin-top: 65px;
+    text-align: center;
+}
+
+.share{
+    margin-top: 65px;
+    text-align: center;
+    background-color: white;
+    padding-top: 0.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.share p, .share a{
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+/* PICTURE - ROOM */
+
+/* Pour le titre */
+.pictures{
+    margin-top: 20px;
+    background-color: white;
+}
+
+.pictures article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pictures hr{
+    margin:auto;
+    margin-top: 20px;
+}
+
+.picture-promotion, .video-promotion{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Pour la video */
+
+.video-promotion iframe{
+    width:100%;
+    height: 100%;
+}
+
+/* Pour les images */
+
+.picture-promotion img{
+    height: 250px;
+}
+
+.picture-promotion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* BOOKING - ROOM */
+
+.booking{
+    margin-top: 20px;
+}
+
+.booking article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.booking hr{
+    margin:auto;
+    margin-top: 20px;
+}
+
+/* CALENDAR - ROOM */
+
+.calendar{
+    margin-top:40px;
+}
+
+/* Structure du calendrier */
+.calendar table {
+    width:100%;
+}
+
+.calendar table{
+    background-color: white;
+}
+
+.calendar .content td{
+    height: 40px;
+    width: 60px;
+    border-collapse: separate;
+    border-radius: 20%;
+
+}
+
+/* Jours où il ne reste plus aucuns créneaux (non cliquable) */
+.calendar .plein { 
+    border-width:1px;
+    border-style:solid; 
+    border-color:black;
+    text-align:center;
+}
+
+.calendar .semiplein input, .calendar .vide input{
+    border:0;
+    height: 100%;
+    width:100%;
+    cursor:  pointer;
+    border-radius: 20%;
+}
+
+/* Couleur pour les jours où il manque plus de 50% des créneaux */
+.calendar .semiplein input{
+    background-color: orange;
+}
+
+/* Couleur pour les jours où il manque moins de 50% des créneaux */
+.calendar .vide input{
+    background-color: green;
+}
+
+/* Pour la taille des fléche de navigation du calendrier */
+.calendar .arrow{
+    width: 3%;
+}
+
+.legend{
+    margin-top: 60px;
+}
+
+.legend_plein{
+    border-width:1px;
+    border-style:solid; 
+    border-color:black;
+    width:10%;
+    border-radius: 20%;
+}
+
+.legend_semiplein{
+    width:10%;
+    border-radius: 20%;
+    background-color: orange;
+}
+
+.legend_vide{
+    width:10%;
+    border-radius: 20%;
+    background-color: green;
+}
+
+/* SLOTS - ROOM */
+
+/* Met la select des créneaux en non affiché par défaut */ 
+.slots .creneaux{
+    margin-right: 15px;
+    display: none;
+}
+
+.slots{
+    margin-top: 20px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.slots input{
+    width:100%;
+    display: none;
+    background-color: white;
+}
+
+/* OPINION - ROOM */
+
+.opinion{
+    background-color: #BDBDBD;
+    width: 100%;
+}
+
+.opinion article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.opinion hr{
+    margin:auto;
+    margin-top: 20px;
+}
+
+.opinion-people{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#opinion-date{
+    color:#4F4F4F;
+    font-weight: bold;
+}
+
+#opinion-name{
+    font-weight: bold;
+}
+
+#opinion-score{
+    color:#4F4F4F;
+    font-weight: bold;
+}
+
+/* FAQ */
+
+.faq{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* PICTURE - FAQ */
+
+.faq-picture{
+    display: flex;
+    align-items: center;
+}
+
+.faq-picture img{
+    width : 80%;
+    height: 300px;
+    vertical-align: middle;
+}
+
+/* QUESTION - FAQ */
+
+.faq-question h1{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.faq-question h4{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* CONTACT */
+
+.contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* PICTURE - CONTACT */
+
+.contact-picture{
+    display: flex;
+    align-items: center;
+}
+
+.contact-picture img{
+    width : 80%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/* FORM - CONTACT */
+
+.contact-form h1{
+    padding-bottom: 20px;
+}
+
+.contact-form input{
+    width: 100%;
+}
+
+.contact-form textarea{
+    width: 100%;
+}
+
+.contact-form .title{
+    padding-top: 20px;
+}
+
+.contact-form .title input{
+    background-color: #C4C4C4;
+    color: white;
+    border-radius: 20px;
+    border:0;
+    height: 25px;
+}
+
+/* SIGNIN */
+
+.signin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* FORM - SIGNIN */
+
+.signin-form h1{
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.signin-form input{
+    width: 100%;
+}
+
+.signin-form section{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.signin-form .title{
+    padding-top: 20px;
+}
+
+.signin-form fieldset section:last-child{
+    margin-bottom: 20px;
+}
+
+.signin-form .title input{
+    background-color: #C4C4C4;
+    color: white;
+    border-radius: 20px;
+    border:0;
+    height: 25px;
+}
+
+.signup-via-signin{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-via-signin a{
+    color: black;
+}

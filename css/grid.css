@@ -1,0 +1,70 @@
+.row{
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.col_16 {
+    flex-basis:100%;  
+}
+
+.col_15 {
+    flex-basis:93.75%; 
+}
+
+.col_14 {
+    flex-basis:87.5%;
+}
+
+.col_13 {
+    flex-basis:81.25%;
+}
+
+.col_12 {
+    flex-basis:75%;  
+}
+
+.col_11 {
+    flex-basis:68.75%;
+}
+
+.col_10 {
+    flex-basis:62.5%;
+}
+
+.col_9 {
+    flex-basis:56.25%;
+}
+
+.col_8 {
+    flex-basis:50%;
+}
+
+.col_7 {
+    flex-basis:43.75%;
+}
+
+.col_6 {
+    flex-basis:37.5%;
+}
+
+.col_5 {
+    flex-basis:31.25%; 
+}
+
+.col_4 {
+    flex-basis:25%; 
+}
+
+.col_3 {
+    flex-basis:18.75%;
+}
+
+.col_2 {
+    flex-basis:12.5%;
+}
+
+.col_1 {
+    flex-basis:6.25%;
+}

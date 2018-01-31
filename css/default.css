@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    /* Police par défaut */
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: #E3E3E3;
+}
+
+/* HEADER */
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/* Pour le logo */
+
+.logo{
+    margin-top:8px;
+    margin-left:120px;
+    width: 170px;
+    height: 170px;
+    background-color:#C4C4C4;
+    border-radius: 30%;
+    text-align: center;
+    position: absolute;
+    transform:rotate(-15deg);
+    /* Permet de mettre le logo par dessus le carrousel */
+    z-index: 100;
+}
+
+header img {
+    margin-top:8px;
+    width: 150px;
+    height: 150px;
+    border-radius: 30%;
+}
+
+/* Pour la nav bar */
+
+nav{
+    background-color: white;
+    width: 100%;
+    height: 91px;
+}
+
+nav ul {
+    margin-left:372px;
+    list-style-type:none;
+    text-align:center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+nav ul li {
+    margin-top:35px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#mission-select{
+    cursor: default ;
+}
+
+nav ul li a {
+    display:block;
+    width:100px;
+    text-decoration:none;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-transform:uppercase;
+}
+
+/* Pour changer la couleur du menu quand on est sur la page */
+
+.active a{
+    color:#828282;
+}
+
+.unactive a{
+    color:black;
+}
+
+/* Pour changer la couleur du menu quand on passe la souris dessus */
+
+nav li a:hover {
+    color:lightgrey;
+}
+
+/* Pour le menu déroulant */
+
+nav ul li ul {
+    position:absolute;
+    display:none;
+    margin-left: 0;
+    padding: 0;
+    /* Permet de mettre le menu déroulant par dessus le carrousel */
+    z-index: 100;
+}
+
+nav ul li ul li{
+    padding: 0;
+    margin:0;
+    width: 160px;
+    background-color: white;
+}
+
+nav ul li ul li a{
+    width: 160px;
+}
+
+nav ul li ul li:first-child{
+    /* Permet de décaler le menu déroulant vers le bas */
+    margin-top:35px;
+}
+
+/* Affiche le menu déroulant au passsage de la souris */
+nav ul li:hover ul {
+    display:block;
+}
+
+
+/* FOOTER */
+
+footer{
+    background-color: white;
+    width: 100%;
+    height: 106px;
+}
+
+/* Pour les réseaux */
+.social-network{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top:20px;
+}
+
+.social-network img{
+    width: 30px;
+    height: 30px;
+}
+
+/* Espace les logo */
+.social-network a:nth-child(2){
+    padding-left:40px;
+    padding-right:40px;
+}
+
+/* Pour les infos */
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top:20px;
+    font-size: 13px;
+}
+
+.info a{
+    padding-left:20px;
+    text-decoration:none;
+    color:black;
+}
