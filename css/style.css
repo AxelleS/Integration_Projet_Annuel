@@ -587,3 +587,8 @@ p{
 .signup-via-signin a{
     color: black;
 }
+
+/* FORM CUSTOMER INFO */
+.location-section {
+    margin-top: 3%;
+}
