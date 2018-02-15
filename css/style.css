@@ -64,7 +64,7 @@ main{
 .carrousel img {
 	position: relative;
     width: 100%;
-	
+
 	/*CSS3 keyframes animation*/
 	animation-name: AutoSlide;
 	animation-duration: 15s;
@@ -141,9 +141,9 @@ main{
     background-color: #FAFAFA;
     width:100%;
     height: 400px;
-    margin-top:3%; 
-    padding-top: 1%;   
-    padding-bottom: 1%; 
+    margin-top:3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 .map article:first-child{
@@ -291,9 +291,9 @@ main{
 }
 
 /* Jours où il ne reste plus aucuns créneaux (non cliquable) */
-.calendar .plein { 
+.calendar .plein {
     border-width:1px;
-    border-style:solid; 
+    border-style:solid;
     border-color:black;
     text-align:center;
 }
@@ -327,7 +327,7 @@ main{
 
 .legend_plein{
     border-width:1px;
-    border-style:solid; 
+    border-style:solid;
     border-color:black;
     width:10%;
     border-radius: 20%;
@@ -347,7 +347,7 @@ main{
 
 /* SLOTS - ROOM */
 
-/* Met la select des créneaux en non affiché par défaut */ 
+/* Met la select des créneaux en non affiché par défaut */
 .slots .creneaux{
     margin-right: 15px;
     display: none;
@@ -621,3 +621,63 @@ main{
 
 .btn-error-outline:hover {
     background-color: #ff3d00; }
+
+/* DASHBOARD ADMIN */
+
+.align-front {
+  width:100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.nav-dashboard-admin {
+  background-color: #4F4F4F;
+  height: 100%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header-dashboard-admin {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #4F4F4F;
+  width: 80%;
+  height: 50px;
+}
+
+.logo-dashboard {
+  margin-top: 15px;
+  border-radius: 15px;
+}
+
+.nav-navbar {
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.align-navbar-content {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+}
+
+.align-navbar-content:nth-child(1) {
+  border-top: 1px solid black;
+}
+
+.align-navbar-content p {
+  margin-left: 10px;
+  color: a1a6a6
+}
