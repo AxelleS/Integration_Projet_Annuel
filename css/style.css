@@ -549,3 +549,75 @@ main{
 .location-section {
     margin-top: 3%;
 }
+
+/* BTN DEFAULT */
+.btn-default {
+    width: 40% !important;
+    background-color: #42BDC4;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-default:hover {
+    background-color: #FFFFFF;
+    color : #42BDC4; }
+
+.btn-default-outline {
+    background-color: #42BDC4;
+    color: #FFFFFF; }
+
+.btn-default-outline:hover {
+    background-color: #42BDC4; }
+
+/* BTN SUCCESS */
+.btn-success {
+    width: 40% !important;
+    background-color: #43a047 ;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-success:hover {
+    background-color: #FFFFFF;
+    color : #43a047 ; }
+
+.btn-success-outline {
+    background-color: #43a047 ;
+    color: #FFFFFF; }
+
+.btn-success-outline:hover {
+    background-color: #43a047 ; }
+
+    /* BTN WARNING */
+.btn-warning {
+    width: 40% !important;
+    background-color: #ff9800  ;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-warning:hover {
+    background-color: #FFFFFF;
+    color : #ff9800  ; }
+
+.btn-warning-outline {
+    background-color: #ff9800  ;
+    color: #FFFFFF; }
+
+.btn-warning-outline:hover {
+    background-color: #ff9800  ; }
+
+        /* BTN ERROR */
+.btn-error {
+    width: 40% !important;
+    background-color: #ff3d00;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-error:hover {
+    background-color: #FFFFFF;
+    color : #ff3d00; }
+
+.btn-error-outline {
+    background-color: #ff3d00 ;
+    color: #FFFFFF; }
+
+.btn-error-outline:hover {
+    background-color: #ff3d00; }
