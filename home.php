@@ -21,42 +21,21 @@
                     <!-- Affiche par défaut -->
                     <article class="escape-back">
                         <img src="img/escapes/library.jpg" alt="library preview">
-                        <div class="room-title"><p>Escape the Library</p></div>
-                    </article>
-                    <!-- Affichage en hover -->
-                    <article class="escape-front">
-                        <h2>Escape the Library</h2>
-                        <hr>
-                        <p>Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium.</p>
-                        <div class="see-more"><a href="#">En savoir plus</a></div>
+                        <div class="room-title"><a href="escape-room.php">Escape the Library</a></div>
                     </article>
                 </section>
                 <section class="col_4 room offset_1 ">
                     <!-- Affiche par défaut -->
                     <article class="escape-back">
                         <img src="img/escapes/labo.jpg" alt="labo preview">
-                        <div class="room-title"><p>Escape the Lab</p></div>
-                    </article>
-                    <!-- Affichage en hover -->
-                    <article class="escape-front">
-                        <h2>Escape the Lab</h2>
-                        <hr>
-                        <p>Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium.</p>
-                        <div class="see-more"><a href="#">En savoir plus</a></div>
+                        <div class="room-title"><a href="escape-room.php">Escape the Lab</a></div>
                     </article>
                 </section>
                 <section class="col_4 room offset_1 ">
                     <!-- Affiche par défaut -->
                     <article class="escape-back">
                         <img src="img/escapes/school.jpg" alt="school preview">
-                        <div class="room-title"><p>Escape the School</p></div>
-                    </article>
-                    <!-- Affichage en hover -->
-                    <article class="escape-front">
-                        <h2>Escape the School</h2>
-                        <hr>
-                        <p>Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium.</p>
-                        <div class="see-more"><a href="#">En savoir plus</a></div>
+                        <div class="room-title"><a href="escape-room.php">Escape the School</a></div>
                     </article>
                 </section>
         </section>
@@ -69,6 +48,7 @@
                 <h2>nom societe</h2>
                 <br>
                 <p>242, Rue du Faubourg Saint-Antoine</p>
+                <br>
                 <p>75012 Paris</p>
                 <br>
                 <p>FRANCE</p>
