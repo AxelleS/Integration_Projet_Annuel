@@ -49,6 +49,31 @@ main{
     background-color: #FFFFFF;
 }
 
+.page-title{
+    background-color: #C4C4C4;
+    border-radius: 10%;
+    display:none;
+    position: absolute;
+    z-index: 99;
+    margin-left: 25%;
+    width:40%;
+    height: 60px;
+    margin-top: 0.5%;
+}
+
+.page-title p{
+    text-align: center;
+    font-size: 150%;
+    padding-top: 4%;
+    font-weight: bold;
+}
+
+@media screen and (max-width : 980px) {
+    .page-title{
+        display:block;
+    }
+}
+
 .carrousel {
     display: flex;
     flex-direction: row;
@@ -72,6 +97,12 @@ main{
 	animation-timing-function: ease-in-out;
 }
 
+@media screen and (max-width : 980px) {
+    .carrousel img{
+        height: 300px;
+    }
+}
+
 /* INTRODUCTION - HOME */
 
 .introduction h1{
@@ -84,10 +115,21 @@ main{
     font-size:19px;
     margin-top:20px;
     margin-bottom:60px;
-    width:676px;
+    width:100%;
     text-align: left;
     margin-left:auto;
     margin-right: auto;
+}
+
+@media screen and (max-width : 980px) {
+    .introduction h1{
+        font-size: 100%;
+    }
+
+    .introduction p{
+        width:90%;
+        font-size:12px;
+    }
 }
 
 /* YOUTUBE - HOME */
@@ -131,6 +173,24 @@ main{
     text-decoration: none;
 }
 
+@media screen and (max-width : 980px) {
+    .escape-back{
+        width:700px;
+        margin-left: 12%;
+    }
+
+    .room-title {
+        width:70%;
+        bottom: 35%;
+        left: 15%;
+        height: 25%;
+    }
+
+    .room-title a{
+        font-size: 220%;
+    }
+}
+
 .escape-back{
     position: relative;
 }
@@ -172,6 +232,32 @@ main{
     text-shadow: 0 2px 1px #00000085;
 }
 
+@media screen and (max-width : 980px) {
+    .map{
+        margin-top:115%;
+        margin-bottom: 25%;
+    }
+
+    .map article:first-child{
+        margin-left:12%;
+    }
+
+    .map article iframe{
+        width:750px;
+    }
+    .map article:last-child h2{
+        font-size: 200%;
+        text-align: center;
+        width:450%;
+    }
+    .map article:last-child p{
+        margin-left: 150%;
+        width: 500%;
+        font-size: 25px;
+    }
+
+}
+
 /* PROMOTION - ROOM */
 .title-room{
     margin-top: 5%;
@@ -185,9 +271,20 @@ main{
     padding-bottom:1%;
 }
 
+@media screen and (max-width : 980px) {
+    .title-room{
+        margin-top: 0.5%;
+        width:100%;
+    }
+
+    .title-room h1{
+        width:100%;
+    }
+}
+
 .description-room{
     margin-top:2%;
-    text-align: center;
+    text-align: left;
 }
 
 .order{
