@@ -10,9 +10,24 @@
     <!--  -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.burger-menu svg').click(function(){
+                if($('nav').css('display') == 'block'){
+                    $('nav').css('display','none');
+                    $('.burger-menu').css('padding-left','1%');
+                } else{
+                    $('nav').css('display','block');
+                    $('.burger-menu').css('padding-left','35%');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
+        <div class="burger-menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg></div>
         <div class="logo"><img src="img/logo.png" alt=""></div>
         <nav>
             <ul>
@@ -25,7 +40,7 @@
                         <li><hr><a href="escape-room.php" title="">Escape the School</a></li>
                     </ul>
                 </li>
-                <li class="unactive"><a href="#" title="">RESERVER</a></li>
+                <li class="unactive reserver"><a href="#" title="">RESERVER</a></li>
                 <li class="unactive"><a href="faq.php" title="">FAQ</a></li>
                 <li class="unactive"><a href="contact.php" title="">CONTACT</a></li>
                 <li class="unactive"><a href="signin.php" title="">CONNEXION</a></li>

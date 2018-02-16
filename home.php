@@ -1,6 +1,7 @@
 <?php include('header.php'); ?>
 
     <main>
+        <div class="page-title"><p>Play with my CMS</p></div>
         <section class="carrousel">
             <img src="img/carrousel/image1.jpg" alt="image 1 du carrousel" id="image1">
             <img src="img/carrousel/image2.jpg" alt="image 2 du carrousel" id="image2">
