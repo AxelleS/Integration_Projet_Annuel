@@ -1,0 +1,720 @@
+/* DEFAULT */
+
+h1{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p{
+    font-size: 14px;
+}
+
+/* CARROUSEL - HOME */
+
+@keyframes AutoSlide {
+	0% {
+		left: 0px; /*1ère image*/
+	}
+	15% {
+		left: 0px; /*idem pour attente*/
+	}
+	35% {
+		left: -100%; /*2ème image*/
+	}
+	50% {
+		left: -100%; /*idem pour attente*/
+	}
+	70% {
+		left: -200%; /*3ème image*/
+	}
+	85% {
+		left: -200%; /*idem pour attente*/
+	}
+	100% {
+		left: 0px; /*1ère image*/
+	}
+}
+
+main{
+    background-color: #FFFFFF;
+}
+
+.page-title{
+    background-color: #C4C4C4;
+    border-radius: 10%;
+    display:none;
+    position: absolute;
+    z-index: 99;
+    margin-left: 25%;
+    width:40%;
+    height: 60px;
+    margin-top: 0.5%;
+}
+
+.page-title p{
+    text-align: center;
+    font-size: 150%;
+    padding-top: 4%;
+    font-weight: bold;
+}
+
+@media screen and (max-width : 980px) {
+    .page-title{
+        display:block;
+    }
+}
+
+.carrousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.carrousel img {
+	width: 100%;
+    height: 500px;
+}
+
+.carrousel img {
+	position: relative;
+    width: 100%;
+	
+	/*CSS3 keyframes animation*/
+	animation-name: AutoSlide;
+	animation-duration: 15s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+@media screen and (max-width : 980px) {
+    .carrousel img{
+        height: 300px;
+    }
+}
+
+/* INTRODUCTION - HOME */
+
+.introduction h1{
+    margin-top:20px;
+    text-align: center;
+    color:#42BDC4;
+}
+
+.introduction p{
+    font-size:19px;
+    margin-top:20px;
+    margin-bottom:60px;
+    width:100%;
+    text-align: left;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width : 980px) {
+    .introduction h1{
+        font-size: 100%;
+    }
+
+    .introduction p{
+        width:90%;
+        font-size:12px;
+    }
+}
+
+/* YOUTUBE - HOME */
+
+.video {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* ESCAPE ROOM - HOME */
+
+.escape-room{
+    margin-top: 50px;
+    height: 322px;
+}
+
+.escape-back img{
+    width:100%;
+}
+
+.room{
+    position: relative;
+}
+
+.room-title {
+    position: absolute;
+    bottom: 40%;
+    left: 25%;
+    width:50%;
+    height: 20%;
+    background-color: #42BDC4;
+    display: flex;
+    border-radius: 10%;
+}
+
+.room-title a{
+    margin: auto;
+    color:white;
+    font-size: 100%;
+    text-decoration: none;
+}
+
+@media screen and (max-width : 980px) {
+    .escape-back{
+        width:700px;
+        margin-left: 12%;
+    }
+
+    .room-title {
+        width:70%;
+        bottom: 35%;
+        left: 15%;
+        height: 25%;
+    }
+
+    .room-title a{
+        font-size: 220%;
+    }
+}
+
+.escape-back{
+    position: relative;
+}
+
+/* GOOGLE MAP - HOME */
+
+.map{
+    background-color: #FAFAFA;
+    width:100%;
+    height: 400px;
+    margin-top:3%; 
+    padding-top: 1%;   
+    padding-bottom: 1%; 
+}
+
+.map article:first-child{
+    height: 100%;
+}
+
+.map article iframe{
+    height: 100%;
+    width: 100%;
+}
+
+.map article:last-child p, .map article:last-child h2{
+    text-align: left;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.map article:last-child p{
+    font-size: 17px;
+}
+
+.map article:last-child h2{
+    margin-top:20%;
+    font-size: 28px;
+    color:#42BDC4;
+    text-shadow: 0 2px 1px #00000085;
+}
+
+@media screen and (max-width : 980px) {
+    .map{
+        margin-top:115%;
+        margin-bottom: 25%;
+    }
+
+    .map article:first-child{
+        margin-left:12%;
+    }
+
+    .map article iframe{
+        width:750px;
+    }
+    .map article:last-child h2{
+        font-size: 200%;
+        text-align: center;
+        width:450%;
+    }
+    .map article:last-child p{
+        margin-left: 150%;
+        width: 500%;
+        font-size: 25px;
+    }
+
+}
+
+/* PROMOTION - ROOM */
+.title-room{
+    margin-top: 5%;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    padding-top:1%;
+    padding-bottom:1%;
+}
+
+@media screen and (max-width : 980px) {
+    .title-room{
+        margin-top: 0.5%;
+        width:100%;
+    }
+
+    .title-room h1{
+        width:100%;
+    }
+}
+
+.description-room{
+    margin-top:2%;
+    text-align: left;
+}
+
+.order{
+    margin-top: 5%;
+    text-align: center;
+}
+
+.share{
+    margin-top: 5%;
+    text-align: center;
+    background-color: white;
+    padding-top: 0.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.share p, .share a{
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+/* PICTURE - ROOM */
+
+/* Pour le titre */
+.pictures{
+    padding-top: 1%;
+    background-color: white;
+}
+
+.pictures article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.pictures hr{
+    margin:auto;
+    margin-top: 2%;
+}
+
+.picture-promotion, .video-promotion{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* Pour la video */
+
+.video-promotion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Pour les images */
+
+.picture-promotion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.picture-promotion img{
+    width:100%;
+}
+
+/* BOOKING - ROOM */
+
+.booking article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.booking hr{
+    margin:auto;
+    margin-top: 2%;
+}
+
+/* CALENDAR - ROOM */
+
+.calendar{
+    margin-top:3%;
+}
+
+/* Structure du calendrier */
+.calendar table {
+    width:100%;
+}
+
+.calendar table{
+    background-color: white;
+}
+
+.calendar .content td{
+    height: 40px;
+    width: 14%;
+    border-collapse: separate;
+    border-radius: 20%;
+
+}
+
+/* Jours où il ne reste plus aucuns créneaux (non cliquable) */
+.calendar .plein { 
+    border-width:1px;
+    border-style:solid; 
+    border-color:black;
+    text-align:center;
+}
+
+.calendar .semiplein input, .calendar .vide input{
+    border:0;
+    height: 100%;
+    width:100%;
+    cursor:  pointer;
+    border-radius: 20%;
+}
+
+/* Couleur pour les jours où il manque plus de 50% des créneaux */
+.calendar .semiplein input{
+    background-color: orange;
+}
+
+/* Couleur pour les jours où il manque moins de 50% des créneaux */
+.calendar .vide input{
+    background-color: green;
+}
+
+/* Pour la taille des fléche de navigation du calendrier */
+.calendar .arrow{
+    width: 3%;
+}
+
+.legend{
+    margin-top: 4%;
+}
+
+.legend_plein{
+    border-width:1px;
+    border-style:solid; 
+    border-color:black;
+    width:10%;
+    border-radius: 20%;
+}
+
+.legend_semiplein{
+    width:10%;
+    border-radius: 20%;
+    background-color: orange;
+}
+
+.legend_vide{
+    width:10%;
+    border-radius: 20%;
+    background-color: green;
+}
+
+/* SLOTS - ROOM */
+
+/* Met la select des créneaux en non affiché par défaut */ 
+.slots .creneaux{
+    margin-right: 15px;
+    display: none;
+}
+
+.slots{
+    margin-top: 2%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.slots input{
+    width:100%;
+    display: none;
+    background-color: white;
+}
+
+/* OPINION - ROOM */
+
+.opinion{
+    background-color: #BDBDBD;
+    width: 100%;
+    padding-bottom: 2%;
+}
+
+.opinion article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.opinion hr{
+    margin:auto;
+    margin-top: 2%;
+}
+
+.opinion-people{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom:1%;
+}
+
+#opinion-date{
+    color:#4F4F4F;
+    font-weight: bold;
+}
+
+#opinion-name{
+    font-weight: bold;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#opinion-score{
+    color:#4F4F4F;
+    font-weight: bold;
+}
+
+/* FAQ */
+
+.faq{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* PICTURE - FAQ */
+
+.faq-picture{
+    display: flex;
+    align-items: center;
+}
+
+.faq-picture img{
+    width : 80%;
+    height: 300px;
+    vertical-align: middle;
+}
+
+/* QUESTION - FAQ */
+
+.faq-question h1{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.faq-question h4{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* CONTACT */
+
+.contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* PICTURE - CONTACT */
+
+.contact-picture{
+    display: flex;
+    align-items: center;
+}
+
+.contact-picture img{
+    width : 80%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/* FORM - CONTACT */
+
+.contact-form h1{
+    padding-bottom: 20px;
+}
+
+.contact-form input{
+    width: 100%;
+}
+
+.contact-form textarea{
+    width: 100%;
+}
+
+.contact-form .title{
+    padding-top: 20px;
+}
+
+.contact-form .title input{
+    background-color: #C4C4C4;
+    color: white;
+    border-radius: 20px;
+    border:0;
+    height: 25px;
+}
+
+/* SIGNIN */
+
+.signin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* FORM - SIGNIN */
+
+.signin-form h1{
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.signin-form input{
+    width: 100%;
+}
+
+.signin-form section{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.signin-form .title{
+    padding-top: 20px;
+}
+
+.signin-form fieldset section:last-child{
+    margin-bottom: 20px;
+}
+
+.signin-form .title input{
+    background-color: #C4C4C4;
+    color: white;
+    border-radius: 20px;
+    border:0;
+    height: 25px;
+}
+
+.signup-via-signin{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-via-signin a{
+    color: black;
+}
+
+/* FORM CUSTOMER INFO */
+.location-section {
+    margin-top: 3%;
+}
+
+/* BTN DEFAULT */
+.btn-default {
+    width: 40% !important;
+    background-color: #42BDC4;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-default:hover {
+    background-color: #FFFFFF;
+    color : #42BDC4; }
+
+.btn-default-outline {
+    background-color: #42BDC4;
+    color: #FFFFFF; }
+
+.btn-default-outline:hover {
+    background-color: #42BDC4; }
+
+/* BTN SUCCESS */
+.btn-success {
+    width: 40% !important;
+    background-color: #43a047 ;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-success:hover {
+    background-color: #FFFFFF;
+    color : #43a047 ; }
+
+.btn-success-outline {
+    background-color: #43a047 ;
+    color: #FFFFFF; }
+
+.btn-success-outline:hover {
+    background-color: #43a047 ; }
+
+    /* BTN WARNING */
+.btn-warning {
+    width: 40% !important;
+    background-color: #ff9800  ;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-warning:hover {
+    background-color: #FFFFFF;
+    color : #ff9800  ; }
+
+.btn-warning-outline {
+    background-color: #ff9800  ;
+    color: #FFFFFF; }
+
+.btn-warning-outline:hover {
+    background-color: #ff9800  ; }
+
+        /* BTN ERROR */
+.btn-error {
+    width: 40% !important;
+    background-color: #ff3d00;
+    color: #FFFFFF;
+    border-radius: 15px; }
+
+.btn-error:hover {
+    background-color: #FFFFFF;
+    color : #ff3d00; }
+
+.btn-error-outline {
+    background-color: #ff3d00 ;
+    color: #FFFFFF; }
+
+.btn-error-outline:hover {
+    background-color: #ff3d00; }
