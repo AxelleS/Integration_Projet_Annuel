@@ -20,30 +20,42 @@
               <p>Accueil</p>
             </div></a>
 
+          <a href="#">
           <div class="align-navbar-content">
             <img src="https://dummyimage.com/75x75/a1a6a6/00000" alt="">
             <p>Statistiques</p>
           </div>
+          </a>
+          <a href="#">
           <div class="align-navbar-content">
             <img src="https://dummyimage.com/75x75/a1a6a6/000000" alt="">
             <p>Organisation du site</p>
           </div>
+          </a>
+          <a href="#">
           <div class="align-navbar-content">
             <img src="https://dummyimage.com/75x75/a1a6a6/000000" alt="">
             <p>Base de données</p>
           </div>
+          </a>
+          <a href="#">
           <div class="align-navbar-content">
             <img src="https://dummyimage.com/75x75/a1a6a6/000000" alt="">
             <p>Calendriers</p>
           </div>
+          </a>
+          <a href="#">
           <div class="align-navbar-content">
             <img src="https://dummyimage.com/75x75/a1a6a6/000000" alt="">
             <p>Utilisateurs</p>
           </div>
+          </a>
+          <a href="#">
           <div class="align-navbar-content">
             <img src="https://dummyimage.com/75x75/a1a6a6/000000/fff" alt="">
             <p>Paramètres</p>
           </div>
+          </a>
         </div>
       </nav>
       <header class="header-dashboard-admin">
@@ -55,6 +67,20 @@
         </div>
       </header>
     </main>
+    <div class="">
+      <h1>Bienvenue</h1>
+    </div>
+    <div class="dashboard-overview placement">
+      <div class="dashboard-activities">
+
+      </div>
+      <div class="dashboard-analytics">
+
+      </div>
+      <div class="dashboard-message">
+
+      </div>
+    </div>
 
   </body>
 </html>

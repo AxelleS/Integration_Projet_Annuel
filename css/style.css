@@ -761,6 +761,10 @@ main{
   align-items: flex-start;
 }
 
+.nav-navbar a {
+  width: 100%;
+}
+
 .align-navbar-content {
   width: 100%;
   display: flex;
@@ -770,6 +774,10 @@ main{
   border-bottom: 1px solid black;
 }
 
+.align-navbar-content img {
+  margin-left: 10px;
+}
+
 .align-navbar-content:nth-child(1) {
   border-top: 1px solid black;
 }
@@ -777,4 +785,8 @@ main{
 .align-navbar-content p {
   margin-left: 10px;
   color: a1a6a6
+}
+
+.placement {
+  border: 1px solid red;
 }
