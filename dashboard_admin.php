@@ -76,7 +76,68 @@
         </div>
         <div class="dashboard-overview placement">
           <div class="dashboard-activities col_6">
-            <p>coucou</p>
+            <div class="activities-title">
+              <h2>Activité</h2>
+            </div>
+            <div class="activities-content col_16">
+              <div class="activities-content-one col_16">
+                <div class="activities-content-img col_4">
+                  <img src="img/dashboard/titi.jpg" alt="">
+                </div>
+                <div class="activities-content-info col_12">
+                  <p><b>Titi</b> vient de s'inscrire</p>
+                  <p>30 Janvier 1996</p>
+                </div>
+              </div>
+              <div class="activities-content-one col_16">
+                <div class="activities-content-img col_4">
+                  <img src="img/dashboard/titi.jpg" alt="">
+                </div>
+                <div class="activities-content-info col_12">
+                  <p><b>Titi</b> vient de s'inscrire</p>
+                  <p>30 Janvier 1996</p>
+                </div>
+              </div>
+              <div class="activities-content-one col_16">
+                <div class="activities-content-img col_4">
+                  <img src="img/dashboard/titi.jpg" alt="">
+                </div>
+                <div class="activities-content-info col_12">
+                  <p><b>Titi</b> vient de s'inscrire</p>
+                  <p>30 Janvier 1996</p>
+                </div>
+              </div>
+              <div class="activities-content-one col_16">
+                <div class="activities-content-img col_4">
+                  <img src="img/dashboard/titi.jpg" alt="">
+                </div>
+                <div class="activities-content-info col_12">
+                  <p><b>Titi</b> vient de s'inscrire</p>
+                  <p>30 Janvier 1996</p>
+                </div>
+              </div>
+              <div class="activities-content-one col_16">
+                <div class="activities-content-img col_4">
+                  <img src="img/dashboard/titi.jpg" alt="">
+                </div>
+                <div class="activities-content-info col_12">
+                  <p><b>Titi</b> vient de s'inscrire</p>
+                  <p>30 Janvier 1996</p>
+                </div>
+              </div>
+              <div class="activities-content-one col_16">
+                <div class="activities-content-img col_4">
+                  <img src="img/dashboard/titi.jpg" alt="">
+                </div>
+                <div class="activities-content-info col_12">
+                  <p><b>Titi</b> vient de s'inscrire</p>
+                  <p>30 Janvier 1996</p>
+                </div>
+              </div>
+              <div class="">
+
+              </div>
+            </div>
           </div>
           <div class="dashboard-social col_8">
             <div class="dashboard-analytics">
@@ -89,8 +150,5 @@
         </div>
       </main>
     </main>
-
-
-
   </body>
 </html>
