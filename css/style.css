@@ -45,35 +45,6 @@ p{
 	}
 }
 
-main{
-    background-color: #FFFFFF;
-}
-
-.page-title{
-    background-color: #C4C4C4;
-    border-radius: 10%;
-    display:none;
-    position: absolute;
-    z-index: 99;
-    margin-left: 25%;
-    width:40%;
-    height: 60px;
-    margin-top: 0.5%;
-}
-
-.page-title p{
-    text-align: center;
-    font-size: 150%;
-    padding-top: 4%;
-    font-weight: bold;
-}
-
-@media screen and (max-width : 980px) {
-    .page-title{
-        display:block;
-    }
-}
-
 .carrousel {
     display: flex;
     flex-direction: row;
@@ -97,47 +68,27 @@ main{
 	animation-timing-function: ease-in-out;
 }
 
-@media screen and (max-width : 980px) {
-    .carrousel img{
-        height: 300px;
-    }
-}
-
 /* INTRODUCTION - HOME */
 
 .introduction h1{
     margin-top:20px;
     text-align: center;
-    color:#42BDC4;
 }
 
 .introduction p{
     font-size:19px;
     margin-top:20px;
     margin-bottom:60px;
-    width:100%;
-    text-align: left;
+    width:676px;
+    text-align: center;
     margin-left:auto;
     margin-right: auto;
 }
 
-@media screen and (max-width : 980px) {
-    .introduction h1{
-        font-size: 100%;
-    }
-
-    .introduction p{
-        width:90%;
-        font-size:12px;
-    }
-}
-
 /* YOUTUBE - HOME */
 
-.video {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.video iframe{
+    height: 600px;
 }
 
 /* ESCAPE ROOM - HOME */
@@ -147,8 +98,9 @@ main{
     height: 322px;
 }
 
-.escape-back img{
+.escape-back img, .room, .escape-front{
     width:100%;
+    height: 100%;
 }
 
 .room{
@@ -161,139 +113,132 @@ main{
     left: 25%;
     width:50%;
     height: 20%;
-    background-color: #42BDC4;
+    background-color: #333333;
     display: flex;
-    border-radius: 10%;
+    border-radius: 10px;
 }
 
-.room-title a{
+.room-title p{
     margin: auto;
     color:white;
-    font-size: 100%;
-    text-decoration: none;
+    font-size: 17px;
 }
 
-@media screen and (max-width : 980px) {
-    .escape-back{
-        width:700px;
-        margin-left: 12%;
-    }
-
-    .room-title {
-        width:70%;
-        bottom: 35%;
-        left: 15%;
-        height: 25%;
-    }
-
-    .room-title a{
-        font-size: 220%;
-    }
+.escape-room section .escape-back{
+    position: absolute;
 }
 
-.escape-back{
-    position: relative;
+/* ESCAPE ROOM HOVER - HOME */
+
+.escape-front{
+    position: absolute;
+    display: none;
+    background-color: #4F4F4F;
+    opacity: 0.8;
+}
+
+.escape-room section:hover .escape-front{
+    display: block;
+}
+
+.escape-front{
+    color: white;
+}
+
+.escape-front h2{
+    margin-top: 15px;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.escape-front hr{
+    width: 10%;
+    margin:auto;
+    margin-top: 15px;
+}
+
+.escape-front p{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.see-more{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.see-more a{
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration:none;
+    color: white;
+    text-transform:uppercase;
 }
 
 /* GOOGLE MAP - HOME */
 
 .map{
-    background-color: #FAFAFA;
+    margin-top: 40px;
+    background-color: #C4C4C4;
     width:100%;
     height: 400px;
-    margin-top:3%; 
-    padding-top: 1%;   
-    padding-bottom: 1%; 
-}
-
-.map article:first-child{
-    height: 100%;
 }
 
 .map article iframe{
-    height: 100%;
     width: 100%;
+    height: 100%;
+    padding-top:30px;
+    padding-bottom:30px;
 }
 
-.map article:last-child p, .map article:last-child h2{
-    text-align: left;
+.address p, .address h2{
+    text-align: center;
     margin-left:auto;
     margin-right: auto;
 }
 
-.map article:last-child p{
-    font-size: 17px;
+.address{
+    padding-top:35%;
 }
 
-.map article:last-child h2{
-    margin-top:20%;
+.address h2 {
     font-size: 28px;
-    color:#42BDC4;
-    text-shadow: 0 2px 1px #00000085;
 }
 
-@media screen and (max-width : 980px) {
-    .map{
-        margin-top:115%;
-        margin-bottom: 25%;
-    }
-
-    .map article:first-child{
-        margin-left:12%;
-    }
-
-    .map article iframe{
-        width:750px;
-    }
-    .map article:last-child h2{
-        font-size: 200%;
-        text-align: center;
-        width:450%;
-    }
-    .map article:last-child p{
-        margin-left: 150%;
-        width: 500%;
-        font-size: 25px;
-    }
-
+.address p {
+    font-size: 17px;
 }
 
 /* PROMOTION - ROOM */
 .title-room{
-    margin-top: 5%;
+    margin-top: 80px;
     background-color: #C4C4C4;
     border-radius: 20px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    height: 20%;
+    height: 80px;
     padding-top:1%;
-    padding-bottom:1%;
-}
-
-@media screen and (max-width : 980px) {
-    .title-room{
-        margin-top: 0.5%;
-        width:100%;
-    }
-
-    .title-room h1{
-        width:100%;
-    }
 }
 
 .description-room{
-    margin-top:2%;
-    text-align: left;
+    margin-top:20px;
+    text-align: center;
 }
 
 .order{
-    margin-top: 5%;
+    margin-top: 65px;
     text-align: center;
 }
 
 .share{
-    margin-top: 5%;
+    margin-top: 65px;
     text-align: center;
     background-color: white;
     padding-top: 0.5%;
@@ -311,63 +256,67 @@ main{
 
 /* Pour le titre */
 .pictures{
-    padding-top: 1%;
+    margin-top: 20px;
     background-color: white;
 }
 
 .pictures article h2{
     text-transform: uppercase;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 20px;
 }
 
 .pictures hr{
     margin:auto;
-    margin-top: 2%;
+    margin-top: 20px;
 }
 
 .picture-promotion, .video-promotion{
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Pour la video */
 
-.video-promotion{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.video-promotion iframe{
+    width:100%;
+    height: 100%;
 }
 
 /* Pour les images */
 
+.picture-promotion img{
+    height: 250px;
+}
+
 .picture-promotion{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-}
-
-.picture-promotion img{
-    width:100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 /* BOOKING - ROOM */
 
+.booking{
+    margin-top: 20px;
+}
+
 .booking article h2{
     text-transform: uppercase;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 20px;
 }
 
 .booking hr{
     margin:auto;
-    margin-top: 2%;
+    margin-top: 20px;
 }
 
 /* CALENDAR - ROOM */
 
 .calendar{
-    margin-top:3%;
+    margin-top:40px;
 }
 
 /* Structure du calendrier */
@@ -381,7 +330,7 @@ main{
 
 .calendar .content td{
     height: 40px;
-    width: 14%;
+    width: 60px;
     border-collapse: separate;
     border-radius: 20%;
 
@@ -419,7 +368,7 @@ main{
 }
 
 .legend{
-    margin-top: 4%;
+    margin-top: 60px;
 }
 
 .legend_plein{
@@ -451,8 +400,8 @@ main{
 }
 
 .slots{
-    margin-top: 2%;
-    margin-bottom: 10%;
+    margin-top: 20px;
+    margin-bottom: 200px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -469,26 +418,25 @@ main{
 .opinion{
     background-color: #BDBDBD;
     width: 100%;
-    padding-bottom: 2%;
 }
 
 .opinion article h2{
     text-transform: uppercase;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 20px;
 }
 
 .opinion hr{
     margin:auto;
-    margin-top: 2%;
+    margin-top: 20px;
 }
 
 .opinion-people{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    margin-top: 1%;
-    margin-bottom:1%;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #opinion-date{
@@ -498,8 +446,6 @@ main{
 
 #opinion-name{
     font-weight: bold;
-    margin-left: 2%;
-    margin-right: 2%;
 }
 
 #opinion-score{
@@ -647,12 +593,14 @@ main{
     margin-top: 3%;
 }
 
+
 /* BTN DEFAULT */
 .btn-default {
     width: 40% !important;
     background-color: #42BDC4;
     color: #FFFFFF;
-    border-radius: 15px; }
+    border-radius: 15px; 
+    padding: 7px; }
 
 .btn-default:hover {
     background-color: #FFFFFF;
@@ -688,15 +636,8 @@ main{
     width: 40% !important;
     background-color: #ff9800  ;
     color: #FFFFFF;
-    border-radius: 15px; }
-
-.btn-warning:hover {
-    background-color: #FFFFFF;
-    color : #ff9800  ; }
-
-.btn-warning-outline {
-    background-color: #ff9800  ;
-    color: #FFFFFF; }
+    border-radius: 15px;
+    padding: 7px; }
 
 .btn-warning-outline:hover {
     background-color: #ff9800  ; }
@@ -718,3 +659,115 @@ main{
 
 .btn-error-outline:hover {
     background-color: #ff3d00; }
+
+
+    /* CLASS TABLE */
+table {
+    border-collapse:collapse;
+    border-spacing: 0 }
+
+th{
+    padding: 0;
+    color:#299fa5; }
+
+td {
+    padding: 0; }
+
+table,th,td {
+    border:none }
+
+table{
+    width:100%;
+    display:table } 
+    
+    /* Tableau borduré */
+/*Affecte le tr du thead ainsi que le tr du tbody*/
+table.bordered>thead>tr,table.bordered>tbody>tr {
+    /*Ajout d'une ligne sous la cible*/
+    border-bottom:1px solid #d0d0d0 } 
+
+    /* Tableau rayé */
+/*Affecte le tr du tbody en sautant une case à chaque fois*/
+table.striped>tbody>tr:nth-child(odd){
+    background-color:#f2f2f2 } 
+    /* Tableau surligné */
+table.highlight>tbody>tr:hover{
+    background-color:#67dfe5;
+    opacity: 0.6;} 
+
+    /* Tableau centré */
+/*Affecte le thead, (tr, th du thead)  et le tbody, (tr, th du tbody)*/
+table.centered thead tr th,table.centered tbody tr td {
+    text-align:center } 
+/*Affecte le thead*/
+thead{
+    /*Ajout d'une ligne sous la cible*/
+    border-bottom:1px solid #d0d0d0 } 
+
+td,th{
+    padding:15px 5px;
+    display:table-cell;
+    text-align:left;} 
+
+
+    /* CLASS TABLE MEDIA QUERY */
+@media only screen and (max-width: 980px) { 
+    table.responsive-table {
+        width:100%;
+        border-collapse:collapse;
+        border-spacing:0;
+        display:block;
+        position:relative } 
+
+    table.responsive-table th,table.responsive-table td { 
+        margin:0;
+        vertical-align:top } 
+
+    table.responsive-table th { 
+        text-align:left } 
+
+    /*Affexte le thead place les titre en block sur la gauche*/
+    table.responsive-table thead { 
+        display:block; 
+        float:left } 
+
+    /*Affecte le tr, cree un espace entre le titre et les donnee du tableau*/
+    table.responsive-table thead tr { 
+        display:block;
+        padding:0 10px 0 0 } 
+
+    table.responsive-table tbody { 
+        display:block;
+        width:auto;
+        position:relative;
+        overflow-x:auto;
+        white-space:nowrap /*Gère le cas ou il y a trop de donnée --> creation d'un ascensseur horizontal*/
+        } 
+
+ /*--------------------------------------------*/
+ /* Permet de mettre le tableau en horizontal  */
+ /*-*/  table.responsive-table tbody tr {   /*-*/
+ /*-*/      display:inline-block;           /*-*/
+ /*-*/      vertical-align:top }            /*-*/
+ /*-*/                                      /*-*/
+ /*-*/   table.responsive-table th {        /*-*/
+ /*-*/       display:block;                 /*-*/
+ /*-*/       text-align:right }             /*-*/
+ /*--------------------------------------------*/
+    
+    /*Place les valeurs en face des differentes colonne*/
+    table.responsive-table td { 
+        display:block;
+        min-height:1.25em;
+        text-align:left } 
+
+    table.responsive-table tr { 
+        padding:0 10px } 
+
+    table.responsive-table thead { 
+        border:0;
+        border-right:1px solid #d0d0d0 } 
+
+    table.responsive-table.bordered tbody tr { 
+        border-right:1px solid #d0d0d0 } 
+}
