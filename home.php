@@ -1,45 +1,47 @@
 <?php include('header.php'); ?>
 
     <main>
-        <div class="page-title"><p>Play with my CMS</p></div>
-        <section class="carrousel">
-            <img src="img/carrousel/image1.jpg" alt="image 1 du carrousel" id="image1">
-            <img src="img/carrousel/image2.jpg" alt="image 2 du carrousel" id="image2">
-            <img src="img/carrousel/image3.jpg" alt="image 3 du carrousel" id="image3">
-        </section>
+        <div class="container-home row">
+            <div class="page-title col_16"><p>Play with my CMS</p></div>
+            <section class="carrousel">
+                <img src="img/carrousel/image1.jpg" alt="image 1 du carrousel" id="image1">
+                <img src="img/carrousel/image2.jpg" alt="image 2 du carrousel" id="image2">
+                <img src="img/carrousel/image3.jpg" alt="image 3 du carrousel" id="image3">
+            </section>
 
-        <section class="introduction">
-            <h1>Titre d'introduction</h1>
-            <p>Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo ille cumulus dierum hominis est dignitati tributus.</p>
-        </section>
+            <section class="introduction">
+                <h1>Titre d'introduction</h1>
+                <p>Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo ille cumulus dierum hominis est dignitati tributus.</p>
+            </section>
 
-        <section class="video">
-            <iframe  width="560" height="315" src="https://www.youtube.com/embed/bzzKksk_z2k?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
-        </section>
+            <section class="video">
+                <iframe  width="560" height="315" src="https://www.youtube.com/embed/bzzKksk_z2k?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+            </section>
 
-        <section class="escape-room row">
-                <section class="col_4 room offset_1 ">
-                    <!-- Affiche par défaut -->
-                    <article class="escape-back">
-                        <img src="img/escapes/library.jpg" alt="library preview">
-                        <div class="room-title"><a href="escape-room.php">Escape the Library</a></div>
-                    </article>
-                </section>
-                <section class="col_4 room offset_1 ">
-                    <!-- Affiche par défaut -->
-                    <article class="escape-back">
-                        <img src="img/escapes/labo.jpg" alt="labo preview">
-                        <div class="room-title"><a href="escape-room.php">Escape the Lab</a></div>
-                    </article>
-                </section>
-                <section class="col_4 room offset_1 ">
-                    <!-- Affiche par défaut -->
-                    <article class="escape-back">
-                        <img src="img/escapes/school.jpg" alt="school preview">
-                        <div class="room-title"><a href="escape-room.php">Escape the School</a></div>
-                    </article>
-                </section>
-        </section>
+            <section class="escape-room row">
+                    <section class="col_4 room offset_1 ">
+                        <!-- Affiche par défaut -->
+                        <article class="escape-back">
+                            <img src="img/escapes/library.jpg" alt="library preview">
+                            <div class="room-title"><a href="escape-room.php">Escape the Library</a></div>
+                        </article>
+                    </section>
+                    <section class="col_4 room offset_1 ">
+                        <!-- Affiche par défaut -->
+                        <article class="escape-back">
+                            <img src="img/escapes/labo.jpg" alt="labo preview">
+                            <div class="room-title"><a href="escape-room.php">Escape the Lab</a></div>
+                        </article>
+                    </section>
+                    <section class="col_4 room offset_1 ">
+                        <!-- Affiche par défaut -->
+                        <article class="escape-back">
+                            <img src="img/escapes/school.jpg" alt="school preview">
+                            <div class="room-title"><a href="escape-room.php">Escape the School</a></div>
+                        </article>
+                    </section>
+            </section>
+        </div>
 
         <section class="map row">
             <!-- Map google map -->

@@ -46,12 +46,16 @@ p{
 }
 
 main{
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
+}
+
+.container-home{
+background-color: #FFFF;
 }
 
 .page-title{
     background-color: #C4C4C4;
-    border-radius: 10%;
+    border-radius: 20px;
     display:none;
     position: absolute;
     z-index: 99;
@@ -63,7 +67,7 @@ main{
 
 .page-title p{
     text-align: center;
-    font-size: 150%;
+    font-size: 32px;
     padding-top: 4%;
     font-weight: bold;
 }
@@ -71,6 +75,7 @@ main{
 @media screen and (max-width : 980px) {
     .page-title{
         display:block;
+        justify-content: center;
     }
 }
 
@@ -79,6 +84,7 @@ main{
     flex-direction: row;
     justify-content: flex-start;
     overflow: hidden;
+    background-position: cover;
 }
 
 .carrousel img {
@@ -115,7 +121,7 @@ main{
     font-size:19px;
     margin-top:20px;
     margin-bottom:60px;
-    width:100%;
+    width:80%;
     text-align: left;
     margin-left:auto;
     margin-right: auto;
@@ -174,20 +180,30 @@ main{
 }
 
 @media screen and (max-width : 980px) {
-    .escape-back{
-        width:700px;
-        margin-left: 12%;
+    .escape-room{
+        flex-basis: 100%;
+        justify-content: center;
+        position: relative;
+        margin: 0;
+        height: 100%;
+        margin-top:2%;
     }
 
-    .room-title {
-        width:70%;
-        bottom: 35%;
+    .room{
+        flex-basis: 70%;
+        justify-content: center;
+        margin: 0;
+        position: relative;
+        margin-bottom: 2%;
+    }
+
+    .room-title{
+        width: 70%;
         left: 15%;
-        height: 25%;
     }
 
     .room-title a{
-        font-size: 220%;
+        font-size: 40px;
     }
 }
 
@@ -233,27 +249,35 @@ main{
 }
 
 @media screen and (max-width : 980px) {
-    .map{
-        margin-top:115%;
-        margin-bottom: 25%;
-    }
-
     .map article:first-child{
-        margin-left:12%;
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+        margin-left:2%;
+        margin-right: 2%;
+        height: 400px;
     }
 
-    .map article iframe{
-        width:750px;
+    .map article:last-child{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+        margin-left: 4%;
+        margin-top: 2%;
+        margin-bottom: 2%;
     }
+
     .map article:last-child h2{
-        font-size: 200%;
-        text-align: center;
-        width:450%;
+        margin: 0;
+        font-size: 40px;
     }
+
     .map article:last-child p{
-        margin-left: 150%;
-        width: 500%;
-        font-size: 25px;
+        font-size: 30px;
+    }
+
+    .map{
+        height: 100%;
     }
 
 }
@@ -274,7 +298,8 @@ main{
 @media screen and (max-width : 980px) {
     .title-room{
         margin-top: 0.5%;
-        width:100%;
+        margin-bottom: 2%;
+        flex-basis: 50%;
     }
 
     .title-room h1{
@@ -287,15 +312,27 @@ main{
     text-align: left;
 }
 
+@media screen and (max-width : 990px) {
+    .description-room p{
+        font-size: 10px;
+    }
+}
+
 .order{
     margin-top: 5%;
     text-align: center;
+    border: 1px solid #42BDC4;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    width: 50%;
 }
 
 .share{
     margin-top: 5%;
     text-align: center;
-    background-color: white;
+    background-color: #FFFFFF;
     padding-top: 0.5%;
     display: flex;
     flex-direction: row;
@@ -307,26 +344,79 @@ main{
     margin-bottom: auto;
 }
 
+.share svg{
+    fill: #42BDC4;
+}
+
+@media screen and (max-width : 990px) {
+    .order{
+        width: 200%;
+        border:0;
+        flex-basis:100%;
+        margin:0;
+        justify-content: space-between;
+        margin-top: 2%;
+    }
+
+    .order img{
+        width:200px;
+        height: 200px;
+    }
+
+    .order img:first-child{
+        margin-left: 2%;
+    }
+    .order img:last-child{
+        margin-right: 2%;
+    }
+
+    .share{
+        flex-basis:100%;
+        justify-content: center;
+        margin: 0;
+        background-color: #FAFAFA;
+        margin-top: 4%;
+    }   
+
+    .share p{
+        font-size: 50px;
+    }  
+
+    .share svg {
+        width: 70px;
+        height: 70px;
+    }
+
+    .share svg:first-child {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
 /* PICTURE - ROOM */
 
 /* Pour le titre */
 .pictures{
     padding-top: 1%;
-    background-color: white;
+    background-color: #FAFAFA;
 }
 
 .pictures article h2{
     text-transform: uppercase;
     text-align: center;
     margin-top: 2%;
+    color:#42BDC4;
 }
 
 .pictures hr{
     margin:auto;
     margin-top: 2%;
+    background-color: #42BDC4;
+    height:1px;
+    border: 0;
 }
 
-.picture-promotion, .video-promotion{
+.video-promotion{
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -344,30 +434,97 @@ main{
 .picture-promotion{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .picture-promotion img{
     width:100%;
 }
 
+@media screen and (max-width : 980px) {
+    .pictures article:first-child{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .pictures article h2{
+        font-size: 10px;
+    }
+
+    .pictures article:nth-child(2){
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .pictures hr{
+        width:80%;
+    }
+
+    .video-promotion iframe{
+        width:70%;
+    }
+
+    .picture-promotion{
+        flex-basis: 100%;
+        margin:0;
+    }
+
+    .pictures article:last-child{
+        margin-bottom: 2%;
+    }
+}
+
 /* BOOKING - ROOM */
+
+.booking{
+    background-color: #FFFFFF;
+    margin-top: 2%;
+}
 
 .booking article h2{
     text-transform: uppercase;
     text-align: center;
     margin-top: 2%;
+    color: #42BDC4;
 }
 
 .booking hr{
     margin:auto;
     margin-top: 2%;
+    background-color: #42BDC4;
+    height:1px;
+    border: 0;
+}
+
+@media screen and (max-width : 990px) {
+    .booking article:first-child{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .booking article h2{
+        font-size: 10px;
+    }
+
+    .booking article:nth-child(2){
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .booking hr{
+        width:80%;
+    }
 }
 
 /* CALENDAR - ROOM */
 
 .calendar{
     margin-top:3%;
+
 }
 
 /* Structure du calendrier */
@@ -375,8 +532,9 @@ main{
     width:100%;
 }
 
-.calendar table{
-    background-color: white;
+.calendar th{
+    color: black;
+    text-align: center;
 }
 
 .calendar .content td{
@@ -418,28 +576,61 @@ main{
     width: 3%;
 }
 
+@media screen and (max-width : 980px) {
+    .calendar{
+        flex-basis:100%;
+        margin:0;
+        margin-top: 2%;
+        margin-left:2%;
+        margin-right: 2%;
+    }
+
+    .calendar th{
+        color: black;
+        text-align: center;
+        font-size: 20px;    
+    }
+
+    .calendar .arrow{
+        width:80px; 
+    }
+
+    .calendar th{
+        font-size: 50px;
+    }
+    
+    .calendar .content td, .calendar .content input{
+        height: 100px;
+        font-size: 50px;
+    }
+}
+
 .legend{
-    margin-top: 4%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    font-size: 12px;
+    margin-bottom: 2%;
 }
 
 .legend_plein{
     border-width:1px;
     border-style:solid; 
     border-color:black;
-    width:10%;
-    border-radius: 20%;
+    width:100%;
 }
 
 .legend_semiplein{
-    width:10%;
-    border-radius: 20%;
+    width:100%;
     background-color: orange;
+    margin-top: 4%;
 }
 
 .legend_vide{
-    width:10%;
-    border-radius: 20%;
+    width:100%;
     background-color: green;
+    margin-top: 4%;
 }
 
 /* SLOTS - ROOM */
@@ -450,8 +641,14 @@ main{
     display: none;
 }
 
+.slots-text{
+    margin-top: 15%;
+    text-align: right;
+    margin-right: 10px;
+}
+
 .slots{
-    margin-top: 2%;
+    margin-top: 15%;
     margin-bottom: 10%;
     display: flex;
     flex-direction: row;
@@ -464,23 +661,65 @@ main{
     background-color: white;
 }
 
+@media screen and (max-width : 980px) {
+    .slots-text{
+        margin:0;
+        flex-basis: 40%;
+        margin-top: 3%; 
+        margin-right: 1%; 
+        justify-content: center;
+        margin-bottom: 4%;
+    }
+
+    .slots-text p{
+        font-size: 10px;  
+    }
+
+    .slots{
+        margin:0;
+        flex-basis: 50%;
+        margin-top: 3%;
+        justify-content: center;
+        margin-bottom: 4%;
+    }
+
+    .slots select{
+        width: 70%;
+        font-size: 30px;
+    }
+
+    .slots input{
+        width: 30%;
+        font-size: 40px;
+    }
+
+    .legend{
+        display: none;
+    }
+}
+
 /* OPINION - ROOM */
 
 .opinion{
-    background-color: #BDBDBD;
+    background-color: #FFFFFF;
     width: 100%;
     padding-bottom: 2%;
+    margin-top: 2%;
 }
 
 .opinion article h2{
     text-transform: uppercase;
     text-align: center;
     margin-top: 3%;
+    color:#42BDC4
 }
 
 .opinion hr{
     margin:auto;
     margin-top: 2%;
+    background-color: #42BDC4;
+    height:1px;
+    border: 0;
 }
 
 .opinion-people{
@@ -505,6 +744,40 @@ main{
 #opinion-score{
     color:#4F4F4F;
     font-weight: bold;
+}
+
+@media screen and (max-width : 980px) {
+    .opinion article{
+        flex-basis: 100%;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .opinion article h2{
+        font-size: 10px;
+    }
+
+    .opinion hr{
+        width:80%;
+        margin-bottom: 2%;
+    }
+
+    .opinion-people p{
+        font-size: 30px;
+    }
+
+    #opinion-date{
+        margin-left: 4%;
+    }
+
+    #opinion-score{
+        margin-right: 4%;
+    }
+
+    .opinion-people:last-child{
+        margin-bottom: 2%;
+    }
+
 }
 
 /* FAQ */
@@ -652,7 +925,8 @@ main{
     width: 40% !important;
     background-color: #42BDC4;
     color: #FFFFFF;
-    border-radius: 15px; }
+    border-radius: 15px; 
+    padding: 7px; }
 
 .btn-default:hover {
     background-color: #FFFFFF;
@@ -688,15 +962,8 @@ main{
     width: 40% !important;
     background-color: #ff9800  ;
     color: #FFFFFF;
-    border-radius: 15px; }
-
-.btn-warning:hover {
-    background-color: #FFFFFF;
-    color : #ff9800  ; }
-
-.btn-warning-outline {
-    background-color: #ff9800  ;
-    color: #FFFFFF; }
+    border-radius: 15px;
+    padding: 7px; }
 
 .btn-warning-outline:hover {
     background-color: #ff9800  ; }
@@ -718,3 +985,115 @@ main{
 
 .btn-error-outline:hover {
     background-color: #ff3d00; }
+
+
+    /* CLASS TABLE */
+.table table {
+    border-collapse:collapse;
+    border-spacing: 0 }
+
+.table th{
+    padding: 0;
+    color:#299fa5; }
+
+.table td {
+    padding: 0; }
+
+.table table,th,td {
+    border:none }
+
+.table table{
+    width:100%;
+    display:table } 
+    
+    /* Tableau borduré */
+/*Affecte le tr du thead ainsi que le tr du tbody*/
+.table table.bordered>thead>tr,table.bordered>tbody>tr {
+    /*Ajout d'une ligne sous la cible*/
+    border-bottom:1px solid #d0d0d0 } 
+
+    /* Tableau rayé */
+/*Affecte le tr du tbody en sautant une case à chaque fois*/
+.table table.striped>tbody>tr:nth-child(odd){
+    background-color:#f2f2f2 } 
+    /* Tableau surligné */
+.table table.highlight>tbody>tr:hover{
+    background-color:#67dfe5;
+    opacity: 0.6;} 
+
+    /* Tableau centré */
+/*Affecte le thead, (tr, th du thead)  et le tbody, (tr, th du tbody)*/
+.table table.centered thead tr th,table.centered tbody tr td {
+    text-align:center } 
+/*Affecte le thead*/
+.table thead{
+    /*Ajout d'une ligne sous la cible*/
+    border-bottom:1px solid #d0d0d0 } 
+
+.table td,th{
+    padding:15px 5px;
+    display:table-cell;
+    text-align:left;} 
+
+
+    /* CLASS TABLE MEDIA QUERY */
+@media only screen and (max-width: 980px) { 
+    table.responsive-table {
+        width:100%;
+        border-collapse:collapse;
+        border-spacing:0;
+        display:block;
+        position:relative } 
+
+    table.responsive-table th,table.responsive-table td { 
+        margin:0;
+        vertical-align:top } 
+
+    table.responsive-table th { 
+        text-align:left } 
+
+    /*Affexte le thead place les titre en block sur la gauche*/
+    table.responsive-table thead { 
+        display:block; 
+        float:left } 
+
+    /*Affecte le tr, cree un espace entre le titre et les donnee du tableau*/
+    table.responsive-table thead tr { 
+        display:block;
+        padding:0 10px 0 0 } 
+
+    table.responsive-table tbody { 
+        display:block;
+        width:auto;
+        position:relative;
+        overflow-x:auto;
+        white-space:nowrap /*Gère le cas ou il y a trop de donnée --> creation d'un ascensseur horizontal*/
+        } 
+
+ /*--------------------------------------------*/
+ /* Permet de mettre le tableau en horizontal  */
+ /*-*/  table.responsive-table tbody tr {   /*-*/
+ /*-*/      display:inline-block;           /*-*/
+ /*-*/      vertical-align:top }            /*-*/
+ /*-*/                                      /*-*/
+ /*-*/   table.responsive-table th {        /*-*/
+ /*-*/       display:block;                 /*-*/
+ /*-*/       text-align:right }             /*-*/
+ /*--------------------------------------------*/
+    
+    /*Place les valeurs en face des differentes colonne*/
+    table.responsive-table td { 
+        display:block;
+        min-height:1.25em;
+        text-align:left } 
+
+    table.responsive-table tr { 
+        padding:0 10px } 
+
+    table.responsive-table thead { 
+        border:0;
+        border-right:1px solid #d0d0d0 } 
+
+    table.responsive-table.bordered tbody tr { 
+        border-right:1px solid #d0d0d0 } 
+}

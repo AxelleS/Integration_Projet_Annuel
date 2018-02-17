@@ -257,4 +257,17 @@ footer{
         height: 100%;
         color:#42BDC4;
     }
+
+    .social-network svg{
+        width:60px;
+        height: 60px;
+    }
+
+    .info p, .info a {
+        font-size: 25px;
+    }
+
+    footer{
+        height: 100%;
+    }
 }
