@@ -39,6 +39,8 @@
 
 .nav-navbar a {
   width: 100%;
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 .align-navbar-content {
@@ -51,10 +53,15 @@
   border-bottom: 1px solid black;
 }
 
-.align-navbar-content img {
+.align-navbar-content:hover {
+  background-color: #757575;
+}
+
+.align-navbar-content svg {
   margin-left: 10px;
   width: 30px;
   height: 30px;
+  fill: #BDBDBD;
 }
 
 .align-navbar-content:nth-child(1) {
@@ -104,6 +111,7 @@
   border: 1px solid brown;
   width: 40%;
   height: 100%;
+  display: block;
 }
 
 .dashboard-social {
@@ -118,9 +126,11 @@
 .dashboard-analytics {
     border: 1px solid red;
     height: 40%;
+    display: block
 }
 
 .dashboard-message {
+  display: block;
     height: 40%;
     border: 1px solid green;
 }
