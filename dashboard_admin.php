@@ -5,6 +5,7 @@
     <title>Dashboard admin</title>
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
   </head>
   <body>
