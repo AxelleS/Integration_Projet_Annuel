@@ -14,7 +14,7 @@
                 <p>Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo ille cumulus dierum hominis est dignitati tributus.</p>
             </section>
 
-            <section class="video">
+            <section class="video col_16">
                 <iframe  width="560" height="315" src="https://www.youtube.com/embed/bzzKksk_z2k?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
             </section>
 
