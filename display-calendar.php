@@ -163,23 +163,14 @@
 <table>	
     <thead>
         <tr>
-            <th colspan="7">&nbsp;</th>
-        </tr>
-        <tr>
             <th colspan="7">
                 <a href="escape-room.php?<?php echo (($num_mois - 1) > 0 ? ("mois=".($num_mois-1)."&annee=".$num_an) : ("mois=12&annee=".($num_an-1)));?>"><img class="arrow" src="img/arrow_left.svg"></a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois]." ".$num_an;  ?>&nbsp;&nbsp;<a href="escape-room.php?<?php echo (($num_mois + 1) < 13 ? ("mois=".($num_mois+1)."&annee=".$num_an) : ("mois=1&annee=".($num_an+1)));?>"><img class="arrow" src="img/arrow_right.svg"></a>
             </th>
         </tr>
         <tr>
-            <th colspan="7">&nbsp;</th>
-        </tr>
-        <tr>
             <?php for($i = 1; $i <= 7; $i++): ?>
             <th><?php echo $tab_jours[$i];?></th>
             <?php endfor; ?>
-        </tr>
-        <tr>
-            <th colspan="7">&nbsp;</th>
         </tr>
     </thead>
 
