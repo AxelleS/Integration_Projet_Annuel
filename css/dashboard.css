@@ -13,6 +13,10 @@
     height: 100%;
 }
 
+nav{
+  z-index:100;
+}
+
 .align-navbar {
   width: 18.75% !important;
   min-width: 200px;
@@ -78,7 +82,7 @@
 
 .align-navbar-content p {
   margin-left: 10px;
-  color: a1a6a6
+  color: #a1a6a6;
 }
 
 .dashboard-main {
@@ -89,11 +93,46 @@
   flex-direction: column;
 }
 
+.header-menu-icon {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+.header-menu-icon img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #4F4F4F;
+}
+
+.header-menu-icon svg {
+  margin-right: 10px;
+}
+
+.header-menu-icon svg:nth-child(1) {
+  margin-right: auto;
+  margin-left: 10px;
+  display: none;
+}
+
+.header-menu-profil {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
 .header-dashboard-admin {
   background-color: #FFFFFF;
   border-bottom: 1px solid #4F4F4F;
   width: 100%;
-  height: 40px;
+  height: 60px;
+}
+
+.arrow-rotate {
+  transform: rotate(90deg);
 }
 
 .dashboard-title {
@@ -150,7 +189,7 @@
 
 .text-date-icon {
   display: flex;
-  justify-content:
+  justify-content:center;
 }
 
 
@@ -193,7 +232,6 @@
 
 .dashboard-analytics {
     border: 1px solid #C4C4C4;
-    display: block;
     background-color: #FFFFFF;
 }
 
@@ -289,11 +327,74 @@
 
 .message-more {
   padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width : 1090px) {
+  /* .dashboard-overview {
+    flex-wrap: wrap;
+  } */
+
+  .header-menu-icon svg:nth-child(1) {
+    display: block;
+    z-index: 110;
+  }
+
+  .nav-dashboard-admin {
+      display: none;
+      position: absolute;
+      width:45%;
+  }
+
+  .dashboard-main {
+    flex-basis: 100%;
+    margin: 0;
+  }
+
+  nav figcaption{
+    text-align: center;
+  }
 }
 
 @media screen and (max-width : 980px) {
-    .page-title{
-        display:block;
-        justify-content: center;
+
+    .dashboard-activities {
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .dashboard-social, .dashboard-analytics, .dashboard-message {
+      flex-basis: 100%;
+      margin: 0;
+      display: block;
+    }
+
+    .dashboard-main {
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .dashboard-overview {
+      flex-wrap: wrap;
+    }
+
+    .text-color {
+      flex-basis: 100%;
+      margin: 0;
+      text-align: center;
+    }
+
+    .activities-content-info {
+      flex-basis: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .message-info-user {
+      flex-basis: 40%;
     }
 }
