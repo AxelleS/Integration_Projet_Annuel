@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $('.header-menu-icon svg:nth-child(1)').click(function(){
+            if($('nav').css('display') == 'block'){
+                $('nav').css('display','none');
+                $('.header-menu-icon svg:nth-child(1)').css('margin-left','10px');
+            } else{
+                $('nav').css('display','block');
+                $('.header-menu-icon svg:nth-child(1)').css('margin-left','40%');
+            }
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="container row">

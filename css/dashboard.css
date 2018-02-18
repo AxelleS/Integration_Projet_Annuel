@@ -13,6 +13,10 @@
     height: 100%;
 }
 
+nav{
+  z-index:100;
+}
+
 .align-navbar {
   width: 18.75% !important;
   min-width: 200px;
@@ -185,7 +189,7 @@
 
 .text-date-icon {
   display: flex;
-  justify-content:
+  justify-content:center;
 }
 
 
@@ -334,15 +338,22 @@
 
   .header-menu-icon svg:nth-child(1) {
     display: block;
+    z-index: 110;
   }
 
   .nav-dashboard-admin {
       display: none;
+      position: absolute;
+      width:45%;
   }
 
   .dashboard-main {
     flex-basis: 100%;
     margin: 0;
+  }
+  
+  nav figcaption{
+    text-align: center;
   }
 }
 
