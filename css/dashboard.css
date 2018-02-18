@@ -78,7 +78,7 @@
 
 .align-navbar-content p {
   margin-left: 10px;
-  color: a1a6a6
+  color: #a1a6a6;
 }
 
 .dashboard-main {
@@ -346,7 +346,7 @@
   }
 }
 
-@media screen and (max-width : 870px) {
+@media screen and (max-width : 980px) {
 
     .dashboard-activities {
       flex-basis: 100%;
