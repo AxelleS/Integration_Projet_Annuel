@@ -864,11 +864,9 @@ background-color: #FFFF;
 }
 
 .contact-form .button input{
-    background-color: #C4C4C4;
-    color: white;
-    border-radius: 20px;
     border:0;
     height: 25px;
+    width: 100%;
 }
 
 @media screen and (max-width : 980px) {
