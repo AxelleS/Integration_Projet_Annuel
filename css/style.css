@@ -844,6 +844,14 @@ background-color: #FFFF;
 
 .contact-form h1{
     padding-bottom: 20px;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:1%;
+    padding-bottom:1%;
+    margin-bottom: 2%;
 }
 
 .contact-form input{
@@ -854,16 +862,65 @@ background-color: #FFFF;
     width: 100%;
 }
 
-.contact-form .title{
-    padding-top: 20px;
-}
-
-.contact-form .title input{
+.contact-form .button input{
     background-color: #C4C4C4;
     color: white;
     border-radius: 20px;
     border:0;
     height: 25px;
+}
+
+@media screen and (max-width : 980px) {
+    .contact{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 20%;
+    }
+
+    .contact-picture{
+        display: none;
+    }
+
+    .contact-form{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+
+    .contact-form h1{
+        width: 50%;
+        margin-bottom: 10%;
+    }
+
+    .contact-form section article{
+        flex-basis: 100%;
+        margin-left:2%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+    }
+
+    .contact-form section article label{
+        font-size: 35px;
+    }
+
+    .contact-form section article input{
+        height: 45px;
+    }
+
+    .contact-form section:last-child article{
+        flex-basis: 20%;
+        font-size: 30px;
+    }
+
+    .contact-form section:last-child article input{
+        font-size: 30px;
+        height: 50px;
+    }
+
+
+
+    
 }
 
 /* SIGNIN */
@@ -1098,4 +1155,8 @@ background-color: #FFFF;
 
     table.responsive-table.bordered tbody tr { 
         border-right:1px solid #d0d0d0 } 
+}
+
+.validation-CGU{
+    margin-top:1%;
 }
