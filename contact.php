@@ -41,8 +41,8 @@
                     </article>
                 </section>
                 <section class="row button">
-                    <article class="col_3 offset_13">
-                        <input type="submit" form="contact-form" value="Envoyer">
+                    <article class="col_8">
+                        <input class="btn-default" type="submit" form="contact-form" value="Envoyer">
                     </article>
                 </section>
             </form>
