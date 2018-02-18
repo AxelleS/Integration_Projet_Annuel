@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include 'header.php';?>
 
 <main>
     <section class="row signin">
@@ -28,13 +28,12 @@
                         </article>
                     </section>
                 </fieldset>
-                <section class="row title">
-                    <div class="col_12"></div>
-                    <article class="col_4">
-                        <input type="submit" form="signin-form" value="Envoyer">
-                    </article>
-                </section>
             </form>
+            <section class="row">
+                <article class="col_4">
+                    <input class="btn-default" type="submit" form="signin-form" value="Envoyer">
+                </article>
+            </section>
         </article>
         <section class="row signup-via-signin">
             <article class="col_16">
@@ -44,6 +43,6 @@
     </section>
 </main>
 
-<?php include('footer.php'); ?>
+<?php include 'footer.php';?>
 
 </html>
