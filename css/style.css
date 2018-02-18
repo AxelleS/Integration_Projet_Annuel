@@ -1025,6 +1025,16 @@ background-color: #FFFF;
     }
 }
 
+/* SIGN UP */
+.contact-section {
+    margin-top: -5%;
+}
+
+.contact-section-signup {
+    margin-top: -2%;
+}
+
+
 /* FORM CUSTOMER INFO */
 .location-section {
     margin-top: 3%;
