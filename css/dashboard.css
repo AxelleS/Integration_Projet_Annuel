@@ -84,6 +84,9 @@
 .dashboard-main {
   background-color: #F2F2F2;
   min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .header-dashboard-admin {
@@ -104,7 +107,7 @@
 }
 
 .dashboard-overview {
-  height: 620px;
+  max-height: 550px;
   display: flex;
   justify-content: space-around;
   align-items: center;
