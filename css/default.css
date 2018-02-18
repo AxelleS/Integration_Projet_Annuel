@@ -270,5 +270,7 @@ footer{
 
     footer{
         height: 100%;
+        position: absolute;
+        bottom: -90%;
     }
 }

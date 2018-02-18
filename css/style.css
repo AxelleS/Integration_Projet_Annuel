@@ -993,6 +993,7 @@ background-color: #FFFF;
     .signin-form h1 {
         margin-bottom: 75%;
         margin-top: -7%;
+        font-size: 250%;
     }
 
     .signin-form form{
@@ -1015,6 +1016,14 @@ background-color: #FFFF;
 
     input.btn-default{
         margin-top: 10%;
+        font-size: 170%;
+        height: 70px;
+        width: 130%;
+        text-align: center;
+    }
+
+    section .signup-via-signin {
+        font-size: 250%;
     }
 }
 
