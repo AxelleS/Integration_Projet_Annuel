@@ -909,18 +909,14 @@ background-color: #FFFF;
     }
 
     .contact-form section:last-child article{
-        flex-basis: 20%;
+        flex-basis: 50%;
         font-size: 30px;
     }
 
     .contact-form section:last-child article input{
         font-size: 30px;
         height: 50px;
-    }
-
-
-
-    
+    }    
 }
 
 /* SIGNIN */
