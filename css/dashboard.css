@@ -291,9 +291,58 @@
   padding: 10px 0px;
 }
 
+@media screen and (max-width : 1090px) {
+  /* .dashboard-overview {
+    flex-wrap: wrap;
+  } */
+
+  .nav-dashboard-admin {
+      display: none;
+  }
+
+  .dashboard-main {
+    flex-basis: 100%;
+    margin: 0;
+  }
+}
+
 @media screen and (max-width : 980px) {
-    .page-title{
-        display:block;
-        justify-content: center;
+
+    .dashboard-activities {
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .dashboard-social {
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .dashboard-main {
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .dashboard-overview {
+      flex-wrap: wrap;
+    }
+
+    .text-color {
+      flex-basis: 100%;
+      margin: 0;
+      text-align: center;
+    }
+
+    .activities-content-info {
+      flex-basis: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .message-info-user {
+      flex-basis: 40%;
     }
 }
