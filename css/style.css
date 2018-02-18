@@ -970,6 +970,67 @@ background-color: #FFFF;
     color: black;
 }
 
+@media screen and (max-width : 980px) {
+    
+    section.signin {
+        margin-bottom : 10%;
+    }
+
+    .signin-form input{
+        height: 45px;
+    }
+
+    article.signin-form{
+        flex-basis: 100%;    
+    }
+
+    .signin-form h1 {
+        margin-bottom: 75%;
+        margin-top: -7%;
+        font-size: 250%;
+    }
+
+    .signin-form form{
+        font-size: 200%;
+        margin-top: -70%;
+        flex-basis: 100%;
+    }
+
+    .signin-form form legend{
+        font-size: 130%;
+    }
+
+    .signin-form section.input {
+        width : 100%;
+    }
+
+    .signin-form section.title article input {
+        margin-left: -300%;
+    }
+
+    input.btn-default{
+        margin-top: 10%;
+        font-size: 170%;
+        height: 70px;
+        width: 130%;
+        text-align: center;
+    }
+
+    section .signup-via-signin {
+        font-size: 250%;
+    }
+}
+
+/* SIGN UP */
+.contact-section {
+    margin-top: -5%;
+}
+
+.contact-section-signup {
+    margin-top: -2%;
+}
+
+
 /* FORM CUSTOMER INFO */
 .location-section {
     margin-top: 3%;
@@ -977,7 +1038,7 @@ background-color: #FFFF;
 
 /* BTN DEFAULT */
 .btn-default {
-    width: 40% !important;
+    width: 40%;
     background-color: #42BDC4;
     color: #FFFFFF;
     border-radius: 15px; 
