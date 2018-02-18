@@ -21,8 +21,9 @@ header{
 
 .burger-menu svg{
     fill:#42BDC4;
-    width:11%;
     z-index: 105;
+    width:50px;
+    height: 50px;
 }
 
 /* Pour le logo */

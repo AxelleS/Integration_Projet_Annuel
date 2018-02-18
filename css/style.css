@@ -60,15 +60,15 @@ background-color: #FFFF;
     position: absolute;
     z-index: 99;
     margin-left: 25%;
-    width:40%;
+    width:50%;
     height: 60px;
     margin-top: 0.5%;
 }
 
 .page-title p{
     text-align: center;
-    font-size: 32px;
-    padding-top: 4%;
+    font-size: 40px;
+    padding-top: 2%;
     font-weight: bold;
 }
 
@@ -304,6 +304,7 @@ background-color: #FFFF;
 
     .title-room h1{
         width:100%;
+        font-size: 40px;
     }
 }
 
@@ -891,6 +892,7 @@ background-color: #FFFF;
     .contact-form h1{
         width: 50%;
         margin-bottom: 10%;
+        font-size: 40px;
     }
 
     .contact-form section article{
