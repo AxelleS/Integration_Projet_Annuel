@@ -98,7 +98,7 @@ background-color: #FFFF;
 	
 	/*CSS3 keyframes animation*/
 	animation-name: AutoSlide;
-	animation-duration: 15s;
+	animation-duration: 10s;
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-in-out;
 }
@@ -155,6 +155,7 @@ background-color: #FFFF;
 
 .escape-back img{
     width:100%;
+    filter: opacity(0.7);
 }
 
 .room{
@@ -172,11 +173,17 @@ background-color: #FFFF;
     border-radius: 10%;
 }
 
-.room-title a{
+.escape-back a{
     margin: auto;
     color:white;
     font-size: 100%;
     text-decoration: none;
+}
+
+.escape-back .room-title{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width : 980px) {
@@ -202,7 +209,7 @@ background-color: #FFFF;
         left: 15%;
     }
 
-    .room-title a{
+    .escape-back a{
         font-size: 40px;
     }
 }
@@ -217,7 +224,6 @@ background-color: #FFFF;
     background-color: #FAFAFA;
     width:100%;
     height: 400px;
-    margin-top:3%; 
     padding-top: 1%;   
     padding-bottom: 1%; 
 }
@@ -245,7 +251,7 @@ background-color: #FFFF;
     margin-top:20%;
     font-size: 28px;
     color:#42BDC4;
-    text-shadow: 0 2px 1px #00000085;
+    text-shadow: 0 1px 1px #00000085;
 }
 
 @media screen and (max-width : 980px) {
