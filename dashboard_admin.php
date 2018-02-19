@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="icon" type="image/ico" href="img/favicon.ico" />
 
     <script>
       $(document).ready(function(){
@@ -28,7 +29,7 @@
       <section class="align-navbar row col_3">
         <nav class="nav-dashboard-admin">
           <figure>
-            <img class="logo-dashboard" src="img/logo.png" alt="Logo Play with My CMS">
+            <img class="logo-dashboard" src="img/logo.jpg" alt="Logo Play with My CMS">
           </figure>
           <div class="nav-navbar">
               <a href="#">
@@ -89,7 +90,7 @@
         </header>
 
         <div class="dashboard-title">
-          <h1 class="text-color offset_1">Bienvenue</h1>
+          <h1 class="text-color offset_2">Bienvenue</h1>
         </div>
         <section class="dashboard-overview placement">
           <article class="dashboard-activities offset_1 col_5">
@@ -148,7 +149,7 @@
               </div>
             </div>
           </article>
-          <section class="dashboard-social col_11">
+          <section class="dashboard-social">
             <article class="dashboard-analytics">
               <canvas id="line-chart"></canvas>
             </article>
