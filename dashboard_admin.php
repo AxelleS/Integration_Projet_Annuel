@@ -28,7 +28,7 @@
       <section class="align-navbar row col_3">
         <nav class="nav-dashboard-admin">
           <figure>
-            <img class="logo-dashboard" src="img/logo.png" alt="Logo Play with My CMS">
+            <img class="logo-dashboard" src="img/logo.jpg" alt="Logo Play with My CMS">
           </figure>
           <div class="nav-navbar">
               <a href="#">
