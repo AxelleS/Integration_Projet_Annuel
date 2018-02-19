@@ -28,15 +28,14 @@
 <body>
     <header>
         <div class="burger-menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg></div>
-        <div class="logo"><img src="img/logo.jpg" alt=""></div>
+        <div class="logo"><a href="home.php"><img src="img/logo.jpg" alt=""></a></div>
         <nav>
             <ul>
                 <li class="active"><a href="home.php" title="" active>ACCUEIL</a></li>
                 <li class="unactive" id="mission"><a id="mission-select" href="#" title="">MISSION</a>
                     <ul>        
                         <li><a href="escape-room.php" title="">Escape the Library</a></li>
-                        <hr>
-                        <li><a href="escape-room.php" title="">Escape the Lab</a></li>
+                        <li><hr><a href="escape-room.php" title="">Escape the Lab</a></li>
                         <li><hr><a href="escape-room.php" title="">Escape the School</a></li>
                     </ul>
                 </li>

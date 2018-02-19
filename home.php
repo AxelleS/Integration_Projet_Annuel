@@ -23,21 +23,21 @@
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
                             <img src="img/escapes/library.jpg" alt="library preview">
-                            <div class="room-title"><a href="escape-room.php">Escape the Library</a></div>
+                            <a href="escape-room.php"><div class="room-title">Escape the Library</div></a>
                         </article>
                     </section>
                     <section class="col_4 room offset_1 ">
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
                             <img src="img/escapes/labo.jpg" alt="labo preview">
-                            <div class="room-title"><a href="escape-room.php">Escape the Lab</a></div>
+                            <a href="escape-room.php"><div class="room-title">Escape the Lab</div></a>
                         </article>
                     </section>
                     <section class="col_4 room offset_1 ">
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
                             <img src="img/escapes/school.jpg" alt="school preview">
-                            <div class="room-title"><a href="escape-room.php">Escape the School</a></div>
+                            <a href="escape-room.php"><div class="room-title">Escape the School</div></a>
                         </article>
                     </section>
             </section>
