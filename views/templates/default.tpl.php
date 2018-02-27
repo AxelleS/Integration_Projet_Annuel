@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <title>Play with my CMS</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/grid.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/dist/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/dist/default.css" />
     <!-- Seul CSS à modifier -->
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/dist/css/main.css" />
     <!--  -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
