@@ -1,0 +1,280 @@
+html{
+    height: 100%;
+}
+
+body{
+    background-color: #FAFAFA;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 106px;
+}
+
+/* HEADER */
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.burger-menu{
+    position: absolute;
+    z-index: 105;
+    padding-top: 1%;
+    padding-left: 1%;
+    display: none;
+}
+
+.burger-menu svg{
+    fill:#42BDC4;
+    z-index: 105;
+    width:50px;
+    height: 50px;
+}
+
+/* Pour le logo */
+
+.logo{
+    margin-left:8%;
+    width: 200px;
+    height: 200px;
+    background-color:#F2F2F2;
+    border-radius: 30%;
+    text-align: center;
+    position: absolute;
+    transform:rotate(-15deg);
+    /* Permet de mettre le logo par dessus le carrousel */
+    z-index: 101;
+}
+
+header img {
+    margin-top:5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 30%;
+}
+
+/* Pour la nav bar */
+
+nav{
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 91px;
+    z-index: 99;
+}
+
+nav ul {
+    margin-left:25%;
+    list-style-type:none;
+    text-align:center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+nav ul li {
+    margin-top:35px;
+    width: 100%;
+}
+
+#mission-select{
+    cursor: default ;
+}
+
+nav ul li a {
+    display:block;
+    width:100px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+
+/* Pour changer la couleur du menu quand on est sur la page */
+
+.active a{
+    color:#42BDC4;
+}
+
+.unactive a{
+    color:black;
+}
+
+/* Pour changer la couleur du menu quand on passe la souris dessus */
+
+nav li a:hover {
+    color:#81838F;
+}
+
+/* Pour le menu déroulant */
+
+nav ul li ul {
+    position:absolute;
+    display:none;
+    margin-left: 0;
+    padding: 0;
+    /* Permet de mettre le menu déroulant par dessus le carrousel */
+    z-index: 100;
+}
+
+nav ul li ul li{
+    padding: 0;
+    margin:0;
+    width: 160px;
+    background-color: #F2F2F2;
+    margin-left: -20%;
+}
+
+nav ul li ul li a{
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+nav ul li ul li:first-child{
+    /* Permet de décaler le menu déroulant vers le bas */
+    margin-top:35px;
+}
+
+/* Affiche le menu déroulant au passsage de la souris */
+nav ul li:hover ul {
+    display:block;
+}
+
+
+/* FOOTER */
+
+footer{
+    background-color: #F2F2F2;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+}
+
+/* Pour les réseaux */
+.social-network{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top:20px;
+}
+
+.social-network svg{
+    width: 30px;
+    height: 30px;
+    fill:#42BDC4;
+}
+
+/* Espace les logo */
+.social-network a:nth-child(2){
+    padding-left:40px;
+    padding-right:40px;
+}
+
+/* Pour les infos */
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top:20px;
+    font-size: 13px;
+}
+
+.info a{
+    padding-left:20px;
+    text-decoration:none;
+    color:black;
+}
+
+@media screen and (max-width : 980px) {
+    nav{
+        display: none;
+        position: absolute;
+        z-index: 100;
+        width:40%;
+        height: 100%;
+        background-color: #FFFFFF;
+        opacity:0.8;
+    }
+    
+    nav ul {
+        text-align:center;
+        flex-direction: column;
+        margin-left: 0;
+        width:100%;
+        overflow: hidden;
+    }
+
+    nav ul li{
+        font-size: 210%;
+        height: 50px;
+        font-weight: bold;
+    }
+
+    .logo{
+        height: 100px;
+        width:100px;
+        margin-left:85%;
+    }
+
+    .burger-menu{
+        display: block;
+    }
+
+    nav ul li:first-child {
+        margin-top: 30%;
+        border:0;
+    }
+
+    .reserver {
+        margin-top: 40%;
+    }
+
+    nav ul li a {
+        width: 100%;
+        height: 100%;
+    }
+
+    .active a{
+        background-color:#42BDC4;
+        color:black;
+    }
+
+    .unactive a{
+        background-color:#FFFF;
+    }
+
+    nav ul li ul {
+        display:block;
+        margin-left: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    nav ul li ul li:first-child{
+        margin-top: 0;
+    }
+
+    nav ul li ul li{
+        font-size: 80%;
+        width: 100%;
+        margin: 0;
+        height: 100%;
+        color:#42BDC4;
+    }
+
+    nav ul li ul li a{
+        width: 100%;
+        height: 100%;
+        color:#42BDC4;
+    }
+
+    .social-network svg{
+        width:60px;
+        height: 60px;
+    }
+
+    .info p, .info a {
+        font-size: 25px;
+    }
+}

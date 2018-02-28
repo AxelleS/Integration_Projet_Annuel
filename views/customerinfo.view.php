@@ -1,5 +1,3 @@
-<?php include 'header.php';?>
-
 <main>
     <section class="row signin">
         <article class="col_16 signin-form">
