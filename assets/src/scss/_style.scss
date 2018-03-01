@@ -1,0 +1,1272 @@
+/* DEFAULT */
+
+h1{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p{
+    font-size: 14px;
+}
+
+/* CARROUSEL - HOME */
+
+@keyframes AutoSlide {
+	0% {
+		left: 0px; /*1ère image*/
+	}
+	15% {
+		left: 0px; /*idem pour attente*/
+	}
+	35% {
+		left: -100%; /*2ème image*/
+	}
+	50% {
+		left: -100%; /*idem pour attente*/
+	}
+	70% {
+		left: -200%; /*3ème image*/
+	}
+	85% {
+		left: -200%; /*idem pour attente*/
+	}
+	100% {
+		left: 0px; /*1ère image*/
+	}
+}
+
+main{
+    background-color: #FAFAFA;
+}
+
+.container-home{
+background-color: #FFFF;
+}
+
+.page-title{
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    display:none;
+    position: absolute;
+    z-index: 99;
+    margin-left: 25%;
+    width:50%;
+    height: 60px;
+    margin-top: 0.5%;
+}
+
+.page-title p{
+    text-align: center;
+    font-size: 40px;
+    padding-top: 2%;
+    font-weight: bold;
+}
+
+@media screen and (max-width : 980px) {
+    .page-title{
+        display:block;
+        justify-content: center;
+    }
+}
+
+.carrousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: hidden;
+    background-position: cover;
+}
+
+.carrousel img {
+	width: 100%;
+    height: 500px;
+}
+
+.carrousel img {
+	position: relative;
+    width: 100%;
+	
+	/*CSS3 keyframes animation*/
+	animation-name: AutoSlide;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+@media screen and (max-width : 980px) {
+    .carrousel img{
+        height: 300px;
+    }
+}
+
+/* INTRODUCTION - HOME */
+
+.introduction h1{
+    margin-top:20px;
+    text-align: center;
+    color:#42BDC4;
+}
+
+.introduction p{
+    font-size:19px;
+    margin-top:20px;
+    margin-bottom:60px;
+    width:80%;
+    text-align: left;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width : 980px) {
+    .introduction h1{
+        font-size: 100%;
+    }
+
+    .introduction p{
+        width:90%;
+        font-size:12px;
+    }
+}
+
+/* YOUTUBE - HOME */
+
+.video {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* ESCAPE ROOM - HOME */
+
+.escape-room{
+    margin-top: 50px;
+    height: 322px;
+}
+
+.escape-back img{
+    width:100%;
+    filter: opacity(0.7);
+}
+
+.room{
+    position: relative;
+}
+
+.room-title {
+    position: absolute;
+    bottom: 40%;
+    left: 25%;
+    width:50%;
+    height: 20%;
+    background-color: #42BDC4;
+    display: flex;
+    border-radius: 10%;
+}
+
+.escape-back a{
+    margin: auto;
+    color:white;
+    font-size: 100%;
+    text-decoration: none;
+}
+
+.escape-back .room-title{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width : 980px) {
+    .escape-room{
+        flex-basis: 100%;
+        justify-content: center;
+        position: relative;
+        margin: 0;
+        height: 100%;
+        margin-top:2%;
+    }
+
+    .room{
+        flex-basis: 70%;
+        justify-content: center;
+        margin: 0;
+        position: relative;
+        margin-bottom: 2%;
+    }
+
+    .room-title{
+        width: 70%;
+        left: 15%;
+    }
+
+    .escape-back a{
+        font-size: 40px;
+    }
+}
+
+.escape-back{
+    position: relative;
+}
+
+/* GOOGLE MAP - HOME */
+
+.map{
+    background-color: #FAFAFA;
+    width:100%;
+    height: 400px;
+    padding-top: 1%;   
+    padding-bottom: 1%; 
+}
+
+.map article:first-child{
+    height: 100%;
+}
+
+.map article iframe{
+    height: 100%;
+    width: 100%;
+}
+
+.map article:last-child p, .map article:last-child h2{
+    text-align: left;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.map article:last-child p{
+    font-size: 17px;
+}
+
+.map article:last-child h2{
+    margin-top:20%;
+    font-size: 28px;
+    color:#42BDC4;
+    text-shadow: 0 1px 1px #000000;
+}
+
+@media screen and (max-width : 980px) {
+    .map article:first-child{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+        margin-left:2%;
+        margin-right: 2%;
+        height: 400px;
+    }
+
+    .map article:last-child{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+        margin-left: 4%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .map article:last-child h2{
+        margin: 0;
+        font-size: 40px;
+    }
+
+    .map article:last-child p{
+        font-size: 30px;
+    }
+
+    .map{
+        height: 100%;
+    }
+
+}
+
+/* PROMOTION - ROOM */
+.title-room{
+    margin-top: 5%;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    padding-top:1%;
+    padding-bottom:1%;
+}
+
+@media screen and (max-width : 980px) {
+    .title-room{
+        margin-top: 0.5%;
+        margin-bottom: 2%;
+        flex-basis: 50%;
+    }
+
+    .title-room h1{
+        width:100%;
+        font-size: 40px;
+    }
+}
+
+.description-room{
+    margin-top:2%;
+    text-align: left;
+}
+
+@media screen and (max-width : 990px) {
+    .description-room p{
+        font-size: 10px;
+    }
+}
+
+.order{
+    margin-top: 5%;
+    text-align: center;
+    border: 1px solid #42BDC4;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.share{
+    margin-top: 5%;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding-top: 0.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.share p, .share a{
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+.share svg{
+    fill: #42BDC4;
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (max-width : 990px) {
+    .order{
+        width: 200%;
+        border:0;
+        flex-basis:100%;
+        margin:0;
+        justify-content: space-between;
+        margin-top: 2%;
+    }
+
+    .order img{
+        width:200px;
+        height: 200px;
+    }
+
+    .order img:first-child{
+        margin-left: 2%;
+    }
+    .order img:last-child{
+        margin-right: 2%;
+    }
+
+    .share{
+        flex-basis:100%;
+        justify-content: center;
+        margin: 0;
+        background-color: #FAFAFA;
+        margin-top: 4%;
+    }   
+
+    .share p{
+        font-size: 50px;
+    }  
+
+    .share svg {
+        width: 70px;
+        height: 70px;
+    }
+
+    .share svg:first-child {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+/* PICTURE - ROOM */
+
+/* Pour le titre */
+.pictures{
+    padding-top: 1%;
+    background-color: #FAFAFA;
+}
+
+.pictures article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2%;
+    color:#42BDC4;
+}
+
+.pictures hr{
+    margin:auto;
+    margin-top: 2%;
+    background-color: #42BDC4;
+    height:1px;
+    border: 0;
+}
+
+.video-promotion{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* Pour la video */
+
+.video-promotion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Pour les images */
+
+.picture-promotion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.picture-promotion img{
+    width:100%;
+}
+
+@media screen and (max-width : 980px) {
+    .pictures article:first-child{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .pictures article h2{
+        font-size: 10px;
+    }
+
+    .pictures article:nth-child(2){
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .pictures hr{
+        width:80%;
+    }
+
+    .video-promotion iframe{
+        width:70%;
+    }
+
+    .picture-promotion{
+        flex-basis: 100%;
+        margin:0;
+    }
+
+    .pictures article:last-child{
+        margin-bottom: 2%;
+    }
+}
+
+/* BOOKING - ROOM */
+
+.booking{
+    background-color: #FFFFFF;
+    margin-top: 2%;
+}
+
+.booking article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2%;
+    color: #42BDC4;
+}
+
+.booking hr{
+    margin:auto;
+    margin-top: 2%;
+    background-color: #42BDC4;
+    height:1px;
+    border: 0;
+}
+
+@media screen and (max-width : 990px) {
+    .booking article:first-child{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .booking article h2{
+        font-size: 10px;
+    }
+
+    .booking article:nth-child(2){
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .booking hr{
+        width:80%;
+    }
+}
+
+/* CALENDAR - ROOM */
+
+.calendar{
+    margin-top:3%;
+
+}
+
+/* Structure du calendrier */
+.calendar table {
+    width:100%;
+}
+
+.calendar th{
+    color: black;
+    text-align: center;
+}
+
+.calendar .content td{
+    height: 40px;
+    width: 14%;
+    border-collapse: separate;
+    border-radius: 20%;
+
+}
+
+/* Jours où il ne reste plus aucuns créneaux (non cliquable) */
+.calendar .plein { 
+    border-width:1px;
+    border-style:solid; 
+    border-color:black;
+    text-align:center;
+}
+
+.calendar .semiplein input, .calendar .vide input{
+    border:0;
+    height: 100%;
+    width:100%;
+    cursor:  pointer;
+    border-radius: 20%;
+}
+
+/* Couleur pour les jours où il manque plus de 50% des créneaux */
+.calendar .semiplein input{
+    background-color: orange;
+}
+
+/* Couleur pour les jours où il manque moins de 50% des créneaux */
+.calendar .vide input{
+    background-color: green;
+}
+
+/* Pour la taille des fléche de navigation du calendrier */
+.calendar .arrow{
+    width: 3%;
+}
+
+@media screen and (max-width : 980px) {
+    .calendar{
+        flex-basis:100%;
+        margin:0;
+        margin-top: 2%;
+        margin-left:2%;
+        margin-right: 2%;
+    }
+
+    .calendar th{
+        color: black;
+        text-align: center;
+        font-size: 20px;    
+    }
+
+    .calendar .arrow{
+        width:80px; 
+    }
+
+    .calendar th{
+        font-size: 50px;
+    }
+    
+    .calendar .content td, .calendar .content input{
+        height: 100px;
+        font-size: 50px;
+    }
+}
+
+.legend{
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    font-size: 12px;
+    margin-bottom: 2%;
+}
+
+.legend_plein{
+    border-width:1px;
+    border-style:solid; 
+    border-color:black;
+    width:100%;
+}
+
+.legend_semiplein{
+    width:100%;
+    background-color: orange;
+    margin-top: 4%;
+}
+
+.legend_vide{
+    width:100%;
+    background-color: green;
+    margin-top: 4%;
+}
+
+/* SLOTS - ROOM */
+
+/* Met la select des créneaux en non affiché par défaut */ 
+.slots .creneaux{
+    margin-right: 15px;
+    display: none;
+}
+
+.slots-text{
+    margin-top: 15%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.slots{
+    margin-top: 15%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.slots input{
+    width:100%;
+    display: none;
+    background-color: white;
+}
+
+@media screen and (max-width : 980px) {
+    .slots-text{
+        margin:0;
+        flex-basis: 40%;
+        margin-top: 3%; 
+        margin-right: 1%; 
+        justify-content: center;
+        margin-bottom: 4%;
+    }
+
+    .slots-text p{
+        font-size: 10px;  
+    }
+
+    .slots{
+        margin:0;
+        flex-basis: 50%;
+        margin-top: 3%;
+        justify-content: center;
+        margin-bottom: 4%;
+    }
+
+    .slots select{
+        width: 70%;
+        font-size: 30px;
+    }
+
+    .slots input{
+        width: 30%;
+        font-size: 40px;
+    }
+
+    .legend{
+        display: none;
+    }
+}
+
+/* OPINION - ROOM */
+
+.opinion{
+    background-color: #FFFFFF;
+    width: 100%;
+    padding-bottom: 2%;
+    margin-top: 2%;
+}
+
+.opinion article h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 3%;
+    color:#42BDC4
+}
+
+.opinion hr{
+    margin:auto;
+    margin-top: 2%;
+    background-color: #42BDC4;
+    height:1px;
+    border: 0;
+}
+
+.opinion-people{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom:1%;
+}
+
+#opinion-date{
+    color:#4F4F4F;
+    font-weight: bold;
+}
+
+#opinion-name{
+    font-weight: bold;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#opinion-score{
+    color:#4F4F4F;
+    font-weight: bold;
+}
+
+@media screen and (max-width : 980px) {
+    .opinion article{
+        flex-basis: 100%;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .opinion article h2{
+        font-size: 10px;
+    }
+
+    .opinion hr{
+        width:80%;
+        margin-bottom: 2%;
+    }
+
+    .opinion-people p{
+        font-size: 30px;
+    }
+
+    #opinion-date{
+        margin-left: 4%;
+    }
+
+    #opinion-score{
+        margin-right: 4%;
+    }
+
+    .opinion-people:last-child{
+        margin-bottom: 2%;
+    }
+
+}
+
+/* FAQ */
+
+.faq{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* PICTURE - FAQ */
+
+.faq-picture{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.faq-picture img{
+    width : 100%;
+    height: 100%;
+    max-height: 200px;
+}
+
+/* QUESTION - FAQ */
+
+.faq-question h1{
+    padding-bottom: 20px;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:1%;
+    padding-bottom:1%;
+    margin-bottom: 2%;
+}
+
+.faq-question h4{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* CONTACT */
+
+.contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* PICTURE - CONTACT */
+
+.contact-picture{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.contact-picture img{
+    width : 100%;
+    height: 100%;
+    max-height: 200px;
+}
+
+/* FORM - CONTACT */
+
+.contact-form h1{
+    padding-bottom: 20px;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:1%;
+    padding-bottom:1%;
+    margin-bottom: 2%;
+}
+
+.contact-form input{
+    width: 100%;
+}
+
+.contact-form textarea{
+    width: 100%;
+    max-height: 200px;
+}
+
+.contact-form .button input{
+    border:0;
+    height: 25px;
+    width: 100%;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.contact-form article{
+    margin-top: 10px;
+}
+
+@media screen and (max-width : 980px) {
+    .contact{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 20%;
+        margin-top: 1%;
+    }
+
+    .contact-picture{
+        display: none;
+    }
+
+    .contact-form{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+
+    .contact-form h1{
+        width: 50%;
+        margin-bottom: 10%;
+        font-size: 40px;
+    }
+
+    .contact-form div article{
+        flex-basis: 100%;
+        margin-left:2%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+    }
+
+    .contact-form div article label{
+        font-size: 35px;
+    }
+
+    .contact-form div article input{
+        height: 45px;
+    }
+
+    .contact-form div:last-child article{
+        flex-basis: 50%;
+        font-size: 30px;
+    }
+
+    .contact-form div:last-child article input{
+        font-size: 30px;
+        height: 50px;
+    }    
+}
+
+/* SIGNIN */
+
+.signin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* FORM - SIGNIN */
+
+.signin-form h1{
+    padding-bottom: 20px;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:1%;
+    padding-bottom:1%;
+    margin-bottom: 2%;
+}
+
+.signin-form input{
+    width: 100%;
+}
+
+.signin-form section{
+    padding-left: 10px;
+    padding-right: 10px;   
+}
+.signin-form section:last-child{
+    margin-top: 10px;
+}
+
+.signin-form .title{
+    padding-top: 20px;
+}
+
+.signin-form fieldset section:last-child{
+    margin-bottom: 20px;
+}
+
+.signin-form .title input{
+    background-color: #C4C4C4;
+    color: white;
+    border-radius: 20px;
+    border:0;
+    height: 25px;
+}
+
+.signup-via-signin{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-via-signin a{
+    color: black;
+}
+
+@media screen and (max-width : 980px) {
+    
+    section.signin {
+        margin-bottom : 10%;
+        margin-top: 1%;
+    }
+
+    .signin-form input{
+        height: 45px;
+    }
+
+    article.signin-form{
+        flex-basis: 100%;    
+    }
+
+    .signin-form h1{
+        width: 50%;
+        font-size: 40px;
+        margin-bottom: 75%;
+    }
+
+    .signin-form form{
+        font-size: 200%;
+        margin-top: -70%;
+        flex-basis: 100%;
+    }
+
+    .signin-form form legend{
+        font-size: 130%;
+    }
+
+    .signin-form section.input {
+        width : 100%;
+    }
+
+    .signin-form section.title article input {
+        margin-left: -300%;
+    }
+
+    input.btn-default{
+        margin-top: 10%;
+        font-size: 170%;
+        height: 70px;
+        width: 130%;
+        text-align: center;
+    }
+
+    section .signup-via-signin {
+        font-size: 250%;
+    }
+}
+
+/* SIGN UP */
+.contact-section {
+    margin-top: -5%;
+}
+
+.contact-section-signup {
+    margin-top: -2%;
+}
+
+
+/* FORM CUSTOMER INFO */
+.location-section {
+    margin-top: 3%;
+}
+
+/* BTN DEFAULT */
+.btn-default {
+    width: 40%;
+    background-color: #42BDC4;
+    color: #FFFFFF;
+    border-radius: 15px; 
+    padding: 7px; 
+    transition-property: background-color, color;
+    transition-duration: 0.5s; 
+    cursor: pointer;
+}
+
+.btn-default:hover {
+    background-color: #FFFFFF;
+    color : #42BDC4; }
+
+.btn-default-outline {
+    background-color: #42BDC4;
+    color: #FFFFFF; 
+}
+
+.btn-default-outline:hover {
+    background-color: #42BDC4; }
+
+/* BTN SUCCESS */
+.btn-success {
+    width: 40% !important;
+    background-color: #43a047 ;
+    color: #FFFFFF;
+    border-radius: 15px; 
+    transition-property: background-color;
+    transition-property: color;
+    transition-duration: 1s; 
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: #FFFFFF;
+    color : #43a047 ; }
+
+.btn-success-outline {
+    background-color: #43a047 ;
+    color: #FFFFFF; }
+
+.btn-success-outline:hover {
+    background-color: #43a047 ; }
+
+    /* BTN WARNING */
+.btn-warning {
+    width: 40% !important;
+    background-color: #ff9800  ;
+    color: #FFFFFF;
+    border-radius: 15px;
+    padding: 7px; 
+    transition-property: background-color;
+    transition-property: color;
+    transition-duration: 1s; 
+    cursor: pointer;
+}
+
+.btn-warning-outline:hover {
+    background-color: #ff9800  ; }
+
+        /* BTN ERROR */
+.btn-error {
+    width: 40% !important;
+    background-color: #ff3d00;
+    color: #FFFFFF;
+    border-radius: 15px; 
+    transition-property: background-color;
+    transition-property: color;
+    transition-duration: 1s; 
+    cursor: pointer;
+}
+
+.btn-error:hover {
+    background-color: #FFFFFF;
+    color : #ff3d00; }
+
+.btn-error-outline {
+    background-color: #ff3d00 ;
+    color: #FFFFFF; }
+
+.btn-error-outline:hover {
+    background-color: #ff3d00; }
+
+
+    /* CLASS TABLE */
+.table table {
+    border-collapse:collapse;
+    border-spacing: 0 }
+
+.table th{
+    padding: 0;
+    color:#299fa5; }
+
+.table td {
+    padding: 0; }
+
+.table table,th,td {
+    border:none }
+
+.table table{
+    width:100%;
+    display:table } 
+    
+    /* Tableau borduré */
+/*Affecte le tr du thead ainsi que le tr du tbody*/
+.table table.bordered>thead>tr,table.bordered>tbody>tr {
+    /*Ajout d'une ligne sous la cible*/
+    border-bottom:1px solid #d0d0d0 } 
+
+    /* Tableau rayé */
+/*Affecte le tr du tbody en sautant une case à chaque fois*/
+.table table.striped>tbody>tr:nth-child(odd){
+    background-color:#f2f2f2 } 
+    /* Tableau surligné */
+.table table.highlight>tbody>tr:hover{
+    background-color:#67dfe5;
+    opacity: 0.6;} 
+
+    /* Tableau centré */
+/*Affecte le thead, (tr, th du thead)  et le tbody, (tr, th du tbody)*/
+.table table.centered thead tr th,table.centered tbody tr td {
+    text-align:center } 
+/*Affecte le thead*/
+.table thead{
+    /*Ajout d'une ligne sous la cible*/
+    border-bottom:1px solid #d0d0d0 } 
+
+.table td,th{
+    padding:15px 5px;
+    display:table-cell;
+    text-align:left;} 
+
+
+    /* CLASS TABLE MEDIA QUERY */
+@media only screen and (max-width: 980px) { 
+    table.responsive-table {
+        width:100%;
+        border-collapse:collapse;
+        border-spacing:0;
+        display:block;
+        position:relative } 
+
+    table.responsive-table th,table.responsive-table td { 
+        margin:0;
+        vertical-align:top } 
+
+    table.responsive-table th { 
+        text-align:left } 
+
+    /*Affexte le thead place les titre en block sur la gauche*/
+    table.responsive-table thead { 
+        display:block; 
+        float:left } 
+
+    /*Affecte le tr, cree un espace entre le titre et les donnee du tableau*/
+    table.responsive-table thead tr { 
+        display:block;
+        padding:0 10px 0 0 } 
+
+    table.responsive-table tbody { 
+        display:block;
+        width:auto;
+        position:relative;
+        overflow-x:auto;
+        white-space:nowrap /*Gère le cas ou il y a trop de donnée --> creation d'un ascensseur horizontal*/
+        } 
+
+ /*--------------------------------------------*/
+ /* Permet de mettre le tableau en horizontal  */
+ /*-*/  table.responsive-table tbody tr {   /*-*/
+ /*-*/      display:inline-block;           /*-*/
+ /*-*/      vertical-align:top }            /*-*/
+ /*-*/                                      /*-*/
+ /*-*/   table.responsive-table th {        /*-*/
+ /*-*/       display:block;                 /*-*/
+ /*-*/       text-align:right }             /*-*/
+ /*--------------------------------------------*/
+    
+    /*Place les valeurs en face des differentes colonne*/
+    table.responsive-table td { 
+        display:block;
+        min-height:1.25em;
+        text-align:left } 
+
+    table.responsive-table tr { 
+        padding:0 10px } 
+
+    table.responsive-table thead { 
+        border:0;
+        border-right:1px solid #d0d0d0 } 
+
+    table.responsive-table.bordered tbody tr { 
+        border-right:1px solid #d0d0d0 } 
+}
+
+.validation-CGU{
+    margin-top:1%;
+}

@@ -36,7 +36,7 @@
         </article>
         <article class="col_2 slots">
             <select class="creneaux"></select>
-            <input type="submit" value="Valider">
+            <?php echo '<input type="submit" value="Valider" href="'.DIRNAME.'resanext">'; ?>
         </article>
         <article class="legend col_2 offset_4">
             <p>Légende</p>

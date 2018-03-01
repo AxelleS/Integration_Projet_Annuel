@@ -1,0 +1,26 @@
+{
+  "name": "projet_annuel_add_sass",
+  "version": "1.0.0",
+  "description": "les consignes sont juste respecter les maquettes (en dimension et couleurs) et adapter un peu les dimensions si ça cloche",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "node-sass assets/src/scss/main.scss -o assets/dist/css",
+    "uglify-css": "uglifycss assets/dist/css/main.css > assets/dist/css/main.min.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxelleS/Integration_Projet_Annuel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AxelleS/Integration_Projet_Annuel/issues"
+  },
+  "homepage": "https://github.com/AxelleS/Integration_Projet_Annuel#readme",
+  "devDependencies": {
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.17.1",
+    "uglifycss": "0.0.28"
+  }
+}
