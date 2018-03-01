@@ -1,8 +1,3 @@
-<?php
-    $day = date("d");
-    $month = date("m");
-    $year = date("Y");
-?>
 <main>
     <section class="row customer-resa">
         <article class="col_14 offset_1">
@@ -15,53 +10,49 @@
                         <th>Créneau choisi</th>
                         <th>Salle choisie</th>
                         <th>Nombre de participants</th>
-                        <th>Actions</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>12/01/2018</td>
-                        <td>30/01/2018</td>
-                        <td>14h00-15h30</td>
-                        <td>Escape the Library</td>
-                        <td>5 personnes</td>
-                        <td>
+                    <!-- Découpe le tableau 2 dimensions en tableau 1 dimension -->
+                    <?php foreach ($donnees as $key=>$value): ?>
+                        <tr>
+                            <td>
+                                <!-- Date de réservation -->
+                                <?php echo $value['date_booking']; ?>
+                            </td>
+                            <td>
+                                 <!-- Date de la partie -->
+                                <?php echo $value['date_calendar']; ?>
+                            </td>
+                            <td>
+                                <!-- Créneau de la partie -->
+                                <?php echo $value['value_time_slot']; ?>
+                            </td>
+                            <td>
+                                <!-- Nom de la salle -->
+                                <?php echo $value['name_room']; ?>
+                            </td>
+                            <td>
+                                <!-- Nb joueurs -->
+                                <?php echo $value['number_player']; ?> personnes
+                            </td>
+                            <td>
                             <?php
-                                $datepartie = strtotime(date("Y-m-d",mktime(0,0,0,3,3,2018)));
-                                $datedujour = strtotime(date("Y-m-d",mktime(0,0,0,$month,$day+7,$year)));
-                            ?>
-                            <?php
-                                if($datedujour < $datepartie) {
-                                    echo '<input type="button" class="btn-error" value="Annuler">';
-                                } elseif($datedujour > $datepartie) {
+                                //Si la date de la partie est passée, on affiche un btn pour noter
+                                if($value['date_now'] > $value['date_game']){
                                     echo '<input type="button" class="btn-default" value="Noter">';
+                                } 
+                                //Sinon, si il reste plus de 7 jours avant l'escape, on affiche un btn annuler
+                                elseif($value['interval'] >= 7){
+                                    echo '<input type="button" class="btn-error" value="Annuler">'; 
                                 }
                             ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12/01/2018</td>
-                        <td>18/04/2018</td>
-                        <td>14h00-15h30</td>
-                        <td>Escape the Lab</td>
-                        <td>3 personnes</td>
-                        <td>
-                            <?php
-                                $datepartie = strtotime(date("Y-m-d",mktime(0,0,0,4,18,2018)));
-                                $datedujour = strtotime(date("Y-m-d",mktime(0,0,0,$month,$day+7,$year)));
-                            ?>
-                            <?php
-                                if($datedujour < $datepartie) {
-                                    echo '<input type="button" class="btn-error" value="Annuler">';
-                                } elseif($datedujour > $datepartie) {
-                                    echo '<input type="button" class="btn-default" value="Noter">';
-                                }
-                            ?>
-                        </td>
-                    </tr>
+                            </td>                    
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </article>
-        <div class="col_3"></div>
     </section>
 </main>

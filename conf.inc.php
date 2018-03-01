@@ -4,11 +4,11 @@
 //user
 define("DBUSER", "root");
 //mot de passe
-define("DBPSW", "root");
+define("DBPWD", "");
 //host
 define("DBHOST", "localhost");
 //nom BDD
-define("DBNAME", "projetannuel3iw2");
+define("DBNAME", "cms_escape");
 //port BDD
 define("DBPORT", "3306");
 

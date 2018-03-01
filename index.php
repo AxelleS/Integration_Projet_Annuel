@@ -6,6 +6,8 @@ function myAutoloader($class){
     $class = $class.".class.php";
     if(file_exists("core/".$class)){
         include "core/".$class;
+    } elseif(file_exists("models/".$class)){
+        include "models/".$class;
     }
 }
 
