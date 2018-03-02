@@ -1,7 +1,7 @@
 <main>
     <section class="row faq">
         <article class="col_3 faq-picture offset_3">
-            <img src="img/faq.jpg" alt="Illustration picture of FAQ">
+            <img src="img//faq.jpg" alt="Illustration picture of FAQ">
         </article>
         <article class="col_5 offset_1 faq-question">
             <h1>FAQ</h1>
