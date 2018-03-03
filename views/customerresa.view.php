@@ -41,11 +41,17 @@
                             <?php
                                 //Si la date de la partie est passée, on affiche un btn pour noter
                                 if($value['date_now'] > $value['date_game']){
-                                    echo '<input type="button" class="btn-default" value="Noter">';
+                                    if($value['opinion'] == null){
+                                        echo '<input type="button" class="btn-default" value="Noter" onClick="window.location.href=\''.DIRNAME.'customeropinion/index/'.$value['id'].'\'">';
+                                        
+                                    } else{
+                                        echo '<p>Partie déjà noté</p>';
+                                    }
+                                    
                                 } 
-                                //Sinon, si il reste plus de 7 jours avant l'escape, on affiche un btn annuler
+                                //Sinon, si il reste plus de 7 jours avant l'escape, on affiche un btn annuler 
                                 elseif($value['interval'] >= 7){
-                                    echo '<input type="button" class="btn-error" value="Annuler">'; 
+                                    echo '<input type="button" class="btn-default" value="Annuler" onClick="window.location.href=\''.DIRNAME.'customerresa/cancel/'.$value['id'].'\'">';
                                 }
                             ?>
                             </td>                    
@@ -53,6 +59,6 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </article>
+        </article>      
     </section>
 </main>

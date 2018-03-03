@@ -38,15 +38,17 @@ class BaseSql{
     public function save(){
         echo "Enregistrement <br>";
         $this->setColumns();
-        print_r($this->columns);
 
         if($this->id){
             //Update
             $query_columns = array();
+            $id_search = $this->columns['id'];
+            
+            unset($this->columns['id']);
             foreach($this->columns as $key => $value){
              array_push($query_columns,$key."=:".$key);
             }
-            $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(',',$query_columns));
+            $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
 
             $query->execute($this->columns);
         } else{

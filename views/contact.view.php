@@ -1,7 +1,7 @@
 <main>
     <section class="row contact">
         <article class="col_3 offset_3 contact-picture">
-            <img src="img/letter.jpg" alt="Illustration picture of Contact Us">
+            <img src="img//letter.jpg" alt="Illustration picture of Contact Us">
         </article>
         <article class="col_4 offset_1 contact-form">
             <h1>Contactez-nous</h1>

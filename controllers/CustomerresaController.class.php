@@ -28,7 +28,7 @@ class CustomerresaController
             unset($donnees_timeslot['id_calendar']);
 
             //Créer des variables permettant d'afficher ensuite les actions autorisées
-            $donnees_timeslot['date_game'] = new DateTime(date('Y-m-d', mktime(0,0,0,date('m'),date('d'),date('Y'))));
+            $donnees_timeslot['date_game'] = new DateTime(date('Y-m-d', mktime(0,0,0,$dateExploded[1],$dateExploded[2],$dateExploded[0])));
             $donnees_timeslot['date_now'] = new DateTime(date('Y-m-d', mktime(0,0,0,date('m'),date('d'),date('Y'))));
             //Donne l'intervalle entre les deux dates
             $donnees_timeslot['interval'] = $donnees_timeslot['date_now']->diff($donnees_timeslot['date_game'])->format('%a');
