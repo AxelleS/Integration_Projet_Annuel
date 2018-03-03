@@ -888,51 +888,51 @@ main {
   background-color: #ff3d00; }
 
 /* CLASS TABLE */
-.table table {
+table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.table th {
+th {
   padding: 0;
-  color: #299fa5; }
+  color: #299fa5;}
 
-.table td {
-  padding: 0; }
+td {
+  padding: 0;}
 
-.table table, th, td {
+table,th,td {
   border: none; }
 
-.table table {
+table {
   width: 100%;
   display: table; }
 
 /* Tableau borduré */
 /*Affecte le tr du thead ainsi que le tr du tbody*/
-.table table.bordered > thead > tr, table.bordered > tbody > tr {
+table.bordered >thead > tr, table.bordered > tbody >tr {
   /*Ajout d'une ligne sous la cible*/
   border-bottom: 1px solid #d0d0d0; }
 
 /* Tableau rayé */
 /*Affecte le tr du tbody en sautant une case à chaque fois*/
-.table table.striped > tbody > tr:nth-child(odd) {
+table.striped > tbody > tr:nth-child(odd) {
   background-color: #f2f2f2; }
 
 /* Tableau surligné */
-.table table.highlight > tbody > tr:hover {
+table.highlight > tbody > tr:hover {
   background-color: #67dfe5;
   opacity: 0.6; }
 
 /* Tableau centré */
 /*Affecte le thead, (tr, th du thead)  et le tbody, (tr, th du tbody)*/
-.table table.centered thead tr th, table.centered tbody tr td {
+table.centered thead tr th, table.centered tbody tr td {
   text-align: center; }
 
 /*Affecte le thead*/
-.table thead {
+thead {
   /*Ajout d'une ligne sous la cible*/
   border-bottom: 1px solid #d0d0d0; }
 
-.table td, th {
+td, th {
   padding: 15px 5px;
   display: table-cell;
   text-align: left; }
@@ -1331,3 +1331,131 @@ nav {
     align-items: center; }
   .message-info-user {
     flex-basis: 40%; } }
+
+.customer-resa{
+  margin-top: 120px;
+}
+
+.customer-resa h1{
+  text-align: center;
+}
+
+.customer-fact{
+  margin-top: 120px;
+}
+
+.customer-fact h1{
+  text-align: center;
+}
+
+.rooms {
+  margin-top: 15%;
+  margin-bottom: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; }
+
+.rooms input {
+  width: 100%;
+  display: none;
+  background-color: white; }
+
+.rooms-text {
+  margin-top: 15%;
+  text-align: right;
+  margin-right: 10px; }
+
+.resa{
+  margin-top: 100px;
+}
+
+.resa h1{
+  padding-bottom: 20px;
+  background-color: #C4C4C4;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1%;
+  padding-bottom: 1%; 
+  width: 20%;}
+
+.submit-resa{
+  width: 100%;
+}
+
+.resa-next{
+  margin-top: 100px;
+}
+
+.resa-next div{
+  background-color: #42BDC4;
+}
+
+.resa-next div:first-child{
+  background-color: #FFFFFF;
+}
+
+.resa-next #libel{
+  text-align: center;
+  font-weight: bold;
+}
+
+.resa-next input{
+  width: 100%;
+}
+
+.resa-next div{
+  padding-bottom: 20px;
+}
+
+.player_3, .player_4, .player_5{
+  display: none;
+}
+
+.resa-next div:last-child{
+  text-align: center;
+}
+
+.resa-next-price article{
+  margin-top: 40px;
+  background-color: #FFFFFF;
+  text-align: center;
+  font-weight: bold;
+}
+
+.resa-next-valid article{
+  display:flex;
+  justify-content: flex-end;
+}
+
+.customer-opinion{
+  margin-top: 120px;
+  text-align: center;
+}
+
+.customer-opinion div{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  margin-top:20px;
+}
+
+.customer-opinion .note{
+  margin-top:5px; 
+  justify-content: center;
+}
+
+.customer-opinion .note div{
+  background-color: rgb(178, 230, 233);
+  width:50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-top:5px; 
+  margin-left:5px;
+}
+
+.customer-opinion .note div p{
+  margin: auto;
+}

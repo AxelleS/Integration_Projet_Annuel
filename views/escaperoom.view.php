@@ -36,7 +36,7 @@
         </article>
         <article class="col_2 slots">
             <select class="creneaux"></select>
-            <input type="submit" value="Valider">
+            <?php echo '<input type="submit" value="Valider" href="'.DIRNAME.'resanext">'; ?>
         </article>
         <article class="legend col_2 offset_4">
             <p>Légende</p>
@@ -57,12 +57,12 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/B5RO26wuCaU" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
         </article>
         <article class="col_6 picture-promotion offset_5">
-            <a href="img/escapes/library.jpg" target="_blank"><img src="img/escapes/library.jpg" alt=""></a>
-            <a href="img/escapes/book1.jpg" target="_blank"><img src="img/escapes/book1.jpg" alt=""></a>
+            <a href="img//escapes/library.jpg" target="_blank"><img src="img/escapes/library.jpg" alt=""></a>
+            <a href="img//escapes/book1.jpg" target="_blank"><img src="img/escapes/book1.jpg" alt=""></a>
         </article>
         <article class="col_6 picture-promotion offset_5">
-            <a href="img/escapes/book2.jpg" target="_blank"><img src="img/escapes/book2.jpg" alt=""></a>
-            <a href="img/escapes/book3.jpg" target="_blank"><img src="img/escapes/book3.jpg" alt=""></a>
+            <a href="img//escapes/book2.jpg" target="_blank"><img src="img/escapes/book2.jpg" alt=""></a>
+            <a href="img//escapes/book3.jpg" target="_blank"><img src="img/escapes/book3.jpg" alt=""></a>
         </article>
     </section>
 

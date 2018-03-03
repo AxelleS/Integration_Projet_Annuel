@@ -45,7 +45,7 @@ header{
     position: absolute;
     transform:rotate(-15deg);
     /* Permet de mettre le logo par dessus le carrousel */
-    z-index: 100;
+    z-index: 101;
 }
 
 header img {
@@ -61,6 +61,7 @@ nav{
     background-color: #F2F2F2;
     width: 100%;
     height: 91px;
+    z-index: 99;
 }
 
 nav ul {
