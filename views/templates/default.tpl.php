@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="http://127.0.0.1/projet/">
+<base href=<?php echo 'http://'.$_SERVER["SERVER_NAME"].'/'.DIRNAME; ?>>
     <meta charset="utf-8" />
     <title>Play with my CMS</title>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/dist/grid.css" />
