@@ -7,7 +7,6 @@ body{
     width: 100%;
     min-height: 100%;
     position: relative;
-    padding-bottom: 106px;
 }
 
 /* HEADER */
@@ -278,3 +277,141 @@ footer{
         font-size: 25px;
     }
 }
+
+/* BTN DEFAULT */
+.btn-default {
+  text-decoration: none;
+    background-color: #42BDC4;
+    color: #FFFFFF;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+    font-size: 1rem;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.btn-default:hover {
+    background-color: #64c9ce; 
+}
+
+/* CLASS TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+th {
+  padding: 0;
+  color: #299fa5;}
+
+td {
+  padding: 0;}
+
+table,th,td {
+  border: none; }
+
+table {
+  width: 100%;
+  display: table; }
+
+/* Tableau borduré */
+/*Affecte le tr du thead ainsi que le tr du tbody*/
+table.bordered >thead > tr, table.bordered > tbody >tr {
+  /*Ajout d'une ligne sous la cible*/
+  border-bottom: 1px solid #d0d0d0; }
+
+/* Tableau rayé */
+/*Affecte le tr du tbody en sautant une case à chaque fois*/
+table.striped > tbody > tr:nth-child(odd) {
+  background-color: #f2f2f2; }
+
+/* Tableau surligné */
+table.highlight > tbody > tr:hover {
+  background-color: #67dfe5;
+  opacity: 0.6; }
+
+/* Tableau centré */
+/*Affecte le thead, (tr, th du thead)  et le tbody, (tr, th du tbody)*/
+table.centered thead tr th, table.centered tbody tr td {
+  text-align: center; }
+
+/*Affecte le thead*/
+thead {
+  /*Ajout d'une ligne sous la cible*/
+  border-bottom: 1px solid #d0d0d0; }
+
+td, th {
+  padding: 15px 5px;
+  display: table-cell;
+  text-align: left; }
+
+/* CLASS TABLE MEDIA QUERY */
+@media only screen and (max-width: 980px) {
+  table.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    position: relative; }
+  table.responsive-table th, table.responsive-table td {
+    margin: 0;
+    vertical-align: top; }
+  table.responsive-table th {
+    text-align: left; }
+  /*Affexte le thead place les titre en block sur la gauche*/
+  table.responsive-table thead {
+    display: block;
+    float: left; }
+  /*Affecte le tr, cree un espace entre le titre et les donnee du tableau*/
+  table.responsive-table thead tr {
+    display: block;
+    padding: 0 10px 0 0; }
+  table.responsive-table tbody {
+    display: block;
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap; }
+  /*--------------------------------------------*/
+  /* Permet de mettre le tableau en horizontal  */
+  /*-*/
+  table.responsive-table tbody tr {
+    /*-*/
+    /*-*/
+    display: inline-block;
+    /*-*/
+    /*-*/
+    vertical-align: top; }
+  /*-*/
+  /*-*/
+  /*-*/
+  /*-*/
+  table.responsive-table th {
+    /*-*/
+    /*-*/
+    display: block;
+    /*-*/
+    /*-*/
+    text-align: right; }
+  /*-*/
+  /*--------------------------------------------*/
+  /*Place les valeurs en face des differentes colonne*/
+  table.responsive-table td {
+    display: block;
+    min-height: 1.25em;
+    text-align: left; }
+  table.responsive-table tr {
+    padding: 0 10px; }
+  table.responsive-table thead {
+    border: 0;
+    border-right: 1px solid #d0d0d0; }
+  table.responsive-table.bordered tbody tr {
+    border-right: 1px solid #d0d0d0; } }

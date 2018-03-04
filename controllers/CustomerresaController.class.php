@@ -51,4 +51,37 @@ class CustomerresaController
         //Passe en paramètre le tableau créé
         $v->assign("donnees",$array);
     }
+
+    public function cancelAction($params)
+    {
+        $id_time_slot = $params['URL'][0];
+
+        $time_slot = new Time_slot();
+        $time_slot->setId($id_time_slot);
+
+        $response_timeslot = $time_slot->select('id');
+        $donnees_timeslot = $response_timeslot->fetch();
+
+        $time_slot->setIdCalendar($donnees_timeslot['id_calendar']);   
+        
+        $time_slot->setIdRoom($donnees_timeslot['id_room']);
+        
+        $time_slot->setIdUser(null);
+        
+        $time_slot->setKeyTimeSlot($donnees_timeslot['key_time_slot']);
+        
+        $time_slot->setValueTimeSlot($donnees_timeslot['value_time_slot']);
+        
+        $time_slot->setNumberPlayer(0);
+        
+        $time_slot->setTotalPrice(0);
+        
+        $time_slot->setDateBill(null);
+        
+        $time_slot->setOpinion(null);
+
+        $time_slot->save();
+
+        header("Location: ".DIRNAME."customerresa");
+    }
 }

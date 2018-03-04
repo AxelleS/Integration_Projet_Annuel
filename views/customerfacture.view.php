@@ -1,6 +1,6 @@
-<main>
+<main class="container">
     <section class="row customer-fact">
-        <article class="col_14 offset_1">
+        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h1>Mes Factures</h1>
             <table class="centered striped">
                 <thead>
@@ -38,7 +38,7 @@
                             <?php echo $value['total_price']; ?>€
                         </td>
                         <td>
-                            <a href="Mafacture" target="_blank">Afficher</a>
+                            <a type="button" class="btn-default" href=<?php echo DIRNAME."Mafacture/index/".$value['id'];?> target="_blank">Afficher</a>
                         </td>                    
                     </tr>
                 <?php endforeach; ?>
