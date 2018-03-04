@@ -24,7 +24,7 @@ nav{
 }
 
 .nav-dashboard-admin {
-  background-color: #4F4F4F;
+  background-color: $dashboard-background;
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -86,7 +86,7 @@ nav{
 }
 
 .dashboard-main {
-  background-color: #F2F2F2;
+  background-color: $dashboard-background;
   min-height: 100vh;
   display: flex;
   justify-content: flex-start;
