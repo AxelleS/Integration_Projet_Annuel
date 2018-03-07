@@ -322,17 +322,30 @@ background-color: #FFFF;
 
 .description-room{
     margin-top:2%;
-    text-align: left;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media screen and (max-width : 990px) {
     .description-room p{
         font-size: 10px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .description-room p{
+        font-size: 10px;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }
 
 .order{
     margin-top: 5%;
+    margin-left: 12.5%;
     text-align: center;
     border: 1px solid #42BDC4;
     display: flex;
@@ -351,6 +364,7 @@ background-color: #FFFF;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-left: auto;
 }
 
 .share p, .share a{
@@ -448,6 +462,8 @@ background-color: #FFFF;
 /* Pour les images */
 
 .picture-promotion{
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -540,6 +556,7 @@ background-color: #FFFF;
 
 .calendar{
     margin-top:3%;
+    margin-left: 15%;
 
 }
 
@@ -626,8 +643,9 @@ background-color: #FFFF;
     display: flex;
     flex-direction: column;
     justify-content: space-between;   
-    font-size: 12px;
+    font-size: 15px;
     margin-bottom: 2%;
+    margin-left: 15%;
 }
 
 .legend_plein{
@@ -655,6 +673,7 @@ background-color: #FFFF;
 .slots .creneaux{
     margin-right: 15px;
     display: none;
+    height: 20px;
 }
 
 .slots-text{
@@ -675,6 +694,8 @@ background-color: #FFFF;
     width:100%;
     display: none;
     background-color: white;
+    width: 65px;
+    height: 20px;
 }
 
 @media screen and (max-width : 980px) {
@@ -699,6 +720,12 @@ background-color: #FFFF;
         margin-bottom: 4%;
     }
 
+    .slots .creneaux{
+    margin-right: 15px;
+    display: none;
+    height: 50px;
+}
+
     .slots select{
         width: 70%;
         font-size: 30px;
@@ -707,6 +734,7 @@ background-color: #FFFF;
     .slots input{
         width: 30%;
         font-size: 40px;
+        height: 50px;
     }
 
     .legend{
