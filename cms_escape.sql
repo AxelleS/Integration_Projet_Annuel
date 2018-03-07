@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 01 mars 2018 à 16:46
+-- Généré le :  mer. 07 mars 2018 à 21:12
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -1568,9 +1568,9 @@ CREATE TABLE IF NOT EXISTS `homepage` (
   `id_room_3` int(11) NOT NULL,
   `title_introduction` varchar(100) NOT NULL,
   `description_introduction` text NOT NULL,
-  `url_video` varchar(255) DEFAULT NULL,
-  `name_compay` varchar(100) NOT NULL,
-  `adress_company` varchar(255) NOT NULL,
+  `url_video` text,
+  `name_company` varchar(100) NOT NULL,
+  `address_company` varchar(255) NOT NULL,
   `zipcode_company` varchar(5) NOT NULL,
   `city_company` varchar(100) NOT NULL,
   `url_google` text NOT NULL,
@@ -1581,8 +1581,8 @@ CREATE TABLE IF NOT EXISTS `homepage` (
 -- Déchargement des données de la table `homepage`
 --
 
-INSERT INTO `homepage` (`id`, `id_room_1`, `id_room_2`, `id_room_3`, `title_introduction`, `description_introduction`, `url_video`, `name_compay`, `adress_company`, `zipcode_company`, `city_company`, `url_google`) VALUES
-(1, 1, 2, 3, 'Titre d\'introduction', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis fermentum leo eu tempus. Phasellus faucibus ligula et elit cursus, nec elementum tellus faucibus. Aliquam vitae tellus interdum tortor varius bibendum eu maximus justo. Sed commodo lectus velit, at rutrum massa euismod sed. Suspendisse vel erat eget quam placerat bibendum et sit amet mauris.', '@todo', 'Play with my CMS', '242 rue du Faubourg Saint Antoine', '75012', 'Paris', '@todo');
+INSERT INTO `homepage` (`id`, `id_room_1`, `id_room_2`, `id_room_3`, `title_introduction`, `description_introduction`, `url_video`, `name_company`, `address_company`, `zipcode_company`, `city_company`, `url_google`) VALUES
+(1, 1, 2, 3, 'Titre d\'introduction', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis fermentum leo eu tempus. Phasellus faucibus ligula et elit cursus, nec elementum tellus faucibus. Aliquam vitae tellus interdum tortor varius bibendum eu maximus justo. Sed commodo lectus velit, at rutrum massa euismod sed. Suspendisse vel erat eget quam placerat bibendum et sit amet mauris.', '<iframe  width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/bzzKksk_z2k?rel=0\" frameborder=\"0\" allow=\"encrypted-media\" allowfullscreen></iframe>', 'Play with my CMS', '242 rue du Faubourg Saint Antoine', '75012', 'Paris', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.475184322657!2d2.3874704158722255!3d48.84914850931109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6727347e25d67%3A0xc73e22c1131584f7!2s242+Rue+du+Faubourg+Saint-Antoine%2C+75012+Paris!5e0!3m2!1sfr!2sfr!4v1516803151575\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>');
 
 -- --------------------------------------------------------
 
@@ -1739,7 +1739,7 @@ CREATE TABLE IF NOT EXISTS `time_slot` (
 --
 
 INSERT INTO `time_slot` (`id`, `id_calendar`, `id_room`, `id_user`, `key_time_slot`, `value_time_slot`, `number_player`, `total_price`, `date_bill`, `opinion`) VALUES
-(1, 1097, 1, NULL, 10, '10h00-11h30', 0, 0, NULL, NULL),
+(1, 1097, 1, 1, 10, '10h00-11h30', 3, 90, '2017-11-05', 3),
 (2, 1097, 2, NULL, 10, '10h00-11h30', 0, 0, NULL, NULL),
 (3, 1097, 3, NULL, 10, '10h00-11h30', 0, 0, NULL, NULL),
 (4, 1097, 1, NULL, 12, '12h00-13h30', 0, 0, NULL, NULL),
@@ -3116,7 +3116,7 @@ INSERT INTO `time_slot` (`id`, `id_calendar`, `id_room`, `id_user`, `key_time_sl
 (1374, 1162, 3, NULL, 14, '14h00-15h30', 0, 0, NULL, NULL),
 (1375, 1162, 1, NULL, 16, '16h00-17h30', 0, 0, NULL, NULL),
 (1376, 1162, 2, NULL, 16, '16h00-17h30', 0, 0, NULL, NULL),
-(1377, 1162, 3, 1, 16, '16h00-17h30', 3, 90, '2018-02-28', NULL),
+(1377, 1162, 3, NULL, 16, '16h00-17h30', 0, 0, NULL, NULL),
 (1378, 1162, 1, NULL, 18, '18h00-19h30', 0, 0, NULL, NULL),
 (1379, 1162, 2, NULL, 18, '18h00-19h30', 0, 0, NULL, NULL),
 (1380, 1162, 3, NULL, 18, '18h00-19h30', 0, 0, NULL, NULL),
@@ -3139,7 +3139,7 @@ INSERT INTO `time_slot` (`id`, `id_calendar`, `id_room`, `id_user`, `key_time_sl
 (1397, 1163, 2, NULL, 16, '16h00-17h30', 0, 0, NULL, NULL),
 (1398, 1163, 3, NULL, 16, '16h00-17h30', 0, 0, NULL, NULL),
 (1399, 1163, 1, NULL, 18, '18h00-19h30', 0, 0, NULL, NULL),
-(1400, 1163, 2, NULL, 18, '18h00-19h30', 0, 0, NULL, NULL),
+(1400, 1163, 2, 1, 18, '18h00-19h30', 5, 150, '2018-03-04', NULL),
 (1401, 1163, 3, NULL, 18, '18h00-19h30', 0, 0, NULL, NULL),
 (1402, 1163, 1, NULL, 20, '20h00-21h30', 0, 0, NULL, NULL),
 (1403, 1163, 2, NULL, 20, '20h00-21h30', 0, 0, NULL, NULL),
