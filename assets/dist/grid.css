@@ -27,6 +27,12 @@
     /*word-wrap: break-word*/;
 }
 
+.row .col {
+  padding: 0 1%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .navbar-fixed-left {
   height: 100%;
   top: 0;
