@@ -1,14 +1,79 @@
-      <main class="dashboard-main col_13">
-        <header class="header-dashboard-admin">
-          <figure class="header-menu-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.137 3.945c-.644-.374-1.042-1.07-1.041-1.82v-.003c.001-1.172-.938-2.122-2.096-2.122s-2.097.95-2.097 2.122v.003c.001.751-.396 1.446-1.041 1.82-4.667 2.712-1.985 11.715-6.862 13.306v1.749h20v-1.749c-4.877-1.591-2.195-10.594-6.863-13.306zm-3.137-2.945c.552 0 1 .449 1 1 0 .552-.448 1-1 1s-1-.448-1-1c0-.551.448-1 1-1zm3 20c0 1.598-1.392 3-2.971 3s-3.029-1.402-3.029-3h6z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.971l-11.986 9.713zm-5.425-1.822l-6.575-5.329v12.501l6.575-7.172zm10.85 0l6.575 7.172v-12.501l-6.575 5.329zm-1.557 1.261l-3.868 3.135-3.868-3.135-8.11 8.848h23.956l-8.11-8.848z"/></svg>
-            <div class="header-menu-profil" href="#">
-            <img src="img/dashboard/titi.jpg" alt="">
-            <svg  class="arrow-rotate" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>
+<main class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing placing-content">
+  <div class="row offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 col-lg-11 col-md-11 col-sm-11 col-xs-11">
+    <h1>Bienvenue sur le Dashboard</h1>
+  </div>
+</main>
+<div class="row">
+    <div class="col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 placing placing-content content-container content-scrollable background-content">
+      <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Activités</h2>
+        <div class="row placing-content">
+          <figure class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <img class="avatar-activities" src="http://via.placeholder.com/50x50" alt="">
           </figure>
-        </header>
+          <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
+            <p>Vient de s'inscrire !</p>
+            <div class="timer-alignment"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"/></svg>
+            <p>30 Janvier 1996</p></div>
+          </section>
+        </div>
+        <div class="row placing-content">
+          <figure class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <img class="avatar-activities" src="http://via.placeholder.com/50x50" alt="">
+          </figure>
+          <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
+            <p>Vient de s'inscrire !</p>
+            <div class="timer-alignment"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"/></svg>
+            <p>30 Janvier 1996</p></div>
+          </section>
+        </div>
+        <div class="row placing-content">
+          <figure class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <img class="avatar-activities" src="http://via.placeholder.com/50x50" alt="">
+          </figure>
+          <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
+            <p>Vient de s'inscrire !</p>
+            <div class="timer-alignment"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"/></svg>
+            <p>30 Janvier 1996</p></div>
+          </section>
+        </div>
+        <div class="row placing-content">
+          <figure class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <img class="avatar-activities" src="http://via.placeholder.com/50x50" alt="">
+          </figure>
+          <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
+            <p>Vient de s'inscrire !</p>
+            <div class="timer-alignment"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"/></svg>
+            <p>30 Janvier 1996</p></div>
+          </section>
+        </div>
+        <div class="row placing-content">
+          <figure class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <img class="avatar-activities" src="http://via.placeholder.com/50x50" alt="">
+          </figure>
+          <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
+            <p>Vient de s'inscrire !</p>
+            <div class="timer-alignment"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"/></svg>
+            <p>30 Janvier 1996</p></div>
+          </section>
+        </div>
+    </div>
+    <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 placing placing-content content-container">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Visites</h2>
+        <article class="col-lg-12">
+              <canvas class="col-lg-12" id="line-chart"></canvas>
+            </article>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing placing-content background-content">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Messages</h2>
+        
+      </div>
+    </div>
+  </div>
+
+
+<!--       <main class="dashboard-main col_13">
+        
 
         <div class="dashboard-title">
           <h1 class="text-color offset_2">Bienvenue</h1>
@@ -120,3 +185,4 @@
   </body>
   <script src="script/chartAnalytics.js" charset="utf-8"></script>
 </html>
+ -->

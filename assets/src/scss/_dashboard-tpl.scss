@@ -1,0 +1,57 @@
+.dashboard-fullheight {
+	height: 100vh;
+}
+
+.background-nav {
+	background-color: $dashboard-background;
+}
+
+.align-navbar-content {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid #C4C4C4;
+}
+
+.align-navbar-content:hover {
+  background-color: #757575;
+}
+
+.logo-dashboard {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 20px;
+	height: 100px;
+}
+
+.icon-size {
+	width: 40px;
+	height: 40px;
+}
+
+.align-navbar-details {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-top: 1px solid $dashboard-icon-line;
+	border-bottom: 1px solid $dashboard-icon-line;
+}
+
+.align-navbar-text {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+		p	{
+			color: $white;
+		}
+}
+
+.fill-icon {
+	fill: $icon-fill;
+}
+
+.background-container {
+	background-color: $background-container;
+}
