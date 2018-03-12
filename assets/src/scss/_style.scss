@@ -847,6 +847,8 @@ background-color: #FFFF;
     max-height: 200px;
 }
 
+
+
 /* QUESTION - FAQ */
 
 .faq-question h1{
@@ -865,6 +867,20 @@ background-color: #FFFF;
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+@media screen and (max-width : 980px) {
+    .faq-picture{
+        display: none;
+    }
+
+    .faq-question{
+        text-align: justify;
+        margin-left: 5%;
+        margin-right: 5%;
+        font-size: 25px;
+    }
+}
+
 
 /* CONTACT */
 
