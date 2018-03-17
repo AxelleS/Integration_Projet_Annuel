@@ -33,10 +33,12 @@
 }
 
 .align-navbar-details {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	border-top: 1px solid $dashboard-icon-line;
+	padding: 10px 0px;
 	border-bottom: 1px solid $dashboard-icon-line;
+}
+
+.align-border-top {
+	border-top: 1px solid $dashboard-icon-line;
 }
 
 .align-navbar-text {
@@ -50,8 +52,17 @@
 
 .fill-icon {
 	fill: $icon-fill;
+	color: $icon-fill
 }
 
 .background-container {
 	background-color: $background-container;
+}
+
+.menu-hover:hover {
+	background-color: $backgroundMenuHover;
+}
+
+.href-style {
+	text-decoration: none;
 }
