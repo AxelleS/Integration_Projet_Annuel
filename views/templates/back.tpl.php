@@ -31,37 +31,37 @@
           <img class="logo-dashboard col-lg-2 offset-lg-4 col-md-2 offset-md-4 col-sm-2 offset-sm-4 col-xs-2 offset-xs-4" src="img/logo.jpg" alt="Logo Play with My CMS">
         </figure>
         <div class="">
-          <a href="#" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">
+          <?php echo '<a href="'.DIRNAME.'dashboardadmin" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">"'; ?>
             <figure class="row align-navbar-details menu-hover align-border-top">
               <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Accueil</p></figcaption>
             </figure>
-          </a>
-          <a href="#" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">
+          <?php echo '</a>'; ?>
+          <?php echo '<a href="'.DIRNAME.'statistiques" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M7 24h-6v-6h6v6zm8-9h-6v9h6v-9zm8-4h-6v13h6v-13zm0-11l-6 1.221 1.716 1.708-6.85 6.733-3.001-3.002-7.841 7.797 1.41 1.418 6.427-6.39 2.991 2.993 8.28-8.137 1.667 1.66 1.201-6.001z"/></svg>
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Statistiques</p></figcaption>
             </figure>
-          </a>
-          <a href="#" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">
+          <?php echo '</a>'; ?>
+          <?php echo '<a href="'.DIRNAME.'organisation" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M16 6h-8v-6h8v6zm-10 12h-6v6h6v-6zm18 0h-6v6h6v-6zm-11-7v-3h-2v3h-9v5h2v-3h7v3h2v-3h7v3h2v-5h-9zm2 7h-6v6h6v-6z"/></svg>
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Organisation site</p></figcaption>
             </figure>
-          </a>
-          <a href="#" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">
+          <?php echo '</a>'; ?>
+          <?php echo '<a href="'.DIRNAME.'database" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M22 15.055v2.458c0 1.925-4.655 3.487-10 3.487-5.344 0-10-1.562-10-3.487v-2.458c2.418 1.738 7.005 2.256 10 2.256 3.006 0 7.588-.523 10-2.256zm-10-12.055c-5.344 0-10 1.486-10 3.32s4.656 3.32 10 3.32c5.345 0 10-1.486 10-3.32s-4.655-3.32-10-3.32zm0 8.64c-3.006 0-7.588-.523-10-2.256v2.44c0 1.926 4.656 3.487 10 3.487 5.345 0 10-1.562 10-3.487v-2.44c-2.418 1.738-7.005 2.256-10 2.256z"/></svg>
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Base de données</p></figcaption>
             </figure>
-          </a>
-          <a href="#" class="col-lg-12 col-md-12 col-xs-12 col-sm-12 href-style">
+          <?php echo '</a>'; ?>
+          <?php echo '<a href="'.DIRNAME.'calendrier" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M17 1c0-.552-.447-1-1-1s-1 .448-1 1v2c0 .552.447 1 1 1s1-.448 1-1v-2zm-12 2c0 .552-.447 1-1 1s-1-.448-1-1v-2c0-.552.447-1 1-1s1 .448 1 1v2zm13 5v10h-16v-10h16zm2-6h-2v1c0 1.103-.897 2-2 2s-2-.897-2-2v-1h-8v1c0 1.103-.897 2-2 2s-2-.897-2-2v-1h-2v18h20v-18zm4 3v19h-22v-2h20v-17h2zm-17 7h-2v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4h-2v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Calendrier</p></figcaption>
             </figure>
-          </a>
-          <a href="#" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">
+          <?php echo '</a>'; ?>
+          <?php echo '<a href="'.DIRNAME.'signout" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg version="1.1" class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 512 512">
               <title></title>
@@ -71,7 +71,7 @@
               </svg>
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Deconnexion</p>  </figcaption>
             </figure>
-          </a>
+          <?php echo '</a>'; ?>
         </div>
       </section>
       <section class="col-lg-9 col-md-9 col-sm-9 col-xs-9 background-container"><?php include "views/".$this->v; ?></section></main>
@@ -92,12 +92,12 @@
                   <figcaption>Accueil</figcaption>
               </figure>
             </a>
-            <a href="#">
+            <?php echo '<a href="'.DIRNAME.'dashboardadmin" title="">'; ?>
               <figure class="align-navbar-content">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 24h-6v-6h6v6zm8-9h-6v9h6v-9zm8-4h-6v13h6v-13zm0-11l-6 1.221 1.716 1.708-6.85 6.733-3.001-3.002-7.841 7.797 1.41 1.418 6.427-6.39 2.991 2.993 8.28-8.137 1.667 1.66 1.201-6.001z"/></svg>
                 <figcaption>Statistiques</figcaption>
               </figure>
-            </a>
+            <?php echo '</a>'; ?>
             <a href="#">
               <figure class="align-navbar-content">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 6h-8v-6h8v6zm-10 12h-6v6h6v-6zm18 0h-6v6h6v-6zm-11-7v-3h-2v3h-9v5h2v-3h7v3h2v-3h7v3h2v-5h-9zm2 7h-6v6h6v-6z"/></svg>
