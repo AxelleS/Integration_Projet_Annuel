@@ -3,8 +3,8 @@
     <h1>Bienvenue sur le Dashboard</h1>
   </div>
 </section>
-<div class="row">
-    <div class="col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 placing placing-content content-containerbackground-content content-padding background-content">
+<div class="row ">
+    <div class="col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 placing placing-content content-container content-padding background-content">
       <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Activités</h2>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 content-scrollable activities-container">
           <div class="row placing-content">
@@ -77,28 +77,36 @@
                 <img class="avatar-messages" src="http://via.placeholder.com/50x50" alt="">
               </figure>
               <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <b>titi</b>
-                  <p class="fill-icon">30 Janvier 1996</p>
+                <div class="row">
+                  <b>Titi</b>
+                  <p class="fill-icon offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 messages-informations">30 Janvier 1996</p>
                   <p class="fill-icon">18:30</p>
                 </div>
                 <div>
                   <p>Ceci est un message très intéressant ...</p>
                 </div>
-                <div class="fill-icon">
+                <div class="fill-icon icon-hover">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z"/></svg>
                   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z"/></svg>
                 </div>
               </section>
-            </div>
+          </div>
           <div class="row messages-position">
               <figure class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-1">
                 <img class="avatar-messages" src="http://via.placeholder.com/50x50" alt="">
               </figure>
               <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
-                <p><b>titi</b> Vient de s'inscrire !</p>
+                <div class="row">
+                  <b>Titi</b>
+                  <p class="fill-icon offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 messages-informations">30 Janvier 1996</p>
+                  <p class="fill-icon">18:30</p>
+                </div>
                 <div>
-                  text
+                  <p>Ceci est un message très intéressant ...</p>
+                </div>
+                <div class="fill-icon icon-hover">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z"/></svg>
+                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z"/></svg>
                 </div>
               </section>
           </div>

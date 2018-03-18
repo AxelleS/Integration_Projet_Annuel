@@ -16,6 +16,7 @@
 
 .content-container {
 	height: 80vh;
+	max-height: 80vh;
 }
 
 .content-padding {
@@ -130,6 +131,15 @@
 
 .messages-max-size {
 
+}
+
+.messages-informations {
+	display: flex;
+	flex-direction: row;
+}
+
+.icon-hover svg:hover {
+	fill: $black;
 }
 // .text-color {
 //     color: #4F4F4F;
