@@ -327,7 +327,7 @@
     }
 
     .offset-lg-5 {
-        flex-basis: calc((100%/12) *5);
+        margin-left: calc((100%/12) *5);
     }
 
     .offset-lg-6 {
@@ -335,11 +335,11 @@
     }
 
     .offset-lg-7 {
-        flex-basis: calc((100%/12) *7);
+        margin-left: calc((100%/12) *7);
     }
 
     .offset-lg-8 {
-        flex-basis: calc((100%/12) *8);
+        margin-left: calc((100%/12) *8);
     }
 
     .offset-lg-9 {
