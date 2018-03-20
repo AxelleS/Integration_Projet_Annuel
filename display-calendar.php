@@ -1,38 +1,39 @@
 <?php
-	// Récuperation des variables passées, on donne soit année; mois; année+mois
-	if(!isset($_GET['mois'])) $num_mois = 1; else $num_mois = $_GET['mois'];
-	if(!isset($_GET['annee'])) $num_an = 2018; else $num_an = $_GET['annee'];
+    $salleselect = 1;
+    try
+    {
+        $pdo = new PDO("mysql:host=".DBHOST.";dbname=".DBNAME, DBUSER, DBPWD);
+    }
+    catch(Exception $e)
+    {
+        die('Erreur SQL : '.$e->getMessage());
+    }
 
-	$array_semi = array("2018-01-25");
-	$array_plein = array("2018-01-30");
+	// Récuperation des variables passées, on donne soit année; mois; année+mois
+	if(!isset($_GET['mois'])) $num_mois = date('n'); else $num_mois = $_GET['mois'];
+    if(!isset($_GET['annee'])) $num_an = date('Y'); else $num_an = $_GET['annee'];
+    if($num_mois<10){
+        $moisreconstitue = "0".$num_mois;
+    } else{
+        $moisreconstitue = $num_mois;
+    }
+    $date = $num_an.'-'.$moisreconstitue.'-%';
+    $response_date = $pdo->query('SELECT * FROM calendar WHERE date_calendar LIKE "'.$date.'"');
+
+    while($donnees_date = $response_date->fetch()){
+        $temp = array();
+        $response_creneaux = $pdo->query("SELECT * FROM time_slot WHERE id_calendar LIKE ".$donnees_date['id']." AND id_room LIKE ".$salleselect);
+        while($donnees_creneaux = $response_creneaux->fetch()){
+            if(is_null($donnees_creneaux['id_user'])){
+                $temp[$donnees_creneaux['id']] = $donnees_creneaux['value_time_slot'];
+            }
+        }
+        $creneaux[$donnees_date['date_calendar']] = $temp;  
+    }
 
 	// nombre de jours dans le mois et numero du premier jour du mois
 	$int_nbj = date("t", mktime(0,0,0,$num_mois,1,$num_an));
 	$int_premj = date("N",mktime(0,0,0,$num_mois,1,$num_an));
-
-	for($i=1;$i<$int_nbj+1;$i++){
-        $theday = strlen($i)<2 ? "0".$i : $i;
-		if(in_array(date("Y-m-d",mktime(0,0,0,$num_mois,$theday,$num_an)),$array_semi)){
-            $monarray = array(
-                "10" => "10h00-11h30",
-                "12" => "12h00-13h30",
-                "14" => "14h00-15h30"
-            );
-			$thiscreneaux[date("Y-m-d",mktime(0,0,0,$num_mois,$theday,$num_an))] = $monarray;
-		}
-		elseif(!in_array(date("Y-m-d",mktime(0,0,0,$num_mois,$theday,$num_an)),$array_plein)){
-            $monarray = array(
-                "10" => "10h00-11h30",
-                "12" => "12h00-13h30",
-                "14" => "14h00-15h30",
-                "16" => "16h00-17h30",
-                "18" => "18h00-19h30",
-                "20" => "20h00-21h30",
-                "22" => "22h00-23h30"
-            );
-			$thiscreneaux[date("Y-m-d",mktime(0,0,0,$num_mois,$theday,$num_an))] = $monarray;
-		}
-	}
 
 	// tableau des jours, tableau des mois...
 	$tab_jours = array("","Lu","Ma","Me","Je","Ve","Sa","Di");
@@ -50,7 +51,7 @@
     $(document).ready(function(){
         //Convertit le tableau php en object JS
 
-        var thiscreneaux = <?php echo json_encode($thiscreneaux) ?>;
+        var thiscreneaux = <?php echo json_encode($creneaux) ?>;
 
         $('.semiplein input').click(function(){
             //Réinitialise les couleurs des dates
@@ -163,8 +164,8 @@
 <table>	
     <thead>
         <tr>
-            <th colspan="7">
-                <a href="escape-room.php?<?php echo (($num_mois - 1) > 0 ? ("mois=".($num_mois-1)."&annee=".$num_an) : ("mois=12&annee=".($num_an-1)));?>"><img class="arrow" src="img/arrow_left.svg"></a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois]." ".$num_an;  ?>&nbsp;&nbsp;<a href="escape-room.php?<?php echo (($num_mois + 1) < 13 ? ("mois=".($num_mois+1)."&annee=".$num_an) : ("mois=1&annee=".($num_an+1)));?>"><img class="arrow" src="img/arrow_right.svg"></a>
+            <th colspan="7">           
+            <?php if($num_mois > date('n')) { echo '<a href="'.DIRNAME.'escaperoom?'.(($num_mois - 1) > 0 ? ("mois=".($num_mois-1)."&annee=".$num_an) : ("mois=12&annee=".($num_an-1))).'"><img class="arrow" src="img/arrow_left.svg"></a>';}?> &nbsp;&nbsp;<?php echo $tab_mois[$num_mois]." ".$num_an;  ?>&nbsp;&nbsp;<?php echo '<a href="'.DIRNAME.'escaperoom?'.(($num_mois + 1) < 13 ? ('mois='.($num_mois+1).'&annee='.$num_an) : ('mois=1&annee='.($num_an+1))).'"><img class="arrow" src="img/arrow_right.svg"></a>';?>
             </th>
         </tr>
         <tr>
@@ -195,9 +196,8 @@
                         </tr>
                         <tr class="content">
                     <?php endif; ?>
-                <?php endif; ?>
-                
-                <td class="<?php echo ((in_array($madate,$array_semi))? 'semiplein':((!in_array($madate,$array_plein))? 'vide' : 'plein')); ?>"><?php echo ((!in_array($madate,$array_plein))?"<input id='".$madate."' type='button' value='".$tab_cal[$i]."' name='".$madate."'>":$tab_cal[$i]); ?></td>
+                <?php endif; ?>                
+                <td class="<?php if(count($creneaux[$madate]) > 3){echo 'vide';} elseif(count($creneaux[$madate]) > 1){echo 'semiplein';}else{echo 'plein';}?>"><?php if(count($creneaux[$madate]) > 1){echo "<input id='".$madate."' type='button' value='".$tab_cal[$i]."' name='".$madate."'>";} else {echo $tab_cal[$i];} ?></td>
                 <?php $joursemaine++; ?>
             <?php endfor; ?>
         </tr>
