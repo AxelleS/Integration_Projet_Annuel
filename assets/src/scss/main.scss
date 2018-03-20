@@ -1,4 +1,13 @@
-$dashboard-background: #F2F2F2;
+$dashboard-background: #4F4F4F;
+$dashboard-icon-line: #3C3C3C;
+$icon-fill: #BDBDBD;
+$white: #FFFFFF;
+$background-container: #F2F2F2;
+$backgroundMenuHover: #757575;
+$black: #000000;
+$dashboard-text-color: #2A2A2A;
+$icon-messages: #F2F2F2;
 
 @import 'style';
+@import 'dashboard-tpl';
 @import 'dashboard';
