@@ -74,13 +74,13 @@
         <article class="video-promotion col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <?php echo $donnees['url_video']; ?>
         </article>
-        <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion">
-            <a href="<?php echo $donnees['picture_1']; ?>" target="_blank"><img src="<?php echo $donnees['picture_1']; ?>" alt=""></a>
-            <a href="<?php echo $donnees['picture_2']; ?>" target="_blank"><img src="<?php echo $donnees['picture_2']; ?>" alt=""></a>
+        <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion row">
+            <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_1']; ?>" target="_blank"><img src="<?php echo $donnees['picture_1']; ?>" alt=""></a>
+            <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_2']; ?>" target="_blank"><img src="<?php echo $donnees['picture_2']; ?>" alt=""></a>
         </article>
-        <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion">
-            <a href="<?php echo $donnees['picture_3']; ?>" target="_blank"><img src="<?php echo $donnees['picture_3']; ?>" alt=""></a>
-            <a href="<?php echo $donnees['picture_4']; ?>" target="_blank"><img src="<?php echo $donnees['picture_4']; ?>" alt=""></a>
+        <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion row">
+            <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_3']; ?>" target="_blank"><img src="<?php echo $donnees['picture_3']; ?>" alt=""></a>
+            <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_4']; ?>" target="_blank"><img src="<?php echo $donnees['picture_4']; ?>" alt=""></a>
         </article>
     </section>
 
@@ -98,6 +98,7 @@
                 $compteur = count($donnees['opinions']) - 3;
             }
         ?>
+        <?php if(count($donnees['opinions']) > 0 ) : ?>
         <?php for($i= $compteur; $i<count($donnees['opinions']);$i++) : ?>
             <article class="col-lg-12 opinion-people">     
                 <p id="opinion-date"><?php echo $donnees['opinions'][$i]['date']?></p>
@@ -105,5 +106,10 @@
                 <p id="opinion-score">Note <?php echo $donnees['opinions'][$i]['score']?>/5</p>
             </article>
         <?php endfor; ?>
+        <?php else : ?>
+            <article class="col-lg-12 opinion-people">     
+                <p>Aucun avis pour le moment</p>
+            </article>
+        <?php endif; ?>
     </section>
 </main>
