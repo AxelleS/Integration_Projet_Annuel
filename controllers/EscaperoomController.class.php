@@ -5,7 +5,7 @@ class EscaperoomController
     public function indexAction($params)
     {
         //A rendre dynamique 
-        $id_room = 1;
+        $id_room = $params['URL'][0];
         ////////
         $room = new Room();
         $room->setId($id_room);

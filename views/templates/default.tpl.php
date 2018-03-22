@@ -36,9 +36,9 @@
                 <?php echo '<li class="active"><a href="'.DIRNAME.'index" title="" active>ACCUEIL</a></li>'; ?>
                 <li class="unactive" id="mission"><a id="mission-select" href="#" title="">MISSION</a>
                     <ul>        
-                        <?php echo '<li><a href="'.DIRNAME.'escaperoom" title="">Escape the Library</a></li>'; ?>
-                        <?php echo '<li><hr><a href="'.DIRNAME.'escaperoom" title="">Escape the Lab</a></li>'; ?>
-                        <?php echo '<li><hr><a href="'.DIRNAME.'escaperoom" title="">Escape the School</a></li>'; ?>                        
+                        <?php echo '<li><a href="'.DIRNAME.'escaperoom/index/1" title="">Escape the Library</a></li>'; ?>
+                        <?php echo '<li><hr><a href="'.DIRNAME.'escaperoom/index/2" title="">Escape the Lab</a></li>'; ?>
+                        <?php echo '<li><hr><a href="'.DIRNAME.'escaperoom/index/3" title="">Escape the School</a></li>'; ?>                        
                     </ul>
                 </li>
                 <?php echo '<li class="unactive reserver"><a href="'.DIRNAME.'resa" title="">RESERVER</a></li>'; ?>

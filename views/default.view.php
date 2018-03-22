@@ -2,9 +2,9 @@
         <div class="container-home row">
             <div class="page-title col-md-12 col-sm-12 col-xs-12"><p>Play with my CMS</p></div>
             <section class="carrousel">
-                <img src="img/carrousel/image1.jpg" alt="image 1 du carrousel" id="image1">
-                <img src="img/carrousel/image2.jpg" alt="image 2 du carrousel" id="image2">
-                <img src="img/carrousel/image3.jpg" alt="image 3 du carrousel" id="image3">
+                <?php for($i=0; $i<count($donnees['carrousel']);$i++) :?>
+                <img src="<?php echo $donnees['carrousel'][$i]; ?>" alt="image <?php echo $i; ?> du carrousel" id="image<?php echo $i; ?>">
+                <?php endfor; ?>
             </section>
 
             <section class="introduction">
@@ -20,21 +20,21 @@
                     <section class="col-lg-2 col-md-2 col-sm-2 col-xs-2 room">
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
-                            <img src="img/escapes/library.jpg" alt="room preview">
+                            <img src="<?php echo $donnees['picture_room_1']; ?>" alt="room preview">
                             <a href=<?php echo DIRNAME."escaperoom/index/".$donnees['id_room_1'];?>><div class="room-title"><?php echo $donnees['name_room_1']; ?></div></a>
                         </article>
                     </section>
                     <section class="col-lg-2 col-md-2 col-sm-2 col-xs-2 room">
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
-                            <img src="img/escapes/labo.jpg" alt="room preview">
+                            <img src="<?php echo $donnees['picture_room_2']; ?>" alt="room preview">
                             <a href=<?php echo DIRNAME."escaperoom/index/".$donnees['id_room_2'];?>><div class="room-title"><?php echo $donnees['name_room_2'];?></div></a>
                         </article>
                     </section>
                     <section class="col-lg-2 col-md-2 col-sm-2 col-xs-2 room">
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
-                            <img src="img/escapes/school.jpg" alt="room preview">
+                            <img src="<?php echo $donnees['picture_room_3']; ?>" alt="room preview">
                             <a href=<?php echo DIRNAME."escaperoom/index/".$donnees['id_room_3'];?>><div class="room-title"><?php echo $donnees['name_room_3'];?></div></a>
                         </article>
                     </section>
