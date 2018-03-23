@@ -5,18 +5,17 @@ class User extends BaseSql{
   protected $firstname;
   protected $lastname;
   protected $years_old;
+  protected $url_picture = null;
   protected $email;
   protected $phone;
   protected $address;
-  protected $address_2;
+  protected $address_2 = null;
   protected $zipcode;
   protected $city;
-  protected $password;
-  protected $token = "11111111111111111111111111111111";
+  protected $password = "default";
+  protected $token = 111111;
 
   protected $status = 2; //Définit l'état de l'utilisateur, 1 banni, 2 toujours ok, etc etc
-  protected $date_inserted;
-  protected $date_updated;
 
   public function __construct() {
     parent::__construct();
@@ -38,6 +37,10 @@ class User extends BaseSql{
     $this->years_old=$years_old;
   }
 
+  public function setPicture($url_picture) {
+    $this->url_picture=$url_picture;
+  }
+
   public function setEmail($email) {
     $this->email=strtolower(trim($email));
   }
@@ -50,7 +53,7 @@ class User extends BaseSql{
     $this->address=strtolower(trim($address));
   }
 
-  public function setAdress2($address_2) {
+  public function setAddress2($address_2) {
     $this->address_2=strtolower(trim($address_2));
   }
 
