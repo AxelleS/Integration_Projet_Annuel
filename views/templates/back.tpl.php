@@ -25,8 +25,8 @@
     </script>
   </head>
   <body class="container-fluid">
-    <main class="row">
-      <section class="dashboard-fullheight background-nav navbar-fixed-left col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <header class="row">
+      <section id="sidebar" class="dashboard-fullheight background-nav navbar-fixed-left col-lg-3 col-md-3 col-sm-3 col-xs-3">
         <figure class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <img class="logo-dashboard col-lg-2 offset-lg-4 col-md-2 offset-md-4 col-sm-2 offset-sm-4 col-xs-2 offset-xs-4" src="img/logo.jpg" alt="Logo Play with My CMS">
         </figure>
@@ -86,7 +86,7 @@
           <?php echo '</a>'; ?>
         </div>
       </section>
-      <section class="col-lg-9 col-md-9 col-sm-9 col-xs-9 background-container"><?php include "views/".$this->v; ?></section></main>
+      <section class="col-lg-9 col-md-9 col-sm-9 col-xs-12 background-container"><?php include "views/".$this->v; ?></section></header>
       
       
     <script src="script/chartAnalytics.js"></script>

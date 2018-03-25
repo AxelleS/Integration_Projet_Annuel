@@ -246,6 +246,10 @@
         margin-left: calc(100%/3);  
     }
 
+    .offset-md-5 {
+        margin-left: calc((100%/12) *5);  
+    }
+
     .offset-md-6 {
         margin-left: 50%;
     }
