@@ -67,3 +67,16 @@
 .href-style {
 	text-decoration: none;
 }
+
+.burgerResponsiveSidebar {
+	display: none;
+	border-radius: 10px;
+	fill: $icon-fill;
+	margin-top: 30px;
+	cursor: pointer;
+}
+
+.overlay {
+	display: none;
+	background: rgba(00,0,0, 0.5);
+}

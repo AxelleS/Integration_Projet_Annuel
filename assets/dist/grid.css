@@ -94,6 +94,10 @@
         margin-left: calc(100% / 3);    
     }
 
+    .offset-xs-5 {
+        margin-left: calc((100%/12) *5);   
+    }
+
     .offset-xs-6 {
         margin-left: 50%;
     }
@@ -168,6 +172,10 @@
 
     .offset-sm-4 {
         margin-left: calc(100%/3);  
+    }
+
+    .offset-sm-5 {
+        margin-left: calc((100%/12) *5);   
     }
 
     .offset-sm-6 {

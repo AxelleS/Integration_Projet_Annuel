@@ -12,13 +12,28 @@
     <link rel="icon" type="image/ico" href="img/favicon.ico" />
     <script>
       $(document).ready(function(){
-        $('.header-menu-icon svg:nth-child(1)').click(function(){
-            if($('nav').css('display') == 'block'){
-                $('nav').css('display','none');
-                $('.header-menu-icon svg:nth-child(1)').css('margin-left','10px');
+        $('.burgerResponsive, .burgerResponsiveSidebar, .overlay').click(function(){
+            if($('#sidebar').css('display') == 'block'){
+                $('.burgerResponsiveSidebar').css('display','none');
+                $('#sidebar').css('display','none');
+                $('.logo-dashboard').fadeOut(1000).css('display','block');
+                $('.background-container').css('background','');
+                $('.background-content').css('background','#FFFFFF');
+                $('.content-scrollable').css('overflow-y','auto');
+                $('#sidebar').fadeOut(1000).css('display','none');
+                $('#sidebar').css('position','');
+                $('#sidebar').css('width','');
+                // $('.burgerResponsiveSidebar').css('display','none');
+                // $('.background-container').css('display','block');
             } else{
-                $('nav').css('display','block');
-                $('.header-menu-icon svg:nth-child(1)').css('margin-left','40%');
+                $('.burgerResponsiveSidebar').fadeIn(1000).css('display','block');
+                $('.logo-dashboard').css('display','none');
+                $('.background-container, .background-content').fadeIn(1000).css('background','rgba(0, 0, 0, 0.6)');
+                $('.content-scrollable').css('overflow-y','hidden');
+                $('#sidebar').fadeIn(1000);
+                $('#sidebar').css('position','fixed');
+                $('#sidebar').css('width','50%');
+                // $('.background-container').css('display','none');
             }
         });
       });
@@ -26,9 +41,14 @@
   </head>
   <body class="container-fluid">
     <header class="row">
-      <section id="sidebar" class="dashboard-fullheight background-nav navbar-fixed-left col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <div class="overlay"></div>
+      <section id="sidebar" class="dashboard-fullheight background-nav navbar-fixed-left col-lg-3 col-md-3 col-sm-3 col-xs-6">
         <figure class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <img class="logo-dashboard col-lg-2 offset-lg-4 col-md-2 offset-md-4 col-sm-2 offset-sm-4 col-xs-2 offset-xs-4" src="img/logo.jpg" alt="Logo Play with My CMS">
+          <svg class="burgerResponsiveSidebar col-lg-1 offset-lg-5 col-md-1 offset-md-5 col-sm-1 offset-sm-5 col-xs-1 offset-xs-5" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+          <path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path>
+          </svg>
+
         </figure>
         <div class="">
           <?php echo '<a href="'.DIRNAME.'dashboardadmin" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">"'; ?>

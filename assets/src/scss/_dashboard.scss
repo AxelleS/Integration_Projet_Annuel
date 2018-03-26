@@ -66,10 +66,13 @@
 	padding-left: 10px;
 	border-bottom: 1px solid $black;
 	color: $dashboard-text-color;
+	height: 5%;
+	max-height: 5%;
 }
 
 .activities-container {
-	max-height: 72vh;
+	max-height: 93%;
+	height: 93%;
 }
 
 .counter-position {
@@ -150,6 +153,7 @@
 @media screen and (max-width: 768px) {
 	.burgerResponsive {
 		display: block;
+		cursor: pointer;
 	}
 
 	#sidebar {
