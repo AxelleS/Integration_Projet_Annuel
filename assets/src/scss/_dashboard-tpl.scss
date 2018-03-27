@@ -24,7 +24,8 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border-radius: 20px;
-	height: 100px;
+	height: 20%;
+	width: 100px;
 }
 
 .icon-size {
@@ -65,4 +66,17 @@
 
 .href-style {
 	text-decoration: none;
+}
+
+.burgerResponsiveSidebar {
+	display: none;
+	border-radius: 10px;
+	fill: $icon-fill;
+	margin-top: 30px;
+	cursor: pointer;
+}
+
+.overlay {
+	display: none;
+	background: rgba(00,0,0, 0.5);
 }

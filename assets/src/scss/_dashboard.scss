@@ -66,10 +66,13 @@
 	padding-left: 10px;
 	border-bottom: 1px solid $black;
 	color: $dashboard-text-color;
+	height: 5%;
+	max-height: 5%;
 }
 
 .activities-container {
-	max-height: 75vh;
+	max-height: 93%;
+	height: 93%;
 }
 
 .counter-position {
@@ -110,6 +113,7 @@
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
+	padding-bottom: 20px;
 
 }
 
@@ -141,6 +145,25 @@
 .icon-hover svg:hover {
 	fill: $black;
 }
+
+.burgerResponsive {
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+	.burgerResponsive {
+		display: block;
+		cursor: pointer;
+	}
+
+	#sidebar {
+	display: none;
+}
+
+}
+
+
+
 // .text-color {
 //     color: #4F4F4F;
 // }
