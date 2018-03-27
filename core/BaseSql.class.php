@@ -31,7 +31,11 @@ class BaseSql{
         $this->setColumns();
         //permet d'aller chercher la valeur du champs où l'on va faire la recherche
         $valeur_recherche = $this->columns[$champ_recherche];
-        $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE ".$valeur_recherche);
+        if(is_null($valeur_recherche)){
+            $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL");
+        } else{
+            $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE ".$valeur_recherche);
+        }
         return $response;
     }
 
