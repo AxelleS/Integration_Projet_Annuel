@@ -1,1 +1,0 @@
-<h1>Paramètres</h1>
