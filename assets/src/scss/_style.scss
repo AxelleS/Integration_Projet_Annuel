@@ -137,12 +137,15 @@ main{
 
 @media screen and (max-width : 980px) {
     .introduction h1{
-        font-size: 100%;
+        font-size: 50px;
     }
 
     .introduction p{
-        width:90%;
-        font-size:12px;
+        width: 90%;
+        font-size: 30px;
+        padding-left: 130px;
+        text-align: justify;
+        padding-right: 130px;
     }
 }
 
@@ -277,10 +280,8 @@ main{
     .map article:last-child{
         flex-basis: 100%;
         justify-content: center;
-        margin: 0;
-        margin-left: 4%;
-        margin-top: 2%;
-        margin-bottom: 2%;
+        padding-left: 130px;
+        margin: 6% 0px 10%;
     }
 
     .map article:last-child h2{
@@ -294,6 +295,8 @@ main{
 
     .map{
         height: 100%;
+        padding-left: 130px;
+        padding-right: 130px;
     }
 
 }
