@@ -3,8 +3,10 @@
         <article class="col-lg-4 faq-picture ">
             <img src="img//faq.jpg" alt="Illustration picture of FAQ">
         </article>
-        <article class="col-lg-6 offset-lg-1 faq-question">
-            <h1>FAQ</h1>
+        <article class="col-lg-6 offset-lg-1 faq-question ">
+            <article class="title-faq">
+                <h1>FAQ</h1>
+            </article>
             <h4>1. Cognitis starent adpetitus mihi extremas ?</h4>
             <p>Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</p>
             <h4>2. Cognitis starent adpetitus mihi extremas ?</h4>
