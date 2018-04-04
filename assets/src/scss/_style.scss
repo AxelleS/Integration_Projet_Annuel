@@ -837,6 +837,14 @@ main{
 
 /* FAQ */
 
+@media screen and (max-width : 980px) {
+    .title-faq{
+           margin-top: -8.5%;
+    margin-bottom: 2%;
+    margin-left: 250px;
+    margin-right: 250px; }}
+
+
 .faq{
     display: flex;
     flex-direction: row;
@@ -888,7 +896,14 @@ main{
         text-align: justify;
         margin-left: 5%;
         margin-right: 5%;
-        font-size: 25px;
+        font-size: 35px;
+    }
+
+    .faq-question p{
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 30px;
     }
 }
 
