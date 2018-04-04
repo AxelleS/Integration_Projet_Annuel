@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 class OrganizationController {
 
 	public function indexAction($params)
     {
-        $v = new View('organization');
+        $v = new View('organization', 'back');
     }
 
     public function editAction($params){}
