@@ -41,7 +41,7 @@
                         <?php echo '<li><hr><a href="'.DIRNAME.'escaperoom/index/3" title="">Escape the School</a></li>'; ?>                        
                     </ul>
                 </li>
-                <?php echo '<li class="unactive reserver"><a href="'.DIRNAME.'resa" title="">RESERVER</a></li>'; ?>
+                <?php echo '<li class="unactive reserver"><a href="'.DIRNAME.'reservation" title="">RESERVER</a></li>'; ?>
                 <?php echo '<li class="unactive"><a href="'.DIRNAME.'faq" title="">FAQ</a></li>'; ?>
                 <?php echo '<li class="unactive"><a href="'.DIRNAME.'contact" title="">CONTACT</a></li>'; ?>
                 <?php echo '<li class="unactive"><a href="'.DIRNAME.'signin" title="">CONNEXION</a></li>'; ?>
