@@ -1,7 +1,9 @@
 <main>
     <section class="row signin">
         <article class="col-lg-3 col-sm-3 signin-form">
-            <h1>Connexion</h1>
+            <article class="title-connexion">
+                <h1>Connexion</h1>                
+            </article>
             <form action="" method="post" id="signin-form" name="signin-form">
                 <fieldset>
                     <legend>Identifiants</legend>
@@ -27,7 +29,7 @@
                     </section>
                 </fieldset>
             </form>
-            <section class="row">
+            <section class="row btn-signin">
                 <article class="col-lg-4 col-sm-6 col-xs-6 col-md-6">
                     <input class="btn-default" type="submit" form="signin-form" value="Envoyer">
                 </article>
