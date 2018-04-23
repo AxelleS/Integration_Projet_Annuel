@@ -26,16 +26,27 @@ class BaseSql{
         $this->columns = array_diff_key(get_object_vars($this),$columnsExcluded);
     }
 
+    public function majToken(){
+        $this->setColumns();
+        echo 'mon token : '.$this->columns['token'];echo '<br>';
+        $this->pdo->exec("UPDATE user SET token = '".$this->columns['token']."' WHERE id LIKE ".$this->columns['id']);
+    }
+
     //function select avec passage en paramètre du champs sue lequel va s'effectuer la recherche
-    public function select($champ_recherche){
+    public function select($champ_recherche = null){
         $this->setColumns();
         //permet d'aller chercher la valeur du champs où l'on va faire la recherche
         $valeur_recherche = $this->columns[$champ_recherche];
-        if(is_null($valeur_recherche)){
-            $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL");
-        } else{
-            $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE ".$valeur_recherche);
+        if(is_null($champ_recherche)){
+            $response = $this->pdo->query("SELECT * FROM ".$this->table);
+        } else {
+            if(is_null($valeur_recherche)){
+                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL");
+            } else{
+                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'");
+            }
         }
+        // echo "SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'";
         return $response;
     }
 
@@ -64,13 +75,16 @@ class BaseSql{
             implode(',:',array_keys($this->columns))
             .")");
 
-            print_r("INSERT INTO ".$this->table." (".
+            echo "INSERT INTO ".$this->table." (".
             implode(',',array_keys($this->columns))
             .") VALUES (:".
             implode(',:',array_keys($this->columns))
-            .")");
+            .")";
+            echo "<br>";
 
-        $query->execute($this->columns);
+            print_r($this->columns);
+
+            $query->execute($this->columns);
         }
     }
 }
