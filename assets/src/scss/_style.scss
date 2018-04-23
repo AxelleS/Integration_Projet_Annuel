@@ -839,7 +839,7 @@ main{
 
 @media screen and (max-width : 980px) {
     .title-faq{
-           margin-top: -8.5%;
+    margin-top: -8.5%;
     margin-bottom: 2%;
     margin-left: 250px;
     margin-right: 250px; }}
@@ -1019,7 +1019,14 @@ main{
 
 /* SIGNIN */
 
+.title-connexion{
+
+}
+
 .signin{
+   display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-top: 100px;
     margin-bottom: 60px;
 }
@@ -1075,6 +1082,12 @@ main{
     color: black;
 }
 
+.btn-signin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 @media screen and (max-width : 980px) {
     
     section.signin {
@@ -1118,12 +1131,18 @@ main{
         margin-top: 10%;
         font-size: 170%;
         height: 70px;
-        width: 130%;
+        width: 200%;
         text-align: center;
     }
 
-    section .signup-via-signin {
+    section.row.signup-via-signin {
         font-size: 250%;
+    }
+
+    .btn-signin{
+        display: flex; 
+        flex-direction: row;
+        justify-content: end;
     }
 }
 
