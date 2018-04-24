@@ -4,6 +4,12 @@ class ReservationController
 {
     public function indexAction($params)
     {
-        $v = new View('reservation');
+         //Appelle la vue
+         if ($_SESSION['is_connected']) {
+            $v = new View('reservation','connected');
+        } else {
+            $v = new View('reservation');
+        }
+
     }
 }

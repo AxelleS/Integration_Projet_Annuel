@@ -10,7 +10,13 @@ class CustomerinfoController
         $user->setId($id_user);
         $response = $user->select('id');
         $donnees = $response->fetch();
-        $v = new View('customerinfo','connected');
+         //Appelle la vue
+        if ($_SESSION['is_connected']) {
+            $v = new View('customerinfo','connected');
+        } else {
+            $v = new View('customerinfo');
+        }
+
         $v->assign("donnees",$donnees);
     }
 

@@ -1,10 +1,9 @@
 <main>
     <section class="row signin">
         <article class="col-lg-3 col-sm-3 signin-form">
-            <article class="title-connexion">
-                <h1>Connexion</h1>                
-            </article>
-            <form action="" method="post" id="signin-form" name="signin-form">
+            <h1>Connexion</h1>
+            <p><?php if(isset($donnees['error'])){echo $donnees['error']; } ?></p>
+            <form action="<?php echo DIRNAME.Route::getSlug('signin','connect');?>" method="post" id="signin-form" name="signin-form">
                 <fieldset>
                     <legend>Identifiants</legend>
                     <section class="row title">
@@ -14,7 +13,7 @@
                     </section>
                     <section class="row input">
                         <article class="col-lg-12 col-sm-12">
-                            <input type="text" name="input-email" id="input-email">
+                            <input type="text" name="input-email" id="input-email" value="<?php if(isset($donnees['email'])){echo $donnees['email']; } ?>">
                         </article>
                     </section>
                     <section class="row title">
@@ -24,7 +23,7 @@
                     </section>
                     <section class="row input">
                         <article class="col-lg-12 col-sm-12">
-                            <input type="text" name="input-phone" id="input-phone">
+                            <input type="password" name="input-password" id="input-password">
                         </article>
                     </section>
                 </fieldset>
@@ -38,7 +37,7 @@
     </section>
     <section class="row signup-via-signin">
         <article class="col-lg-12 col-sm-12">
-            <?php echo '<a href="' . DIRNAME . 'signup">Pas de compte ? Cliquez pour vous inscrire</a>'; ?>
+            <?php echo '<a href="' . DIRNAME.Route::getSlug('signup','index') . '">Pas de compte ? Cliquez pour vous inscrire</a>'; ?>
         </article>
     </section>
 </main>

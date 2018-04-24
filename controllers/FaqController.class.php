@@ -4,6 +4,11 @@ class FaqController
 {
     public function indexAction($params)
     {
-        $v = new View('faq');
+        //Appelle la vue
+        if ($_SESSION['is_connected']) {
+            $v = new View('faq','connected');
+        } else {
+            $v = new View('faq');
+        }
     }
 }

@@ -4,9 +4,8 @@ class EscaperoomController
 {
     public function indexAction($params)
     {
-        //A rendre dynamique 
         $id_room = $params['URL'][0];
-        ////////
+
         $room = new Room();
         $room->setId($id_room);
         $response_room = $room->select('id');
@@ -59,8 +58,14 @@ class EscaperoomController
         }
 
         $donnees_room['opinions'] = $opinions;
-       
-        $v = new View('escaperoom');
+
+         //Appelle la vue
+         if ($_SESSION['is_connected']) {
+            $v = new View('escaperoom','connected');
+        } else {
+            $v = new View('escaperoom');
+        }
+
         $v->assign("donnees",$donnees_room);
     }
 }

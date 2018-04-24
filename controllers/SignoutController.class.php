@@ -3,10 +3,10 @@
 class SignoutController {
 
 	public function indexAction($params){
-		$v = new View('signout', 'back');
+		$_SESSION['token'] = "";
+		session_destroy();
+		header("Location: ".DIRNAME.Route::getSlug('index','index'));
 	}
-
-
 }
 
  ?>

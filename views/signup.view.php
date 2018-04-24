@@ -2,7 +2,8 @@
     <section class="row signup">
         <article class="col-lg-12 signup-form">
             <h1>Inscription</h1>
-            <form action="" method="post" id="signup-form" name="signup-form" class="row">
+            <p><?php if(isset($donnees['error'])){ echo $donnees['error']; } ?></p>
+            <form action="<?php echo DIRNAME.Route::getSlug('signup','save'); ?>" method="post" id="signup-form" name="signup-form" class="row">
                 <section class="row col-lg-12">
                     <section class="col-lg-4 offset-lg-1">
                         <fieldset>
@@ -10,17 +11,17 @@
                             <section class="row">
                                 <article class="col-lg-5">
                                     <label for="input-lastname">Votre nom :</label>
-                                    <input type="text" name="input-lastname" id="input-lastname">
+                                    <input type="text" name="input-lastname" id="input-lastname" value="<?php if(isset($donnees['lastname'])){ echo $donnees['lastname']; } ?>">
                                 </article>
                                 <article class="col-lg-5 offset-lg-1">
                                     <label for="input-firstname">Votre prénom :</label>
-                                    <input type="text" name="input-firstname" id="input-firstname">
+                                    <input type="text" name="input-firstname" id="input-firstname" value="<?php if(isset($donnees['firstname'])){ echo $donnees['firstname']; } ?>">
                                 </article>
                             </section>
                             <section class="row">
                                 <article class="col-lg-4">
                                     <label for="input-years">Votre âge :</label>
-                                    <input type="text" name="input-years" id="input-years">
+                                    <input type="text" name="input-years" id="input-years" value="<?php if(isset($donnees['years'])){ echo $donnees['years']; } ?>">
                                 </article>
                             </section>
                         </fieldset>
@@ -32,13 +33,13 @@
                                 <section class="row">
                                     <article class="col-lg-12">
                                         <label for="input-password">Mot de passe :</label>
-                                        <input type="text" name="input-password" id="input-password">
+                                        <input type="password" name="input-password" id="input-password">
                                     </article>
                                 </section>
                                 <section class="row">
                                     <article class="col-lg-12">
                                         <label for="input-password-validate">Confirmation mot de passe :</label>
-                                        <input type="text" name="input-password-validate" id="input-password-validate">
+                                        <input type="password" name="input-password-validate" id="input-password-validate">
                                     </article>
                                 </section>
                             </section>
@@ -56,11 +57,11 @@
                             <section class="row">
                                 <article class="col-lg-5">
                                     <label for="input-email">Votre email : </label>
-                                    <input type="password" name="input-email" id="input-email">
+                                    <input type="text" name="input-email" id="input-email" value="<?php if(isset($donnees['email'])){ echo $donnees['email']; } ?>">
                                 </article>
                                 <article class="col-lg-5 offset-lg-1">
                                     <label for="input-phone">Votre Téléphone :</label>
-                                    <input type="password" name="input-phone" id="input-phone">
+                                    <input type="text" name="input-phone" id="input-phone" value="<?php if(isset($donnees['phone'])){ echo $donnees['phone']; } ?>">
                                 </article>
                             </section>
                         </fieldset>
@@ -73,23 +74,23 @@
                             <section class="row col-lg-">
                                 <article class="row col-lg-12">
                                     <label for="input-place">Adresse : </label>
-                                    <input type="text" name="input-address" id="input-address">
+                                    <input type="text" name="input-address" id="input-address" value="<?php if(isset($donnees['address'])){ echo $donnees['address']; } ?>">
                                 </article>
                             </section>
                             <section>
                                 <article class="row col-lg-7">
                                     <label for="input-firstname">Complément :</label>
-                                    <input type="text" name="input-complete" id="input-complete">
+                                    <input type="text" name="input-complete" id="input-complete" value="<?php if(isset($donnees['complete'])){ echo $donnees['complete']; } ?>">
                                 </article>
                             </section>
                             <section class="row">
                                 <article class="col-lg-3" >
                                     <label for="input-firstname">Code postal :</label>
-                                    <input type="text" name="input-zipcode" id="input-zipcode">
+                                    <input type="text" name="input-zipcode" id="input-zipcode" value="<?php if(isset($donnees['zipcode'])){ echo $donnees['zipcode']; } ?>">
                                 </article>
                                 <article class="col-lg-5 offset-lg-2">
                                     <label for="input-firstname">Ville :</label>
-                                    <input type="text" name="input-city" id="input-city">
+                                    <input type="text" name="input-city" id="input-city" value="<?php if(isset($donnees['city'])){ echo $donnees['city']; } ?>">
                                 </article>
                             </section>
                         </fieldset>
