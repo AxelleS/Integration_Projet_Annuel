@@ -20,13 +20,23 @@ $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
 //$uri -> controller/action
 $uriExploded = explode(DS, $uri);
 
-//condition ternaire pour affecter la chaine "index"
-$c = (empty($uriExploded[0])) ? "index" : $uriExploded[0];
-$a = (empty($uriExploded[1])) ? "index" : $uriExploded[1];
+$maroute = Route::getRoute($uriExploded[0]);
+
+$c = $maroute['controller'];
+$a = $maroute['action'];
+$_SESSION['is_connected'] = false;
+
+if ($maroute['security'] == true) {
+    if (Security::isConnected() == false) {
+        $c = 'signin';
+        $a = 'index';
+    } else {
+        $_SESSION['is_connected'] = true;
+    }
+}
 
 //Supprime les deux premières case du tableau
 unset($uriExploded[0]);
-unset($uriExploded[1]);
 
 // Controller : NameController
 $c = ucfirst(strtolower($c)) . "Controller";
