@@ -57,7 +57,12 @@ class IndexController
             }
         }
 
-        $v = new View();
+        //Appelle la vue
+        if ($_SESSION['is_connected']) {
+            $v = new View('index','connected');
+        } else {
+            $v = new View('index');
+        }
         $v->assign("donnees",$donnees_homepage);
 
     }

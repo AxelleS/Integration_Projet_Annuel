@@ -31,8 +31,13 @@ class CustomeropinionController
         $donnees_timeslot['name_room'] = $donnees_room['name'];
         unset($donnees_timeslot['id_room']);
 
-        // //Appelle la vue
-        $v = new View('customeropinion','connected');
+        //Appelle la vue
+        if ($_SESSION['is_connected']) {
+            $v = new View('customeropinion','connected');
+        } else {
+            $v = new View('customeropinion');
+        }
+
         //Passe en paramètre le tableau
         $v->assign("donnees",$donnees_timeslot);
     }
@@ -69,7 +74,7 @@ class CustomeropinionController
 
         $time_slot->save();
 
-        header("Location: ".DIRNAME."customerresa");
+        header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
     }
 
 }
