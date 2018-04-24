@@ -52,7 +52,7 @@
         </article>
         <article class="slots">
             <select class="creneaux"></select>
-            <?php echo '<input type="submit" value="Valider" href="' . DIRNAME . 'resanext">'; ?>
+            <?php echo '<input type="submit" value="Valider" href="' . DIRNAME.Route::getSlug('reservationnext','index') . '">'; ?>
         </article>
     </section>
     <section class="booking-legend row">

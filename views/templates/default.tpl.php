@@ -30,21 +30,21 @@
 <body>
     <header>
         <div class="burger-menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg></div>
-        <div class="logo"><?php echo '<a href="'.DIRNAME.'index"><img src="img/logo.jpg" alt=""></a>'; ?></div>
+        <div class="logo"><?php echo '<a href="'.DIRNAME.Route::getSlug('index','index').'"><img src="img/logo.jpg" alt=""></a>'; ?></div>
         <nav>
             <ul>
-                <?php echo '<li class="active"><a href="'.DIRNAME.'index" title="" active>ACCUEIL</a></li>'; ?>
+                <?php echo '<li class="active"><a href="'.DIRNAME.Route::getSlug('index','index').'" title="" active>ACCUEIL</a></li>'; ?>
                 <li class="unactive" id="mission"><a id="mission-select" href="#" title="">MISSION</a>
                     <ul>        
-                        <?php echo '<li><a href="'.DIRNAME.'escaperoom/index/1" title="">Escape the Library</a></li>'; ?>
-                        <?php echo '<li><hr><a href="'.DIRNAME.'escaperoom/index/2" title="">Escape the Lab</a></li>'; ?>
-                        <?php echo '<li><hr><a href="'.DIRNAME.'escaperoom/index/3" title="">Escape the School</a></li>'; ?>                        
+                        <?php echo '<li><a href="'.DIRNAME.Route::getSlug('escaperoom','index').'/1" title="">Escape the Library</a></li>'; ?>
+                        <?php echo '<li><hr><a href="'.DIRNAME.Route::getSlug('escaperoom','index').'/2" title="">Escape the Lab</a></li>'; ?>
+                        <?php echo '<li><hr><a href="'.DIRNAME.Route::getSlug('escaperoom','index').'/3" title="">Escape the School</a></li>'; ?>                        
                     </ul>
                 </li>
-                <?php echo '<li class="unactive reserver"><a href="'.DIRNAME.'reservation" title="">RESERVER</a></li>'; ?>
-                <?php echo '<li class="unactive"><a href="'.DIRNAME.'faq" title="">FAQ</a></li>'; ?>
-                <?php echo '<li class="unactive"><a href="'.DIRNAME.'contact" title="">CONTACT</a></li>'; ?>
-                <?php echo '<li class="unactive"><a href="'.DIRNAME.'signin" title="">CONNEXION</a></li>'; ?>
+                <?php echo '<li class="unactive reserver"><a href="'.DIRNAME.Route::getSlug('reservation','index').'" title="">RESERVER</a></li>'; ?>
+                <?php echo '<li class="unactive"><a href="'.DIRNAME.Route::getSlug('faq','index').'" title="">FAQ</a></li>'; ?>
+                <?php echo '<li class="unactive"><a href="'.DIRNAME.Route::getSlug('contact','index').'" title="">CONTACT</a></li>'; ?>
+                <?php echo '<li class="unactive"><a href="'.DIRNAME.Route::getSlug('signin','index').'" title="">CONNEXION</a></li>'; ?>
             </ul>
         </nav>
     </header>
