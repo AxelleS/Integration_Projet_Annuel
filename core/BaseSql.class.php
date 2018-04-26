@@ -36,10 +36,11 @@ class BaseSql{
     public function select($champ_recherche = null){
         $this->setColumns();
         //permet d'aller chercher la valeur du champs où l'on va faire la recherche
-        $valeur_recherche = $this->columns[$champ_recherche];
+
         if(is_null($champ_recherche)){
             $response = $this->pdo->query("SELECT * FROM ".$this->table);
         } else {
+            $valeur_recherche = $this->columns[$champ_recherche];
             if(is_null($valeur_recherche)){
                 $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL");
             } else{
