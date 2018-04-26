@@ -4,6 +4,7 @@ class ContactController
 {
     public function indexAction($params)
     {
+        echo "toota";
         //Appelle la vue
         if ($_SESSION['is_connected']) {
             $v = new View('contact','connected');
