@@ -87,8 +87,11 @@
             $('#datechoose').val(convert_date);
 
             //Affiche le select
+            $('article.slots-text').css('display') == 'none' ? $('.slots-text').css('display','block') : null;
             $('.creneaux').css('display') == 'none' ? $('.creneaux').css('display','block') : null;
             $('.slots input').css('display') == 'none' ? $('.slots input').css('display','block') : null;
+
+
         });
 
         $('.vide input').click(function(){
@@ -124,6 +127,7 @@
             $('#datechoose').val(convert_date);
 
             //Affiche le select
+            $('article.slots-text').css('display') == 'none' ? $('.slots-text').css('display','block') : null;
             $('.creneaux').css('display') == 'none' ? $('.creneaux').css('display','block') : null;
             $('.slots input').css('display') == 'none' ? $('.slots input').css('display','block') : null;
         });

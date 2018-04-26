@@ -566,7 +566,6 @@ main{
 
 .calendar{
     margin-top:3%;
-    margin-left: 15%;
 
 }
 
@@ -689,8 +688,6 @@ main{
 .slots-text{
     display: none;
     margin-top: 15%;
-    text-align: right;
-    margin-right: 10px;
 }
 
 .slots{
@@ -710,13 +707,13 @@ main{
 }
 
 .selection-resa{
-    margin-top: 15%;
-    margin-left: 30px;
+    margin-top: 10%;
 }
 
 @media screen and (max-width : 980px) {
     .slots-text{
         flex-basis: 25%;
+        margin-top: 0;
     }
 
     .slots-text p{
@@ -724,18 +721,22 @@ main{
     }
 
     .slots{
-        flex-basis: 27%;
+        flex-basis: 60%;
+        margin-top: 0;
     }
 
     .select-room{
-        margin-right: 15px;
+        margin-top: 0;
+        margin-right: 15%;
         height: 50px;
+        font-size: 30px;
     }
     .slots .creneaux{
         margin-right: 15px;
         display: none;
+        font-size: 30px;
         height: 50px;
-}
+    }
 
     .slots select{
         width: 70%;
@@ -744,13 +745,24 @@ main{
 
     .slots input{
         width: 65%;
-        font-size: 40px;
+        font-size: 30px;
         height: 50px;
     }
 
     .legend{
         display: none;
     }
+
+    .selection-resa{
+        margin-top: 0;
+        margin-left: 30px;
+        flex-basis:100%;
+    }
+
+    article.rooms {
+        margin-top: 0;
+    }
+
 }
 
 /* OPINION - ROOM */
@@ -1333,6 +1345,12 @@ main{
     .resa h1{
         font-size: 40px;
         width: 50%;
+    }
+
+    article.rooms-text {
+        margin-top: 0;
+        flex-basis:25%;
+        text-align: left;
     }
 
     article.rooms-text p{
