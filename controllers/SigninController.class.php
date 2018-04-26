@@ -8,7 +8,11 @@ class SigninController
         if ($_SESSION['is_connected']) {
             $v = new View('customerreservations','connected');
         } else {
+            $user = new User();
+
+            $config = $user->configFormUserConnect();
             $v = new View('signin');
+            $v->assign('config',$config);
         }
     }
 
@@ -42,14 +46,7 @@ class SigninController
             $user->majToken();
     
             $_SESSION['token'] = $token;
-            echo 'token save : '.$token;
             $_SESSION['email_user'] = $donnees_user['email'];
-
-            $user->setEmail($donnees_user['email']);
-            $response = $user->select('email');
-            $donnees_user2 = $response->fetch();
-            echo 'token bdd : '.$donnees_user2['token'];die;
-
     
             header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
 
