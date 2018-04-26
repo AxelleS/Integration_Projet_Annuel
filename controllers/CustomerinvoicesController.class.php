@@ -40,12 +40,7 @@ class CustomerinvoicesController
             $i++;
         }
         //Appelle la vue
-        if ($_SESSION['is_connected']) {
-            $v = new View('customerinvoices','connected');
-        } else {
-            $v = new View('customerinvoices');
-        }
-
+        $v = new View('customerinvoices','connected');
         //Passe en paramètre le tableau créé
         $v->assign("donnees",$array);
     }

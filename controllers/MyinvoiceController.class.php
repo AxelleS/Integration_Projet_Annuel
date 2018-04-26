@@ -1,6 +1,6 @@
 <?php
 
-class MafactureController
+class MyInvoiceController
 {
     public function indexAction($params)
     {

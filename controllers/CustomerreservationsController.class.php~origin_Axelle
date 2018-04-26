@@ -47,9 +47,14 @@ class CustomerreservationsController
             $i++;
         }
         //Appelle la vue
-        $v = new View('customerreservation');
+        if ($_SESSION['is_connected']) {
+            $v = new View('customerreservations','connected');
+        } else {
+            $v = new View('customerreservations');
+        }
         //Passe en paramètre le tableau créé
         $v->assign("donnees",$array);
+                
     }
 
     public function cancelAction($params)
