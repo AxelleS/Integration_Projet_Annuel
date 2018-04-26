@@ -566,7 +566,6 @@ main{
 
 .calendar{
     margin-top:3%;
-    margin-left: 15%;
 
 }
 
@@ -687,9 +686,8 @@ main{
 }
 
 .slots-text{
+    display: none;
     margin-top: 15%;
-    text-align: right;
-    margin-right: 10px;
 }
 
 .slots{
@@ -708,33 +706,37 @@ main{
     height: 20px;
 }
 
+.selection-resa{
+    margin-top: 10%;
+}
+
 @media screen and (max-width : 980px) {
     .slots-text{
-        margin:0;
-        flex-basis: 40%;
-        margin-top: 3%; 
-        margin-right: 1%; 
-        justify-content: center;
-        margin-bottom: 4%;
+        flex-basis: 25%;
+        margin-top: 0;
     }
 
     .slots-text p{
-        font-size: 10px;  
+        font-size: 30px;  
     }
 
     .slots{
-        margin:0;
-        flex-basis: 50%;
-        margin-top: 3%;
-        justify-content: center;
-        margin-bottom: 4%;
+        flex-basis: 60%;
+        margin-top: 0;
     }
 
+    .select-room{
+        margin-top: 0;
+        margin-right: 15%;
+        height: 50px;
+        font-size: 30px;
+    }
     .slots .creneaux{
-    margin-right: 15px;
-    display: none;
-    height: 50px;
-}
+        margin-right: 15px;
+        display: none;
+        font-size: 30px;
+        height: 50px;
+    }
 
     .slots select{
         width: 70%;
@@ -742,14 +744,25 @@ main{
     }
 
     .slots input{
-        width: 30%;
-        font-size: 40px;
+        width: 65%;
+        font-size: 30px;
         height: 50px;
     }
 
     .legend{
         display: none;
     }
+
+    .selection-resa{
+        margin-top: 0;
+        margin-left: 30px;
+        flex-basis:100%;
+    }
+
+    article.rooms {
+        margin-top: 0;
+    }
+
 }
 
 /* OPINION - ROOM */
@@ -1004,6 +1017,13 @@ main{
 
     .contact-form div article input{
         height: 45px;
+        font-size: 30px;
+    }
+
+    .contact-form textarea{
+        width: 100%;
+        max-height: 200px;
+        font-size: 30px;
     }
 
     .contact-form div:last-child article{
@@ -1229,7 +1249,8 @@ main{
     margin-bottom: 10%;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    height: fit-content; }
   
   .rooms input {
     width: 100%;
@@ -1304,6 +1325,38 @@ main{
     display:flex;
     justify-content: flex-end;
   }
+
+
+@media screen and (max-width : 980px) {
+
+    article.title-resa{
+        margin-top: -8.5%;
+        margin-bottom: 2%;
+    }
+
+    section.row .resa {
+    margin-top: 100px;
+    text-align: justify;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 35px;
+    }
+
+    .resa h1{
+        font-size: 40px;
+        width: 50%;
+    }
+
+    article.rooms-text {
+        margin-top: 0;
+        flex-basis:25%;
+        text-align: left;
+    }
+
+    article.rooms-text p{
+        font-size: 30px;
+    }
+}
   
   .customer-opinion{
     margin-top: 120px;
