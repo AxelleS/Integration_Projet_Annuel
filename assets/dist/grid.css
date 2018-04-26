@@ -62,6 +62,10 @@
         flex-basis: calc((100%/12) *5);
     }
 
+    .col-xs-8 {
+        flex-basis: calc((100%/12) *8);
+    }
+
     .col-xs-6 {
         flex-basis: 50%;
     }
@@ -83,7 +87,7 @@
     }
 
     .offset-xs-2 {
-        margin-left: calc(100% / 6);    
+        flex-basis: calc((100%/12) *2);    
     }
 
     .offset-xs-3 {
