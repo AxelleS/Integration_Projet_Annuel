@@ -13,7 +13,7 @@ class User extends BaseSql{
   protected $zipcode;
   protected $city;
   protected $password = "default";
-  protected $token = 111111;
+  protected $token;
 
   protected $status = 2; //Définit l'état de l'utilisateur, 1 banni, 2 toujours ok, etc etc
 
@@ -78,6 +78,161 @@ class User extends BaseSql{
     $this->status=$status;
   }
 
+  public function configFormUserAddModify(){
+    return [
+        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('user','save'),"name"=>"signup"],
+        "input"=>[
+          "A"=>[
+            "Personnel"=>[
+              "id"=>[
+                "type"=>"hidden",
+                "required"=>false,
+                "value" => $this->id,
+                'class' => ''
+              ],
+              "lastname"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre nom",
+                "required"=>true,
+                "class" => "col-lg-5",
+                "value" => $this->lastname
+              ],
+              "firstname"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre prénom",
+                "required"=>true,
+                "class" => "col-lg-5 offset-lg-1",
+                "value" => $this->firstname
+              ],
+              "age"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre âge",
+                "required"=>true,
+                "class" => "col-lg-4",
+                "value" => $this->years_old
+              ]
+            ],
+            "Mot de passe"=>[
+              "password"=>[
+                "type"=>"password",
+                "placeholder"=>"Votre mot de passe",
+                "required"=>true,
+                "class" => "col-lg-12",
+                "value" => ''
+              ],
+              "passwordConf"=>[
+                "type"=>"password",
+                "placeholder"=>"Votre confirmation",
+                "required"=>true,
+                "class" => "col-lg-12",
+                "value" => '',
+                "confirm" => 'password'
+              ],
+              "cgu"=>[
+                "type"=> "checkbox",
+                "text"=> "J'accepte les Conditions Générales d'Utilisation",
+                "class"=> "col-lg-12",
+              ]
+            ]
+          ],
+          "B"=>[
+            "Contact"=>[
+              "email"=>[
+                "type"=>"email",
+                "placeholder"=>"Votre email",
+                "required"=>true,
+                "class" => "col-lg-5",
+                "value" => $this->email
+              ],
+              "phone"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre téléphone",
+                "required"=>true,
+                "class" => "col-lg-5 offset-lg-1",
+                "value" => $this->phone,
+                "maxString" => 10,
+                "minString" =>  10
+              ]
+            ]
+          ],
+          "C"=>[
+            "Location"=>[
+              "address"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre adresse",
+                "required"=>true,
+                "class" => "col-lg-12",
+                "value" => $this->address
+              ],
+              "address_2"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre adresse suite",
+                "required"=>true,
+                "class" => "col-lg-12",
+                "value" => $this->address_2
+              ],
+              "zipcode"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre code postal",
+                "required"=>true,
+                "class" => "col-lg-4",
+                "value" => $this->zipcode,
+                "maxString" => 5,
+                "minString" =>  5
+              ],
+              "city"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre ville",
+                "required"=>true,
+                "class" => "col-lg-5 offset-lg-2",
+                "value" => $this->city
+              ]
+            ]
+          ],
+          "D"=>[
+            "Photo de profil"=>[
+              "picture"=>[
+                "type"=>"file",
+                "required"=>false,
+                "class" => "col-lg-12",
+                "value" => ''
+              ],
+              "picture-old"=>[
+                "type"=>"hidden",
+                "class" => "col-lg-12",
+                "value" => $this->url_picture
+              ]
+            ]
+          ]
+        ]
+    ];
+  }
+
+  public function configFormUserConnect(){
+    return [
+        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('user','save'),"name"=>"signup"],
+        "input"=>[
+          "A"=>[
+            "Connexion"=>[
+              "email"=>[
+                "type"=>"email",
+                "placeholder"=>"Votre email",
+                "required"=>true,
+                "class" => "col-lg-12",
+                "value" => $this->email
+              ],
+              "password"=>[
+                "type"=>"password",
+                "placeholder"=>"Votre mot de passe",
+                "required"=>true,
+                "class" => "col-lg-12",
+                "value" => ''
+              ]
+            ]
+          ]
+        ]
+    ];
+  }
 }
 
- ?>
+?>

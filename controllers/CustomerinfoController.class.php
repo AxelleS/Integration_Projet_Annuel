@@ -5,19 +5,26 @@ class CustomerinfoController
     public function indexAction($params)
     {        
         $id_user = 1;
-        //Va chercher les infos de l'utilisateur
+        // //Va chercher les infos de l'utilisateur
         $user = new User();
         $user->setId($id_user);
         $response = $user->select('id');
-        $donnees = $response->fetch();
-         //Appelle la vue
-        if ($_SESSION['is_connected']) {
-            $v = new View('customerinfo','connected');
-        } else {
-            $v = new View('customerinfo');
-        }
+        $donnees_user = $response->fetch();
 
-        $v->assign("donnees",$donnees);
+        $user->setFirstname($donnees_user['firstname']);
+        $user->setLastname($donnees_user['lastname']);
+        $user->setYearsOld($donnees_user['years_old']);
+        $user->setEmail($donnees_user['email']);
+        $user->setPhone($donnees_user['phone']);
+        $user->setAddress($donnees_user['address']);
+        $user->setAddress2($donnees_user['address_2']);
+        $user->setZipcode($donnees_user['zipcode']);
+        $user->setCity($donnees_user['city']);
+        $user->setPicture($donnees_user['url_picture']);
+
+        $config = $user->configFormUserAddModify();
+        $v = new View('customerinfo','connected');
+        $v->assign('config',$config);
     }
 
 }

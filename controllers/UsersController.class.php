@@ -10,26 +10,38 @@ class UsersController
     public function editAction($params){}
 
     public function saveAction($params)
-    {
-        // print_r($params['POST']);
-        $user = new User();
-        $user->setId($params['POST']['input-id']);
-        $response = $user->select('id');
-        $donnees_user = $response->fetch();
-        $error = false;
-        // $params['POST']['input-password'] == '' ? $error = true : $password = $params['POST']['input-password'];
+    {        
+		if(!empty($params["POST"])){
+			
+			$errors = Validate::checkForm($config, $params["POST"]);
 
-        // $params['POST']['input-password-validate'] == '' ? $error = true : $password_validate = $params['POST']['input-password-validate'];
-
-        // if((isset($password)) && (isset($password_validate)))
-        //     $password != $password_validate ? $error = true : (password_hash($password, PASSWORD_DEFAULT) != $donnees_user['password'] ? $error = true : $user->setPassword($params['POST']['input-password']));
-
-        $params['POST']['input-lastname'] == '' ? $error = true : $user->setLastname($params['POST']['input-lastname']);
-
-        $params['POST']['input-firstname'] == '' ? $error = true : $user->setFirstname($params['POST']['input-firstname']);
-
-        $params['POST']['input-years'] == '' ? $error = true : (is_numeric($params['POST']['input-years']) ? $user->setYearsOld($params['POST']['input-years']) : $error = true);
-
+			if(empty($errors)){
+                if(!is_null($params["POST"]["id"])) {
+                    $user->setId($params["POST"]["id"]);
+                }
+                $user->setFirstname($params['POST']['firstname']);
+                $user->setLastname($params['POST']['lastname']);
+                $user->setYearsOld($params['POST']['yearsold']);
+                $user->setEmail($params['POST']['email']);
+                $user->setPhone($params['POST']['phone']);
+                $user->setAddress($params['POST']['address']);
+                $user->setAddress2($params['POST']['address_2']);
+                $user->setZipcode($params['POST']['zipcode']);
+                $user->setCity($params['POST']['city']);
+                $user->setPicture($params['POST']['picture']);
+                $user->setPassword($params['POST']['password']);
+                $user->save();
+                header("Location: ".DIRNAME.Route::getSlug('customerinfo','index'));
+			}
+		} else {
+            header("Location: ".DIRNAME.Route::getSlug('customerinfo','index'));
+        }
+		
+		$v = new View("customerinfo","connected");
+		$v->assign("config", $config);
+		$v->assign("errors", $errors);
+        
+        
         $params['POST']['input-email'] == '' ? $error = true : $user->setEmail($params['POST']['input-email']);
 
         $params['POST']['input-phone'] == '' ? $error = true : (strlen($params['POST']['input-phone']) == 10 ? $user->setPhone($params['POST']['input-phone']) : $error = true);
@@ -43,7 +55,6 @@ class UsersController
         $params['POST']['input-city'] == '' ? $error = true : $user->setCity($params['POST']['input-city']);
 
         $params['POST']['input-photo'] == '' ? $user->setPicture($params['POST']['input-photo-old']) : ($params['POST']['input-photo'] != $params['POST']['input-photo-old'] ? $user->setPicture($params['POST']['input-photo']) : $user->setPicture($params['POST']['input-photo-old']));
-
         if($error){
             $donnees_user['error'] = "Vous avez fait une erreur !";
             $v = new View('customerinfo','connected');
