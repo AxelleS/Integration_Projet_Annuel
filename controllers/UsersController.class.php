@@ -4,7 +4,7 @@ class UsersController
 {
     public function indexAction($params)
     {
-        $v = new View('users', 'back');
+        $v = new View();
     }
 
     public function editAction($params){}
@@ -55,6 +55,7 @@ class UsersController
         $params['POST']['input-city'] == '' ? $error = true : $user->setCity($params['POST']['input-city']);
 
         $params['POST']['input-photo'] == '' ? $user->setPicture($params['POST']['input-photo-old']) : ($params['POST']['input-photo'] != $params['POST']['input-photo-old'] ? $user->setPicture($params['POST']['input-photo']) : $user->setPicture($params['POST']['input-photo-old']));
+
         if($error){
             $donnees_user['error'] = "Vous avez fait une erreur !";
             $v = new View('customerinfo','connected');
