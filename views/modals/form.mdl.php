@@ -57,7 +57,7 @@
 	<div class="row col-lg-12">
 		<section class="row col-lg-3 offset-lg-3">
 			<article class="col-lg-4 title">
-				<button type="submit" form="<?php echo $config["config"]["name"]?>" class="btn-default">Valider</button>
+				<input type="submit" form="<?php echo $config["config"]["name"]?>" class="btn-default" value="Valider">
 			</article>
 		</section>
 	</div>
