@@ -210,7 +210,7 @@ class User extends BaseSql{
 
   public function configFormUserConnect(){
     return [
-        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('user','save'),"name"=>"signup"],
+        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('signin','connect'),"name"=>"signup"],
         "input"=>[
           "A"=>[
             "Connexion"=>[
