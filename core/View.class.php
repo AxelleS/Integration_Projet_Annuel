@@ -28,4 +28,8 @@ class View
         extract($this->data);
         include "views/templates/".$this->t;
     }
+
+    public function addModal($modal, $config){
+        include "views/modals/".$modal.".mdl.php";
+    }
 }
