@@ -45,7 +45,21 @@
             <hr>
         </article>
         <article class="calendar col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <?php include 'display-calendar.php';?>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="7" id="thead_title">
+
+                        </th>
+                    </tr>
+                    <tr id="thead_days">
+
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
         </article>
         <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 slots-text">
             <p>Choix créneau :</p>
@@ -113,3 +127,123 @@
         <?php endif; ?>
     </section>
 </main>
+
+<script>
+    var ladate = new Date();
+    var tab_days = new Array('Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim');
+    var tab_months = new Array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
+    $(document).ready(function(){
+        sessionStorage.setItem('month', (ladate.getMonth()).toString());
+        sessionStorage.setItem('year', (ladate.getFullYear()).toString());
+
+        var thead_days = document.getElementById('thead_days');
+        for(var i=0; i<7;i++){
+            var theDay = thead_days.insertCell();
+            theDay.innerHTML = tab_days[i];
+        }
+
+        generateCalendar();
+    });
+    function generateCalendar(){
+        var month = sessionStorage.getItem('month');
+        var year = sessionStorage.getItem('year');
+        var thead_title = '';
+
+        $('#tbody').html('');
+
+        $.ajax({
+            url : 'display-calendar.php',
+            type : 'GET',
+            data : {
+                month: sessionStorage.getItem('month'),
+                year: sessionStorage.getItem('year')
+            },
+            dataType : 'html',
+            complete : function(){
+                if(month > ladate.getMonth()){
+                    thead_title = '<img class="arrow" src="img/arrow_left.svg" onclick="removeMonth()">';
+                } else {
+                    if (year > ladate.getFullYear()) {
+                        thead_title = '<img class="arrow" src="img/arrow_left.svg" onclick="removeMonth()">';
+                    }
+                }
+                thead_title = thead_title + ' ' +tab_months[month] + ' ' + year + ' ' + '<img class="arrow" src="img/arrow_right.svg" onclick="addMonth()">';
+                $('#thead_title').html(thead_title);
+                var firstDay = (new Date(year, month, 1)).getDay();
+                var row = document.getElementById('tbody');
+                var newLigne = row.insertRow();
+                if(firstDay == 0){
+                    firstDay = 7;
+                }
+                if (firstDay > 0) {
+                    for (var n=0;n<firstDay-1;n++){
+                        newLigne.insertCell();
+                    }
+                }
+                for(var n =0;n<getNbDays(month,year);n++){
+                    if(firstDay > 7){
+                        firstDay = 1;
+                        newLigne = row.insertRow();
+                    }
+                    var cell = newLigne.insertCell();
+                    cell.innerHTML = n+1;
+                    firstDay = firstDay + 1;
+                }
+            }
+        });
+    }
+
+    function getNbDays(month, year){
+        if(month == 1){
+            if(year % 4 == 0) {
+                return 29;
+            } else {
+                return 28;
+            }
+        } else {
+            if(month < 7){
+                if(month % 2 == 0){
+                    return 31;
+                } else {
+                    return 30;
+                }
+            } else {
+                if(month % 2 == 1){
+                    return 31;
+                } else {
+                    return 30;
+                }
+            }
+        }
+    }
+
+    function addMonth(){
+        var monthTemp = parseInt(sessionStorage.getItem('month'));
+        var yearTemp = parseInt(sessionStorage.getItem('year'));
+
+        if(monthTemp + 1 > 11) {
+            sessionStorage.setItem('month', (0).toString());
+            sessionStorage.setItem('year', (yearTemp + 1).toString());
+        } else {
+            sessionStorage.setItem('month', (monthTemp + 1).toString());
+            sessionStorage.setItem('year', (yearTemp).toString());
+        }
+
+        generateCalendar();
+    }
+
+    function removeMonth(){
+        var monthTemp = parseInt(sessionStorage.getItem('month'));
+        var yearTemp = parseInt(sessionStorage.getItem('year'));
+
+        if(monthTemp - 1 < 0) {
+            sessionStorage.setItem('month', (11).toString());
+            sessionStorage.setItem('year', (yearTemp - 1).toString());
+        } else {
+            sessionStorage.setItem('month', (monthTemp - 1).toString());
+            sessionStorage.setItem('year', (yearTemp).toString());
+        }
+
+        generateCalendar();
+    }
+</script>
