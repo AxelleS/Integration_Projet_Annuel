@@ -20,5 +20,4 @@ class SignUpController
     
     }
 
-    public function saveAction($params){}
 }
