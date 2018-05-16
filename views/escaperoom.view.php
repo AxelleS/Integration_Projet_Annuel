@@ -37,36 +37,38 @@
         </aside>
     </section>
 
-    <section class="booking row">
-        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h2>Réserver la salle</h2>
+    <section class="booking">
+        <article class="row">
+            <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2>Réserver la salle</h2>
+            </article>
         </article>
-        <article class="col_6 offset_5">
-            <hr>
+
+        <article class="row">
+            <article class="col-lg-6 offset-lg-3">
+                <hr>
+            </article>
         </article>
-        <article class="calendar col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <table>
-                <thead>
+
+        <article class="row">
+            <article class="calendar col-lg-4 col-md-4 col-sm-4 col-xs-4 offset-lg-2">
+                <table>
+                    <thead>
                     <tr>
-                        <th colspan="7" id="thead_title">
-
-                        </th>
+                        <th colspan="7" id="thead_title"></th>
                     </tr>
-                    <tr id="thead_days">
-
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-
-                </tbody>
-            </table>
-        </article>
-        <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 slots-text">
-            <p>Choix créneau :</p>
-        </article>
-        <article class="slots">
-            <select class="creneaux"></select>
-            <?php echo '<input type="submit" value="Valider" href="' . DIRNAME.Route::getSlug('reservationnext','index') . '">'; ?>
+                    <tr id="thead_days"></tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </article>
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-lg-1 slots-text">
+                <p>Choix créneau :</p>
+            </article>
+            <article class="slots">
+                <select class="creneaux"></select>
+                <?php echo '<input type="submit" value="Valider" href="' . DIRNAME.Route::getSlug('reservationnext','index') . '">'; ?>
+            </article>
         </article>
     </section>
     <section class="booking-legend row">
@@ -132,18 +134,23 @@
     var ladate = new Date();
     var tab_days = new Array('Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim');
     var tab_months = new Array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
+
     $(document).ready(function(){
         sessionStorage.setItem('month', (ladate.getMonth()).toString());
         sessionStorage.setItem('year', (ladate.getFullYear()).toString());
 
         var thead_days = document.getElementById('thead_days');
         for(var i=0; i<7;i++){
-            var theDay = thead_days.insertCell();
-            theDay.innerHTML = tab_days[i];
+            thead_days.insertCell().outerHTML = "<th>"+tab_days[i]+"</th>";
         }
 
         generateCalendar();
+
+        $('#15').on('click', function () {
+           alert('toto');
+        });
     });
+
     function generateCalendar(){
         var month = sessionStorage.getItem('month');
         var year = sessionStorage.getItem('year');
@@ -152,14 +159,15 @@
         $('#tbody').html('');
 
         $.ajax({
-            url : 'display-calendar.php',
+            url : '<?php echo DIRNAME.Route::getSlug('escaperoom','ajaxCalendar'); ?>',
             type : 'GET',
             data : {
                 month: sessionStorage.getItem('month'),
-                year: sessionStorage.getItem('year')
+                year: sessionStorage.getItem('year'),
+                room : <?php echo $donnees['id']; ?>
             },
-            dataType : 'html',
-            complete : function(){
+            complete : function(data){
+                var timeSlots = JSON.parse(data['responseText']);
                 if(month > ladate.getMonth()){
                     thead_title = '<img class="arrow" src="img/arrow_left.svg" onclick="removeMonth()">';
                 } else {
@@ -167,11 +175,15 @@
                         thead_title = '<img class="arrow" src="img/arrow_left.svg" onclick="removeMonth()">';
                     }
                 }
+
+                var creneaux = timeSlots;
+
                 thead_title = thead_title + ' ' +tab_months[month] + ' ' + year + ' ' + '<img class="arrow" src="img/arrow_right.svg" onclick="addMonth()">';
                 $('#thead_title').html(thead_title);
                 var firstDay = (new Date(year, month, 1)).getDay();
                 var row = document.getElementById('tbody');
                 var newLigne = row.insertRow();
+                newLigne.className = "content";
                 if(firstDay == 0){
                     firstDay = 7;
                 }
@@ -180,17 +192,83 @@
                         newLigne.insertCell();
                     }
                 }
-                for(var n =0;n<getNbDays(month,year);n++){
+                for(var n =1;n<getNbDays(month,year)+1;n++){
+                    //console.log(Object.keys(timeSlots[n]).length);
                     if(firstDay > 7){
                         firstDay = 1;
                         newLigne = row.insertRow();
+                        newLigne.className = "content";
                     }
                     var cell = newLigne.insertCell();
-                    cell.innerHTML = n+1;
+
+                    var now = new Date();
+
+                    if (n < 10) {
+                        var theDate = year + '-' + month + '-' + '0' + n;
+                    } else {
+                        var theDate = year + '-' + month + '-' + n;
+                    }
+
+                    if(theDate < now.getFullYear()+ '-' + now.getMonth() + '-' + now.getDate()) {
+                        cell.className = 'plein';
+                        cell.innerHTML = n;
+                    } else {
+                        if(Object.keys(timeSlots[n]).length > 3) {
+                            cell.className = 'vide';
+                        } else {
+                            if(Object.keys(timeSlots[n]).length > 1) {
+                                cell.className = 'semiplein';
+                            } else {
+                                cell.className = 'plein';
+                            }
+                        }
+                        if(Object.keys(timeSlots[n]).length > 1) {
+
+                            var timeSlotsTemp = JSON.stringify(timeSlots[n]);
+
+                            var monthTemp = parseInt(month) + 1;
+
+                            if (month < 10) {
+                                monthTemp = '0' + monthTemp;
+                            }
+
+                            if (n < 10) {
+                                theDate = year + '-' + '0' + monthTemp + '-' + '0' + n;
+                            } else {
+                                theDate = year + '-' + monthTemp + '-' + n;
+                            }
+
+                            cell.innerHTML = "<input id='"+n+"' type='button' value='"+n+"' name='"+n+"' onclick='loadSelector("+n+","+timeSlotsTemp+")'>"
+                        } else {
+                            cell.innerHTML = n;
+                        }
+                    }
                     firstDay = firstDay + 1;
                 }
             }
         });
+    }
+
+    function loadSelector(theDate, timeSlots) {
+        $('.vide input').css('background-color','green');
+        $('.semiplein input').css('background-color','orange');
+        $('input').css('color','black');
+
+        $('#'+ theDate +'').css('background-color','#338FF9');
+        $('#'+ theDate +'').css('color','white');
+
+        $('.creneaux').empty();
+
+        //Met un option vide par défaut
+        $('.creneaux').append('<option value=""></option>');
+        //Remplit le select
+        $.each(timeSlots, function(key, value) {
+            $('.creneaux').append('<option value="'+key+'">'+value+'</option>');
+        });
+
+        $('article.slots-text').css('display') == 'none' ? $('.slots-text').css('display','block') : null;
+        $('.creneaux').css('display') == 'none' ? $('.creneaux').css('display','block') : null;
+        $('.slots input').css('display') == 'none' ? $('.slots input').css('display','block') : null;
     }
 
     function getNbDays(month, year){

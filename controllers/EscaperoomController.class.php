@@ -68,4 +68,44 @@ class EscaperoomController
 
         $v->assign("donnees",$donnees_room);
     }
+
+    public function ajaxCalendarAction($params){
+        $id_salle = $params['GET']['room'];
+
+        // Récuperation des variables passées, on donne soit année; mois; année+mois
+        if(!isset($params['GET']['month'])) $num_month = date('n'); else $num_month = $params['GET']['month'] + 1;
+        if(!isset($params['GET']['year'])) $num_year = date('Y'); else $num_year = $params['GET']['year'];
+
+        if($num_month<10){
+            $monthTemp = "0".$num_month;
+        } else{
+            $monthTemp = $num_month;
+        }
+        $date = $num_year.'-'.$monthTemp.'-%';
+
+        $calendar = new Calendar();
+        $calendar->setDateCalendar($date);
+        $response_date = $calendar->select('date_calendar');
+
+        while($donnees_date = $response_date->fetch()){
+            $dayTemp = explode('-',$donnees_date['date_calendar']);
+            $day = intval($dayTemp[2]);
+
+            $temp = array();
+            $timeSlot = new Time_slot();
+            $timeSlot->setIdCalendar($donnees_date['id']);
+            $response_timeSlot = $timeSlot->select('id_calendar');
+            while($donnees_timeSlot = $response_timeSlot->fetch()){
+                if($id_salle == $donnees_timeSlot['id_room']){
+                    if(is_null($donnees_timeSlot['id_user'])){
+                        $temp[$donnees_timeSlot['id']] = $donnees_timeSlot['value_time_slot'];
+                    }
+                }
+            }
+            $timeSlot_Tab[$day] = $temp;
+        }
+
+        echo json_encode($timeSlot_Tab);
+        exit;
+    }
 }
