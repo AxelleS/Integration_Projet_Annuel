@@ -13,6 +13,7 @@ class Homepage extends BaseSql{
   protected $zipcode_company;
   protected $city_company;
   protected $url_google;
+  protected $roomList;
 
   public function __construct() {
     parent::__construct();
@@ -64,6 +65,114 @@ class Homepage extends BaseSql{
 
   public function setUrlGoogle($url_google) {
     $this->url_google=strtolower(trim($url_google));
+  }
+
+  public function setRoomList($roomList) {
+    $this->roomList=$roomList;
+  }
+
+  public function formModifyHomepage() {
+    $homepageValue = new Homepage();
+    $response_homepageValue = $homepageValue->select();
+    $response = array();
+    while($donnees_roomValue = $response_homepageValue->fetchAll()){
+      array_push($response, $donnees_roomValue);
+    }
+    // echo '<pre>';
+    // print_r($this->roomList);
+    // echo '</pre>';
+    // die;
+
+    return [
+      "config"=>[
+        "method"=>"POST",
+        "action"=>DIRNAME.Route::getSlug('organization','save'),
+        "cancel"=>DIRNAME.Route::getSlug('organization','index')
+      ],
+      "validate"=>[
+        "value"=>"sauvegarder",
+        "type"=>"submit"
+      ],
+      "style"=>[
+        "classText"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style",
+        "classInput"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 organization-input-style",
+        "classCancel"=>"col-lg-2 offset-lg-3 col-md-2 offset-md-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2",
+        "buttonCancel"=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 validate-modify-homepage resize-cancel-button",
+        "classValidate"=>"col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage"
+      ],
+      "value"=>[
+        "id"=>$response[0][0]['id'],
+        "id_room_1"=>$response[0][0]['id_room_1'],
+        "id_room_2"=>$response[0][0]['id_room_2'],
+        "id_room_3"=>$response[0][0]['id_room_3'],
+        "title_introduction"=>$response[0][0]['title_introduction'],
+        "description_introduction"=>$response[0][0]['description_introduction'],
+        "url_video"=>$response[0][0]['url_video'],
+        "name_company"=>$response[0][0]['name_company'],
+        "address_company"=>$response[0][0]['address_company'],
+        "zipcode_company"=>$response[0][0]['zipcode_company'],
+        "city_company"=>$response[0][0]['city_company'],
+        "url_google"=>$response[0][0]['url_google'],
+        "actualPageTypeValue"=>"Homepage",
+        "actualPageType"=>"actualPageType"
+      ],
+      "roomList"=>$this->roomList,
+      "input"=>[
+        "id"=>[
+          "type"=>"hidden",
+          "required"=>false,
+          "value" => 1,
+        ],
+        "title_introduction"=>[
+          "type"=>"text",
+          "nameView"=>"Titre d'introduction",
+          "required"=>true,
+          "name"=> "title_introduction"
+        ],
+        "roomList"=>[
+          "room1"=>[
+            "nameView"=>"Choisissez votre 1ère room",
+            "name"=>"id_room_1"
+          ],
+          "room2"=>[
+            "nameView"=>"Choisissez votre 2ème room",
+            "name"=>"id_room_2"
+          ],
+          "room3"=>[
+            "nameView"=>"Choisissez votre 3ème room",
+            "name"=>"id_room_3"
+          ]
+          ],
+          "description_introduction"=>[
+            "nameView"=>"Description d'introduction",
+            "name"=>"description_introduction"
+          ],
+          "url_video"=>[
+            "nameView"=>"URL de la vidéo",
+            "name"=>"url_video"
+          ],
+          "name_company"=>[
+            "nameView"=>"Nom de l'entreprise",
+            "name"=>"name_company"
+          ],
+          "address_company"=>[
+            "nameView"=>"Adresse de l'entreprise",
+            "name"=>"address_company"
+          ],
+          "zipcode_company"=>[
+            "nameView"=>"Code postal de l'entreprise",
+            "name"=>"zipcode_company"
+          ],
+          "city_company"=>[
+            "nameView"=>"Ville de l'entreprise",
+            "name"=>"city_company"
+          ],
+          "url_google"=>[
+            "nameView"=>"URL google maps",
+            "name"=>"url_google"
+          ]
+      ]
+    ];
   }
 
 }

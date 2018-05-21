@@ -2,17 +2,7 @@
 
 class OrganizationController {
 
-	public function indexAction($params)
-    {
-        // $roomList = new Homepage();
-        // $response_roomList = $roomList->select();
-        // $donnees_roomList = $response_roomList->fetch();
-        // echo '<pre>';
-        // print_r($donnees_roomList['name']);
-        // echo '</pre>';
-        // die;
-        // $v = new View('organization', 'back');
-
+	public function indexAction($params) {
         $homeList = new Homepage();
         $response_homeList = $homeList->select();
         $donnees_homeList = $response_homeList->fetch();
@@ -22,7 +12,6 @@ class OrganizationController {
 
         $roomList = new Room();
         $response_roomList = $roomList->select();
-
         while($donnees_roomList = $response_roomList->fetch()){
             array_push($donnees_pages, $donnees_roomList);
         }
@@ -52,12 +41,46 @@ class OrganizationController {
         if($params['URL'][0] == "Homepage") {
             $roomList = new Room();
             $response_roomList = $roomList->select();
-            $homepage= array();
-            while($donnees_roomList = $response_roomList->fetch()){
-                array_push($homepage, $donnees_roomList);
+            $roomName = array();
+            $homepageConfig = new Homepage();
+            $response_roomValue = $homepageConfig->select();
+            $homepage = array();
+            
+            $roomListDetails = array();
+            forEach($response_roomList->fetchAll() as $keyRoom=>$content) {
+              $temp2 = array();
+              forEach($content as $key=>$value) {
+                if(!is_numeric($key)) {
+                  if ($key == "id" || $key == "name") {
+                    $temp2[$key] = $value;
+                  }
+                }
+              }
+              $roomListDetails[] = $temp2;
             }
+
+            while($donnees_roomValue = $response_roomValue->fetch()){
+              array_push($homepage, $donnees_roomValue);
+            }
+
+            $homepageConfig->setId(1);
+            $homepageConfig->setIdRoom1($homepage[0]['id_room_1']);
+            $homepageConfig->setIdRoom2($homepage[0]['id_room_2']);
+            $homepageConfig->setIdRoom3($homepage[0]['id_room_3']);
+            $homepageConfig->setTitleIntroduction($homepage[0]['title_introduction']);
+            $homepageConfig->setDescriptionIntroduction($homepage[0]['description_introduction']);
+            $homepageConfig->setUrlVideo($homepage[0]['url_video']);
+            $homepageConfig->setNameCompany($homepage[0]['name_company']);
+            $homepageConfig->setAddressCompany($homepage[0]['address_company']);
+            $homepageConfig->setZipcodeCompany($homepage[0]['zipcode_company']);
+            $homepageConfig->setCityCompany($homepage[0]['city_company']);
+            $homepageConfig->setUrlGoogle($homepage[0]['url_google']);
+            $homepageConfig->setRoomlist($roomListDetails);
+            $config = $homepageConfig->formModifyHomepage();
+
             $v = new View('modifyHomePage', 'back');
             $v->assign('roomSelect', $homepage);
+            $v->assign('configModifyHomepage', $config);
         } else if($params['URL'][0] == "Foire à questions") {
             echo '<pre>';
             echo "FAQ";
@@ -69,8 +92,7 @@ class OrganizationController {
             print_r($params);
             
             echo '</pre>';
-        } 
-        else {
+        } else {
             echo '<pre>';
             echo "Room";
             print_r($params);
@@ -85,6 +107,10 @@ class OrganizationController {
     }
 
     public function saveAction($params){
+        // echo '<pre>';
+        //     print_r($params);
+        //     echo '</pre>';
+        //     die;
 
         if($params['POST']['actualPageType'] == "Homepage") {
             $params['POST']['id'] = "1";
@@ -100,7 +126,7 @@ class OrganizationController {
             $modifyHomepage->setAddressCompany($params['POST']['address_company']);
             $modifyHomepage->setZipcodeCompany($params['POST']['zipcode_company']);
             $modifyHomepage->setCityCompany($params['POST']['city_company']);
-            $modifyHomepage->setUrlGoogle($params['POST']['url_maps']);
+            $modifyHomepage->setUrlGoogle($params['POST']['url_google']);
 
             $modifyHomepage->save();
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
@@ -120,11 +146,6 @@ class OrganizationController {
             echo '</pre>';
             die;
         }
-
-        
-
-        
-
        
     }
 
