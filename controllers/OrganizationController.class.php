@@ -45,7 +45,7 @@ class OrganizationController {
             $homepageConfig = new Homepage();
             $response_roomValue = $homepageConfig->select();
             $homepage = array();
-            
+
             $roomListDetails = array();
             forEach($response_roomList->fetchAll() as $keyRoom=>$content) {
               $temp2 = array();
@@ -58,7 +58,7 @@ class OrganizationController {
               }
               $roomListDetails[] = $temp2;
             }
-
+            
             while($donnees_roomValue = $response_roomValue->fetch()){
               array_push($homepage, $donnees_roomValue);
             }
@@ -82,10 +82,23 @@ class OrganizationController {
             $v->assign('roomSelect', $homepage);
             $v->assign('configModifyHomepage', $config);
         } else if($params['URL'][0] == "Foire à questions") {
-            echo '<pre>';
-            echo "FAQ";
-            print_r($params);
-            echo '</pre>';
+            
+            $faqList = new Faq();
+            $response_faqList = $faqList->select();
+
+            $donnees_faqList = array();
+            while($details_faqList = $response_faqList->fetchAll()){
+                array_push($donnees_faqList, $details_faqList);
+            }
+            $config = $faqList->formModifyFaq();
+            // echo '<pre>';
+            // echo "FAQ";
+            // print_r($donnees_faqList[0]);
+            // echo '</pre>';
+            // die;
+
+            $v = new View('modifyFaq', 'back');
+            $v->assign('configModifyFaq', $config);
         } else if($params['URL'][0] == "Nouvelle page") {
             echo '<pre>';
             echo "Nouvelle Page";
