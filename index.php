@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "conf.inc.php";
+require 'PHPMailer/_lib/class.phpmailer.php';
 
 function myAutoloader($class){
     $class = $class.".class.php";

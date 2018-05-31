@@ -253,6 +253,24 @@ class Route{
             "controller" => "escaperoom",
             "action"     => "ajaxCalendar",
             "security"   => false
+        ],
+        [
+            "slug"       => "mail-inscription",
+            "controller" => "signup",
+            "action"     => "mail",
+            "security"   => false
+        ],
+        [
+            "slug"       => "mail-mdp-oublie",
+            "controller" => "signin",
+            "action"     => "lostpassword",
+            "security"   => false
+        ],
+        [
+            "slug"       => "mail-reservation",
+            "controller" => "reservationnext",
+            "action"     => "mail",
+            "security"   => false
         ]
     ];
 
