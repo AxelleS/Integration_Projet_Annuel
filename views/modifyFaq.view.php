@@ -8,13 +8,7 @@
 <div class="row">
 
 <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-xs-12">
-<h1>coucou</h1>
-        <?php $this->addModal("formModifyFaq", $configModifyFaq); 
-        
-        
-        ?>
-        
-
+        <?php $this->addModal("formModifyFaq", $configModifyFaq);?>
 </div>
 
   

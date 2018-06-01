@@ -84,19 +84,7 @@ class OrganizationController {
         } else if($params['URL'][0] == "Foire à questions") {
             
             $faqList = new Faq();
-            $response_faqList = $faqList->select();
-
-            $donnees_faqList = array();
-            while($details_faqList = $response_faqList->fetchAll()){
-                array_push($donnees_faqList, $details_faqList);
-            }
             $config = $faqList->formModifyFaq();
-            // echo '<pre>';
-            // echo "FAQ";
-            // print_r($donnees_faqList[0]);
-            // echo '</pre>';
-            // die;
-
             $v = new View('modifyFaq', 'back');
             $v->assign('configModifyFaq', $config);
         } else if($params['URL'][0] == "Nouvelle page") {
@@ -144,6 +132,7 @@ class OrganizationController {
             $modifyHomepage->save();
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else if($params['POST']['actualPageType'] == "Foire à questions") {
+            echo "faq faq faq faq";
             echo '<pre>';
             print_r($params);
             echo '</pre>';
@@ -154,6 +143,7 @@ class OrganizationController {
             echo '</pre>';
             die;
         } else {
+            echo "hhizuhfizehfieuz";
             echo '<pre>';
             print_r($params);
             echo '</pre>';
