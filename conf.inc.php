@@ -4,7 +4,7 @@
 //user
 define("DBUSER", "root");
 //mot de passe
-define("DBPWD", "root");
+define("DBPWD", "");
 //host
 define("DBHOST", "localhost");
 //nom BDD

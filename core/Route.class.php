@@ -232,7 +232,7 @@ class Route{
         ],
         [
             "slug"       => "enregristrer-utilisateur",
-            "controller" => "user",
+            "controller" => "users",
             "action"     => "save",
             "security"   => false,
         ],

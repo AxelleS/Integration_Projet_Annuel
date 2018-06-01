@@ -16,8 +16,6 @@ class SignUpController
         }
     }
 
-    public function saveAction($params){
-    
-    }
+    public function saveAction($params){}
 
 }
