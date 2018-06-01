@@ -57,4 +57,31 @@ class SigninController
             $v->assign("donnees",$donnees);
         }        
     }
+
+    public function lostpasswordAction($params){
+        $user = new User();
+        $user->setId($_SESSION['id_user']);
+        $request = $user->select('id');
+        $donnees = $request->fetch();
+
+        $mail = New PhpMailer();
+        $mail->CharSet = "utf-8";
+        $mail->IsHTML(true);
+        $mail->From = 'contact@play-with-my-cms.com';
+        $mail->FromName = 'Team PlayWithMyCMS';
+        $mail->AddAddress($donnees['email']);
+
+        $string = str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789");
+        $password = substr($string, strlen($string)-8);
+
+        $user->setPassword($password);
+        $user->save();
+
+        $mail->Subject = "New Password";
+        $mail->Body = 'Hello,<br>You ask for a new password, and here is it : <b>'.$password.'</b>';
+
+        $mail->Send();
+
+        header("Location: ".DIRNAME.Route::getSlug('signin','index'));
+    }
 }
