@@ -231,8 +231,8 @@ class Route{
             "security"   => false
         ],
         [
-            "slug"       => "enregistrer-utilisateur",
-            "controller" => "user",
+            "slug"       => "enregristrer-utilisateur",
+            "controller" => "users",
             "action"     => "save",
             "security"   => false
         ],
