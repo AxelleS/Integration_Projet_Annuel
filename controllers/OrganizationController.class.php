@@ -83,10 +83,22 @@ class OrganizationController {
             $v->assign('configModifyHomepage', $config);
         } else if($params['URL'][0] == "Foire à questions") {
             
-            $faqList = new Faq();
-            $config = $faqList->formModifyFaq();
+            $faq = new Faq();
+
+            $result = $faq->select();
+
+            $lastId = 0;
+            while ($response = $result->fetch()){
+                $array[$response['id']] = [
+                    'question' => $response['question'],
+                    'answer' => $response['answer']
+                ];
+                $lastId = $response['id'];
+            }
+
             $v = new View('modifyFaq', 'back');
-            $v->assign('configModifyFaq', $config);
+            $v->assign("faqList",$array);
+            $v->assign("lastId",$lastId);
         } else if($params['URL'][0] == "Nouvelle page") {
             echo '<pre>';
             echo "Nouvelle Page";
@@ -108,10 +120,6 @@ class OrganizationController {
     }
 
     public function saveAction($params){
-        // echo '<pre>';
-        //     print_r($params);
-        //     echo '</pre>';
-        //     die;
 
         if($params['POST']['actualPageType'] == "Homepage") {
             $params['POST']['id'] = "1";
@@ -132,11 +140,27 @@ class OrganizationController {
             $modifyHomepage->save();
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else if($params['POST']['actualPageType'] == "Foire à questions") {
-            echo "faq faq faq faq";
-            echo '<pre>';
-            print_r($params);
-            echo '</pre>';
+            
+            unset($params['POST']['actualPageType']);
+            $count = 1;
+            foreach($params['POST'] as $key => $value) {
+                $sendFaq[$key] = new Faq();
+                $sendFaq[$key]->setId($count);
+                $sendFaq[$key]->setQuestion($value['question']);
+                $sendFaq[$key]->setAnswer($value['answer']);
+                $count++;
+                echo "<pre>";
+                print_r($sendFaq[$key]);
+                echo "</pre>";
+                $sendFaq[$key]->save();
+            }
+            
             die;
+            // echo '<pre>';
+            // print_r($params);
+            // echo '</pre>';
+            // die;
+            
         } else if($params['POST']['actualPageType'] == "Nouvelle page") {
             echo '<pre>';
             print_r($params);

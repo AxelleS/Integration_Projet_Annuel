@@ -21,10 +21,6 @@ class Faq extends BaseSql{
     $this->answer=$answer;
   }
 
-  public function setDescription($description) {
-    $this->description=trim($description);
-  }
-
   public function formModifyFaq() {
 
     $faqList = new Faq();
