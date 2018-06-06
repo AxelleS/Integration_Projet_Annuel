@@ -45,7 +45,7 @@ class OrganizationController {
             $homepageConfig = new Homepage();
             $response_roomValue = $homepageConfig->select();
             $homepage = array();
-
+            
             $roomListDetails = array();
             forEach($response_roomList->fetchAll() as $keyRoom=>$content) {
               $temp2 = array();
@@ -58,7 +58,7 @@ class OrganizationController {
               }
               $roomListDetails[] = $temp2;
             }
-            
+
             while($donnees_roomValue = $response_roomValue->fetch()){
               array_push($homepage, $donnees_roomValue);
             }
@@ -120,6 +120,10 @@ class OrganizationController {
     }
 
     public function saveAction($params){
+        // echo '<pre>';
+        //     print_r($params);
+        //     echo '</pre>';
+        //     die;
 
         if($params['POST']['actualPageType'] == "Homepage") {
             $params['POST']['id'] = "1";
