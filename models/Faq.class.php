@@ -2,8 +2,8 @@
 class Faq extends BaseSql{
 
   protected $id = null;
-  private $question;
-  private $answer;
+  protected $question;
+  protected $answer;
 
   public function __construct() {
     parent::__construct();
