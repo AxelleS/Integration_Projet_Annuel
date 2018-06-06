@@ -6,13 +6,48 @@
 
 
 <div class="row">
-
-<div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-xs-12">
-        <?php $this->addModal("formModifyFaq", $configModifyFaq);?>
-</div>
-
+<form class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2" method="POST" action="<?php echo DIRNAME.Route::getSlug('organization','save')?>">
+  <input type="hidden" name="actualPageType" value="Foire à questions" />
+  <input type="hidden" id="lastId" value="<?php echo $lastId;?>">
+      <?php foreach ($faqList as $key=>$value) : ?>
+          <fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center">
+              <legend>Question-Réponse</legend>
+              <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-style" for="<?php echo 'question_'.$key;?>">Question</label>
+              <input type="text" class="organization-input-style" name="<?php echo $key.'[question]';?>" value="<?php echo $value['question'];?>">
+              <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" for="<?php echo 'answer_'.$key;?>">Réponse</label>
+              <textarea class="organization-input-style" name="<?php echo $key.'[answer]';?>"><?php echo $value['answer'];?></textarea>
+          </fieldset>
+      <?php endforeach; ?>
+  <input type="button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addNewQuestion" id="addQA" value="Ajouter une nouvelle question">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+    <a href="<?php DIRNAME.Route::getSlug('organization','index')?>" class="col-lg-2 offset-lg-3 col-md-2 offset-md-3 col-sm-2 offset-sm-3 col-xs-2 offset-xs-3"><button class="validate-modify-homepage resize-cancel-button">Retour</button></a>
+    <input class="col-lg-2 offset-lg-2 col-md-2 offset-md-2 col-sm-2 offset-sm-2 col-xs-2 offset-xs-2 validate-modify-homepage" type="submit" value="sauvegarder">
+  </div>
+  </form>
   
+  <script>
+    $(document).ready(function() {
+    $('#addQA').click(function() {
+      addQA();
+      });
+    });
 
+  function addQA(){
+    
+    var lastId = parseInt($('#lastId').val()) + 1;
+    $('#lastId').attr('value', lastId);
+    $('#addQA').before(
+      '<fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center">' +
+      '<legend>Question-Réponse</legend>'+
+      '<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-style" for="question_'+lastId+'">Question</label>'+
+      '<input class="organization-input-style" type="text" name="'+lastId+'[question]" value="">'+
+      '<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" for="answer_'+lastId+'">Réponse</label>'+
+      '<textarea class="organization-input-style" name="'+lastId+'[answer]"></textarea>'+
+      '</fieldset>'
+    );
+      
+    }
+</script>
 </div>
 </div>
 </section>
