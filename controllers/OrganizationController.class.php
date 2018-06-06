@@ -146,8 +146,17 @@ class OrganizationController {
             foreach($params['POST'] as $key => $value) {
                 $sendFaq[$key] = new Faq();
                 $sendFaq[$key]->setId($count);
-                $sendFaq[$key]->setQuestion($value['question']);
-                $sendFaq[$key]->setAnswer($value['answer']);
+                $response = $sendFaq[$key]->select('id');
+
+                if($response->rowCount() > 0) {
+                    $sendFaq[$key]->setQuestion($value['question']);
+                    $sendFaq[$key]->setAnswer($value['answer']);
+                } else {
+                    $sendFaq[$key]->setId(null);
+                    $sendFaq[$key]->setQuestion($value['question']);
+                    $sendFaq[$key]->setAnswer($value['answer']);
+                }
+
                 $count++;
                 echo "<pre>";
                 print_r($sendFaq[$key]);
