@@ -5,8 +5,7 @@ class Time_slot extends BaseSql{
   protected $id_calendar;
   protected $id_room;
   protected $id_user = null;
-  protected $key_time_slot;
-  protected $value_time_slot;
+  protected $time_slot;
   protected $number_player = null;
   protected $total_price = null;
   protected $date_bill = null;
@@ -32,12 +31,8 @@ class Time_slot extends BaseSql{
     $this->id_user=$id_user;
   }
 
-  public function setKeyTimeSlot($key_time_slot) {
-    $this->key_time_slot=$key_time_slot;
-  }
-
-  public function setValueTimeSlot($value_time_slot) {
-    $this->value_time_slot=strtolower(trim($value_time_slot));
+  public function setTimeSlot($time_slot) {
+    $this->time_slot=strtolower(trim($time_slot));
   }
 
   public function setNumberPlayer($number_player) {

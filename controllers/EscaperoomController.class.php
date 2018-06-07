@@ -98,13 +98,12 @@ class EscaperoomController
             while($donnees_timeSlot = $response_timeSlot->fetch()){
                 if($id_salle == $donnees_timeSlot['id_room']){
                     if(is_null($donnees_timeSlot['id_user'])){
-                        $temp[$donnees_timeSlot['id']] = $donnees_timeSlot['value_time_slot'];
+                        $temp[$donnees_timeSlot['id']] = $donnees_timeSlot['time_slot'];
                     }
                 }
             }
             $timeSlot_Tab[$day] = $temp;
         }
-
         echo json_encode($timeSlot_Tab);
         exit;
     }

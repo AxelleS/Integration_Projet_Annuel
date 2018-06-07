@@ -145,10 +145,6 @@
         }
 
         generateCalendar();
-
-        $('#15').on('click', function () {
-           alert('toto');
-        });
     });
 
     function generateCalendar(){
@@ -176,8 +172,6 @@
                     }
                 }
 
-                var creneaux = timeSlots;
-
                 thead_title = thead_title + ' ' +tab_months[month] + ' ' + year + ' ' + '<img class="arrow" src="img/arrow_right.svg" onclick="addMonth()">';
                 $('#thead_title').html(thead_title);
                 var firstDay = (new Date(year, month, 1)).getDay();
@@ -203,13 +197,11 @@
 
                     var now = new Date();
 
-                    if (n < 10) {
-                        var theDate = year + '-' + month + '-' + '0' + n;
-                    } else {
-                        var theDate = year + '-' + month + '-' + n;
-                    }
+                    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-                    if(theDate < now.getFullYear()+ '-' + now.getMonth() + '-' + now.getDate()) {
+                    var dateToCompare = new Date(year, month, n);
+
+                    if(dateToCompare < today) {
                         cell.className = 'plein';
                         cell.innerHTML = n;
                     } else {

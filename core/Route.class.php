@@ -203,7 +203,7 @@ class Route{
         [
             "slug"       => "enregistrer-calendrier",
             "controller" => "calendar",
-            "action"     => "save",
+            "action"     => "ajaxSave",
             "security"   => false
         ],
         [
@@ -249,7 +249,7 @@ class Route{
             "security"   => false
         ],
         [
-            "slug"       => "charger-calendrier",
+            "slug"       => "charger-calendrier-fo",
             "controller" => "escaperoom",
             "action"     => "ajaxCalendar",
             "security"   => false
@@ -270,6 +270,18 @@ class Route{
             "slug"       => "mail-reservation",
             "controller" => "reservationnext",
             "action"     => "mail",
+            "security"   => false
+        ],
+        [
+            "slug"       => "charger-calendrier-bo",
+            "controller" => "calendar",
+            "action"     => "ajaxCalendar",
+            "security"   => false
+        ],
+        [
+            "slug"       => "charger-table-bo",
+            "controller" => "calendar",
+            "action"     => "ajaxTable",
             "security"   => false
         ]
     ];
