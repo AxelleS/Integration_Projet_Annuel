@@ -51,6 +51,14 @@ class BaseSql{
         return $response;
     }
 
+    public function delete($champs) {
+        $this->setColumns();
+            
+            $response = $this->pdo->query("DELETE FROM ".$this->table." WHERE".$champs."LIKE ".$this->columns[$champs]);
+
+            return $response;
+    }
+
     public function save(){
         //echo "Enregistrement <br>";
         $this->setColumns();
