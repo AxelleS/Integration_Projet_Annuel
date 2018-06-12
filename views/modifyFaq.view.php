@@ -10,12 +10,13 @@
   <input type="hidden" name="actualPageType" value="Foire à questions" />
   <input type="hidden" id="lastId" value="<?php echo $lastId;?>">
       <?php foreach ($faqList as $key=>$value) : ?>
-          <fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center">
+          <fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center fieldset-content">
               <legend>Question-Réponse</legend>
               <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-style" for="<?php echo 'question_'.$key;?>">Question</label>
               <input type="text" class="organization-input-style" name="<?php echo $key.'[question]';?>" value="<?php echo $value['question'];?>">
               <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" for="<?php echo 'answer_'.$key;?>">Réponse</label>
               <textarea class="organization-input-style" name="<?php echo $key.'[answer]';?>"><?php echo $value['answer'];?></textarea>
+              <input type="button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addNewQuestion" id="delQA" value="Supprimer la question/réponse">
           </fieldset>
       <?php endforeach; ?>
   <input type="button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addNewQuestion" id="addQA" value="Ajouter une nouvelle question">
@@ -32,21 +33,28 @@
       });
     });
 
+    $(document).on("click",".fieldset-content #delQA", function(){
+      console.log("toto");
+      $(this).parent().remove();
+    });
+
   function addQA(){
     
     var lastId = parseInt($('#lastId').val()) + 1;
     $('#lastId').attr('value', lastId);
     $('#addQA').before(
-      '<fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center">' +
+      '<fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center fieldset-content">' +
       '<legend>Question-Réponse</legend>'+
       '<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-style" for="question_'+lastId+'">Question</label>'+
       '<input class="organization-input-style" type="text" name="'+lastId+'[question]" value="">'+
       '<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" for="answer_'+lastId+'">Réponse</label>'+
       '<textarea class="organization-input-style" name="'+lastId+'[answer]"></textarea>'+
+      '<input type="button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addNewQuestion" id="delQA" value="Supprimer la question/réponse">'+
       '</fieldset>'
     );
       
     }
+    
 </script>
 </div>
 </div>
