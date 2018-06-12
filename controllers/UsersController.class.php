@@ -4,83 +4,120 @@ class UsersController
 {
     public function indexAction($params)
     {
-        $v = new View();
+        if (count($params['URL']) == 0){
+            $v = new View('users','back');
+        } else {
+            if ($params['URL'][0] == 'customer'){
+                $v = new View('usersDetails','back');
+                $v->assign('title', 'Clients');
+                $v->assign('type', 2);
+            } else {
+                $v = new View('usersDetails','back');
+                $v->assign('title', 'Administrateur');
+                $v->assign('type', 1);
+            }
+        }
+
     }
 
-    public function editAction($params){}
+    public function generateAction($params)
+    {
+        $typeUser = $params['GET']['type'];
+        $customer = new User();
+        $customer->setType($typeUser);
+        $response = $customer->select('id_type');
+
+        $donnees_customer = [];
+        while ($donnees = $response->fetch()) {
+            $donnees_customer[$donnees['id']] = $donnees;
+        }
+
+        echo json_encode($donnees_customer);
+        exit;
+    }
+
+    public function deleteAction($params)
+    {
+        $idUser = $params['GET']['idUser'];
+        $customer = new User();
+        $customer->setId($idUser);
+        $response = $customer->select('id');
+
+        $donnees_customer = [];
+        while ($donnees = $response->fetch()) {
+            $donnees_customer[$donnees['id']] = $donnees;
+        }
+
+        exit;
+    }
+
+    public function editAction($params){
+        $idUser = $params['URL'][0];
+        // //Va chercher les infos de l'utilisateur
+        $user = new User();
+        $user->setId($idUser);
+        $response = $user->select('id');
+        $donnees_user = $response->fetch();
+
+        $user->setFirstname($donnees_user['firstname']);
+        $user->setLastname($donnees_user['lastname']);
+        $user->setYearsOld($donnees_user['years_old']);
+        $user->setEmail($donnees_user['email']);
+        $user->setPhone($donnees_user['phone']);
+        $user->setAddress($donnees_user['address']);
+        $user->setAddress2($donnees_user['address_2']);
+        $user->setZipcode($donnees_user['zipcode']);
+        $user->setCity($donnees_user['city']);
+        $user->setPicture($donnees_user['url_picture']);
+        $user->setStatus($donnees_user['status']);
+        $user->setType($donnees_user['id_type']);
+
+        $config = $user->configFormUserAddModifyBO();
+        print_r($config);
+        $v = new View('userEdit','back');
+        $v->assign('config',$config);
+    }
 
     public function saveAction($params)
     {        
 		if(!empty($params["POST"])){
 			
-			$errors = Validate::checkForm($config, $params["POST"]);
+			//$errors = Validate::checkForm($config, $params["POST"]);
+
+            $error = '';
 
 			if(empty($errors)){
+			    $user = new User();
                 if(!is_null($params["POST"]["id"])) {
                     $user->setId($params["POST"]["id"]);
                 }
+                $response = $user->select('id');
+                $donnees = $response->fetch();
+
+                $user->setType($params['POST']['id_type']);
                 $user->setFirstname($params['POST']['firstname']);
                 $user->setLastname($params['POST']['lastname']);
-                $user->setYearsOld($params['POST']['yearsold']);
+                $user->setYearsOld($params['POST']['years_old']);
                 $user->setEmail($params['POST']['email']);
                 $user->setPhone($params['POST']['phone']);
                 $user->setAddress($params['POST']['address']);
                 $user->setAddress2($params['POST']['address_2']);
                 $user->setZipcode($params['POST']['zipcode']);
                 $user->setCity($params['POST']['city']);
-                $user->setPicture($params['POST']['picture']);
-                $user->setPassword($params['POST']['password']);
+                $user->setPicture($donnees['url_picture']);
+                $user->setStatus($params['POST']['status']);
                 $user->save();
-                header("Location: ".DIRNAME.Route::getSlug('customerinfo','index'));
+
+                if($params['POST']['id_type'] == 1) {
+                    $nextURL = 'admin';
+                } else {
+                    $nextURL = 'customer';
+                }
+                header("Location: ".DIRNAME.Route::getSlug('users','index')."/".$nextURL);
 			}
 		} else {
-            header("Location: ".DIRNAME.Route::getSlug('customerinfo','index'));
+            header("Location: ".DIRNAME.Route::getSlug('users','index'));
         }
-		
-		$v = new View("customerinfo","connected");
-		$v->assign("config", $config);
-		$v->assign("errors", $errors);
-        
-        
-        $params['POST']['input-email'] == '' ? $error = true : $user->setEmail($params['POST']['input-email']);
-
-        $params['POST']['input-phone'] == '' ? $error = true : (strlen($params['POST']['input-phone']) == 10 ? $user->setPhone($params['POST']['input-phone']) : $error = true);
-
-        $params['POST']['input-address'] == '' ? $error = true : $user->setAddress($params['POST']['input-address']);
-
-        $params['POST']['input-complete'] == '' ? $user->setAddress2('null') : $user->setAddress2($params['POST']['input-complete']);
-
-        $params['POST']['input-zipcode'] == '' ? $error = true : (strlen($params['POST']['input-zipcode']) == 5 ? $user->setZipcode($params['POST']['input-zipcode']) : $error = true);
-
-        $params['POST']['input-city'] == '' ? $error = true : $user->setCity($params['POST']['input-city']);
-
-        $params['POST']['input-photo'] == '' ? $user->setPicture($params['POST']['input-photo-old']) : ($params['POST']['input-photo'] != $params['POST']['input-photo-old'] ? $user->setPicture($params['POST']['input-photo']) : $user->setPicture($params['POST']['input-photo-old']));
-
-        if($error){
-            $donnees_user['error'] = "Vous avez fait une erreur !";
-            $v = new View('customerinfo','connected');
-            $v->assign("donnees",$donnees_user);
-        } else {
-            $user->setId($params['POST']['input-id']);
-            $user->save();
-
-            $user_new = new User();
-            $user_new->setId($params['POST']['input-id']);
-            $response = $user_new->select('id');
-            $donnees_new = $response->fetch();
-            $donnees_new['error'] = "Modification enregistrées !";
-            $v = new View('customerinfo','connected');
-            $v->assign("donnees",$donnees_new);
-        }
-        // $id_user = 1;
-        // //Va chercher les infos de l'utilisateur
-        // $user = new User();
-        // $user->setId($id_user);
-        // $response = $user->select('id');
-        // $donnees = $response->fetch();
-        // $v = new View('customerinfo','connected');
-        // $v->assign("donnees",$donnees);
     }
 
-    public function deleteAction($params){}
 }

@@ -28,8 +28,8 @@ class Route{
         ],
         [
             "slug"       => "modifier-mes-infos",
-            "controller" => "users",
-            "action"     => "edit",
+            "controller" => "customerinfo",
+            "action"     => "index",
             "security"   => true
         ],
         [
@@ -183,18 +183,6 @@ class Route{
             "security"   => false
         ],
         [
-            "slug"       => "base-de-donnees",
-            "controller" => "database",
-            "action"     => "index",
-            "security"   => false
-        ],
-        [
-            "slug"       => "supprimer-enregistrement",
-            "controller" => "database",
-            "action"     => "delete",
-            "security"   => false
-        ],
-        [
             "slug"       => "calendrier",
             "controller" => "calendar",
             "action"     => "index",
@@ -210,6 +198,12 @@ class Route{
             "slug"       => "voir-les-utilisateurs",
             "controller" => "users",
             "action"     => "index",
+            "security"   => false
+        ],
+        [
+            "slug"       => "genererer-utilisateurs",
+            "controller" => "users",
+            "action"     => "generate",
             "security"   => false
         ],
         [

@@ -74,12 +74,6 @@
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Organisation site</p></figcaption>
             </figure>
           <?php echo '</a>'; ?>
-          <?php echo '<a href="'.DIRNAME.Route::getSlug('database','index').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
-            <figure class="row align-navbar-details menu-hover">
-              <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 24 24"><path d="M22 15.055v2.458c0 1.925-4.655 3.487-10 3.487-5.344 0-10-1.562-10-3.487v-2.458c2.418 1.738 7.005 2.256 10 2.256 3.006 0 7.588-.523 10-2.256zm-10-12.055c-5.344 0-10 1.486-10 3.32s4.656 3.32 10 3.32c5.345 0 10-1.486 10-3.32s-4.655-3.32-10-3.32zm0 8.64c-3.006 0-7.588-.523-10-2.256v2.44c0 1.926 4.656 3.487 10 3.487 5.345 0 10-1.562 10-3.487v-2.44c-2.418 1.738-7.005 2.256-10 2.256z"/></svg>
-              <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Base de données</p></figcaption>
-            </figure>
-          <?php echo '</a>'; ?>
           <?php echo '<a href="'.DIRNAME.Route::getSlug('calendar','index').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 24 24"><path d="M17 1c0-.552-.447-1-1-1s-1 .448-1 1v2c0 .552.447 1 1 1s1-.448 1-1v-2zm-12 2c0 .552-.447 1-1 1s-1-.448-1-1v-2c0-.552.447-1 1-1s1 .448 1 1v2zm13 5v10h-16v-10h16zm2-6h-2v1c0 1.103-.897 2-2 2s-2-.897-2-2v-1h-8v1c0 1.103-.897 2-2 2s-2-.897-2-2v-1h-2v18h20v-18zm4 3v19h-22v-2h20v-17h2zm-17 7h-2v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4h-2v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
