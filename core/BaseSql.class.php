@@ -59,8 +59,14 @@ class BaseSql{
             //Update
             $query_columns = array();
             $id_search = $this->columns['id'];
-            
+
+            if(isset($this->columns['password'])) {
+                unset($this->columns['password']);
+                unset($this->columns['token']);
+            }
+
             unset($this->columns['id']);
+
             foreach($this->columns as $key => $value){
              array_push($query_columns,$key."=:".$key);
             }
@@ -68,7 +74,6 @@ class BaseSql{
 
             //echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
             //echo "<br>";
-            //print_r($this->columns);
             $query->execute($this->columns);
         } else{
             //Insert

@@ -2,7 +2,7 @@
 <?php //print_r($config);?>
 </pre>
 
-<form method="<?php echo $config["config"]["method"]?>" action="<?php echo DIRNAME.Route::getSlug('user','save'); ?>" name="<?php echo $config["config"]["name"]?>">
+<form method="<?php echo $config["config"]["method"]?>" action="<?php echo DIRNAME.Route::getSlug('users','save'); ?>" name="<?php echo $config["config"]["name"]?>">
 
 	<?php foreach ($config["input"] as $rows):?>
 		<div class="row">
@@ -53,12 +53,6 @@
 		<?php endforeach;?>
 		</div>
 	<?php endforeach;?>
+    <input type="submit" class="btn-default" value="Valider">
 	</form>
-	<div class="row col-lg-12">
-		<section class="row col-lg-3 offset-lg-3">
-			<article class="col-lg-4 title">
-				<input type="submit" form="<?php echo $config["config"]["name"]?>" class="btn-default" value="Valider">
-			</article>
-		</section>
-	</div>
 

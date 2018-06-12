@@ -2,6 +2,7 @@
 class User extends BaseSql{
 
   protected $id = null;
+  protected $id_type;
   protected $firstname;
   protected $lastname;
   protected $years_old;
@@ -23,6 +24,10 @@ class User extends BaseSql{
 
   public function setId($id) {
     $this->id=$id;
+  }
+
+  public function setType($id_type) {
+      $this->id_type = $id_type;
   }
 
   public function setFirstname($firstname) {
@@ -104,7 +109,7 @@ class User extends BaseSql{
                 "class" => "col-lg-5 offset-lg-1",
                 "value" => $this->firstname
               ],
-              "age"=>[
+              "years_old"=>[
                 "type"=>"text",
                 "placeholder"=>"Votre âge",
                 "required"=>true,
@@ -207,6 +212,113 @@ class User extends BaseSql{
         ]
     ];
   }
+
+    public function configFormUserAddModifyBO(){
+        return [
+            "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','save'),"name"=>"edit"],
+            "input"=>[
+                "A"=>[
+                    "Personnel"=>[
+                        "id"=>[
+                            "type"=>"hidden",
+                            "required"=>false,
+                            "value" => $this->id,
+                            'class' => ''
+                        ],
+                        "lastname"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre nom",
+                            "required"=>true,
+                            "class" => "col-lg-5",
+                            "value" => $this->lastname
+                        ],
+                        "firstname"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre prénom",
+                            "required"=>true,
+                            "class" => "col-lg-5 offset-lg-1",
+                            "value" => $this->firstname
+                        ],
+                        "years_old"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre âge",
+                            "required"=>true,
+                            "class" => "col-lg-4",
+                            "value" => $this->years_old
+                        ]
+                    ]
+                ],
+                "B"=>[
+                    "Contact"=>[
+                        "email"=>[
+                            "type"=>"email",
+                            "placeholder"=>"Votre email",
+                            "required"=>true,
+                            "class" => "col-lg-5",
+                            "value" => $this->email
+                        ],
+                        "phone"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre téléphone",
+                            "required"=>true,
+                            "class" => "col-lg-5 offset-lg-1",
+                            "value" => $this->phone,
+                            "maxString" => 10,
+                            "minString" =>  10
+                        ]
+                    ]
+                ],
+                "C"=>[
+                    "Location"=>[
+                        "address"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre adresse",
+                            "required"=>true,
+                            "class" => "col-lg-12",
+                            "value" => $this->address
+                        ],
+                        "address_2"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre adresse suite",
+                            "required"=>false,
+                            "class" => "col-lg-12",
+                            "value" => $this->address_2
+                        ],
+                        "zipcode"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre code postal",
+                            "required"=>true,
+                            "class" => "col-lg-4",
+                            "value" => $this->zipcode,
+                            "maxString" => 5,
+                            "minString" =>  5
+                        ],
+                        "city"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre ville",
+                            "required"=>true,
+                            "class" => "col-lg-5 offset-lg-2",
+                            "value" => $this->city
+                        ]
+                    ]
+                ],
+                "D"=>[
+                    "Options"=>[
+                        "status"=>[
+                            "type"=>"select",
+                            "class" => "col-lg-4",
+                            "value" => $this->status
+                        ],
+                        "id_type"=>[
+                            "type"=>"select",
+                            "class" => "col-lg-4",
+                            "value" => $this->id_type
+                        ]
+                    ]
+                ]
+            ]
+        ];
+    }
 
   public function configFormUserConnect(){
     return [

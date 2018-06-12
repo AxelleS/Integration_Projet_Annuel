@@ -4,7 +4,7 @@ class CustomerinfoController
 {
     public function indexAction($params)
     {        
-        $id_user = 1;
+        $id_user = $_SESSION['id_user'];
         // //Va chercher les infos de l'utilisateur
         $user = new User();
         $user->setId($id_user);
