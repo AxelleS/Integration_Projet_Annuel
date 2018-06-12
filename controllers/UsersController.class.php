@@ -41,13 +41,8 @@ class UsersController
         $idUser = $params['GET']['idUser'];
         $customer = new User();
         $customer->setId($idUser);
-        $response = $customer->select('id');
-
-        $donnees_customer = [];
-        while ($donnees = $response->fetch()) {
-            $donnees_customer[$donnees['id']] = $donnees;
-        }
-
+        $response = $customer->delete('id');
+        echo $response;
         exit;
     }
 
@@ -73,7 +68,6 @@ class UsersController
         $user->setType($donnees_user['id_type']);
 
         $config = $user->configFormUserAddModifyBO();
-        print_r($config);
         $v = new View('userEdit','back');
         $v->assign('config',$config);
     }

@@ -34,6 +34,7 @@
     });
 
     function generateArray(){
+        $('#tbody').html('');
         $.ajax({
             url: '<?php echo DIRNAME . Route::getSlug('users', 'generate'); ?>',
             type: 'GET',
@@ -75,9 +76,15 @@
                 data: {
                     idUser : idUser
                 },
-                complete : function() {
-                    generateArray();
-                    alert("Suppression effectuée !");
+                complete : function(data) {
+                    var isDelete = JSON.parse(data['responseText']);
+                    console.log(isDelete);
+                    if(isDelete == true) {
+                        alert("Suppression effectuée !");
+                        generateArray();
+                    } else {
+                        alert("Suppression échouée !");
+                    }
                 }
             });
         }

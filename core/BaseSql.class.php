@@ -53,10 +53,14 @@ class BaseSql{
 
     public function delete($champs) {
         $this->setColumns();
-            
-            $response = $this->pdo->query("DELETE FROM ".$this->table." WHERE".$champs."LIKE ".$this->columns[$champs]);
 
-            return $response;
+        try{
+            $this->pdo->query("DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs]);
+            return true;
+        }
+        catch (Exception $e) {
+            return false;
+        }
     }
 
     public function save(){
