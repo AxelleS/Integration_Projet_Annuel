@@ -16,31 +16,34 @@ class CalendarController {
     }
 
     public function ajaxSaveAction($params){
-	    $idTimeSlot = $params['GET']['idTimeSlot'];
-        $isActive = $params['GET']['isActive'];
-	    $timeSlot = new Time_slot();
-	    $timeSlot->setId($idTimeSlot);
-        $response = $timeSlot->select('id');
-	    $donnees = $response->fetch();
-        $timeSlot->setIdCalendar($donnees['id_calendar']);
-        $timeSlot->setIdRoom($donnees['id_room']);
-        $timeSlot->setTimeSlot($donnees['time_slot']);
-        $timeSlot->setNumberPlayer($donnees['number_player']);
-        $timeSlot->setTotalPrice($donnees['total_price']);
-        $timeSlot->setDateBill($donnees['date_bill']);
-        $timeSlot->setOpinion($donnees['opinion']);
+        $elements = $params['GET']['timeSlots'];
 
-	    if($isActive){
-	        if($donnees['id_user'] == 0) {
-                $timeSlot->setIdUser(null);
+	    foreach ($elements as $element) {
+	        $timeSlot = new Time_slot();
+            $timeSlot->setId($element[0]);
+            $response = $timeSlot->select('id');
+            $donnees = $response->fetch();
+            $timeSlot->setIdCalendar($donnees['id_calendar']);
+            $timeSlot->setIdRoom($donnees['id_room']);
+            $timeSlot->setTimeSlot($donnees['time_slot']);
+            $timeSlot->setNumberPlayer($donnees['number_player']);
+            $timeSlot->setTotalPrice($donnees['total_price']);
+            $timeSlot->setDateBill($donnees['date_bill']);
+            $timeSlot->setOpinion($donnees['opinion']);
+
+            if ($element[1] == 1) {
+                if($donnees['id_user'] == 0) {
+                    $timeSlot->setIdUser(null);
+                } else {
+                    $timeSlot->setIdUser($donnees['id_user']);
+                }
             } else {
-                $timeSlot->setIdUser($donnees['id_user']);
+                $timeSlot->setIdUser(0);
             }
-        } else {
-            $timeSlot->setIdUser(0);
+
+            $timeSlot->save();
         }
 
-	    $timeSlot->save();
         exit;
     }
 
