@@ -66,9 +66,9 @@ class BaseSql{
             }
             $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
 
-            /*echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
-            echo "<br>";
-            print_r($this->columns);*/
+            //echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
+            //echo "<br>";
+            //print_r($this->columns);
             $query->execute($this->columns);
         } else{
             //Insert

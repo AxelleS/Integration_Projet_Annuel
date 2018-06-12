@@ -285,6 +285,7 @@
         var nbRows = arrayRows.length;
         var i=0;
 
+        var slots = [];
         while(i<nbRows)
         {
             var arrayColumns = arrayRows[i].cells;
@@ -293,29 +294,34 @@
             var n=0;
             while(n<nbColumns)
             {
+                var temp = [];
                 var toto = arrayColumns[n].innerHTML;
                 var tableau = toto.split(' ');
                 if(tableau.length > 1){
                     var idTimeSlot = tableau[1].split('"')[1];
-                    if (tableau.length > 3) {
-                        var isActive = true;
+                    var idCheckbox = '#'+(idTimeSlot).toString();
+                    if ($(idCheckbox).is(':checked')) {
+                        var isActive = 1;
                     }
                     else {
-                        var isActive = false;
+                        var isActive = 0;
                     }
-                    $.ajax({
-                        url: '<?php echo DIRNAME . Route::getSlug('calendar', 'ajaxSave'); ?>',
-                        type: 'GET',
-                        data: {
-                            idTimeSlot : idTimeSlot,
-                            isActive : isActive
-                        }
-                    });
+
+                    temp.push(idTimeSlot);
+                    temp.push(isActive);
+                    slots.push(temp);
                 }
                 n = n + 1;
             }
             i = i + 1;
         }
+        $.ajax({
+            url: '<?php echo DIRNAME . Route::getSlug('calendar', 'ajaxSave'); ?>',
+            type: 'GET',
+            data: {
+                timeSlots : slots
+            }
+        });
         alert('Modifications enregistrées !');
     }
 </script>
