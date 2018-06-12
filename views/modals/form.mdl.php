@@ -53,6 +53,7 @@
 		<?php endforeach;?>
 		</div>
 	<?php endforeach;?>
-    <input type="submit" class="btn-default" value="Valider">
+
+	<input type="submit" class="btn-default" value="Valider">
 	</form>
 
