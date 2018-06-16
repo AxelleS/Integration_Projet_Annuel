@@ -117,6 +117,12 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
+        $idFaq = $params['POST']['idFaq'];
+        $questionAnswer = new Faq();
+        $questionAnswer->setId($idFaq);
+        $response = $questionAnswer->delete('id');
+        echo $response;
+        exit;
     }
 
     public function saveAction($params){
@@ -162,13 +168,10 @@ class OrganizationController {
                 }
 
                 $count++;
-                echo "<pre>";
-                print_r($sendFaq[$key]);
-                echo "</pre>";
                 $sendFaq[$key]->save();
             }
             
-            die;
+            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
             // echo '<pre>';
             // print_r($params);
             // echo '</pre>';

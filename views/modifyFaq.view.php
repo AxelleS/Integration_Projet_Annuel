@@ -10,7 +10,7 @@
   <input type="hidden" name="actualPageType" value="Foire à questions" />
   <input type="hidden" id="lastId" value="<?php echo $lastId;?>">
       <?php foreach ($faqList as $key=>$value) : ?>
-          <fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center fieldset-content">
+          <fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center fieldset-content" onclick="deleteQa(<?php echo $key; ?>)">
               <legend>Question-Réponse</legend>
               <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-style" for="<?php echo 'question_'.$key;?>">Question</label>
               <input type="text" class="organization-input-style" name="<?php echo $key.'[question]';?>" value="<?php echo $value['question'];?>">
@@ -32,6 +32,28 @@
       addQA();
       });
     });
+
+    function deleteQa(idQA) {
+      console.log(idQA);
+      $.ajax({
+        url: '<?php echo DIRNAME . Route::getSlug('organization', 'delete'); ?>',
+        type: 'POST',
+        data: {
+            idFaq : idQA
+        },
+        complete : function(data) {
+            var isDelete = JSON.parse(data['responseText']);
+            console.log("joijiojiojoijiooiioiooiojio    :::::   ",isDelete);
+            if(isDelete == true) {
+                alert("Suppression effectuée !");
+                console.log("toto");
+                $(this).parent().remove();
+            } else {
+                alert("Suppression échouée !");
+            }
+        }
+    });
+    }
 
     $(document).on("click",".fieldset-content #delQA", function(){
       console.log("toto");
