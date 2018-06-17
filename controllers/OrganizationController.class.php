@@ -3,34 +3,21 @@
 class OrganizationController {
 
 	public function indexAction($params) {
-        $homeList = new Homepage();
-        $response_homeList = $homeList->select();
-        $donnees_homeList = $response_homeList->fetch();
-        $donnees_homeList['name'] = "Homepage";
         $donnees_pages = array();
-        array_push($donnees_pages, $donnees_homeList);
+        array_push($donnees_pages, "Homepage");
 
         $roomList = new Room();
         $response_roomList = $roomList->select();
         while($donnees_roomList = $response_roomList->fetch()){
-            array_push($donnees_pages, $donnees_roomList);
+            array_push($donnees_pages, $donnees_roomList['name']);
         }
 
-        $faqList = new Faq();
-        $response_faqList = $faqList->select();
-        $donnees_faqList = $response_faqList->fetch();
-        $donnees_faqList['name'] = "Foire à questions";
-        array_push($donnees_pages, $donnees_faqList);
+        array_push($donnees_pages, "Foire à questions");
 
-        $newRoom = new Room();
-        $response_newRoom = $newRoom->select();
-        $donnees_newRoom = $response_newRoom->fetch();
-        $donnees_newRoom['name'] = "Nouvelle page";
-        array_push($donnees_pages, $donnees_newRoom);
+        array_push($donnees_pages, "Nouvelle page");
         $v = new View('organization', 'back');
-        $v->assign('roomList', $donnees_pages);
 
-
+        $v->assign('donnees', $donnees_pages);
     }
 
     public function editAction($params){
@@ -47,9 +34,9 @@ class OrganizationController {
             $homepage = array();
             
             $roomListDetails = array();
-            forEach($response_roomList->fetchAll() as $keyRoom=>$content) {
+            foreach($response_roomList->fetchAll() as $keyRoom=>$content) {
               $temp2 = array();
-              forEach($content as $key=>$value) {
+              foreach($content as $key=>$value) {
                 if(!is_numeric($key)) {
                   if ($key == "id" || $key == "name") {
                     $temp2[$key] = $value;
@@ -88,6 +75,7 @@ class OrganizationController {
             $result = $faq->select();
 
             $lastId = 0;
+            $array = [];
             while ($response = $result->fetch()){
                 $array[$response['id']] = [
                     'question' => $response['question'],
@@ -117,6 +105,12 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
+        $idFaq = $params['POST']['idFaq'];
+        $questionAnswer = new Faq();
+        $questionAnswer->setId($idFaq);
+        $response = $questionAnswer->delete('id');
+        echo $response;
+        exit;
     }
 
     public function saveAction($params){
@@ -162,13 +156,10 @@ class OrganizationController {
                 }
 
                 $count++;
-                echo "<pre>";
-                print_r($sendFaq[$key]);
-                echo "</pre>";
                 $sendFaq[$key]->save();
             }
             
-            die;
+            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
             // echo '<pre>';
             // print_r($params);
             // echo '</pre>';
