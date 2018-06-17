@@ -2,7 +2,7 @@
 <?php //print_r($config);?>
 </pre>
 
-<form method="<?php echo $config["config"]["method"]?>" action="<?php echo DIRNAME.Route::getSlug('users','save'); ?>" name="<?php echo $config["config"]["name"]?>">
+<form method="<?php echo $config["config"]["method"];?>" action="<?php echo $config["config"]["action"]; ?>" name="<?php echo $config["config"]["name"];?>">
 
 	<?php foreach ($config["input"] as $rows):?>
 		<div class="row">
@@ -21,7 +21,7 @@
 								name="<?php echo $name;?>" 
 								id="<?php echo $name;?>"
 								value="<?php echo $attributs["value"];?>"
-								<?php echo (isset($attributs["required"]))?"required='required'":"";?>
+								<?php echo ((isset($attributs["required"])) && ($attributs["required"]))?"required='required'":"";?>
 							>
 						</article>
 					<?php endif;?>
@@ -45,8 +45,19 @@
 								class="col-lg-1"
 							><?php echo $attributs['text']; ?>
 						</article>
-					<?php endif;?>		
-			<?php endforeach;?>
+					<?php endif;?>
+                    <?php if($attributs["type"]=="textarea"):?>
+                        <br>
+                        <article class="<?php echo $attributs['class']; ?>">
+                            <label for="<?php echo $name;?>"><?php echo $attributs["placeholder"];?></label>
+                            <textarea
+                                    id="<?php echo $name;?>"
+                                    name="<?php echo $name;?>"
+                                    placeholder="<?php echo $attributs["placeholder"];?>"
+                            ></textarea>
+                        </article>
+                    <?php endif;?>
+            <?php endforeach;?>
 			</section>
 			</fieldset>
 			</section>

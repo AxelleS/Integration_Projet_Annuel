@@ -5,12 +5,10 @@ class Contact extends BaseSql{
   protected $firstname;
   protected $lastname;
   protected $email;
-  protected $address;
   protected $subject;
   protected $content;
   protected $phone = null;
   protected $is_read = 0;
-  protected $date_send;
 
   public function __construct() {
     parent::__construct();
@@ -44,8 +42,8 @@ class Contact extends BaseSql{
     $this->content=trim($content);
   }
 
-  public function setIsRead($status) {
-    $this->status=$status;
+  public function setIsRead($is_read) {
+    $this->is_read=$is_read;
   }
 
   public function configFormContact(){
@@ -77,8 +75,8 @@ class Contact extends BaseSql{
             ],
             "phone"=>[
               "type"=>"number",
-              "placeholder"=>"0000000000",
-              "required"=>true,
+              "placeholder"=>"Votre téléphone",
+              "required"=>false,
               "class"=>"col-lg-5 offset-lg-1",
               "value"=> $this->phone
             ],
@@ -91,7 +89,7 @@ class Contact extends BaseSql{
             ],
             "message"=>[
               "type"=>"textarea",
-              "placeholder"=>"Je vous contacte pour vous demander...",
+              "placeholder"=>"Votre message",
               "required"=>true,
               "class"=>"col-lg-12",
               "value"=>''
