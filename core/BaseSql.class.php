@@ -39,6 +39,7 @@ class BaseSql{
 
         if(is_null($champ_recherche)){
             $response = $this->pdo->query("SELECT * FROM ".$this->table." ORDER BY id ".$order);
+            //echo "SELECT * FROM ".$this->table." ORDER BY id ".$order;
         } else {
             $valeur_recherche = $this->columns[$champ_recherche];
             if(is_null($valeur_recherche)){
@@ -46,6 +47,7 @@ class BaseSql{
             } else{
                 $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
             }
+            //echo "SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'";
         }
         // echo "SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'";
         return $response;

@@ -3,34 +3,17 @@
 class OrganizationController {
 
 	public function indexAction($params) {
-        $homeList = new Homepage();
-        $response_homeList = $homeList->select();
-        $donnees_homeList = $response_homeList->fetch();
-        $donnees_homeList['name'] = "Homepage";
         $donnees_pages = array();
-        array_push($donnees_pages, $donnees_homeList);
-
+        array_push($donnees_pages, "Homepage");
         $roomList = new Room();
         $response_roomList = $roomList->select();
         while($donnees_roomList = $response_roomList->fetch()){
-            array_push($donnees_pages, $donnees_roomList);
+            array_push($donnees_pages, $donnees_roomList['name']);
         }
-
-        $faqList = new Faq();
-        $response_faqList = $faqList->select();
-        $donnees_faqList = $response_faqList->fetch();
-        $donnees_faqList['name'] = "Foire à questions";
-        array_push($donnees_pages, $donnees_faqList);
-
-        $newRoom = new Room();
-        $response_newRoom = $newRoom->select();
-        $donnees_newRoom = $response_newRoom->fetch();
-        $donnees_newRoom['name'] = "Nouvelle page";
-        array_push($donnees_pages, $donnees_newRoom);
+        array_push($donnees_pages, "Foire à questions");
+        array_push($donnees_pages, "Nouvelle page");
         $v = new View('organization', 'back');
-        $v->assign('roomList', $donnees_pages);
-
-
+        $v->assign('donnees', $donnees_pages);
     }
 
     public function editAction($params){
