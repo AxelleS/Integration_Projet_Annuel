@@ -80,8 +80,23 @@ class ContactController
     public function openMessageAction($params){
         $contact = new Contact();
         $contact->setId($params['URL'][0]);
+
         $response = $contact->select('id');
         $donnees = $response->fetch();
+        $contact->setLastname($donnees['lastname']);
+        $contact->setFirstname($donnees['firstname']);
+        $contact->setPhone($donnees['phone']);
+        $contact->setEmail($donnees['email']);
+        $contact->setSubject($donnees['subject']);
+        $contact->setContent($donnees['content']);
+        $contact->setIsRead(1);
+        $contact->save();
+
+        $toCut = explode(' ', $donnees['date_send']);
+        $dateExplode = explode('-', $toCut[0]);
+        $date = $dateExplode[2].'/'.$dateExplode[1].'/'.$dateExplode[0];
+        $hour = substr($toCut[1], 0, 5);
+        $donnees['date_send'] = $date.' '.$hour;
 
         $v = new View('viewMessage','back');
         $v->assign('donnees',$donnees);
