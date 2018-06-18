@@ -6,9 +6,11 @@ class DashboardadminController
     {
         $contact = new Contact();
         $contact->setIsRead(0);
-        $response_contact = $contact->select('is_read');
+        $response_contact = $contact->select('is_read', 'DESC');
         $nbMessages = $response_contact->rowCount();
-        $contactArray = '';
+        $contactArray = [];
+        $i = 0;
+
         if ($nbMessages > 0) {
             while($donnees_contact = $response_contact->fetch()){
                 $toCut = explode(' ', $donnees_contact['date_send']);
@@ -24,12 +26,16 @@ class DashboardadminController
                 }
 
                 $donnees_contact['message'] = $message;
-                $contactArray = $donnees_contact;
+                if ($i < 3) {
+                    array_push($contactArray, $donnees_contact);
+                }
+
+                $i++;
             }
         }
 
         $v = new View('dashboardadmin', 'back');
         $v->assign('nbMessages', $nbMessages);
-        $v->assign('contact', $contactArray);
+        $v->assign('contacts', $contactArray);
     }
 }

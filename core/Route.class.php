@@ -283,6 +283,12 @@ class Route{
             "controller" => "contact",
             "action"     => "viewAll",
             "security"   => false
+        ],
+        [
+        "slug"       => "voir-le-message",
+        "controller" => "contact",
+        "action"     => "openMessage",
+        "security"   => false
         ]
     ];
 

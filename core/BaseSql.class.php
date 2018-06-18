@@ -33,18 +33,18 @@ class BaseSql{
     }
 
     //function select avec passage en paramètre du champs sue lequel va s'effectuer la recherche
-    public function select($champ_recherche = null){
+    public function select($champ_recherche = null, $order = 'ASC'){
         $this->setColumns();
         //permet d'aller chercher la valeur du champs où l'on va faire la recherche
 
         if(is_null($champ_recherche)){
-            $response = $this->pdo->query("SELECT * FROM ".$this->table);
+            $response = $this->pdo->query("SELECT * FROM ".$this->table." ORDER BY id ".$order);
         } else {
             $valeur_recherche = $this->columns[$champ_recherche];
             if(is_null($valeur_recherche)){
-                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL");
+                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
             } else{
-                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'");
+                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
             }
         }
         // echo "SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'";

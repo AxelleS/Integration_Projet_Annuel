@@ -53,9 +53,37 @@ class ContactController
 
     public function viewAllAction($params){
         $contact = new Contact();
-        $response = $contact->select();
+        $response = $contact->select(null, 'DESC');
+
+        $donnees_contact = [];
+        while ($donnees = $response->fetch()) {
+            $toCut = explode(' ', $donnees['date_send']);
+            $dateExplode = explode('-', $toCut[0]);
+            $date = $dateExplode[2].'/'.$dateExplode[1].'/'.$dateExplode[0];
+            $hour = substr($toCut[1], 0, 5);
+            $donnees['date_send'] = $date.' '.$hour;
+            if (strlen($donnees['content']) > 20) {
+                $message = substr($donnees['content'], 0, 20).' [...]';
+            } else {
+                $message = $donnees['content'];
+            }
+
+            $donnees['content'] = $message;
+
+            array_push($donnees_contact, $donnees);
+        }
 
         $v = new View('viewMessages','back');
-        $v->assign('donnees',$response);
+        $v->assign('donnees',$donnees_contact);
+    }
+
+    public function openMessageAction($params){
+        $contact = new Contact();
+        $contact->setId($params['URL'][0]);
+        $response = $contact->select('id');
+        $donnees = $response->fetch();
+
+        $v = new View('viewMessage','back');
+        $v->assign('donnees',$donnees);
     }
 }
