@@ -46,7 +46,7 @@ class SigninController
             $user->majToken();
     
             $_SESSION['token'] = $token;
-            $_SESSION['email_user'] = $donnees_user['email'];
+            $_SESSION['id_user'] = $donnees_user['id'];
     
             header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
 
