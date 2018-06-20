@@ -28,7 +28,7 @@ class BaseSql{
 
     public function majToken(){
         $this->setColumns();
-        echo 'mon token : '.$this->columns['token'];echo '<br>';
+        //echo 'mon token : '.$this->columns['token'];echo '<br>';
         $this->pdo->exec("UPDATE user SET token = '".$this->columns['token']."' WHERE id LIKE ".$this->columns['id']);
     }
 

@@ -19,6 +19,38 @@ class SignUpController
     public function saveAction($params)
     {
         //Save the data
+        print_r($params);
+        $user = new User();
+
+        $infoUser = $params['POST'];
+
+        $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $token = str_shuffle($char);
+        $token = substr($token, 0, 11);
+
+        $user->setFirstname($infoUser['firstname']);
+        $user->setLastname($infoUser['lastname']);
+        $user->setYearsOld($infoUser['years_old']);
+        $user->setEmail($infoUser['email']);
+        $user->setPhone($infoUser['phone']);
+        $user->setAddress($infoUser['address']);
+        $user->setAddress2($infoUser['address_2']);
+        $user->setZipcode($infoUser['zipcode']);
+        $user->setCity($infoUser['city']);
+        $user->setPicture($infoUser['picture']);
+        $user->setPassword($infoUser['password']);
+        $user->setStatus(2);
+        $user->setType(2);
+        $user->setToken($token);
+        $user->save();
+
+        $user->setEmail($infoUser['email']);
+
+        $response = $user->select('email');
+        $donnees = $response->fetch();
+
+        $_SESSION['token'] = $token;
+        $_SESSION['id_user'] = $donnees['id'];
 
         header("Location: ".DIRNAME.Route::getSlug('signup','mail'));
     }

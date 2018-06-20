@@ -6,10 +6,11 @@ class CustomerinvoicesController
     {
         //Va chercher toutes les réservations du client
         $time_slot = new Time_slot();
-        $time_slot->setIdUser(1);
+        $time_slot->setIdUser($_SESSION['id_user']);
         $response_timeslot = $time_slot->select('id_user');
         $i = 0;
-        
+        $array = [];
+
         while($donnees_timeslot = $response_timeslot->fetch()){
             //Reformate la date 'Y-m-d' en 'd/m/Y'
             $dateExploded = explode('-',$donnees_timeslot['date_bill']);
