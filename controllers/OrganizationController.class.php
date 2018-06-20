@@ -136,25 +136,23 @@ class OrganizationController {
         } else if($params['POST']['actualPageType'] == "Foire à questions") {
             
             unset($params['POST']['actualPageType']);
-            $count = 1;
+            print_r($params);
             foreach($params['POST'] as $key => $value) {
-                $sendFaq[$key] = new Faq();
-                $sendFaq[$key]->setId($count);
-                $response = $sendFaq[$key]->select('id');
+                $sendFaq = new Faq();
+                $sendFaq->setId($key);
+                $response = $sendFaq->select('id');
 
                 if($response->rowCount() > 0) {
-                    $sendFaq[$key]->setQuestion($value['question']);
-                    $sendFaq[$key]->setAnswer($value['answer']);
+                    $sendFaq->setQuestion($value['question']);
+                    $sendFaq->setAnswer($value['answer']);
                 } else {
-                    $sendFaq[$key]->setId(null);
-                    $sendFaq[$key]->setQuestion($value['question']);
-                    $sendFaq[$key]->setAnswer($value['answer']);
+                    $sendFaq->setId(null);
+                    $sendFaq->setQuestion($value['question']);
+                    $sendFaq->setAnswer($value['answer']);
                 }
-
-                $count++;
-                $sendFaq[$key]->save();
+                $sendFaq->save();
             }
-            
+
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
             // echo '<pre>';
             // print_r($params);
