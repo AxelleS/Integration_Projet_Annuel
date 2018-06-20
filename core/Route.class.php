@@ -277,6 +277,18 @@ class Route{
             "controller" => "calendar",
             "action"     => "ajaxTable",
             "security"   => false
+        ],
+        [
+            "slug"       => "voir-les-messages",
+            "controller" => "contact",
+            "action"     => "viewAll",
+            "security"   => false
+        ],
+        [
+        "slug"       => "voir-le-message",
+        "controller" => "contact",
+        "action"     => "openMessage",
+        "security"   => false
         ]
     ];
 

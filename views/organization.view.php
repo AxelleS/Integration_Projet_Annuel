@@ -5,11 +5,11 @@
   </div>
 <div class="row site-center">
     <?php foreach($donnees as $donnee): ?>
-    <a class="col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-10 offset-sm-2 col-xs-10 offset-xs-2 placed" href="<?php echo DIRNAME.Route::getSlug('organization','edit'); ?><?php echo "/".$donnee."/";?>""">
+        <a class="col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-10 offset-sm-2 col-xs-10 offset-xs-2 placed" href="<?php echo DIRNAME.Route::getSlug('organization','edit'); ?><?php echo "/".$donnee."/";?>""">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p class="titre-organization"><b><?php echo $donnee;?></b></p>
         </div>
-    </a>
+        </a>
     <?php endforeach; ?>
 </div>
 </section>

@@ -1,0 +1,28 @@
+$taille_message: 100%;
+
+.info-contact{
+  padding: 10px;
+  margin: 5px;
+  width: 30%;
+}
+
+.info-contact .row label, .expediteur-contact .row label, .message-contact .row label{
+  font-weight: bold;
+}
+
+.expediteur-contact{
+  padding: 10px;
+  margin: 5px;
+  width:68%;
+}
+
+.message-contact{
+  padding: 10px;
+  margin: 5px;
+  width: $taille_message;
+}
+
+.message-contact .row textarea{
+  width: $taille_message;
+  height: 100px;
+}

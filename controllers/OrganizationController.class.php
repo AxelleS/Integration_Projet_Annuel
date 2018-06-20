@@ -5,18 +5,14 @@ class OrganizationController {
 	public function indexAction($params) {
         $donnees_pages = array();
         array_push($donnees_pages, "Homepage");
-
         $roomList = new Room();
         $response_roomList = $roomList->select();
         while($donnees_roomList = $response_roomList->fetch()){
             array_push($donnees_pages, $donnees_roomList['name']);
         }
-
         array_push($donnees_pages, "Foire à questions");
-
         array_push($donnees_pages, "Nouvelle page");
         $v = new View('organization', 'back');
-
         $v->assign('donnees', $donnees_pages);
     }
 
