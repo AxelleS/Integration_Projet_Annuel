@@ -30,9 +30,9 @@ class OrganizationController {
             $homepage = array();
             
             $roomListDetails = array();
-            forEach($response_roomList->fetchAll() as $keyRoom=>$content) {
+            foreach($response_roomList->fetchAll() as $keyRoom=>$content) {
               $temp2 = array();
-              forEach($content as $key=>$value) {
+              foreach($content as $key=>$value) {
                 if(!is_numeric($key)) {
                   if ($key == "id" || $key == "name") {
                     $temp2[$key] = $value;
@@ -71,6 +71,7 @@ class OrganizationController {
             $result = $faq->select();
 
             $lastId = 0;
+            $array = [];
             while ($response = $result->fetch()){
                 $array[$response['id']] = [
                     'question' => $response['question'],
@@ -100,6 +101,12 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
+        $idFaq = $params['POST']['idFaq'];
+        $questionAnswer = new Faq();
+        $questionAnswer->setId($idFaq);
+        $response = $questionAnswer->delete('id');
+        echo $response;
+        exit;
     }
 
     public function saveAction($params){
@@ -145,13 +152,10 @@ class OrganizationController {
                 }
 
                 $count++;
-                echo "<pre>";
-                print_r($sendFaq[$key]);
-                echo "</pre>";
                 $sendFaq[$key]->save();
             }
             
-            die;
+            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
             // echo '<pre>';
             // print_r($params);
             // echo '</pre>';
