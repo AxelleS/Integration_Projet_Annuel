@@ -59,11 +59,22 @@
                     <?php endif;?>
             <?php endforeach;?>
 			</section>
+				<section> 
+					<article class="row col-lg-1">
+						<img src="captcha.php" alt="captcha">
+						<?php echo $_SESSION['captcha'] ?> 
+					</article>
+					<article class="col-lg-4">
+						<input type="text" name="response_captcha">			
+					</article>
+			</section>
 			</fieldset>
 			</section>
 		<?php endforeach;?>
+
 		</div>
 	<?php endforeach;?>
+
 
 	<input type="submit" class="btn-default" value="Valider">
 	</form>
