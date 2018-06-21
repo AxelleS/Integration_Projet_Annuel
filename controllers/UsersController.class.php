@@ -72,6 +72,58 @@ class UsersController
         $v->assign('config',$config);
     }
 
+    public function saveCustomerAction($params){
+        $infoUser = $params['POST'];
+        $user = new User();
+
+        if(isset($_FILES) && count($_FILES) > 0){
+            $varReturn = Files::upload($_FILES);
+            if (!is_array($varReturn)) {
+                $user->setPicture($varReturn);
+            }
+        } else {
+            if($infoUser['picture-old'] != ''){
+                $user->setPicture($infoUser['picture-old']);
+            } else {
+                $user->setPicture(null);
+            }
+        }
+        //Si c'est un ancien user
+        if($infoUser['id'] != ''){
+            $user->setId($infoUser['id']);
+        } else {
+            $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            $token = str_shuffle($char);
+            $token = substr($token, 0, 11);
+
+            $user->setPassword($infoUser['password']);
+            $user->setToken($token);
+            $_SESSION['token'] = $token;
+        }
+
+        $user->setFirstname($infoUser['firstname']);
+        $user->setLastname($infoUser['lastname']);
+        $user->setYearsOld($infoUser['years_old']);
+        $user->setEmail($infoUser['email']);
+        $user->setPhone($infoUser['phone']);
+        $user->setAddress($infoUser['address']);
+        $user->setAddress2($infoUser['address_2']);
+        $user->setZipcode($infoUser['zipcode']);
+        $user->setCity($infoUser['city']);
+        $user->setStatus(2);
+        $user->setType(2);
+        $user->save();
+
+        $user->setEmail($infoUser['email']);
+
+        $response = $user->select('email');
+        $donnees = $response->fetch();
+
+        $_SESSION['id_user'] = $donnees['id'];
+
+        header("Location: ".DIRNAME.Route::getSlug('signup','mail'));
+    }
+
     public function saveAction($params)
     {        
 		if(!empty($params["POST"])){

@@ -85,7 +85,7 @@ class User extends BaseSql{
 
   public function configFormUserAddModify(){
     return [
-        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('signup','save'),"name"=>"signup"],
+        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','saveCustomer'),"name"=>"signup"],
         "input"=>[
           "A"=>[
             "Personnel"=>[

@@ -27,10 +27,10 @@ class Route{
             "security"   => true
         ],
         [
-            "slug"       => "modifier-mes-infos",
-            "controller" => "customerinfo",
-            "action"     => "index",
-            "security"   => true
+            "slug"       => "infos-user",
+            "controller" => "users",
+            "action"     => "saveCustomer",
+            "security"   => false
         ],
         [
             "slug"       => "noter-la-partie",
@@ -120,12 +120,6 @@ class Route{
             "slug"       => "s-inscrire",
             "controller" => "signup",
             "action"     => "index",
-            "security"   => false
-        ],
-        [
-            "slug"       => "inscription",
-            "controller" => "signup",
-            "action"     => "save",
             "security"   => false
         ],
         [
