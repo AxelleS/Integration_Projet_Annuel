@@ -55,8 +55,8 @@
           </svg>
 
         </figure>
-        <div class="">
-          <?php echo '<a href="'.DIRNAME.Route::getSlug('dashboardadmin','index').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">"'; ?>
+        <div>
+          <?php echo '<a href="'.DIRNAME.Route::getSlug('dashboardadmin','index').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover align-border-top">
               <svg class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 24 24"><path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"/></svg>
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Accueil</p></figcaption>
