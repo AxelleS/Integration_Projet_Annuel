@@ -38,18 +38,21 @@ class BaseSql{
         //permet d'aller chercher la valeur du champs où l'on va faire la recherche
 
         if(is_null($champ_recherche)){
-            $response = $this->pdo->query("SELECT * FROM ".$this->table." ORDER BY id ".$order);
+            $response = $this->pdo->query(" SELECT * FROM ".$this->table." ORDER BY id ".$order);
             //echo "SELECT * FROM ".$this->table." ORDER BY id ".$order;
         } else {
             $valeur_recherche = $this->columns[$champ_recherche];
             if(is_null($valeur_recherche)){
                 $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
             } else{
-                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order); 
+                }else{
+                    $response = $this->pdo->query(" SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                }
             }
-            //echo "SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'";
+            //echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         }
-        // echo "SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."'";
+        // echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         return $response;
     }
 
@@ -57,7 +60,9 @@ class BaseSql{
         $this->setColumns();
 
         try{
-            $this->pdo->query("DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs]);
+            $this->pdo->query(" DELETE FROM ".$this->table." 
+                                WHERE ".$champs." LIKE ".$this->columns[$champs]
+                            );
             return true;
         }
         catch (Exception $e) {
@@ -84,7 +89,7 @@ class BaseSql{
             foreach($this->columns as $key => $value){
              array_push($query_columns,$key."=:".$key);
             }
-            $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
+            $query = $this->pdo->prepare("  UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
 
             //echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
             //echo "<br>";

@@ -129,6 +129,12 @@ class Homepage extends BaseSql{
           "required"=>true,
           "name"=> "title_introduction"
         ],
+        "ajout_images"=>[
+            "type"=>"file",
+            "nameView"=>"Ajouter une image",
+            "required"=>false,
+            "name"=>"ajouter_image"
+        ],
         "roomList"=>[
           "room1"=>[
             "nameView"=>"Choisissez votre 1ère room",
