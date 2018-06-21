@@ -5,6 +5,9 @@
 
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['title_introduction']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['input']['title_introduction']['name']?>" value="<?php echo $config['value']['title_introduction']?>" />
+
+        <p class="<?php echo $config['style']['classText']?>"><?= "Ajouter des images" // $config['input']['ajout_images']['nameView']?></p>
+        <input class="<?php echo $config['style']['classInput']?>" type="file" name="images" multiple value="<?= ""//$config['value']['ajout_images']?>" />
         
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['roomList']['room1']['nameView']?></p>
         <select name="<?php echo $config['input']['roomList']['room1']['name']?>" id="" class="<?php echo $config['style']['classInput']?>">

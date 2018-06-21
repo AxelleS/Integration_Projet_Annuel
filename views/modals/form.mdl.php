@@ -74,6 +74,17 @@
 		<?php endforeach;?>
 		</div>
 	<?php endforeach;?>
+	<section> 
+	<br>
+		<article class="row col-lg-1">
+			<img src="captcha.php" alt="captcha">
+			<?php echo $_SESSION['captcha'] ?> 
+		</article>
+		<article class="col-lg-1">
+			<input type="text" name="response_captcha">			
+		</article>
+	</section>
+
 
 	<input type="submit" class="btn-default" value="Valider">
 	</form>
