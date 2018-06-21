@@ -30,6 +30,24 @@ while($nextday < ($year+1).'-12-31') {
 
 $response_calendar = $pdo->query("SELECT * FROM calendar");
 
+$pdo->query("TRUNCATE TABLE room");
+
+for ($i=0;$i<3;$i++){
+    $nameRoom = ['Escape the Library', 'Escape the Lab', 'Escape the School'];
+    $query = $pdo->prepare("INSERT INTO room (name, description, url_video, capacity, is_pregnant, is_wheelchair, is_deaf) VALUE (:name, :description, :url_video, :capacity, :is_pregnant, :is_wheelchair, :is_deaf)");
+    $query->execute(
+        array(
+            ":name" => $nameRoom[$i],
+            ":description" => "@todo",
+            ":url_video" => null,
+            ":capacity" => 5,
+            ":is_pregnant" => true,
+            ":is_wheelchair" => true,
+            ":is_deaf" => true
+        )
+    );
+}
+
 $slots = [
     '10h00-11h30',
     '12h00-13h30',

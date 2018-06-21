@@ -7,8 +7,7 @@ class Picture extends BaseSql{
   protected $order_picture;
   protected $is_main = 0;
 
-  protected $date_inserted;
-  protected $date_updated;
+  protected $foreign;
 
   public function __construct() {
     parent::__construct();
@@ -32,6 +31,10 @@ class Picture extends BaseSql{
 
   public function setIsMain($is_main) {
     $this->is_main=$is_main;
+  }
+
+  public function setForeign($foreign){
+      $this->foreign=$foreign;
   }
 
 }

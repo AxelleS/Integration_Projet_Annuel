@@ -8,8 +8,7 @@ class Player extends BaseSql{
   protected $email;
   protected $is_surprised = 0;
 
-  protected $date_inserted;
-  protected $date_updated;
+  protected $foreign;
 
   public function __construct() {
     parent::__construct();
@@ -37,6 +36,10 @@ class Player extends BaseSql{
 
   public function setIsSurprised($is_surprised) {
     $this->is_surprised=$is_surprised;
+  }
+
+  public function setForeign($foreign){
+      $this->foreign=$foreign;
   }
 
 }

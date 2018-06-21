@@ -11,6 +11,8 @@ class Time_slot extends BaseSql{
   protected $date_bill = null;
   protected $opinion = null;
 
+  protected $foreign;
+
   public function __construct() {
     parent::__construct();
   }
@@ -49,6 +51,10 @@ class Time_slot extends BaseSql{
 
   public function setOpinion($opinion) {
     $this->opinion=$opinion;
+  }
+
+  public function setForeign($foreign){
+      $this->foreign=$foreign;
   }
 
 }
