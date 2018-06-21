@@ -2,7 +2,7 @@
 <?php //print_r($config);?>
 </pre>
 
-<form method="<?php echo $config["config"]["method"];?>" action="<?php echo $config["config"]["action"]; ?>" name="<?php echo $config["config"]["name"];?>">
+<form enctype="multipart/form-data" method="<?php echo $config["config"]["method"];?>" action="<?php echo $config["config"]["action"]; ?>" name="<?php echo $config["config"]["name"];?>">
 
 	<?php foreach ($config["input"] as $rows):?>
 		<div class="row">
@@ -25,16 +25,26 @@
 							>
 						</article>
 					<?php endif;?>
-					<?php if($attributs["type"]=="file" || $attributs["type"]=="hidden"):?>
+					<?php if($attributs["type"]=="file"):?>
 						<article class="<?php echo $attributs['class']; ?>">
-							<input 
-								type="<?php echo $attributs["type"];?>" 
-								name="<?php echo $name;?>" 
-								id="<?php echo $name;?>"
-								value="<?php echo $attributs["value"];?>"
-							>
+                            <input
+                                type="<?php echo $attributs["type"];?>"
+                                name="<?php echo $name;?>"
+                                id="<?php echo $name;?>"
+                                value="<?php echo $attributs["value"];?>"
+                            >
 						</article>
-					<?php endif;?>	
+					<?php endif;?>
+                    <?php if($attributs["type"]=="hidden"):?>
+                        <article class="<?php echo $attributs['class']; ?>">
+                            <input
+                                    type="<?php echo $attributs["type"];?>"
+                                    name="<?php echo $name;?>"
+                                    id="<?php echo $name;?>"
+                                    value="<?php echo $attributs["value"];?>"
+                            >
+                        </article>
+                    <?php endif;?>
 					<?php if($attributs["type"]=="checkbox"):?>
 					<br>
 						<article class="row <?php echo $attributs['class']; ?>">
@@ -78,4 +88,3 @@
 
 	<input type="submit" class="btn-default" value="Valider">
 	</form>
-
