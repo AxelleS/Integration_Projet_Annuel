@@ -15,6 +15,8 @@ class Homepage extends BaseSql{
   protected $url_google;
   protected $roomList;
 
+  protected $foreign;
+
   public function __construct() {
     parent::__construct();
   }
@@ -69,6 +71,10 @@ class Homepage extends BaseSql{
 
   public function setRoomList($roomList) {
     $this->roomList=$roomList;
+  }
+
+  public function setForeign($foreign){
+    $this->foreign=$foreign;
   }
 
   public function formModifyHomepage() {

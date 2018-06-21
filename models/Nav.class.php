@@ -9,6 +9,8 @@ class Nav extends BaseSql{
   protected $is_frontoffice = 0;
   protected $url_logo;
 
+  protected $foreign;
+
   public function __construct() {
     parent::__construct();
   }
@@ -41,6 +43,9 @@ class Nav extends BaseSql{
     $this->url_logo=strtolower(trim($url_logo));
   }
 
+  public function setForeign($foreign){
+      $this->foreign=$foreign;
+  }
 }
 
  ?>
