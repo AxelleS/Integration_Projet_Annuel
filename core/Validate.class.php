@@ -1,44 +1,55 @@
 <?php
 class Validate{
 
-	public static function checkForm($config, $data){
+	public static function checkForm($allData){
 
 		$errorsMsg = [];
 
-		foreach ($config["input"] as $name => $attributs) {
-			//$data[$name] -> $_POST["emailConfirm"]
-			//$data[$attributs["confirm"]] -> $_POST["email"]
-			if(isset($attributs["confirm"]) && $data[$name] != $data[$attributs["confirm"]]){
-				$errorsMsg[]= $name ." ne correspond pas à ".$attributs["confirm"];
-			}else if( !isset($attributs["confirm"]) ){
+		foreach ($allData as $key => $value) {
+		    if ($key == 'email' && !self::checkEmail($value)) {
+                $errorsMsg['email']= "Format de l'email incorrect";
+            }
 
-				if($attributs["type"]=="email" && !self::checkEmail($data[$name]) ){
-					$errorsMsg[]= "Format de l'email incorrect";
-				}else if ($attributs["type"]=="password" && !self::checkPwd($data[$name]) ){
-					$errorsMsg[]= "Mot de passe incorrect(Maj, Min, Chiffre, entre 6 et 32)";
-				}else if ($attributs["type"]=="number" && !self::checkNumber($data[$name]) ){
-					$errorsMsg[]= $name ." n'est pas correct";
-				}
+            if ($key == 'password'){
+                $password = $value;
+                if (!self::checkPwd($value)) {
+                    $errorsMsg['password']= "Mot de passe incorrect(Maj, Min, Chiffre, entre 6 et 32)";
+                }
+            }
 
-			}
+            if ($key == 'passwordConf') {
+		        $passwordConf = $value;
+            }
 
-			if(isset($attributs["maxString"]) && !self::maxString($data[$name], $attributs["maxString"])){
-					$errorsMsg[]= $name ." doit faire moins de ".$attributs["maxString"]." caractères" ;
-			}
+            if ($key == 'years_old' && !self::checkAge($value)) {
+                $errorsMsg['years_old'] = "L'âge doit être un entier supérieur à 18";
+            }
 
-			if(isset($attributs["minString"]) && !self::minString($data[$name], $attributs["minString"])){
-					$errorsMsg[]= $name ." doit faire plus de ".$attributs["minString"]." caractères" ;
-			}
+            if ($key == 'phone' && !self::checkPhone($value)) {
+                $errorsMsg['phone']= "Format du téléphone incorrect : XXXXXXXXXX";
+            }
 
-			if(isset($attributs["maxNum"]) && !self::maxNum($data[$name], $attributs["maxNum"])){
-					$errorsMsg[]= $name ." doit être inférieur à ".$attributs["maxNum"];
-			}
+            if (($key == 'zipcode' || $key == 'zipcode_company') && !self::checkZipCode($value)) {
+                $errorsMsg['zipcode']= "Format du code postal incorrect : XXXXX";
+            }
 
-			if(isset($attributs["minNum"]) && !self::minNum($data[$name], $attributs["minNum"])){
-					$errorsMsg[]= $name ." doit être supérieur à ".$attributs["minNum"];
-			}
+            if ($key == 'capacity' && !self::checkNumber($value)) {
+                $errorsMsg['capacity']= "La capacité n'est pas dans le bon format, un entier est attendu";
+            }
 
-		}
+            if ($key == 'response_captcha') {
+		        $captcha['response'] = $value;
+            }
+        }
+
+        if ($password != $passwordConf) {
+            $errorsMsg['pwd_and_conf']= "Mot de passe et confirmation sont différents";
+        }
+
+        if ($captcha['response'] != $_SESSION['captcha']) {
+            $errorsMsg['captcha']= "Le captcha est incorrect";
+        }
+
 		return $errorsMsg;
 	}
 
@@ -72,6 +83,45 @@ class Validate{
 	public static function checkNumber($number){
 		return is_numeric(trim($number));
 	}
+
+    public static function checkAge($age){
+	    $isCorrect = true;
+	    if (!self::checkNumber($age)) {
+            $isCorrect = false;
+        } else {
+            if ($age < 18) {
+                $isCorrect = false;
+            }
+        }
+        return $isCorrect;
+    }
+
+    public static function checkPhone($phone){
+        if(substr($phone, 0, 1) != "0" || strlen(trim($phone)) != 10) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static function checkZipCode($zipcode){
+        if(!preg_match("/[0-9]/", $zipcode) || (strlen(trim($zipcode)) != 5 &&  strlen(trim($zipcode)) != 3)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static function createErrorsTable($table) {
+        $errorsBlock = $table;
+        $errorsTemp = explode('$', $errorsBlock);
+        unset($errorsTemp[count($errorsTemp)-1]);
+        foreach ($errorsTemp as $errorTemp) {
+            $temp = explode('=', $errorTemp);
+            $errors[$temp[0]] = $temp[1];
+        }
+        return $errors;
+    }
 
 }
 

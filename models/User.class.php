@@ -83,7 +83,7 @@ class User extends BaseSql{
     $this->status=$status;
   }
 
-  public function configFormUserAddModify(){
+  public function configFormUserAddModify($errors){
     return [
         "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','saveCustomer'),"name"=>"signup"],
         "input"=>[
@@ -110,7 +110,7 @@ class User extends BaseSql{
                 "value" => $this->firstname
               ],
               "years_old"=>[
-                "type"=>"text",
+                "type"=>"number",
                 "placeholder"=>"Votre âge",
                 "required"=>true,
                 "class" => "col-lg-4",
@@ -132,11 +132,6 @@ class User extends BaseSql{
                 "class" => "col-lg-12",
                 "value" => '',
                 "confirm" => 'password'
-              ],
-              "cgu"=>[
-                "type"=> "checkbox",
-                "text"=> "J'accepte les Conditions Générales d'Utilisation",
-                "class"=> "col-lg-12",
               ]
             ]
           ],
@@ -209,6 +204,9 @@ class User extends BaseSql{
               ]
             ]
           ]
+        ],
+        "errors"=>[
+            $errors
         ]
     ];
   }
@@ -320,9 +318,9 @@ class User extends BaseSql{
         ];
     }
 
-  public function configFormUserConnect(){
+  public function configFormUserConnect($errors){
     return [
-        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('signin','connect'),"name"=>"signup"],
+        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('signin','connect'),"name"=>"signin"],
         "input"=>[
           "A"=>[
             "Connexion"=>[
@@ -342,6 +340,9 @@ class User extends BaseSql{
               ]
             ]
           ]
+        ],
+        "errors"=>[
+            $errors
         ]
     ];
   }

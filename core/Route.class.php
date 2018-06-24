@@ -27,7 +27,7 @@ class Route{
             "security"   => true
         ],
         [
-            "slug"       => "infos-user",
+            "slug"       => "enregistrer-user",
             "controller" => "users",
             "action"     => "saveCustomer",
             "security"   => false
