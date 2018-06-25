@@ -22,6 +22,11 @@ class ParametersController
 
     public function saveAction($params)
     {
-
+        echo '<pre>';
+            print_r($params);
+            echo '</pre>';
+            die;
+        echo "dans le save";exit;
+        var_dump($params);exit;
     }
 }
