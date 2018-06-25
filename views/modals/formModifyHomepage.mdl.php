@@ -2,7 +2,6 @@
       class="row" method="<?php echo $config['config']['method']?>">
       
         <input type="hidden" name="actualPageType" value="<?php echo $config['value']['actualPageTypeValue']?>" />
-
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['title_introduction']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['input']['title_introduction']['name']?>" value="<?php echo $config['value']['title_introduction']?>" />
 
