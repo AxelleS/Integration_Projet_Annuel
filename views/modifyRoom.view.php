@@ -10,3 +10,22 @@
         </div>
     </div>
 </section>
+
+<script>
+
+function deleteQa(idRoom) {
+    //   console.log("hello");
+      $.ajax({
+        url: '<?php echo DIRNAME . Route::getSlug('organization', 'delete'); ?>',
+        type: 'POST',
+        data: {
+            idRoomToDel : idRoom
+        },
+        complete : function(data) {
+
+            console.log("joijiojiojoijiooiioiooiojio    :::::   ");
+        }
+    });
+}
+
+</script>
