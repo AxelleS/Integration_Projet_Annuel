@@ -32,7 +32,7 @@ class BaseSql{
         $this->pdo->exec("UPDATE user SET token = '".$this->columns['token']."' WHERE id LIKE ".$this->columns['id']);
     }
 
-    //function select avec passage en paramètre du champs sue lequel va s'effectuer la recherche
+    //function select avec passage en paramètre du champs sur lequel va s'effectuer la recherche
     public function select($champ_recherche = null, $order = 'ASC'){
         $this->setColumns();
         //permet d'aller chercher la valeur du champs où l'on va faire la recherche
