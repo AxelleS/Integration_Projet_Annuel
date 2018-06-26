@@ -134,12 +134,17 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
-        $idFaq = $params['POST']['idFaq'];
-        $questionAnswer = new Faq();
-        $questionAnswer->setId($idFaq);
-        $response = $questionAnswer->delete('id');
-        echo $response;
-        exit;
+
+        echo "<pre>";
+        print_r($params);
+        echo "</pre>";
+
+        // $idFaq = $params['POST']['idFaq'];
+        // $questionAnswer = new Faq();
+        // $questionAnswer->setId($idFaq);
+        // $response = $questionAnswer->delete('id');
+        // echo $response;
+        // exit;
     }
 
     public function saveAction($params){
