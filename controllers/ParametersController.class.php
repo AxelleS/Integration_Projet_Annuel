@@ -22,11 +22,27 @@ class ParametersController
 
     public function saveAction($params)
     {
-        echo '<pre>';
+        $params['POST']['id'] = "1";
+        $modifyHomepage = new Homepage();
+        $modifyHomepage->setId($params['POST']['id']);
+        $modifyHomepage->setUnitPrice($params['POST']['unit_price']);
+        $modifyHomepage->save();
+
+        $modifyFooter = new Footer();
+        $modifyFooter->setUrlFacebook($params['POST']['url_facebook']);
+        $modifyFooter->setUrlTwitter($params['POST']['url_facebook']);
+        $modifyFooter->setUrlYoutube($params['POST']['url_youtube']);
+        $modifyFooter->setUrlCGV($params['POST']['CGV']);
+        $modifyFooter->setUrlCGU($params['POST']['CGU']);
+        $modifyFooter->setUrlLegalMention($params['POST']['url_legal_mention']);
+        $modifyFooter->save();
+        header("Location: ".DIRNAME.Route::getSlug('parameters','index'));
+
+        /*echo '<pre>';
             print_r($params);
             echo '</pre>';
             die;
         echo "dans le save";exit;
-        var_dump($params);exit;
+        var_dump($params);exit;*/
     }
 }
