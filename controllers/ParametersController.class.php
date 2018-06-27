@@ -22,11 +22,10 @@ class ParametersController
 
     public function saveAction($params)
     {
-        $params['POST']['id'] = "1";
         $modifyHomepage = new Homepage();
-        $modifyHomepage->setId($params['POST']['id']);
-        $response = $modifyHomepage->select('id');
+        $response = $modifyHomepage->select();
         $donnees = $response->fetch();
+        $modifyHomepage->setId($donnees['id']);
         $modifyHomepage->setIdRoom1($donnees['id_room_1']);
         $modifyHomepage->setIdRoom2($donnees['id_room_2']);
         $modifyHomepage->setIdRoom3($donnees['id_room_3']);
@@ -43,7 +42,9 @@ class ParametersController
         $modifyHomepage->save();
 
         $modifyFooter = new Footer();
-        $modifyFooter->setId($params['POST']['id']);
+        $response = $modifyFooter->select();
+        $donnees = $response->fetch();
+        $modifyFooter->setId($donnees['id']);
         $modifyFooter->setUrlFacebook($params['POST']['url_facebook']);
         $modifyFooter->setUrlTwitter($params['POST']['url_twitter']);
         $modifyFooter->setUrlYoutube($params['POST']['url_youtube']);
