@@ -27,7 +27,7 @@ class Room extends BaseSql{
   }
 
   public function setUrlVideo($url_video) {
-    $this->url_video=strtolower(trim($url_video));
+    $this->url_video=trim($url_video);
   }
 
   public function setCapacity($capacity) {
@@ -46,12 +46,11 @@ class Room extends BaseSql{
     $this->is_deaf=$is_deaf;
   }
 
-  public function getPlayerVideo($_contentArticle)
-    {
-        $parseUrl = parse_url($_contentArticle);
-          $query = explode('=', $parseUrl['query'])[1];
-          return '<iframe width="800" height="500" src="https://www.youtube.com/embed/'.$query.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-    }
+  public function getPlayerVideo() {
+    $parseUrl = parse_url($this->url_video);
+    $query = explode('=', $parseUrl['query'])[1];
+    return '<iframe width="800" height="500" src="https://www.youtube.com/embed/'.$query.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  }
 
   public function formModifyRoom() {
 

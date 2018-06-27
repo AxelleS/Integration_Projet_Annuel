@@ -88,7 +88,7 @@
             <hr>
         </article>
         <article class="video-promotion col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <?php echo $donnees['url_video']; ?>
+            <?php echo $donnees_video; ?>
         </article>
         <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion row">
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_1']; ?>" target="_blank"><img src="<?php echo $donnees['picture_1']; ?>" alt=""></a>
