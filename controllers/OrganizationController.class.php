@@ -135,16 +135,24 @@ class OrganizationController {
 
     public function deleteAction($params){
 
-        echo "<pre>";
-        print_r($params);
-        echo "</pre>";
+        if ($params['POST']['uri'] === "modifier-page-site") {
+            $idRoom = $params['POST']['idRoomToDel'];
+            $delRoom = new Room();
+            $delRoom->setId($idRoom);
+            $response = $delRoom->delete('id');
+            echo $response;
+            exit;
+        } else {
+            $idFaq = $params['POST']['idFaq'];
+            $questionAnswer = new Faq();
+            $questionAnswer->setId($idFaq);
+            $response = $questionAnswer->delete('id');
+            echo $response;
+            exit;
+        }
+        
 
-        // $idFaq = $params['POST']['idFaq'];
-        // $questionAnswer = new Faq();
-        // $questionAnswer->setId($idFaq);
-        // $response = $questionAnswer->delete('id');
-        // echo $response;
-        // exit;
+        
     }
 
     public function saveAction($params){
