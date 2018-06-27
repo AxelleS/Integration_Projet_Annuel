@@ -84,16 +84,49 @@ class OrganizationController {
             $v->assign("faqList",$array);
             $v->assign("lastId",$lastId);
         } else if($params['URL'][0] == "Nouvelle page") {
-            echo '<pre>';
-            echo "Nouvelle Page";
-            print_r($params);
-            
-            echo '</pre>';
+            $room = new Room();
+            $room->setName("Nom de la Room");
+            $room->setDescription("Description de la Room");
+            $room->setUrlVideo("url vidéo de la room");
+            $room->setCapacity(5);
+            $room->setIsPregnant(0);
+            $room->setIsWheelchair(0);
+            $room->setIsDeaf(0);
+
+
+            $config = $room->formCreateRoom();
+
+            $v = new View('modifyRoom', 'back');
+            $v->assign('roomDetails', $config);
+
         } else {
-            echo '<pre>';
-            echo "Room";
-            print_r($params);
-            echo '</pre>';
+            $room = new Room();
+            $room->setName($params['URL'][0]);
+
+            $result = $room->select('name');
+            $array = $result->fetch();
+
+            $room->setId($array['id']);
+            $room->setName($array['name']);
+            $room->setDescription($array['description']);
+            $room->setUrlVideo($array['url_video']);
+            $room->setCapacity($array['capacity']);
+            $room->setIsPregnant($array['is_pregnant']);
+            $room->setIsWheelchair($array['is_wheelchair']);
+            $room->setIsDeaf($array['is_deaf']);
+
+            // echo "array to check";
+            // echo '<pre>';
+            // print_r($array);
+            // echo '</pre>';
+            // die;
+
+            $config = $room->formModifyRoom();
+
+            $v = new View('modifyRoom', 'back');
+            $v->assign('roomDetails', $config);
+            
+
         }
 
         $v->assign('actualPageType', $params['URL'][0]);
@@ -110,10 +143,6 @@ class OrganizationController {
     }
 
     public function saveAction($params){
-        // echo '<pre>';
-        //     print_r($params);
-        //     echo '</pre>';
-        //     die;
 
         if($params['POST']['actualPageType'] == "Homepage") {
             $params['POST']['id'] = "1";
@@ -160,16 +189,30 @@ class OrganizationController {
             // die;
             
         } else if($params['POST']['actualPageType'] == "Nouvelle page") {
-            echo '<pre>';
-            print_r($params);
-            echo '</pre>';
-            die;
+            unset($params['POST']['actualPageType']);
+            $room = new Room();
+            $room->setName($params['POST']['name']);
+            $room->setDescription($params['POST']['description']);
+            $room->setUrlVideo($params['POST']['url_video']);
+            $room->setCapacity($params['POST']['capacity']);
+            $room->setIsPregnant($params['POST']['is_pregnant']);
+            $room->setIsWheelchair($params['POST']['is_wheelchair']);
+            $room->setIsDeaf($params['POST']['is_deaf']);
+            $room->save();
+            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else {
-            echo "hhizuhfizehfieuz";
-            echo '<pre>';
-            print_r($params);
-            echo '</pre>';
-            die;
+            unset($params['POST']['actualPageType']);
+            $room = new Room();
+            $room->setName($params['POST']['name']);
+            $room->setId($params['POST']['id']);
+            $room->setDescription($params['POST']['description']);
+            $room->setUrlVideo($params['POST']['url_video']);
+            $room->setCapacity($params['POST']['capacity']);
+            $room->setIsPregnant($params['POST']['is_pregnant']);
+            $room->setIsWheelchair($params['POST']['is_wheelchair']);
+            $room->setIsDeaf($params['POST']['is_deaf']);
+            $room->save();
+            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         }
        
     }
