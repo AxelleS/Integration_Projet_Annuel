@@ -7,34 +7,18 @@
             <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-xs-12">
                 <?php print_r($this->addModal("formModifyRoom", $roomDetails)); ?>
             </div>
-            <a onclick="deleteQa(<?php echo $config['id']['value']?>)" class="<?php echo $config['style']['classDelete']?>"><button class="<?php echo $config['style']['buttonCancel']?>">Supprimer</button></a>
+            <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-xs-12">
+               <input class="<?php echo $roomDetails['style']['buttonCancel'];?>" type="button" onclick="deleteQa(<?php echo $roomDetails['id']['value'];?>)" value="Supprimer">
+            </div>
         </div>
     </div>
 </section>
 
 <script>
-
 function deleteQa(idRoom) {
-      console.log("hello");
+    console.log("hello");
     if (confirm("Etes vous sûr de vouloir supprimer cette room ?")) {
-        $.ajax({
-            url: '<?php echo DIRNAME.Route::getSlug('organization', 'delete'); ?>',
-            type: 'POST',
-            data: {
-                idRoomToDel : idRoom,
-                uri : "modifier-page-site"
-            },
-            complete : function(data) {
-                var isDelete = JSON.parse(data['responseText']);
-                if(isDelete == true) {
-                    alert("Suppression effectuée !");
-                    // window.location.href(<?php echo DIRNAME.Route::getSlug('organization','index'); ?>);
-                } else {
-                    alert("Suppression échouée !");
-                }
-            }
-        });
+        location.href = '<?php echo DIRNAME.Route::getSlug('organization', 'delete'); ?>'+'/room/'+idRoom;
     }
 }
-
 </script>

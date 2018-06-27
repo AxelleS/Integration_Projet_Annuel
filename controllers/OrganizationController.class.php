@@ -134,14 +134,13 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
-
-        if ($params['POST']['uri'] === "modifier-page-site") {
-            $idRoom = $params['POST']['idRoomToDel'];
+	    print_r($params);
+        if ($params['URL'][0] === "room") {
+            $idRoom = $params['URL'][1];
             $delRoom = new Room();
             $delRoom->setId($idRoom);
             $response = $delRoom->delete('id');
-            echo $response;
-            exit;
+            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else {
             $idFaq = $params['POST']['idFaq'];
             $questionAnswer = new Faq();
@@ -150,9 +149,6 @@ class OrganizationController {
             echo $response;
             exit;
         }
-        
-
-        
     }
 
     public function saveAction($params){
