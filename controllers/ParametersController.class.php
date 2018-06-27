@@ -25,12 +25,27 @@ class ParametersController
         $params['POST']['id'] = "1";
         $modifyHomepage = new Homepage();
         $modifyHomepage->setId($params['POST']['id']);
+        $response = $modifyHomepage->select('id');
+        $donnees = $response->fetch();
+        $modifyHomepage->setIdRoom1($donnees['id_room_1']);
+        $modifyHomepage->setIdRoom2($donnees['id_room_2']);
+        $modifyHomepage->setIdRoom3($donnees['id_room_3']);
+        $modifyHomepage->setTitleIntroduction($donnees['title_introduction']);
+        $modifyHomepage->setDescriptionIntroduction($donnees['description_introduction']);
+        $modifyHomepage->setUrlVideo('@todo');
+        $modifyHomepage->setNameCompany($donnees['name_company']);
+        $modifyHomepage->setAddressCompany($donnees['address_company']);
+        $modifyHomepage->setZipcodeCompany($donnees['zipcode_company']);
+        $modifyHomepage->setCityCompany($donnees['city_company']);
+        $modifyHomepage->setUrlGoogle('@todo');
+
         $modifyHomepage->setUnitPrice($params['POST']['unit_price']);
         $modifyHomepage->save();
 
         $modifyFooter = new Footer();
+        $modifyFooter->setId($params['POST']['id']);
         $modifyFooter->setUrlFacebook($params['POST']['url_facebook']);
-        $modifyFooter->setUrlTwitter($params['POST']['url_facebook']);
+        $modifyFooter->setUrlTwitter($params['POST']['url_twitter']);
         $modifyFooter->setUrlYoutube($params['POST']['url_youtube']);
         $modifyFooter->setUrlCGV($params['POST']['CGV']);
         $modifyFooter->setUrlCGU($params['POST']['CGU']);
