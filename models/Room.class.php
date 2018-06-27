@@ -46,6 +46,13 @@ class Room extends BaseSql{
     $this->is_deaf=$is_deaf;
   }
 
+  public function getPlayerVideo($_contentArticle)
+    {
+        $parseUrl = parse_url($_contentArticle);
+          $query = explode('=', $parseUrl['query'])[1];
+          return '<iframe width="800" height="500" src="https://www.youtube.com/embed/'.$query.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    }
+
   public function formModifyRoom() {
 
     return [
