@@ -74,7 +74,6 @@ class UsersController
 
     public function saveCustomerAction($params){
         $infoUser = $params['POST'];
-        print_r($infoUser);
         $user = new User();
 
         $errors = Validate::checkForm($infoUser);
@@ -115,17 +114,18 @@ class UsersController
             }
         } else {
             if (isset($_FILES) && count($_FILES) > 0) {
-                $varReturn = Files::upload($_FILES);
+                $varReturn = Files::uploadPicture($_FILES['picture']);
                 if (!is_array($varReturn)) {
                     $user->setPicture($varReturn);
-                }
-            } else {
-                if ($infoUser['picture-old'] != '') {
-                    $user->setPicture($infoUser['picture-old']);
                 } else {
-                    $user->setPicture(null);
+                    if ($infoUser['picture-old'] != '') {
+                        $user->setPicture($infoUser['picture-old']);
+                    } else {
+                        $user->setPicture(null);
+                    }
                 }
             }
+
             //Si c'est un ancien user
             if ($infoUser['id'] != '') {
                 $user->setId($infoUser['id']);

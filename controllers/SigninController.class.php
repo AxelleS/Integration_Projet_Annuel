@@ -84,4 +84,12 @@ class SigninController
 
         header("Location: ".DIRNAME.Route::getSlug('signin','index'));
     }
+
+    public function disconnectAction($params){
+        $_SESSION['token'] = "";
+        $_SESSION['id_user'] = "";
+        $_SESSION['is_connected'] = "";
+        session_destroy();
+        header("Location: ".DIRNAME.Route::getSlug('index','index'));
+    }
 }

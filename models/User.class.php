@@ -167,7 +167,7 @@ class User extends BaseSql{
               "address_2"=>[
                 "type"=>"text",
                 "placeholder"=>"Votre adresse suite",
-                "required"=>true,
+                "required"=>false,
                 "class" => "col-lg-12",
                 "value" => $this->address_2
               ],
@@ -191,6 +191,12 @@ class User extends BaseSql{
           ],
           "D"=>[
             "Photo de profil"=>[
+                "preview"=>[
+                    "type"=>"img",
+                    "required"=>false,
+                    "class" => "col-lg-12",
+                    "value" => $this->url_picture
+                ],
               "picture"=>[
                 "type"=>"file",
                 "required"=>false,

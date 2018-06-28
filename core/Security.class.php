@@ -28,12 +28,15 @@ class Security {
 				$user->majToken();
 	
 				$_SESSION['token'] = $token;
-	
+
+                $_SESSION['is_connected'] = true;
 				return true;
 			} else {
+                $_SESSION['is_connected'] = false;
 				return false;
 			}
 		} else {
+            $_SESSION['is_connected'] = false;
             return false;
         }
 	}

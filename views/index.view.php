@@ -21,21 +21,21 @@
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
                             <img src="<?php echo $donnees['picture_room_1']; ?>" alt="room preview">
-                            <a href=<?php echo DIRNAME."escaperoom/index/".$donnees['id_room_1'];?>><div class="room-title"><?php echo $donnees['name_room_1']; ?></div></a>
+                            <a href=<?php echo DIRNAME.Route::getSlug('escaperoom', 'index').'/'.$donnees['id_room_1'];?>><div class="room-title"><?php echo $donnees['name_room_1']; ?></div></a>
                         </article>
                     </section>
                     <section class="col-lg-2 col-md-2 col-sm-2 col-xs-2 room">
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
                             <img src="<?php echo $donnees['picture_room_2']; ?>" alt="room preview">
-                            <a href=<?php echo DIRNAME."escaperoom/index/".$donnees['id_room_2'];?>><div class="room-title"><?php echo $donnees['name_room_2'];?></div></a>
+                            <a href=<?php echo DIRNAME.Route::getSlug('escaperoom', 'index').'/'.$donnees['id_room_2'];?>><div class="room-title"><?php echo $donnees['name_room_2'];?></div></a>
                         </article>
                     </section>
                     <section class="col-lg-2 col-md-2 col-sm-2 col-xs-2 room">
                         <!-- Affiche par défaut -->
                         <article class="escape-back">
                             <img src="<?php echo $donnees['picture_room_3']; ?>" alt="room preview">
-                            <a href=<?php echo DIRNAME."escaperoom/index/".$donnees['id_room_3'];?>><div class="room-title"><?php echo $donnees['name_room_3'];?></div></a>
+                            <a href=<?php echo DIRNAME.Route::getSlug('escaperoom', 'index').'/'.$donnees['id_room_3'];?>><div class="room-title"><?php echo $donnees['name_room_3'];?></div></a>
                         </article>
                     </section>
             </section>

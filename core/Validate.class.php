@@ -42,12 +42,16 @@ class Validate{
             }
         }
 
-        if ($password != $passwordConf) {
-            $errorsMsg['pwd_and_conf']= "Mot de passe et confirmation sont différents";
+        if(isset($password) && isset($passwordConf)) {
+            if ($password != $passwordConf) {
+                $errorsMsg['pwd_and_conf']= "Mot de passe et confirmation sont différents";
+            }
         }
 
-        if ($captcha['response'] != $_SESSION['captcha']) {
-            $errorsMsg['captcha']= "Le captcha est incorrect";
+        if(isset($captcha['response'])) {
+            if ($captcha['response'] != $_SESSION['captcha']) {
+                $errorsMsg['captcha']= "Le captcha est incorrect";
+            }
         }
 
 		return $errorsMsg;

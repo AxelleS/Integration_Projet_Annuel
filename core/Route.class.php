@@ -117,16 +117,16 @@ class Route{
             "security"   => false
         ],
         [
+            "slug"       => "deconnexion",
+            "controller" => "signin",
+            "action"     => "disconnect",
+            "security"   => false
+        ],
+        [
             "slug"       => "s-inscrire",
             "controller" => "signup",
             "action"     => "index",
             "security"   => false
-        ],
-        [
-            "slug"       => "se-deconnecter",
-            "controller" => "signout",
-            "action"     => "index",
-            "security"   => true
         ],
         [
             "slug"       => "page-accueil-admin",
@@ -279,10 +279,16 @@ class Route{
             "security"   => false
         ],
         [
-        "slug"       => "voir-le-message",
-        "controller" => "contact",
-        "action"     => "openMessage",
-        "security"   => false
+            "slug"       => "voir-le-message",
+            "controller" => "contact",
+            "action"     => "openMessage",
+            "security"   => false
+        ],
+        [
+            "slug"       => "inserer-creneau",
+            "controller" => "calendar",
+            "action"     => "insertNewSlot",
+            "security"   => false
         ]
     ];
 

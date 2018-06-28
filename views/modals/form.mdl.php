@@ -74,7 +74,13 @@ $errors = $config['errors'][0];
                                     id="<?php echo $name;?>"
                                     name="<?php echo $name;?>"
                                     placeholder="<?php echo $attributs["placeholder"];?>"
-                            ></textarea>
+                            ><?php echo $attributs["value"]; ?></textarea>
+                        </article>
+                    <?php endif;?>
+                    <?php if($attributs["type"]=="img"):?>
+                        <br>
+                        <article class="<?php echo $attributs['class']; ?>">
+                            <img class="profil-img" src="<?php echo $attributs["value"] != '' ? $attributs["value"] : 'img/no_picture.png';?>">
                         </article>
                     <?php endif;?>
             <?php endforeach;?>
