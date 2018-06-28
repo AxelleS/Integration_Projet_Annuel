@@ -24,10 +24,9 @@ class OrganizationController {
         if($params['URL'][0] == "Homepage") {
             $roomList = new Room();
             $response_roomList = $roomList->select();
-            $roomName = array();
+
             $homepageConfig = new Homepage();
-            $response_roomValue = $homepageConfig->select();
-            $homepage = array();
+            $response_homepageConfig = $homepageConfig->select();
             
             $roomListDetails = array();
             foreach($response_roomList->fetchAll() as $keyRoom=>$content) {
@@ -42,7 +41,9 @@ class OrganizationController {
               $roomListDetails[] = $temp2;
             }
 
-            while($donnees_roomValue = $response_roomValue->fetch()){
+            $homepage = array();
+            while($donnees_roomValue = $response_homepageConfig->fetch()){
+                
               array_push($homepage, $donnees_roomValue);
             }
 
@@ -60,9 +61,9 @@ class OrganizationController {
             $homepageConfig->setUrlGoogle($homepage[0]['url_google']);
             $homepageConfig->setRoomlist($roomListDetails);
             $config = $homepageConfig->formModifyHomepage();
+            
 
             $v = new View('modifyHomePage', 'back');
-            $v->assign('roomSelect', $homepage);
             $v->assign('configModifyHomepage', $config);
         } else if($params['URL'][0] == "Foire à questions") {
             
@@ -134,12 +135,21 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
-        $idFaq = $params['POST']['idFaq'];
-        $questionAnswer = new Faq();
-        $questionAnswer->setId($idFaq);
-        $response = $questionAnswer->delete('id');
-        echo $response;
-        exit;
+	    print_r($params);
+        if ($params['URL'][0] === "room") {
+            $idRoom = $params['URL'][1];
+            $delRoom = new Room();
+            $delRoom->setId($idRoom);
+            $response = $delRoom->delete('id');
+            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+        } else {
+            $idFaq = $params['POST']['idFaq'];
+            $questionAnswer = new Faq();
+            $questionAnswer->setId($idFaq);
+            $response = $questionAnswer->delete('id');
+            echo $response;
+            exit;
+        }
     }
 
     public function saveAction($params){

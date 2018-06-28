@@ -65,7 +65,8 @@ class EscaperoomController
         } else {
             $v = new View('escaperoom');
         }
-
+        $donnees_video = $room->getPlayerVideo($donnees_room['url_video']);
+        $v->assign('donnees_video', $donnees_video);
         $v->assign("donnees",$donnees_room);
     }
 

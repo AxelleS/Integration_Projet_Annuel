@@ -35,24 +35,26 @@
 
     function deleteQa(idQA) {
       console.log(idQA);
-      $.ajax({
-        url: '<?php echo DIRNAME . Route::getSlug('organization', 'delete'); ?>',
-        type: 'POST',
-        data: {
-            idFaq : idQA
-        },
-        complete : function(data) {
-            var isDelete = JSON.parse(data['responseText']);
-            console.log("joijiojiojoijiooiioiooiojio    :::::   ",isDelete);
-            if(isDelete == true) {
-                alert("Suppression effectuée !");
-                console.log("toto");
-                $(this).parent().remove();
-            } else {
-                alert("Suppression échouée !");
+      if (confirm("Etes vous sûr de vouloir supprimer cette question/réponse ?")) {
+        $.ajax({
+            url: '<?php echo DIRNAME . Route::getSlug('organization', 'delete'); ?>',
+            type: 'POST',
+            data: {
+                idFaq : idQA
+            },
+            complete : function(data) {
+                var isDelete = JSON.parse(data['responseText']);
+                console.log("joijiojiojoijiooiioiooiojio    :::::   ",isDelete);
+                if(isDelete == true) {
+                    alert("Suppression effectuée !");
+                    console.log("toto");
+                    $(this).parent().remove();
+                } else {
+                    alert("Suppression échouée !");
+                }
             }
-        }
-    });
+        });
+      }
     }
 
     $(document).on("click",".fieldset-content #delQA", function(){
