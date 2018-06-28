@@ -44,10 +44,12 @@ class Room extends BaseSql{
 
   public function setIsDeaf($is_deaf) {
     $this->is_deaf=$is_deaf;
-  }
+  } 
 
-  public function getPlayerVideo() {
-    $parseUrl = parse_url($this->url_video);
+  public function getPlayerVideo($url_video) {
+    //Récupère l'url de $this->url_video et le parse 
+    //afin d'avoir uniquement l'id de la video, return la balise iframe
+    $parseUrl = parse_url($url_video);
     $query = explode('=', $parseUrl['query'])[1];
     return '<iframe width="800" height="500" src="https://www.youtube.com/embed/'.$query.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
   }
