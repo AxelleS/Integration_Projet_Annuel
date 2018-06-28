@@ -17,12 +17,12 @@ class Footer extends BaseSql{
     $this->id=$id;
   }
 
-  public function setUrlFacebook($url_video) {
-    $this->url_video=strtolower(trim($url_video));
+  public function setUrlFacebook($url_facebook) {
+    $this->url_facebook=strtolower(trim($url_facebook));
   }
 
-  public function setUrlTwitter($url_facebook) {
-    $this->url_facebook=strtolower(trim($url_facebook));
+  public function setUrlTwitter($url_twitter) {
+    $this->url_twitter=strtolower(trim($url_twitter));
   }
 
   public function setUrlYoutube($url_youtube) {

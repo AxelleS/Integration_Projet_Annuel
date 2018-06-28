@@ -76,52 +76,91 @@ class UsersController
         $infoUser = $params['POST'];
         $user = new User();
 
-        if(isset($_FILES) && count($_FILES) > 0){
-            $varReturn = Files::upload($_FILES);
-            if (!is_array($varReturn)) {
-                $user->setPicture($varReturn);
-            }
-        } else {
-            if($infoUser['picture-old'] != ''){
-                $user->setPicture($infoUser['picture-old']);
+        $errors = Validate::checkForm($infoUser);
+
+        if(!isset($infoUser['cgu'])){
+            $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
+        }
+
+        if(count($errors) > 0) {
+            if ($infoUser['id'] != '') {
+                $user->setFirstname($infoUser['firstname']);
+                $user->setLastname($infoUser['lastname']);
+                $user->setYearsOld($infoUser['years_old']);
+                $user->setEmail($infoUser['email']);
+                $user->setPhone($infoUser['phone']);
+                $user->setAddress($infoUser['address']);
+                $user->setAddress2($infoUser['address_2']);
+                $user->setZipcode($infoUser['zipcode']);
+                $user->setCity($infoUser['city']);
+
+                $config = $user->configFormUserAddModify($errors);
+                $v = new View('customerinfo','connected');
+                $v->assign('config',$config);
             } else {
-                $user->setPicture(null);
+                $user->setFirstname($infoUser['firstname']);
+                $user->setLastname($infoUser['lastname']);
+                $user->setYearsOld($infoUser['years_old']);
+                $user->setEmail($infoUser['email']);
+                $user->setPhone($infoUser['phone']);
+                $user->setAddress($infoUser['address']);
+                $user->setAddress2($infoUser['address_2']);
+                $user->setZipcode($infoUser['zipcode']);
+                $user->setCity($infoUser['city']);
+
+                $config = $user->configFormUserAddModify($errors);
+                $v = new View('signup');
+                $v->assign('config',$config);
             }
-        }
-        //Si c'est un ancien user
-        if($infoUser['id'] != ''){
-            $user->setId($infoUser['id']);
         } else {
-            $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
-            $token = str_shuffle($char);
-            $token = substr($token, 0, 11);
+            if (isset($_FILES) && count($_FILES) > 0) {
+                $varReturn = Files::uploadPicture($_FILES['picture']);
+                if (!is_array($varReturn)) {
+                    $user->setPicture($varReturn);
+                } else {
+                    if ($infoUser['picture-old'] != '') {
+                        $user->setPicture($infoUser['picture-old']);
+                    } else {
+                        $user->setPicture(null);
+                    }
+                }
+            }
 
-            $user->setPassword($infoUser['password']);
-            $user->setToken($token);
-            $_SESSION['token'] = $token;
+            //Si c'est un ancien user
+            if ($infoUser['id'] != '') {
+                $user->setId($infoUser['id']);
+            } else {
+                $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+                $token = str_shuffle($char);
+                $token = substr($token, 0, 11);
+
+                $user->setPassword($infoUser['password']);
+                $user->setToken($token);
+                $_SESSION['token'] = $token;
+            }
+
+            $user->setFirstname($infoUser['firstname']);
+            $user->setLastname($infoUser['lastname']);
+            $user->setYearsOld($infoUser['years_old']);
+            $user->setEmail($infoUser['email']);
+            $user->setPhone($infoUser['phone']);
+            $user->setAddress($infoUser['address']);
+            $user->setAddress2($infoUser['address_2']);
+            $user->setZipcode($infoUser['zipcode']);
+            $user->setCity($infoUser['city']);
+            $user->setStatus(2);
+            $user->setType(2);
+            $user->save();
+
+            $user->setEmail($infoUser['email']);
+
+            $response = $user->select('email');
+            $donnees = $response->fetch();
+
+            $_SESSION['id_user'] = $donnees['id'];
+
+            header("Location: " . DIRNAME . Route::getSlug('signup', 'mail'));
         }
-
-        $user->setFirstname($infoUser['firstname']);
-        $user->setLastname($infoUser['lastname']);
-        $user->setYearsOld($infoUser['years_old']);
-        $user->setEmail($infoUser['email']);
-        $user->setPhone($infoUser['phone']);
-        $user->setAddress($infoUser['address']);
-        $user->setAddress2($infoUser['address_2']);
-        $user->setZipcode($infoUser['zipcode']);
-        $user->setCity($infoUser['city']);
-        $user->setStatus(2);
-        $user->setType(2);
-        $user->save();
-
-        $user->setEmail($infoUser['email']);
-
-        $response = $user->select('email');
-        $donnees = $response->fetch();
-
-        $_SESSION['id_user'] = $donnees['id'];
-
-        header("Location: ".DIRNAME.Route::getSlug('signup','mail'));
     }
 
     public function saveAction($params)

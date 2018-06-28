@@ -116,12 +116,6 @@ class OrganizationController {
             $room->setIsWheelchair($array['is_wheelchair']);
             $room->setIsDeaf($array['is_deaf']);
 
-            // echo "array to check";
-            // echo '<pre>';
-            // print_r($array);
-            // echo '</pre>';
-            // die;
-
             $config = $room->formModifyRoom();
 
             $v = new View('modifyRoom', 'back');
@@ -193,10 +187,6 @@ class OrganizationController {
             }
 
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
-            // echo '<pre>';
-            // print_r($params);
-            // echo '</pre>';
-            // die;
             
         } else if($params['POST']['actualPageType'] == "Nouvelle page") {
             unset($params['POST']['actualPageType']);
@@ -209,7 +199,11 @@ class OrganizationController {
             $room->setIsWheelchair($params['POST']['is_wheelchair']);
             $room->setIsDeaf($params['POST']['is_deaf']);
             $room->save();
-            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+
+            $responseRoom = $room->select('name');
+            $donneesRoom = $responseRoom->fetch();
+
+            header("Location: ".DIRNAME.Route::getSlug('calendar','insertNewSlot').'/'.$donneesRoom['id']);
         } else {
             unset($params['POST']['actualPageType']);
             $room = new Room();
@@ -222,6 +216,7 @@ class OrganizationController {
             $room->setIsWheelchair($params['POST']['is_wheelchair']);
             $room->setIsDeaf($params['POST']['is_deaf']);
             $room->save();
+
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         }
        

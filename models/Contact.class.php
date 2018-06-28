@@ -35,7 +35,7 @@ class Contact extends BaseSql{
   }
 
   public function setSubject($subject) {
-    $this->subject=strtolower(trim($subject));
+    $this->subject=trim($subject);
   }
 
   public function setContent($content) {
@@ -46,7 +46,7 @@ class Contact extends BaseSql{
     $this->is_read=$is_read;
   }
 
-  public function configFormContact(){
+  public function configFormContact($errors){
     return [
       "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('contact','save'),"name"=>"contact"],
       "input"=>[
@@ -82,21 +82,24 @@ class Contact extends BaseSql{
             ],
             "object"=>[
               "type"=>"text",
-              "placeholder"=>"Exemple de demande",
+              "placeholder"=>"Objet de votre demande",
               "required"=>true,
               "class"=>"col-lg-12",
-              "value"=>''   
+              "value"=>$this->subject
             ],
             "message"=>[
               "type"=>"textarea",
               "placeholder"=>"Votre message",
               "required"=>true,
               "class"=>"col-lg-12",
-              "value"=>''
+              "value"=>$this->content
             ]
           ]
           
         ]
+      ],
+      "errors"=>[
+          $errors
       ]
     ];
   }

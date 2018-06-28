@@ -1191,6 +1191,10 @@ main{
     width: 100%;
 }
 
+.signup-form input[type="checkbox"]{
+    width: 20px;
+}
+
 .signup-form section{
     padding-left: 10px;
     padding-right: 10px;   
@@ -1224,26 +1228,22 @@ main{
     // margin-top: 3%;
 }
 
-.validation-CGU{
-    // margin-top:1%;
-}
-
 .customer-resa{
     margin-top: 120px;
   }
-  
+
   .customer-resa h1{
     text-align: center;
   }
-  
+
   .customer-fact{
     margin-top: 120px;
   }
-  
+
   .customer-fact h1{
     text-align: center;
   }
-  
+
   .rooms {
     margin-top: 15%;
     margin-bottom: 10%;
@@ -1251,21 +1251,21 @@ main{
     flex-direction: row;
     justify-content: flex-start;
     height: fit-content; }
-  
+
   .rooms input {
     width: 100%;
     display: none;
     background-color: white; }
-  
+
   .rooms-text {
     margin-top: 15%;
     text-align: right;
     margin-right: 10px; }
-  
+
   .resa{
     margin-top: 100px;
   }
-  
+
   .resa h1{
     padding-bottom: 20px;
     background-color: #C4C4C4;
@@ -1274,53 +1274,53 @@ main{
     margin-left: auto;
     margin-right: auto;
     padding-top: 1%;
-    padding-bottom: 1%; 
+    padding-bottom: 1%;
     width: 20%;}
-  
+
   .submit-resa{
     width: 100%;
   }
-  
+
   .resa-next{
     margin-top: 100px;
   }
-  
+
   .resa-next div{
     background-color: #42BDC4;
   }
-  
+
   .resa-next div:first-child{
     background-color: #FFFFFF;
   }
-  
+
   .resa-next #libel{
     text-align: center;
     font-weight: bold;
   }
-  
+
   .resa-next input{
     width: 100%;
   }
-  
+
   .resa-next div{
     padding-bottom: 20px;
   }
-  
+
   .player_3, .player_4, .player_5{
     display: none;
   }
-  
+
   .resa-next div:last-child{
     text-align: center;
   }
-  
+
   .resa-next-price article{
     margin-top: 40px;
     background-color: #FFFFFF;
     text-align: center;
     font-weight: bold;
   }
-  
+
   .resa-next-valid article{
     display:flex;
     justify-content: flex-end;
@@ -1387,4 +1387,13 @@ main{
   
   .customer-opinion .note div p{
     margin: auto;
+  }
+
+  .errors{
+      font-weight: bold;
+      color: $errors;
+  }
+
+  .profil-img {
+      width: 25%;
   }
