@@ -15,6 +15,7 @@ class Homepage extends BaseSql{
   protected $url_google;
   protected $roomList;
   protected $unit_price;
+  protected $logo;
 
   protected $foreign;
 
@@ -76,6 +77,10 @@ class Homepage extends BaseSql{
 
   public function setUnitPrice($unit_price){
     $this->unit_price=$unit_price;
+  }
+
+  public function setLogo($logo){
+      $this->logo=$logo;
   }
 
   public function setForeign($foreign){

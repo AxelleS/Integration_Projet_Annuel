@@ -1,8 +1,8 @@
 <?php
-
-
 //Si la session n'est pas réalisé, il faut l'initialiser (dans le cas d'un non routeur)
- session_start();
+session_start();
+
+$captcha = $_SESSION['captcha'];
 
 //création de l'image
 $width = 250;
@@ -10,13 +10,6 @@ $height = 100;
 $image = imagecreate($width, $height);
 
 $background = imagecolorallocate($image, rand(150,255), rand(150,255), rand(150,255));
- 
-$char = "abcdefghijklmnopqrstuvwxyz0123456789";
-$char = str_shuffle($char);
-$length = rand(-8,-6);
-$captcha = substr($char, $length);
-$_SESSION['captcha'] = $captcha;
-
 
 // Recherche des fonts dans le répertoire 
 $fonts = glob("assets/font/*.ttf");
@@ -26,7 +19,7 @@ $x = rand(10,15);
 for($i = 0; $i < strlen($captcha); $i++){
     $y = rand(20, $height-20);
     $angle = rand(-30, 30);
-    $size = rand(10,15);
+    $size = rand(18,20);
     $fontKey = rand(0, sizeof($fonts)-1);
     imagettftext($image, $size, $angle, $x, $y, imagecolorallocate($image, rand(0,100), rand(0,100), rand(0,100)), $fonts[$fontKey], $captcha[$i]);
 

@@ -10,52 +10,52 @@ class SigninController
         } else {
             $user = new User();
 
-            $config = $user->configFormUserConnect();
+            $config = $user->configFormUserConnect([]);
             $v = new View('signin');
             $v->assign('config',$config);
         }
     }
 
     public function connectAction($params){
-        
+
         $error = false;
 
         $user = new User();
-        $user->setEmail($params['POST']['input-email']);
+        $user->setEmail($params['POST']['email']);
         $response = $user->select('email');
 
         if($response != false){
             $donnees_user = $response->fetch();
-            if (!password_verify($params['POST']['input-password'], $donnees_user['password'])) {
+            if (!password_verify($params['POST']['password'], $donnees_user['password'])) {
                 $error = true;
             }
         } else{
             $error = true;
         }
-        
 
-        if($error == false){
+        if ($error == true) {
+            $errors['signin'] = "L'email ou le mot de passse est incorrect";
+
+            $user->setEmail($params['POST']['email']);
+            $config = $user->configFormUserConnect($errors);
+            $v = new View('signin');
+            $v->assign('config',$config);
+        } else {
             $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
             $token = str_shuffle($char);
             $token = substr($token, 0, 11);
-    
+
             $user = new User();
             $user->setId($donnees_user['id']);
             $user->setToken($token);
-    
+
             $user->majToken();
-    
+
             $_SESSION['token'] = $token;
             $_SESSION['id_user'] = $donnees_user['id'];
-    
-            header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
 
-        } else {
-            $donnees['email'] = $params['POST']['input-email'];
-            $donnees['error'] = 'identifiants incorrects !';
-            $v = new View('signin');
-            $v->assign("donnees",$donnees);
-        }        
+            header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
+        }
     }
 
     public function lostpasswordAction($params){
@@ -83,5 +83,13 @@ class SigninController
         $mail->Send();
 
         header("Location: ".DIRNAME.Route::getSlug('signin','index'));
+    }
+
+    public function disconnectAction($params){
+        $_SESSION['token'] = "";
+        $_SESSION['id_user'] = "";
+        $_SESSION['is_connected'] = "";
+        session_destroy();
+        header("Location: ".DIRNAME.Route::getSlug('index','index'));
     }
 }

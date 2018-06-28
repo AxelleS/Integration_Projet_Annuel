@@ -14,6 +14,7 @@ class ParametersController
         $response_homepage = $homepage->select('id');
         $donnees_homepage = $response_homepage->fetch();
         $donnee_footer['unit_price'] = $donnees_homepage['unit_price'];
+        $donnee_footer['logo'] = $donnees_homepage['logo'];
 
         $v = new View('parameters','back');
         $v->assign("donnees",$donnee_footer);
@@ -22,27 +23,105 @@ class ParametersController
 
     public function saveAction($params)
     {
-        $params['POST']['id'] = "1";
+        $infoParameters = $params['POST'];
+
         $modifyHomepage = new Homepage();
-        $modifyHomepage->setId($params['POST']['id']);
-        $modifyHomepage->setUnitPrice($params['POST']['unit_price']);
-        $modifyHomepage->save();
 
         $modifyFooter = new Footer();
-        $modifyFooter->setUrlFacebook($params['POST']['url_facebook']);
-        $modifyFooter->setUrlTwitter($params['POST']['url_facebook']);
-        $modifyFooter->setUrlYoutube($params['POST']['url_youtube']);
-        $modifyFooter->setUrlCGV($params['POST']['CGV']);
-        $modifyFooter->setUrlCGU($params['POST']['CGU']);
-        $modifyFooter->setUrlLegalMention($params['POST']['url_legal_mention']);
-        $modifyFooter->save();
-        header("Location: ".DIRNAME.Route::getSlug('parameters','index'));
 
-        /*echo '<pre>';
-            print_r($params);
-            echo '</pre>';
-            die;
-        echo "dans le save";exit;
-        var_dump($params);exit;*/
+        if (isset($_FILES) && count($_FILES) > 0) {
+            foreach ($_FILES as $key => $value) {
+                if($key == 'logo') {
+
+                    $varReturn = Files::uploadPicture($value);
+                } else {
+                    $varReturn = Files::uploadDoc($value);
+                }
+                if (!is_array($varReturn)) {
+                    switch ($key) {
+                        case 'url_legal_mention':
+                            $modifyFooter->setUrlLegalMention($varReturn);
+                            break;
+                        case 'CGV':
+                            $modifyFooter->setUrlCGV($varReturn);
+                            break;
+                        case 'CGU':
+                            $modifyFooter->setUrlCGU($varReturn);
+                            break;
+                        case 'logo':
+                            $modifyHomepage->setLogo($varReturn);
+                            break;
+                    }
+                } else {
+                    switch ($key) {
+                        case 'url_legal_mention':
+                            if ($infoParameters['old_url_legal_mention'] != '') {
+                                $modifyFooter->setUrlLegalMention($infoParameters['old_url_legal_mention']);
+                            } else {
+                                $error['legal_mention'] = 'PDF des mentions légales obligatoire';
+                            }
+                            break;
+                        case 'CGV':
+                            if ($infoParameters['old_CGV'] != '') {
+                                $modifyFooter->setUrlCGV($infoParameters['old_CGV']);
+                            } else {
+                                $error['CGV'] = 'PDF des CGV obligatoire';
+                            }
+                            break;
+                        case 'CGU':
+                            if ($infoParameters['old_CGU'] != '') {
+                                $modifyFooter->setUrlCGU($infoParameters['old_CGU']);
+                            } else {
+                                $error['CGU'] = 'PDF des CGU obligatoire';
+                            }
+                            break;
+                        case 'logo':
+                            if ($infoParameters['old_logo'] != '') {
+                                $modifyHomepage->setLogo($infoParameters['old_logo']);
+                            } else {
+                                $error['logo'] = 'Logo du site obligatoire';
+                            }
+                            break;
+                    }
+
+                }
+            }
+        }
+
+        if (!isset($error) || count($error) <= 0) {
+            $response = $modifyHomepage->select();
+            $donnees_homepage = $response->fetch();
+            $modifyHomepage->setId($donnees_homepage['id']);
+            $modifyHomepage->setIdRoom1($donnees_homepage['id_room_1']);
+            $modifyHomepage->setIdRoom2($donnees_homepage['id_room_2']);
+            $modifyHomepage->setIdRoom3($donnees_homepage['id_room_3']);
+            $modifyHomepage->setTitleIntroduction($donnees_homepage['title_introduction']);
+            $modifyHomepage->setDescriptionIntroduction($donnees_homepage['description_introduction']);
+            $modifyHomepage->setUrlVideo('@todo');
+            $modifyHomepage->setNameCompany($donnees_homepage['name_company']);
+            $modifyHomepage->setAddressCompany($donnees_homepage['address_company']);
+            $modifyHomepage->setZipcodeCompany($donnees_homepage['zipcode_company']);
+            $modifyHomepage->setCityCompany($donnees_homepage['city_company']);
+            $modifyHomepage->setUrlGoogle('@todo');
+            $modifyHomepage->setUnitPrice($infoParameters['unit_price']);
+            $modifyHomepage->save();
+
+            $response = $modifyFooter->select();
+            $donnee_footer = $response->fetch();
+            $modifyFooter->setId($donnee_footer['id']);
+            $modifyFooter->setUrlFacebook($infoParameters['url_facebook']);
+            $modifyFooter->setUrlTwitter($infoParameters['url_twitter']);
+            $modifyFooter->setUrlYoutube($infoParameters['url_youtube']);
+            $modifyFooter->save();
+
+            header("Location: ".DIRNAME.Route::getSlug('parameters','index'));
+        } else {
+            $donnee_footer['unit_price'] = $donnees_homepage['unit_price'];
+            $donnee_footer['logo'] = $donnees_homepage['logo'];
+
+            $v = new View('parameters','back');
+            $v->assign("donnees",$donnee_footer);
+            $v->assign("error",$error);
+        }
     }
 }

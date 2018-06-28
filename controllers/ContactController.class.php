@@ -4,14 +4,6 @@ class ContactController
 {
     public function indexAction($params)
     {
-        /*
-        //Appelle la vue
-        if ($_SESSION['is_connected']) {
-            $v = new View('contact','connected');
-        } else {
-            $v = new View('contact');
-        }*/
-
         $contact = new Contact();
         $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : 0;
         if($id_user != 0) {
@@ -26,28 +18,48 @@ class ContactController
         }
         //Va chercher les infos de l'utilisateur
 
-        $config = $contact->configFormContact();
-        $v = new View('contact','connected');
+
+        $config = $contact->configFormContact([]);
+
+        if ($_SESSION['is_connected']) {
+            $v = new View('contact','connected');
+        } else {
+            $v = new View('contact');
+        }
         $v->assign('config',$config);
     }
 
     public function saveAction($params){
-        //print_r($params);die;
-        if(isset($params['POST'])) {
-            if((!is_null($params['POST']['lastname']))&&(!is_null($params['POST']['firstname']))&&(!is_null($params['POST']['email']))&&(!is_null($params['POST']['object']))&&(!is_null($params['POST']['message']))){
-                $contact = new Contact();
-                $contact->setLastname($params['POST']['lastname']);
-                $contact->setFirstname($params['POST']['firstname']);
-                $contact->setEmail($params['POST']['email']);
-                $contact->setPhone($params['POST']['phone']);
-                $contact->setSubject($params['POST']['object']);
-                $contact->setContent($params['POST']['message']);
-                $contact->setIsRead(0);
-                $contact->save();
-                header("Location: ".DIRNAME.Route::getSlug('index','index'));
+        $infoContact = $params['POST'];
+        $contact = new Contact();
+
+        $errors = Validate::checkForm($infoContact);
+
+        if(count($errors) > 0) {
+            $contact->setLastname($infoContact['lastname']);
+            $contact->setFirstname($infoContact['firstname']);
+            $contact->setEmail($infoContact['email']);
+            $contact->setPhone($infoContact['phone']);
+            $contact->setSubject($infoContact['object']);
+            $contact->setContent($infoContact['message']);
+
+            $config = $contact->configFormContact($errors);
+            if ($_SESSION['is_connected']) {
+                $v = new View('contact','connected');
             } else {
-                header("Location: ".DIRNAME.Route::getSlug('contact','index'));
+                $v = new View('contact');
             }
+            $v->assign('config',$config);
+        } else {
+            $contact->setLastname($infoContact['lastname']);
+            $contact->setFirstname($infoContact['firstname']);
+            $contact->setEmail($infoContact['email']);
+            $contact->setPhone($infoContact['phone']);
+            $contact->setSubject($infoContact['object']);
+            $contact->setContent($infoContact['message']);
+            $contact->setIsRead(0);
+            $contact->save();
+            header("Location: ".DIRNAME.Route::getSlug('index','index'));
         }
     }
 

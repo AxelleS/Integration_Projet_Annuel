@@ -75,29 +75,31 @@ class BaseSql{
         $this->setColumns();
 
         if($this->id){
+            $unsetColumns = ['id', 'roomList', 'foreign', 'password', 'token'];
             //Update
             $query_columns = array();
             $id_search = $this->columns['id'];
 
-            if(isset($this->columns['password'])) {
-                unset($this->columns['password']);
-                unset($this->columns['token']);
-            }
-
-            unset($this->columns['id']);
-
             foreach($this->columns as $key => $value){
-             array_push($query_columns,$key."=:".$key);
+                if(!in_array($key, $unsetColumns)) {
+                    array_push($query_columns, $key . "=:" . $key);
+                } else {
+                    unset($this->columns[$key]);
+                }
             }
             $query = $this->pdo->prepare("  UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
 
-            //echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
-            //echo "<br>";
-            //print_r($this->columns);
+            echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
+            echo "<br>";
+            print_r($this->columns);
+            echo "<br>";
             $query->execute($this->columns);
         } else{
             //Insert
-            unset($this->columns['id']);
+            $unsetColumns = ['id', 'roomList', 'foreign'];
+            foreach($unsetColumns as $column){
+                unset($this->columns[$column]);
+            }
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (".
             implode(',',array_keys($this->columns))
             .") VALUES (:".
@@ -110,7 +112,8 @@ class BaseSql{
             implode(',:',array_keys($this->columns))
             .")";
             echo "<br>";
-            print_r($this->columns);*/
+            print_r($this->columns);
+            echo "<br>";*/
             $query->execute($this->columns);
         }
     }
