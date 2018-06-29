@@ -58,7 +58,6 @@ class OrganizationController {
             $homepageConfig->setAddressCompany($homepage[0]['address_company']);
             $homepageConfig->setZipcodeCompany($homepage[0]['zipcode_company']);
             $homepageConfig->setCityCompany($homepage[0]['city_company']);
-            $homepageConfig->setUrlGoogle($homepage[0]['url_google']);
             $homepageConfig->setRoomlist($roomListDetails);
             $config = $homepageConfig->formModifyHomepage();
             
@@ -162,7 +161,6 @@ class OrganizationController {
             $modifyHomepage->setAddressCompany($params['POST']['address_company']);
             $modifyHomepage->setZipcodeCompany($params['POST']['zipcode_company']);
             $modifyHomepage->setCityCompany($params['POST']['city_company']);
-            $modifyHomepage->setUrlGoogle($params['POST']['url_google']);
 
             $modifyHomepage->save();
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));

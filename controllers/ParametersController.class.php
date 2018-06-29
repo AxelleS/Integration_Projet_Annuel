@@ -102,7 +102,6 @@ class ParametersController
             $modifyHomepage->setAddressCompany($donnees_homepage['address_company']);
             $modifyHomepage->setZipcodeCompany($donnees_homepage['zipcode_company']);
             $modifyHomepage->setCityCompany($donnees_homepage['city_company']);
-            $modifyHomepage->setUrlGoogle('@todo');
             $modifyHomepage->setUnitPrice($infoParameters['unit_price']);
             $modifyHomepage->save();
 

@@ -12,7 +12,6 @@ class Homepage extends BaseSql{
   protected $address_company;
   protected $zipcode_company;
   protected $city_company;
-  protected $url_google;
   protected $roomList;
   protected $unit_price;
   protected $logo;
@@ -67,10 +66,6 @@ class Homepage extends BaseSql{
     $this->city_company=strtoupper(trim($city_company));
   }
 
-  public function setUrlGoogle($url_google) {
-    $this->url_google=strtolower(trim($url_google));
-  }
-
   public function setRoomList($roomList) {
     $this->roomList=$roomList;
   }
@@ -97,6 +92,7 @@ class Homepage extends BaseSql{
     $query = sprintf($geocoder, urlencode(utf8_encode($adresse)));
 
     $result = json_decode(file_get_contents($query));
+
     $json = $result->results[0];
     $lat = (string) $json->geometry->location->lat;
     $lng = (string) $json->geometry->location->lng;
@@ -145,7 +141,6 @@ class Homepage extends BaseSql{
         "address_company"=>$this->address_company,
         "zipcode_company"=>$this->zipcode_company,
         "city_company"=>$this->city_company,
-        "url_google"=>$this->url_google,
         "actualPageTypeValue"=>"Homepage",
         "actualPageType"=>"actualPageType"
       ],
@@ -199,10 +194,6 @@ class Homepage extends BaseSql{
           "city_company"=>[
             "nameView"=>"Ville de l'entreprise",
             "name"=>"city_company"
-          ],
-          "url_google"=>[
-            "nameView"=>"URL google maps",
-            "name"=>"url_google"
           ]
       ]
     ];
