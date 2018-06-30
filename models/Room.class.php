@@ -27,7 +27,7 @@ class Room extends BaseSql{
   }
 
   public function setUrlVideo($url_video) {
-    $this->url_video=strtolower(trim($url_video));
+    $this->url_video=trim($url_video);
   }
 
   public function setCapacity($capacity) {
@@ -44,6 +44,18 @@ class Room extends BaseSql{
 
   public function setIsDeaf($is_deaf) {
     $this->is_deaf=$is_deaf;
+  } 
+
+  public function getPlayerVideo($url_video) {
+    //Récupère l'url de $this->url_video et le parse 
+    //afin d'avoir uniquement l'id de la video, return la balise iframe
+    $parseUrl = parse_url($url_video);
+    if (isset($parseUrl['query'])) {
+        $query = explode('=', $parseUrl['query'])[1];
+        return '<iframe width="800" height="500" src="https://www.youtube.com/embed/'.$query.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    } else {
+      return '';
+    }
   }
 
   public function formModifyRoom() {
@@ -62,6 +74,7 @@ class Room extends BaseSql{
         "classText"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style",
         "classInput"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 organization-input-style",
         "classCancel"=>"col-lg-2 offset-lg-3 col-md-2 offset-md-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2",
+        "classDelete"=>" col-lg-12 col-md-12 col-sm-12 col-xs-12 validate-modify-homepage",
         "buttonCancel"=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 validate-modify-homepage resize-cancel-button",
         "classValidate"=>"col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage"
       ],

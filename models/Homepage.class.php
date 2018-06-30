@@ -12,7 +12,6 @@ class Homepage extends BaseSql{
   protected $address_company;
   protected $zipcode_company;
   protected $city_company;
-  protected $url_google;
   protected $roomList;
   protected $unit_price;
   protected $logo;
@@ -67,10 +66,6 @@ class Homepage extends BaseSql{
     $this->city_company=strtoupper(trim($city_company));
   }
 
-  public function setUrlGoogle($url_google) {
-    $this->url_google=strtolower(trim($url_google));
-  }
-
   public function setRoomList($roomList) {
     $this->roomList=$roomList;
   }
@@ -85,6 +80,24 @@ class Homepage extends BaseSql{
 
   public function setForeign($foreign){
     $this->foreign=$foreign;
+  }
+
+  public function getMapsModal($addr, $city, $zip) {
+    $geocoder = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false";
+    $adresse = $addr;
+    $adresse .= ', '.$zip;
+    $adresse .= ', '.$city;
+
+    // Requête envoyée à l'API Geocoding
+    $query = sprintf($geocoder, urlencode(utf8_encode($adresse)));
+
+    $result = json_decode(file_get_contents($query));
+
+    $json = $result->results[0];
+    $lat = (string) $json->geometry->location->lat;
+    $lng = (string) $json->geometry->location->lng;
+
+    return "<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;width:700px;'><div id='gmap_canvas' style='height:440px;width:700px;'></div><div><small><a href='emg.com/fr'>https://embedgooglemaps.com/fr/</a></small></div><div><small><a href='http://botonmegusta.org/'>fb agregar</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(".$lat.",".$lng."),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(48.849145,2.389659100000017)});infowindow = new google.maps.InfoWindow({content:'<strong>Titre</strong><br>242 rue du faubourg saint antoine<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>";
   }
 
   public function formModifyHomepage() {
@@ -117,18 +130,17 @@ class Homepage extends BaseSql{
         "classValidate"=>"col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage"
       ],
       "value"=>[
-        "id"=>$response[0][0]['id'],
-        "id_room_1"=>$response[0][0]['id_room_1'],
-        "id_room_2"=>$response[0][0]['id_room_2'],
-        "id_room_3"=>$response[0][0]['id_room_3'],
-        "title_introduction"=>$response[0][0]['title_introduction'],
-        "description_introduction"=>$response[0][0]['description_introduction'],
-        "url_video"=>$response[0][0]['url_video'],
-        "name_company"=>$response[0][0]['name_company'],
-        "address_company"=>$response[0][0]['address_company'],
-        "zipcode_company"=>$response[0][0]['zipcode_company'],
-        "city_company"=>$response[0][0]['city_company'],
-        "url_google"=>$response[0][0]['url_google'],
+        "id"=>$this->id,
+        "id_room_1"=>$this->id_room_1,
+        "id_room_2"=>$this->id_room_2,
+        "id_room_3"=>$this->id_room_3,
+        "title_introduction"=>$this->title_introduction,
+        "description_introduction"=>$this->description_introduction,
+        "url_video"=>$this->url_video,
+        "name_company"=>$this->name_company,
+        "address_company"=>$this->address_company,
+        "zipcode_company"=>$this->zipcode_company,
+        "city_company"=>$this->city_company,
         "actualPageTypeValue"=>"Homepage",
         "actualPageType"=>"actualPageType"
       ],
@@ -182,10 +194,6 @@ class Homepage extends BaseSql{
           "city_company"=>[
             "nameView"=>"Ville de l'entreprise",
             "name"=>"city_company"
-          ],
-          "url_google"=>[
-            "nameView"=>"URL google maps",
-            "name"=>"url_google"
           ]
       ]
     ];
