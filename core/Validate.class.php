@@ -115,18 +115,6 @@ class Validate{
             return true;
         }
     }
-
-    public static function createErrorsTable($table) {
-        $errorsBlock = $table;
-        $errorsTemp = explode('$', $errorsBlock);
-        unset($errorsTemp[count($errorsTemp)-1]);
-        foreach ($errorsTemp as $errorTemp) {
-            $temp = explode('=', $errorTemp);
-            $errors[$temp[0]] = $temp[1];
-        }
-        return $errors;
-    }
-
 }
 
 
