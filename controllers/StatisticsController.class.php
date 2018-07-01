@@ -4,10 +4,12 @@ class StatisticsController {
 
 	public function indexAction($params)
     {
+
+
     	$user = new User();
-    	$response_stat = $user->select('id');
-    	var_dump($response_stat);exit;
-     //    $donnee_stat = $response_stat->fetch();
+    	$response_stat = $user->select();
+     	$donnee_stat = $response_stat->rowCount();
+     	//var_dump($donnee_stat);exit;
 
 
         $v = new View('statistics','back');
