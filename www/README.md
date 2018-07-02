@@ -13,21 +13,29 @@ Installation
 
 Une fois dans la racine du projet, vous devez:
 
-1. Installer les modules dans le package.json
+1. lancer la commande suivante
+
+    `docker-compose up --build -d`
+
+1. vérifier que les 3 container sont lancer avec: 
+
+    `docker ps`
+
+1. Toujours à la racine du projet, nous allons devoir installer sur le container notre npm
+
+    `docker exec -it apache-mvc bash`
+
+1. Puis lancer les commandes suivantes : 
 
     `npm install`
+    `npm rebuild node-sass`
+    `npm run watch-css`
 
-1. 3 possibilitées:
-
-    `npm run build-css`
-
-	`npm run uglify-css`
+1. 1 possibilitée:
 
 	`npm run watch-css`
 
-1. La première permet de compiler une fois le scss en css
-1. La deuxième est en cours de développement
-1. La troisième permet de compiler le scss en css à chaques modifications des fichiers (à utiliser en priorité)
+1. Elle permet de lancer un watch sur la compilation du scss en css
 
 Organisation fichier scss
 

@@ -46,10 +46,7 @@
         
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['city_company']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['city_company']['name']?>" value="<?php echo $config['value']['city_company']?>" />
-        
-        <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['url_google']['nameView']?></p>
-        <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['url_google']['name']?>" value="<?php echo $config['value']['url_google']?>" />
-        
+
         <a href="<?php echo $config['config']['cancel']?>" class="<?php echo $config['style']['classCancel']?>"><button class="<?php echo $config['style']['buttonCancel']?>">Retour</button></a>
         <input class="<?php echo $config['style']['classValidate']?>" type="<?php echo $config['validate']['type']?>" value="<?php echo $config['validate']['value']?>"></p>
       </form>

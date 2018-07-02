@@ -88,15 +88,23 @@
             <hr>
         </article>
         <article class="video-promotion col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <?php echo $donnees['url_video']; ?>
+            <?php echo $donnees_video; ?>
         </article>
         <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion row">
+            <?php if(isset($donnees['picture_1'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_1']; ?>" target="_blank"><img src="<?php echo $donnees['picture_1']; ?>" alt=""></a>
+            <?php endif; ?>
+            <?php if(isset($donnees['picture_2'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_2']; ?>" target="_blank"><img src="<?php echo $donnees['picture_2']; ?>" alt=""></a>
+            <?php endif; ?>
         </article>
         <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion row">
+            <?php if(isset($donnees['picture_3'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_3']; ?>" target="_blank"><img src="<?php echo $donnees['picture_3']; ?>" alt=""></a>
+            <?php endif; ?>
+            <?php if(isset($donnees['picture_4'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_4']; ?>" target="_blank"><img src="<?php echo $donnees['picture_4']; ?>" alt=""></a>
+            <?php endif; ?>
         </article>
     </section>
 

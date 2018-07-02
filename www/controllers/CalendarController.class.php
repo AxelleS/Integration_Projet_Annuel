@@ -145,6 +145,41 @@ class CalendarController {
         echo json_encode($timeSlot_Tab);
         exit;
     }
+
+    function insertNewSlotAction($params){
+	    $idRoom = $params['URL'][0];
+
+        $calendar = new Calendar();
+        $responseCalendar = $calendar->select();
+
+        $slots = [
+            '10h00-11h30',
+            '12h00-13h30',
+            '14h00-15h30',
+            '16h00-17h30',
+            '18h00-19h30',
+            '20h00-21h30',
+            '22h00-23h30'
+        ];
+
+        $timeSlot = new Time_slot();
+
+        while($donnees_calendar = $responseCalendar->fetch()) {
+            foreach($slots as $slot) {
+                $timeSlot->setIdCalendar($donnees_calendar['id']);
+                $timeSlot->setIdRoom($idRoom);
+                $timeSlot->setIdUser(null);
+                $timeSlot->setTimeSlot($slot);
+                $timeSlot->setNumberPlayer(0);
+                $timeSlot->setTotalPrice(0);
+                $timeSlot->setDateBill(null);
+                $timeSlot->setOpinion(null);
+                $timeSlot->save();
+            }
+        }
+
+        header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+    }
 }
 
  ?>

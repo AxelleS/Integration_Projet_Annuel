@@ -2,5 +2,3 @@
 node_modules/
 assets/dist/css/main.css
 conf.inc.php
-package-lock.json
-package.json

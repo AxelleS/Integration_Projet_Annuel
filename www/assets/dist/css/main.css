@@ -892,6 +892,9 @@ main {
 .signup-form input {
   width: 100%; }
 
+.signup-form input[type="checkbox"] {
+  width: 20px; }
+
 .signup-form section {
   padding-left: 10px;
   padding-right: 10px; }
@@ -1043,6 +1046,13 @@ main {
 
 .customer-opinion .note div p {
   margin: auto; }
+
+.errors {
+  font-weight: bold;
+  color: #FF0000; }
+
+.profil-img {
+  width: 25%; }
 
 .dashboard-fullheight {
   height: 100vh; }
@@ -1336,6 +1346,14 @@ main {
   font-weight: 700;
   border-radius: 10px;
   border: 1px solid #757575; }
+
+.organization-img-style {
+  margin-top: 0;
+  margin-bottom: 20px; }
+
+.organization-a-style {
+  margin-top: 0;
+  margin-bottom: 10px; }
 
 .info-contact {
   padding: 10px;

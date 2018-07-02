@@ -63,6 +63,10 @@ class IndexController
         } else {
             $v = new View('index');
         }
+
+        $donnees_maps = $homepage->getMapsModal($donnees_homepage['address_company'], $donnees_homepage['city_company'], $donnees_homepage['zipcode_company']);
+
+        $v->assign("donnees_maps", $donnees_maps);
         $v->assign("donnees",$donnees_homepage);
 
     }

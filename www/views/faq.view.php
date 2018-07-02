@@ -7,12 +7,12 @@
             <article class="title-faq">
                 <h1>FAQ</h1>
             </article>
-            <h4>1. Cognitis starent adpetitus mihi extremas ?</h4>
-            <p>Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</p>
-            <h4>2. Cognitis starent adpetitus mihi extremas ?</h4>
-            <p>Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</p>
-            <h4>3. Cognitis starent adpetitus mihi extremas ?</h4>
-            <p>Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</p>
+            <?php $i = 1; ?>
+            <?php foreach ($donnees as $donnee) :?>
+                <h4><?php echo $i.'. '.$donnee['question']; ?></h4>
+                <p><?php echo $donnee['answer']; ?></p>
+             <?php $i++; ?>
+            <?php endforeach; ?>
         </article>
         <div class="col_3"></div>
     </section>

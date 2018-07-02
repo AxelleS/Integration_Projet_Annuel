@@ -10,7 +10,7 @@ class SignUpController
         } else {
             $user = new User();
 
-            $config = $user->configFormUserAddModify();
+            $config = $user->configFormUserAddModify([]);
             $v = new View('signup');
             $v->assign('config',$config);
         }

@@ -58,7 +58,6 @@ class OrganizationController {
             $homepageConfig->setAddressCompany($homepage[0]['address_company']);
             $homepageConfig->setZipcodeCompany($homepage[0]['zipcode_company']);
             $homepageConfig->setCityCompany($homepage[0]['city_company']);
-            $homepageConfig->setUrlGoogle($homepage[0]['url_google']);
             $homepageConfig->setRoomlist($roomListDetails);
             $config = $homepageConfig->formModifyHomepage();
             
@@ -116,12 +115,6 @@ class OrganizationController {
             $room->setIsWheelchair($array['is_wheelchair']);
             $room->setIsDeaf($array['is_deaf']);
 
-            // echo "array to check";
-            // echo '<pre>';
-            // print_r($array);
-            // echo '</pre>';
-            // die;
-
             $config = $room->formModifyRoom();
 
             $v = new View('modifyRoom', 'back');
@@ -168,7 +161,6 @@ class OrganizationController {
             $modifyHomepage->setAddressCompany($params['POST']['address_company']);
             $modifyHomepage->setZipcodeCompany($params['POST']['zipcode_company']);
             $modifyHomepage->setCityCompany($params['POST']['city_company']);
-            $modifyHomepage->setUrlGoogle($params['POST']['url_google']);
 
             $modifyHomepage->save();
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
@@ -193,10 +185,6 @@ class OrganizationController {
             }
 
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
-            // echo '<pre>';
-            // print_r($params);
-            // echo '</pre>';
-            // die;
             
         } else if($params['POST']['actualPageType'] == "Nouvelle page") {
             unset($params['POST']['actualPageType']);
@@ -209,7 +197,11 @@ class OrganizationController {
             $room->setIsWheelchair($params['POST']['is_wheelchair']);
             $room->setIsDeaf($params['POST']['is_deaf']);
             $room->save();
-            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+
+            $responseRoom = $room->select('name');
+            $donneesRoom = $responseRoom->fetch();
+
+            header("Location: ".DIRNAME.Route::getSlug('calendar','insertNewSlot').'/'.$donneesRoom['id']);
         } else {
             unset($params['POST']['actualPageType']);
             $room = new Room();
@@ -222,6 +214,7 @@ class OrganizationController {
             $room->setIsWheelchair($params['POST']['is_wheelchair']);
             $room->setIsDeaf($params['POST']['is_deaf']);
             $room->save();
+
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         }
        

@@ -25,14 +25,15 @@ $maroute = Route::getRoute($uriExploded[0]);
 
 $c = $maroute['controller'];
 $a = $maroute['action'];
-$_SESSION['is_connected'] = false;
+
+if(!isset($_SESSION['is_connected'])) {
+    $_SESSION['is_connected'] = false;
+}
 
 if ($maroute['security'] == true) {
     if (Security::isConnected() == false) {
         $c = 'signin';
         $a = 'index';
-    } else {
-        $_SESSION['is_connected'] = true;
     }
 }
 

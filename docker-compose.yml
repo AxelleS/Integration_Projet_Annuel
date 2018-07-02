@@ -13,14 +13,16 @@ services:
      - database
 
   database:
-    image: mysql:latest
+    image: mysql:5.7.22
     container_name: mysql-mvc
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mvcdocker
+      MYSQL_DATABASE: cms_escape
     volumes:
-      - db_data_mvc:/var/lib/mysql
+      - db_data:/var/lib/mysql
     restart: always
+    ports:
+      - 3306:3306
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -34,5 +36,5 @@ services:
       PMA_HOST: database
 
 volumes:
-    db_data_mvc:
+    db_data:
       
