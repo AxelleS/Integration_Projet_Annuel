@@ -29,6 +29,8 @@ class ParametersController
 
         $modifyFooter = new Footer();
 
+        $error = Validate::checkForm($infoParameters);
+
         if (isset($_FILES) && count($_FILES) > 0) {
             foreach ($_FILES as $key => $value) {
                 if($key == 'logo') {
@@ -88,9 +90,10 @@ class ParametersController
             }
         }
 
+        $response = $modifyHomepage->select();
+        $donnees_homepage = $response->fetch();
+
         if (!isset($error) || count($error) <= 0) {
-            $response = $modifyHomepage->select();
-            $donnees_homepage = $response->fetch();
             $modifyHomepage->setId($donnees_homepage['id']);
             $modifyHomepage->setIdRoom1($donnees_homepage['id_room_1']);
             $modifyHomepage->setIdRoom2($donnees_homepage['id_room_2']);
@@ -115,8 +118,14 @@ class ParametersController
 
             header("Location: ".DIRNAME.Route::getSlug('parameters','index'));
         } else {
-            $donnee_footer['unit_price'] = $donnees_homepage['unit_price'];
-            $donnee_footer['logo'] = $donnees_homepage['logo'];
+            $donnee_footer['url_facebook'] = $infoParameters['url_facebook'];
+            $donnee_footer['url_twitter'] = $infoParameters['url_twitter'];
+            $donnee_footer['url_youtube'] = $infoParameters['url_youtube'];
+            $donnee_footer['url_CGV'] = $infoParameters['old_CGV'];
+            $donnee_footer['url_CGU'] = $infoParameters['old_CGU'];
+            $donnee_footer['url_legal_mention'] = $infoParameters['old_url_legal_mention'];
+            $donnee_footer['unit_price'] = $infoParameters['unit_price'];
+            $donnee_footer['logo'] = $infoParameters['old_logo'];
 
             $v = new View('parameters','back');
             $v->assign("donnees",$donnee_footer);

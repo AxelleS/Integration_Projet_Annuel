@@ -100,7 +100,7 @@ class Homepage extends BaseSql{
     return "<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;width:700px;'><div id='gmap_canvas' style='height:440px;width:700px;'></div><div><small><a href='emg.com/fr'>https://embedgooglemaps.com/fr/</a></small></div><div><small><a href='http://botonmegusta.org/'>fb agregar</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(".$lat.",".$lng."),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(48.849145,2.389659100000017)});infowindow = new google.maps.InfoWindow({content:'<strong>Titre</strong><br>242 rue du faubourg saint antoine<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>";
   }
 
-  public function formModifyHomepage() {
+  public function formModifyHomepage($errors) {
     $homepageValue = new Homepage();
     $response_homepageValue = $homepageValue->select();
     $response = array();
@@ -119,8 +119,11 @@ class Homepage extends BaseSql{
         "cancel"=>DIRNAME.Route::getSlug('organization','index')
       ],
       "validate"=>[
-        "value"=>"sauvegarder",
-        "type"=>"submit"
+          "value"=>"sauvegarder",
+          "type"=>"submit"
+      ],
+      "errors"=>[
+          $errors
       ],
       "style"=>[
         "classText"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style",

@@ -59,7 +59,7 @@ class OrganizationController {
             $homepageConfig->setZipcodeCompany($homepage[0]['zipcode_company']);
             $homepageConfig->setCityCompany($homepage[0]['city_company']);
             $homepageConfig->setRoomlist($roomListDetails);
-            $config = $homepageConfig->formModifyHomepage();
+            $config = $homepageConfig->formModifyHomepage([]);
             
 
             $v = new View('modifyHomePage', 'back');
@@ -104,23 +104,31 @@ class OrganizationController {
             $room->setName($params['URL'][0]);
 
             $result = $room->select('name');
-            $array = $result->fetch();
+            $donneesRoom = $result->fetch();
 
-            $room->setId($array['id']);
-            $room->setName($array['name']);
-            $room->setDescription($array['description']);
-            $room->setUrlVideo($array['url_video']);
-            $room->setCapacity($array['capacity']);
-            $room->setIsPregnant($array['is_pregnant']);
-            $room->setIsWheelchair($array['is_wheelchair']);
-            $room->setIsDeaf($array['is_deaf']);
+            $room->setId($donneesRoom['id']);
+            $room->setName($donneesRoom['name']);
+            $room->setDescription($donneesRoom['description']);
+            $room->setUrlVideo($donneesRoom['url_video']);
+            $room->setCapacity($donneesRoom['capacity']);
+            $room->setIsPregnant($donneesRoom['is_pregnant']);
+            $room->setIsWheelchair($donneesRoom['is_wheelchair']);
+            $room->setIsDeaf($donneesRoom['is_deaf']);
 
-            $config = $room->formModifyRoom();
+            $pictures = new Picture();
+            $pictures->setIdRoom($donneesRoom['id']);
+            $result = $pictures->select('id_room');
+            $picturesArray = [];
+            $keyPicture = '';
+            while ($donneesPictures = $result->fetch()) {
+                $picturesArray[] = $donneesPictures['url_picture'];
+            }
+
+            $config = $room->formModifyRoom([], $picturesArray);
 
             $v = new View('modifyRoom', 'back');
             $v->assign('roomDetails', $config);
-            
-
+            $v->assign('keyPicture', $keyPicture);
         }
 
         $v->assign('actualPageType', $params['URL'][0]);
@@ -146,28 +154,89 @@ class OrganizationController {
     }
 
     public function saveAction($params){
+        $infoOrganization = $params['POST'];
 
-        if($params['POST']['actualPageType'] == "Homepage") {
-            $params['POST']['id'] = "1";
+        if($infoOrganization['actualPageType'] == "Homepage") {
+
             $modifyHomepage = new Homepage();
-            $modifyHomepage->setId($params['POST']['id']);
-            $modifyHomepage->setIdRoom1($params['POST']['id_room_1']);
-            $modifyHomepage->setIdRoom2($params['POST']['id_room_2']);
-            $modifyHomepage->setIdRoom3($params['POST']['id_room_3']);
-            $modifyHomepage->setTitleIntroduction($params['POST']['titre_introduction']);
-            $modifyHomepage->setDescriptionIntroduction($params['POST']['description_introduction']);
-            $modifyHomepage->setUrlVideo($params['POST']['url_video']);
-            $modifyHomepage->setNameCompany($params['POST']['name_company']);
-            $modifyHomepage->setAddressCompany($params['POST']['address_company']);
-            $modifyHomepage->setZipcodeCompany($params['POST']['zipcode_company']);
-            $modifyHomepage->setCityCompany($params['POST']['city_company']);
 
-            $modifyHomepage->save();
-            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+            $errors = Validate::checkForm($infoOrganization);
+
+            if(count($errors) > 0) {
+                $modifyHomepage->setId(1);
+                $modifyHomepage->setIdRoom1($infoOrganization['id_room_1']);
+                $modifyHomepage->setIdRoom2($infoOrganization['id_room_2']);
+                $modifyHomepage->setIdRoom3($infoOrganization['id_room_3']);
+                $modifyHomepage->setTitleIntroduction($infoOrganization['title_introduction']);
+                $modifyHomepage->setDescriptionIntroduction($infoOrganization['description_introduction']);
+                $modifyHomepage->setUrlVideo($infoOrganization['url_video']);
+                $modifyHomepage->setNameCompany($infoOrganization['name_company']);
+                $modifyHomepage->setAddressCompany($infoOrganization['address_company']);
+                $modifyHomepage->setZipcodeCompany($infoOrganization['zipcode_company']);
+                $modifyHomepage->setCityCompany($infoOrganization['city_company']);
+
+                $roomList = new Room();
+                $response_roomList = $roomList->select();
+
+                $roomListDetails = array();
+                foreach($response_roomList->fetchAll() as $keyRoom=>$content) {
+                    $temp2 = array();
+                    foreach($content as $key=>$value) {
+                        if(!is_numeric($key)) {
+                            if ($key == "id" || $key == "name") {
+                                $temp2[$key] = $value;
+                            }
+                        }
+                    }
+                    $roomListDetails[] = $temp2;
+                }
+
+                $modifyHomepage->setRoomlist($roomListDetails);
+                $config = $modifyHomepage->formModifyHomepage($errors);
+                $v = new View('modifyHomePage', 'back');
+                $v->assign('configModifyHomepage', $config);
+            }
+            else {
+                if (isset($_FILES) && count($_FILES) > 0) {
+                    $varsReturn = Files::uploadMultiplePicture($_FILES['images'], 6);
+                    if (count($varsReturn) > 0) {
+                        if (substr($varsReturn[0], 0, 6) == 'files/') {
+                            $i = 1;
+                            foreach ($varsReturn as $varReturn) {
+                                $picture = new Picture();
+                                $picture->setIdRoom(null);
+                                $picture->setUrlPicture($varReturn);
+                                $picture->setOrderPicture($i);
+                                $picture->setIsMain(0);
+                                $picture->save();
+                                $i++;
+                            }
+                        }
+                    }
+                }
+                $response_homepageConfig = $modifyHomepage->select();
+                $donneesHomepage = $response_homepageConfig->fetch();
+                $modifyHomepage->setId(1);
+                $modifyHomepage->setIdRoom1($infoOrganization['id_room_1']);
+                $modifyHomepage->setIdRoom2($infoOrganization['id_room_2']);
+                $modifyHomepage->setIdRoom3($infoOrganization['id_room_3']);
+                $modifyHomepage->setTitleIntroduction($infoOrganization['title_introduction']);
+                $modifyHomepage->setDescriptionIntroduction($infoOrganization['description_introduction']);
+                $modifyHomepage->setUrlVideo($infoOrganization['url_video']);
+                $modifyHomepage->setNameCompany($infoOrganization['name_company']);
+                $modifyHomepage->setAddressCompany($infoOrganization['address_company']);
+                $modifyHomepage->setZipcodeCompany($infoOrganization['zipcode_company']);
+                $modifyHomepage->setCityCompany($infoOrganization['city_company']);
+                $modifyHomepage->setUnitPrice($donneesHomepage['unit_price']);
+                $modifyHomepage->setLogo($donneesHomepage['logo']);
+
+                $modifyHomepage->save();
+
+                header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+            }
         } else if($params['POST']['actualPageType'] == "Foire à questions") {
             
             unset($params['POST']['actualPageType']);
-            print_r($params);
             foreach($params['POST'] as $key => $value) {
                 $sendFaq = new Faq();
                 $sendFaq->setId($key);
@@ -204,18 +273,69 @@ class OrganizationController {
             header("Location: ".DIRNAME.Route::getSlug('calendar','insertNewSlot').'/'.$donneesRoom['id']);
         } else {
             unset($params['POST']['actualPageType']);
-            $room = new Room();
-            $room->setName($params['POST']['name']);
-            $room->setId($params['POST']['id']);
-            $room->setDescription($params['POST']['description']);
-            $room->setUrlVideo($params['POST']['url_video']);
-            $room->setCapacity($params['POST']['capacity']);
-            $room->setIsPregnant($params['POST']['is_pregnant']);
-            $room->setIsWheelchair($params['POST']['is_wheelchair']);
-            $room->setIsDeaf($params['POST']['is_deaf']);
-            $room->save();
+            $errors = Validate::checkForm($infoOrganization);
 
-            header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+            if (isset($_FILES) && count($_FILES) > 0) {
+                foreach ($_FILES as $key=>$value) {
+                    if($value['error'] == 0) {
+                        $varReturn = Files::uploadPicture($value);
+                        if(!is_array($varReturn)) {
+                            $picture = new Picture();
+                            $picture->setIdRoom($infoOrganization['id']);
+                            $picture->setOrderPicture($key);
+                            $response = $picture->select(['id_room', 'order_picture']);
+
+                            if($response->rowCount() > 0) {
+                                $donneesPicture = $response->fetch();
+                                $picture->setId($donneesPicture['id']);
+                            } else {
+                                $picture->setOrderPicture($key);
+                            }
+
+                            if($key == 1) {
+                                $picture->setIsMain(1);
+                            } else {
+                                $picture->setIsMain(0);
+                            }
+
+                            $picture->setUrlPicture($varReturn);
+
+                            $picture->save();
+                        }
+                    }
+                }
+            }
+
+            if(count($errors) > 0) {
+                $room = new Room();
+                $room->setName($infoOrganization['name']);
+                $room->setId($infoOrganization['id']);
+                $room->setDescription($infoOrganization['description']);
+                $room->setUrlVideo($infoOrganization['url_video']);
+                $room->setCapacity($infoOrganization['capacity']);
+                $room->setIsPregnant($infoOrganization['is_pregnant']);
+                $room->setIsWheelchair($infoOrganization['is_wheelchair']);
+                $room->setIsDeaf($infoOrganization['is_deaf']);
+
+                $config = $room->formModifyRoom($errors);
+
+                $v = new View('modifyRoom', 'back');
+                $v->assign('roomDetails', $config);
+
+            } else {
+                $room = new Room();
+                $room->setName($infoOrganization['name']);
+                $room->setId($infoOrganization['id']);
+                $room->setDescription($infoOrganization['description']);
+                $room->setUrlVideo($infoOrganization['url_video']);
+                $room->setCapacity($infoOrganization['capacity']);
+                $room->setIsPregnant($infoOrganization['is_pregnant']);
+                $room->setIsWheelchair($infoOrganization['is_wheelchair']);
+                $room->setIsDeaf($infoOrganization['is_deaf']);
+                $room->save();
+
+                header("Location: ".DIRNAME.Route::getSlug('organization','index'));
+            }
         }
        
     }

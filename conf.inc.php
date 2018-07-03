@@ -16,7 +16,7 @@ define("DBPORT", "3306");
 //Repertoire d'upload
 define('TARGET', 'files/');
 //Taille max en octets
-define('MAX_SIZE', 100000);
+define('MAX_SIZE', 10000000);
 //Largeur max de l'image en pixels
 define('WIDTH_MAX', 800);
 //Hauteur max de l'image en pixels
