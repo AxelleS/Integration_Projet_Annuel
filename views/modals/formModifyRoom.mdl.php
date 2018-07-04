@@ -28,9 +28,15 @@ $errors = $config['errors'][0];
     <img class="miniature" src="<?php echo DIRNAME.$config['pictures'][3]?>">
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['capacity']['nameView']?></p>
-<input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['capacity']['name']?>" value="<?php echo $config['value']['capacity']?>" />
+<input class="<?php echo $config['style']['classInput']?>"  type="number" name="<?php echo $config['capacity']['name']?>" value="<?php echo $config['value']['capacity']?>" />
 <?php if(array_key_exists('capacity', $errors)) : ?>
     <p class="errors"><?php echo $errors['capacity']; ?></p>
+<?php endif; ?>
+
+<p class="<?php echo $config['style']['classText']?>"><?php echo $config['price']['nameView']?></p>
+<input class="<?php echo $config['style']['classInput']?>"  type="number" name="<?php echo $config['price']['name']?>" value="<?php echo $config['value']['price']?>" />
+<?php if(array_key_exists('price', $errors)) : ?>
+    <p class="errors"><?php echo $errors['price']; ?></p>
 <?php endif; ?>
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['is_pregnant']['nameView']?></p>

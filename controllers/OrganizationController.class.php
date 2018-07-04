@@ -92,6 +92,7 @@ class OrganizationController {
             $room->setIsPregnant(0);
             $room->setIsWheelchair(0);
             $room->setIsDeaf(0);
+            $room->setPrice(0);
 
 
             $config = $room->formCreateRoom();
@@ -114,6 +115,7 @@ class OrganizationController {
             $room->setIsPregnant($donneesRoom['is_pregnant']);
             $room->setIsWheelchair($donneesRoom['is_wheelchair']);
             $room->setIsDeaf($donneesRoom['is_deaf']);
+            $room->setPrice($donneesRoom['price']);
 
             $pictures = new Picture();
             $pictures->setIdRoom($donneesRoom['id']);
@@ -227,17 +229,16 @@ class OrganizationController {
                 $modifyHomepage->setAddressCompany($infoOrganization['address_company']);
                 $modifyHomepage->setZipcodeCompany($infoOrganization['zipcode_company']);
                 $modifyHomepage->setCityCompany($infoOrganization['city_company']);
-                $modifyHomepage->setUnitPrice($donneesHomepage['unit_price']);
                 $modifyHomepage->setLogo($donneesHomepage['logo']);
 
                 $modifyHomepage->save();
 
                 header("Location: ".DIRNAME.Route::getSlug('organization','index'));
             }
-        } else if($params['POST']['actualPageType'] == "Foire à questions") {
+        } else if($infoOrganization['actualPageType'] == "Foire à questions") {
             
-            unset($params['POST']['actualPageType']);
-            foreach($params['POST'] as $key => $value) {
+            unset($infoOrganization['actualPageType']);
+            foreach($infoOrganization as $key => $value) {
                 $sendFaq = new Faq();
                 $sendFaq->setId($key);
                 $response = $sendFaq->select('id');
@@ -255,16 +256,17 @@ class OrganizationController {
 
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
             
-        } else if($params['POST']['actualPageType'] == "Nouvelle page") {
-            unset($params['POST']['actualPageType']);
+        } else if($infoOrganization['actualPageType'] == "Nouvelle page") {
+            unset($infoOrganization['actualPageType']);
             $room = new Room();
-            $room->setName($params['POST']['name']);
-            $room->setDescription($params['POST']['description']);
-            $room->setUrlVideo($params['POST']['url_video']);
-            $room->setCapacity($params['POST']['capacity']);
-            $room->setIsPregnant($params['POST']['is_pregnant']);
-            $room->setIsWheelchair($params['POST']['is_wheelchair']);
-            $room->setIsDeaf($params['POST']['is_deaf']);
+            $room->setName($infoOrganization['name']);
+            $room->setDescription($infoOrganization['description']);
+            $room->setUrlVideo($infoOrganization['url_video']);
+            $room->setCapacity($infoOrganization['capacity']);
+            $room->setIsPregnant($infoOrganization['is_pregnant']);
+            $room->setIsWheelchair($infoOrganization['is_wheelchair']);
+            $room->setIsDeaf($infoOrganization['is_deaf']);
+            $room->setPrice($infoOrganization['price']);
             $room->save();
 
             $responseRoom = $room->select('name');
@@ -272,7 +274,7 @@ class OrganizationController {
 
             header("Location: ".DIRNAME.Route::getSlug('calendar','insertNewSlot').'/'.$donneesRoom['id']);
         } else {
-            unset($params['POST']['actualPageType']);
+            unset($infoOrganization['actualPageType']);
             $errors = Validate::checkForm($infoOrganization);
 
             if (isset($_FILES) && count($_FILES) > 0) {
@@ -306,32 +308,24 @@ class OrganizationController {
                 }
             }
 
-            if(count($errors) > 0) {
-                $room = new Room();
-                $room->setName($infoOrganization['name']);
-                $room->setId($infoOrganization['id']);
-                $room->setDescription($infoOrganization['description']);
-                $room->setUrlVideo($infoOrganization['url_video']);
-                $room->setCapacity($infoOrganization['capacity']);
-                $room->setIsPregnant($infoOrganization['is_pregnant']);
-                $room->setIsWheelchair($infoOrganization['is_wheelchair']);
-                $room->setIsDeaf($infoOrganization['is_deaf']);
+            $room = new Room();
+            $room->setName($infoOrganization['name']);
+            $room->setId($infoOrganization['id']);
+            $room->setDescription($infoOrganization['description']);
+            $room->setUrlVideo($infoOrganization['url_video']);
+            $room->setCapacity($infoOrganization['capacity']);
+            $room->setIsPregnant($infoOrganization['is_pregnant']);
+            $room->setIsWheelchair($infoOrganization['is_wheelchair']);
+            $room->setIsDeaf($infoOrganization['is_deaf']);
+            $room->setPrice($infoOrganization['price']);
 
+            if(count($errors) > 0) {
                 $config = $room->formModifyRoom($errors);
 
                 $v = new View('modifyRoom', 'back');
                 $v->assign('roomDetails', $config);
 
             } else {
-                $room = new Room();
-                $room->setName($infoOrganization['name']);
-                $room->setId($infoOrganization['id']);
-                $room->setDescription($infoOrganization['description']);
-                $room->setUrlVideo($infoOrganization['url_video']);
-                $room->setCapacity($infoOrganization['capacity']);
-                $room->setIsPregnant($infoOrganization['is_pregnant']);
-                $room->setIsWheelchair($infoOrganization['is_wheelchair']);
-                $room->setIsDeaf($infoOrganization['is_deaf']);
                 $room->save();
 
                 header("Location: ".DIRNAME.Route::getSlug('organization','index'));

@@ -35,8 +35,11 @@
                 <p>Choix créneau</p>
             </article>
             <article class="col-lg-3 col-sm-3 slots">
-                <select class="creneaux"></select>
-                <?php echo '<input type="submit" value="Valider" href="' . DIRNAME.Route::getSlug('reservationnext','index') . '">'; ?>
+                <select class="creneaux" onchange="saveChoices()"></select>
+                <form action="<?php echo DIRNAME.Route::getSlug('reservationnext','index'); ?>" method="post">
+                    <input type="hidden" id="slotChoose" name="slotChoose" value="">
+                    <input type="submit" value="Valider">
+                </form>
             </article>
         </div>        
     </section>
@@ -63,6 +66,8 @@
         var month = sessionStorage.getItem('month');
         var year = sessionStorage.getItem('year');
         var thead_title = '';
+
+        $('#slotChoose').attr('value',  '');
 
         $('.slots-text').css('display','none');
         $('.creneaux').css('display','none');
@@ -155,6 +160,10 @@
                 }
             }
         });
+    }
+
+    function saveChoices() {
+        $('#slotChoose').attr('value',  $('.creneaux option:selected').val());
     }
 
     function loadSelector(theDate, timeSlots) {

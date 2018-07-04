@@ -1,153 +1,115 @@
-<main>
+<main class="container">
     <section class="row resa-next">
-        <div class="col_8 offset_4 row">
-            <article class="col_2">
+        <div class="col-lg-12 row">
+            <article class="col-lg-1">
                 <p id="libel">Date : </p>
             </article>
-            <article class="col_2">
-                <p>24/01/2018</p>
+            <article class="col-lg-1">
+                <p><?php echo $calendarDetails['date_calendar']; ?></p>
             </article>
-            <article class="col_2">
+            <article class="col-lg-1">
                 <p id="libel">Créneau : </p>
             </article>
-            <article class="col_2">
-                <p>14h00-15h30</p>
+            <article class="col-lg-1">
+                <p><?php echo $slotDetails['time_slot']; ?></p>
             </article>
-            <article class="col_2">
+            <article class="col-lg-1">
                 <p id="libel">Mission : </p>
             </article>
-            <article class="col_2">
-                <p>Escape the Library</p>
+            <article class="col-lg-2">
+                <p><?php echo $roomDetails['name']; ?></p>
             </article>
-            <article class="col_3">
+            <article class="col-lg-2">
                 <p id="libel">Nombre de joueurs : </p>
             </article>
-            <article class="col_1">
-                <select name="nbjoueurs" id="nbjoueurs">
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+            <article class="col-lg-1">
+                <select name="nbjoueurs" id="nbjoueurs" onchange="addPlayer()">
+                    <?php for($i = 2; $i<$roomDetails['capacity']+1; $i++) : ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                    <?php endfor; ?>
                 </select>
             </article>
         </div>
-        <div class="col_8 offset_4 row">
-            <article class="col_3 offset_2">
+        <div class="col-lg-12 row">
+            <article class="col-lg-1">
+            </article>
+            <article class="col-lg-2 offset-lg-1">
                 <p id="libel">Nom</p>
             </article>
-            <article class="col_3 offset_1">
+            <article class="col-lg-2 offset-lg-1">
                 <p id="libel">Prénom</p>
             </article>
-            <article class="col_3 offset_1">
+            <article class="col-lg-2 offset-lg-1">
                 <p id="libel">Email</p>
             </article>
-            <article class="col_2 offset_1">
+            <article class="col-lg-1 offset-lg-1">
                 <p id="libel">Surprise ?</p>
             </article>
         </div>
-        <div class="col_8 offset_4 row">
-            <article class="col_2">
+        <div id="player_1" class="col-lg-12 row">
+            <article class="col-lg-1">
                 <p id="libel">Joueur n°1</p>
             </article>
-            <article class="col_3">
-                <input type="text" name="nom" id="nom">
+            <article class="col-lg-2 offset-lg-1">
+                <input type="text" name="nom_1" id="nom_1">
             </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="prenom" id="prenom">
+            <article class="col-lg-2 offset-lg-1">
+                <input type="text" name="prenom_1" id="prenom_1">
             </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="email" id="email">
+            <article class="col-lg-2 offset-lg-1">
+                <input type="text" name="email_1" id="email_1">
             </article>
-            <article class="col_2 offset_1">
-                <input type="checkbox" name="surprise" id="surprise">
+            <article class="col-lg-1 offset-lg-1">
+                <input type="checkbox" name="surprise_1" id="surprise_1">
             </article>
+            <input type="hidden" name="info_player_1" id="info_player_1" value="">
         </div>
-        <div class="col_8 offset_4 row">
-            <article class="col_2">
+        <div id="player_2" class="col-lg-12 row">
+            <article class="col-lg-1">
                 <p id="libel">Joueur n°2</p>
             </article>
-            <article class="col_3">
-                <input type="text" name="nom" id="nom">
+            <article class="col-lg-2 offset-lg-1">
+                <input type="text" name="nom_2" id="nom_2">
             </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="prenom" id="prenom">
+            <article class="col-lg-2 offset-lg-1">
+                <input type="text" name="prenom_2" id="prenom_2">
             </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="email" id="email">
+            <article class="col-lg-2 offset-lg-1">
+                <input type="text" name="email_2" id="email_2">
             </article>
-            <article class="col_2 offset_1">
-                <input type="checkbox" name="surprise" id="surprise">
+            <article class="col-lg-1 offset-lg-1">
+                <input type="checkbox" name="surprise_2" id="surprise_2">
             </article>
+            <input type="hidden" name="info_player_2" id="info_player_2" value="">
         </div>
-        <div class="col_8 offset_4 player_3 row">
-            <article class="col_2">
-                <p id="libel">Joueur n°3</p>
-            </article>
-            <article class="col_3">
-                <input type="text" name="nom" id="nom">
-            </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="prenom" id="prenom">
-            </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="email" id="email">
-            </article>
-            <article class="col_2 offset_1">
-                <input type="checkbox" name="surprise" id="surprise">
-            </article>
-        </div>
-        <div class="col_8 offset_4 player_4 row">
-            <article class="col_2">
-                <p id="libel">Joueur n°4</p>
-            </article>
-            <article class="col_3">
-                <input type="text" name="nom" id="nom">
-            </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="prenom" id="prenom">
-            </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="email" id="email">
-            </article>
-            <article class="col_2 offset_1">
-                <input type="checkbox" name="surprise" id="surprise">
-            </article>
-        </div>
-        <div class="col_8 offset_4 player_5 row">
-            <article class="col_2">
-                <p id="libel">Joueur n°5</p>
-            </article>
-            <article class="col_3">
-                <input type="text" name="nom" id="nom">
-            </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="prenom" id="prenom">
-            </article>
-            <article class="col_3 offset_1">
-                <input type="text" name="email" id="email">
-            </article>
-            <article class="col_2 offset_1">
-                <input type="checkbox" name="surprise" id="surprise">
-            </article>
-        </div>
-        <div class="col_8 offset_4">
+        <div class="col-lg-12">
             <p>Merci de renseigner les informations des joueurs (vous y compris si vous participez).<br>Cochez la case “Surprise” pour que les joueurs ne recoivent pas d’informations.</p>
         </div>
     </section>
 
     <section class="row resa-next-price">
-        <article class="col_2 offset_4">
-            <p>Prix Total : 60.00€</p>
+        <article class="col-lg-12">
+            <p>Prix Total : <?php echo $roomDetails['price']; ?> €</p>
         </article>
     </section>
-
+    <?php echo 'http://'.$_SERVER['SERVER_NAME']; ?>
     <section class="row resa-next-valid">
-        <article class="col_1 offset_11">
-            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="FGGUDKR2LR9MY">
-            <input type="image" src="https://www.sandbox.paypal.com/fr_FR/FR/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
-            <img alt="" border="0" src="https://www.sandbox.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+        <article class="col-lg-12">
+            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                <input type='hidden' value="<?php echo $roomDetails['price']; ?>" name="amount" />
+                <input name="currency_code" type="hidden" value="EUR" />
+                <input name="shipping" type="hidden" value="0.00" />
+                <input name="tax" type="hidden" value="0.00" />
+                <input name="return" type="hidden" value="" />
+                <input name="cancel_return" type="hidden" value="" />
+                <input name="cmd" type="hidden" value="_xclick" />
+                <input name="business" type="hidden" value="admin.cms@test.fr" />
+                <input name="item_name" type="hidden" value="Réservation d'une partie" />
+                <input name="no_note" type="hidden" value="1" />
+                <input name="lc" type="hidden" value="FR" />
+                <input name="bn" type="hidden" value="PP-BuyNowBF" />
+                <input name="custom" type="hidden" value="ID_ACHETEUR" />
+                <input alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée" name="submit" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" /><img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
             </form>
         </article>
     </section>
@@ -157,25 +119,56 @@
 
 <script>
     $(document).ready(function(){
-        $('#nbjoueurs').change(function(){
-            if($('#nbjoueurs').val() == '2'){
-                $('.player_3, .player_4, .player_5').css('display','none');
-                $('.resa-next-price article p').html('Prix Total : 60.00€');
-            }
-            if($('#nbjoueurs').val() == '3'){
-                $('.player_3').css('display','flex');
-                $('.player_4, .player_5').css('display','none');
-                $('.resa-next-price article p').html('Prix Total : 90.00€');
-            }
-            if($('#nbjoueurs').val() == '4'){
-                $('.player_3, .player_4').css('display','flex');
-                $('.player_5').css('display','none');
-                $('.resa-next-price article p').html('Prix Total : 120.00€');
-            }
-            if($('#nbjoueurs').val() == '5'){
-                $('.player_3, .player_4, .player_5').css('display','flex');
-                $('.resa-next-price article p').html('Prix Total : 150.00€');
-            }
-        });
+        sessionStorage.setItem('old_nb_players', (2).toString());
     });
+
+    function addPlayer(){
+        var oldPlayers = parseInt(sessionStorage.getItem('old_nb_players'));
+        for (var i=3; i<oldPlayers + 1; i++) {
+            $('#player_'+(i)).remove();
+        }
+
+        var nbPlayers = parseInt($('#nbjoueurs option:selected').val());
+        for (var i=3; i<nbPlayers + 1; i++) {
+            $('#player_'+(i-1)).after(
+                '<div id="player_'+i+'" class="col-lg-12 row">'+
+                    '<article class="col-lg-1">'+
+                        '<p id="libel">Joueur n°'+i+'</p>'+
+                    '</article>'+
+                    '<article class="col-lg-2 offset-lg-1">'+
+                        '<input type="text" name="nom_'+i+'" id="nom_'+i+'">'+
+                    '</article>'+
+                    '<article class="col-lg-2 offset-lg-1">'+
+                        '<input type="text" name="prenom_'+i+'" id="prenom_'+i+'">'+
+                    '</article>'+
+                    '<article class="col-lg-2 offset-lg-1">'+
+                        '<input type="text" name="email_'+i+'" id="email_'+i+'">'+
+                    '</article>'+
+                    '<article class="col-lg-1 offset-lg-1">'+
+                        '<input type="checkbox" name="surprise_'+i+'" id="surprise_'+i+'">'+
+                    '</article>'+
+                    '<input type="hidden" name="info_player_'+i+'" id="info_player_'+i+'" value="">'+
+                '</div>'
+            );
+        }
+        sessionStorage.setItem('old_nb_players', (nbPlayers).toString());
+    }
+
+    function savePlayer(event) {
+        event.preventDefault();
+        var nbPlayers = parseInt(sessionStorage.getItem('old_nb_players'));
+        for (var i=1; i<nbPlayers + 1; i++) {
+            if ($('#surprise_'+i).is(":checked")) {
+                var surprise = true;
+            } else {
+                var surprise = false;
+            }
+            $('#info_player_'+i).attr('value', $('#nom_'+i).val()+'/'+
+                $('#prenom_'+i).val()+'/'+
+                $('#email_'+i).val()+'/'+
+                surprise
+            );
+        }
+
+    }
 </script>

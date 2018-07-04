@@ -57,8 +57,8 @@ class Validate{
                 $errorsMsg['url_video']= "Format de l'url attendue incorrect  : https://www.youtube.com/watch?v=XXXXX";
             }
 
-            if ($key == 'unit_price' && !self::checkNumber($value)) {
-                $errorsMsg['price']= "Le prix unitaire n'est pas dans le bon format, un réel est attendu";
+            if ($key == 'price' && !self::checkNumber($value)) {
+                $errorsMsg['price']= "Le prix n'est pas dans le bon format, un réel est attendu";
             }
         }
 

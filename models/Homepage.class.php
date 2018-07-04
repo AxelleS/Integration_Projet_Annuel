@@ -13,7 +13,6 @@ class Homepage extends BaseSql{
   protected $zipcode_company;
   protected $city_company;
   protected $roomList;
-  protected $unit_price;
   protected $logo;
 
   protected $foreign;
@@ -68,10 +67,6 @@ class Homepage extends BaseSql{
 
   public function setRoomList($roomList) {
     $this->roomList=$roomList;
-  }
-
-  public function setUnitPrice($unit_price){
-    $this->unit_price=$unit_price;
   }
 
   public function setLogo($logo){

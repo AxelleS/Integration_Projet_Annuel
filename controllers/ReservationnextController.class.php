@@ -4,13 +4,30 @@ class ReservationnextController
 {
     public function indexAction($params)
     {
+        $infoResa = $params['POST'];
+
+        $slot = new Time_slot();
+        $slot->setId($infoResa['slotChoose']);
+        $donneesSlot = $slot->select('id')->fetch();
+
+        $room = new Room();
+        $room->setId($donneesSlot['id_room']);
+        $donneesRoom = $room->select('id')->fetch();
+
+        $calendar = new Calendar();
+        $calendar->setId($donneesSlot['id_calendar']);
+        $donneesCalendar = $calendar->select('id')->fetch();
+
+
         //Appelle la vue
         if ($_SESSION['is_connected']) {
             $v = new View('reservationnext','connected');
         } else {
             $v = new View('reservationnext');
         }
-
+        $v->assign('roomDetails', $donneesRoom);
+        $v->assign('slotDetails', $donneesSlot);
+        $v->assign('calendarDetails', $donneesCalendar);
     }
 
     public function saveAction($params)
