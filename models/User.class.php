@@ -217,7 +217,7 @@ class User extends BaseSql{
     ];
   }
 
-    public function configFormUserAddModifyBO(){
+    public function configFormUserAddModifyBO($errors){
         return [
             "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','save'),"name"=>"edit"],
             "input"=>[
@@ -284,7 +284,6 @@ class User extends BaseSql{
                         "address_2"=>[
                             "type"=>"text",
                             "placeholder"=>"Votre adresse suite",
-                            "required"=>false,
                             "class" => "col-lg-12",
                             "value" => $this->address_2
                         ],
@@ -320,6 +319,9 @@ class User extends BaseSql{
                         ]
                     ]
                 ]
+            ],
+            "errors"=>[
+                $errors
             ]
         ];
     }

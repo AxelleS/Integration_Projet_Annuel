@@ -1,3 +1,8 @@
+<?php
+    $homepage = new Homepage();
+    $responseHP = $homepage->select();
+    $donneesHP = $responseHP->fetch();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +15,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="icon" type="image/ico" href="img/favicon.ico" />
+    <link rel="icon" type="image/ico" href="<?php echo DIRNAME."/".$donneesHP['logo']; ?>" />
     <script>
       $(document).ready(function(){
         $('.burgerResponsive, .burgerResponsiveSidebar, .overlay').click(function(){
@@ -98,6 +103,17 @@
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Paramètres</p></figcaption>
             </figure>
           <?php echo '</a>'; ?>
+            <?php echo '<a href="'.DIRNAME.Route::getSlug('users','changePassword').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
+            <figure class="row align-navbar-details menu-hover">
+                <svg version="1.1" class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 24 24">
+                    <title></title>
+                    <g id="icomoon-ignore">
+                    </g>
+                    <path d="M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-5l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z"/>
+                </svg>
+                <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Changer le mot de passe</p>  </figcaption>
+            </figure>
+            <?php echo '</a>'; ?>
           <?php echo '<a href="'.DIRNAME.Route::getSlug('signin','disconnect').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg version="1.1" class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 512 512">

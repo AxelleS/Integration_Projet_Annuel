@@ -289,6 +289,12 @@ class Route{
             "controller" => "calendar",
             "action"     => "insertNewSlot",
             "security"   => false
+        ],
+        [
+        "slug"       => "changer-mot-de-passe",
+        "controller" => "users",
+        "action"     => "changePassword",
+        "security"   => false
         ]
     ];
 
