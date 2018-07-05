@@ -30,11 +30,55 @@ class ReservationnextController
         $v->assign('calendarDetails', $donneesCalendar);
     }
 
+    public function savePlayersAction($params)
+    {
+        $timeSlot = $params['GET']['timeslot'];
+
+        $playerInfo = new Player();
+        $playerInfo->setIdTimeSlot($timeSlot);
+
+        $players = $params['GET']['players'];
+        $players = explode('&', $players);
+        unset($players[count($players)-1]);
+        foreach ($players as $player) {
+            $infos = explode('/', $player);
+            $playerInfo->setFirstname($infos[0]);
+            $playerInfo->setLastname($infos[1]);
+            $playerInfo->setEmail($infos[2]);
+            $playerInfo->setIsSurprise($infos[3]);
+            $playerInfo->save();
+        }
+
+        exit;
+    }
+
     public function saveAction($params)
     {
-        //Save the data
+        print_r($params);
+        $timeSlot = new Time_slot();
+        $timeSlot->setId($params['URL'][0]);
+        $donneesTimeSlot = $timeSlot->select('id')->fetch();
+        $timeSlot->setIdCalendar($donneesTimeSlot['id_calendar']);
+        $timeSlot->setIdRoom($donneesTimeSlot['id_room']);
+        $timeSlot->setTimeSlot($donneesTimeSlot['time_slot']);
 
-        header("Location: ".DIRNAME.Route::getSlug('reservationnext','mail'));
+        $players = new Player();
+        $players->setIdTimeSlot($params['URL'][0]);
+        $response = $players->select('id_time_slot');
+        $timeSlot->setNumberPlayer($response->rowCount());
+
+        $room = new Room();
+        $room->setId($donneesTimeSlot['id_room']);
+        $donneesRoom = $room->select('id')->fetch();
+        $timeSlot->setTotalPrice($donneesRoom['price']);
+
+        $timeSlot->setIdUser($_SESSION['id_user']);
+
+        $timeSlot->setDateBill(date('Y-m-d '));
+
+        $timeSlot->save();
+
+        header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
     }
 
     public function mailAction($params)

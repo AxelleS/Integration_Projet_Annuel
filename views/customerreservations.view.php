@@ -27,7 +27,7 @@
                             </td>
                             <td>
                                 <!-- Créneau de la partie -->
-                                <?php echo $value['value_time_slot']; ?>
+                                <?php echo $value['time_slot']; ?>
                             </td>
                             <td>
                                 <!-- Nom de la salle -->

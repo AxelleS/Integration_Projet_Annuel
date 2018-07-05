@@ -92,16 +92,19 @@
             <p>Prix Total : <?php echo $roomDetails['price']; ?> €</p>
         </article>
     </section>
-    <?php echo 'http://'.$_SERVER['SERVER_NAME']; ?>
+    <?php
+        $url_cancel = 'http://'.$_SERVER['SERVER_NAME'].DIRNAME.Route::getSlug('reservation','index');
+        $url_paid = 'http://'.$_SERVER['SERVER_NAME'].DIRNAME.Route::getSlug('reservationnext','save').'/'.$slotDetails['id'];
+    ?>
     <section class="row resa-next-valid">
         <article class="col-lg-12">
-            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="formpaypal">
                 <input type='hidden' value="<?php echo $roomDetails['price']; ?>" name="amount" />
                 <input name="currency_code" type="hidden" value="EUR" />
                 <input name="shipping" type="hidden" value="0.00" />
                 <input name="tax" type="hidden" value="0.00" />
-                <input name="return" type="hidden" value="" />
-                <input name="cancel_return" type="hidden" value="" />
+                <input name="return" type="hidden" value="<?php echo $url_paid; ?>" />
+                <input name="cancel_return" type="hidden" value="<?php echo $url_cancel; ?>" />
                 <input name="cmd" type="hidden" value="_xclick" />
                 <input name="business" type="hidden" value="admin.cms@test.fr" />
                 <input name="item_name" type="hidden" value="Réservation d'une partie" />
@@ -109,7 +112,7 @@
                 <input name="lc" type="hidden" value="FR" />
                 <input name="bn" type="hidden" value="PP-BuyNowBF" />
                 <input name="custom" type="hidden" value="ID_ACHETEUR" />
-                <input alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée" name="submit" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" /><img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
+                <input onclick="savePlayer(event)" alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" /><img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
             </form>
         </article>
     </section>
@@ -156,19 +159,30 @@
 
     function savePlayer(event) {
         event.preventDefault();
+        var players = '';
         var nbPlayers = parseInt(sessionStorage.getItem('old_nb_players'));
         for (var i=1; i<nbPlayers + 1; i++) {
             if ($('#surprise_'+i).is(":checked")) {
-                var surprise = true;
+                var surprise = 1;
             } else {
-                var surprise = false;
+                var surprise = 0;
             }
-            $('#info_player_'+i).attr('value', $('#nom_'+i).val()+'/'+
-                $('#prenom_'+i).val()+'/'+
-                $('#email_'+i).val()+'/'+
-                surprise
-            );
+            players = players + $('#nom_'+i).val()+'/'+ $('#prenom_'+i).val()+'/'+ $('#email_'+i).val()+'/'+ surprise + '&';
         }
 
+        $.ajax({
+            url: '<?php echo DIRNAME . Route::getSlug('reservationnext', 'savePlayers'); ?>',
+            type: 'GET',
+            data: {
+                players: players,
+                timeslot: "<?php echo $slotDetails['id']; ?>"
+            },
+            success: function (data) {
+                $('#formpaypal').submit();
+            }
+
+        });
+
+        //
     }
 </script>

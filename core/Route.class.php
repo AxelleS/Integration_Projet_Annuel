@@ -99,6 +99,12 @@ class Route{
             "security"   => true
         ],
         [
+            "slug"       => "enregistrer-joueurs",
+            "controller" => "reservationnext",
+            "action"     => "savePlayers",
+            "security"   => true
+        ],
+        [
             "slug"       => "enregistrer-reservation",
             "controller" => "reservationnext",
             "action"     => "save",

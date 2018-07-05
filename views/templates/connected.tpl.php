@@ -26,7 +26,7 @@ $responseRoom = $room->select();
     <!--  -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="icon" type="image/ico" href="<?php echo DIRNAME."/".$donnees['logo']; ?>" />
+    <link rel="icon" type="image/ico" href="<?php echo DIRNAME."/".$donneesConstante['logo']; ?>" />
 
     <script>
         $(document).ready(function(){
