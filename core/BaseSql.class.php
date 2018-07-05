@@ -86,10 +86,14 @@ class BaseSql{
         $this->setColumns();
 
         if($this->id){
-            $unsetColumns = ['id', 'roomList', 'foreign', 'password', 'token'];
+            $unsetColumns = ['id', 'roomList', 'foreign', 'token'];
             //Update
             $query_columns = array();
             $id_search = $this->columns['id'];
+
+            if($this->columns['password'] == '') {
+                $unsetColumns[] = 'password';
+            }
 
             foreach($this->columns as $key => $value){
                 if(!in_array($key, $unsetColumns)) {

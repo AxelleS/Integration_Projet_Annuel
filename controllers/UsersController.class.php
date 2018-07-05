@@ -205,4 +205,50 @@ class UsersController
         }
     }
 
+    function addAction($params){
+        $user = new User();
+        $config = $user->configFormUserAddModifyBO([]);
+        $v = new View('userEdit','back');
+        $v->assign('config', $config);
+    }
+
+    function changePasswordAction($params){
+        $infoPassword = $params['POST'];
+        if(!is_null($infoPassword)) {
+            $errors = Validate::checkForm($infoPassword);
+
+            if(count($errors) < 1) {
+                $user = new User();
+                $user->setId($_SESSION['id_user']);
+                $response = $user->select('id');
+                $donnees = $response->fetch();
+
+                $user->setType($donnees['id_type']);
+                $user->setFirstname($donnees['firstname']);
+                $user->setLastname($donnees['lastname']);
+                $user->setYearsOld($donnees['years_old']);
+                $user->setEmail($donnees['email']);
+                $user->setPhone($donnees['phone']);
+                $user->setAddress($donnees['address']);
+                $user->setAddress2($donnees['address_2']);
+                $user->setZipcode($donnees['zipcode']);
+                $user->setCity($donnees['city']);
+                $user->setPicture($donnees['url_picture']);
+                $user->setStatus($donnees['status']);
+
+                $user->setPassword($infoPassword['password']);
+
+                $user->save();
+                header("Location: ".DIRNAME.Route::getSlug('dashboardadmin','index'));
+            } else {
+                $v = new View('changepwd','back');
+                $v->assign('errors', $errors);
+            }
+        } else {
+            $v = new View('changepwd','back');
+            $v->assign('errors', []);
+        }
+
+    }
+
 }
