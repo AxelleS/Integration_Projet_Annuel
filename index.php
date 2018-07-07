@@ -34,6 +34,14 @@ if ($maroute['security'] == true) {
     if (Security::isConnected() == false) {
         $c = 'signin';
         $a = 'index';
+    } else {
+        $user = new User();
+        $user->setId($_SESSION['id_user']);
+        $donneesUser = $user->select('id')->fetch();
+        if($maroute['type'] != $donneesUser['id_type']) {
+            $c = 'errors';
+            $a = 'quatreCentTrois';
+        }
     }
 }
 

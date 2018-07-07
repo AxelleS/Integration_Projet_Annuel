@@ -13,7 +13,6 @@ class ParametersController
         $homepage->setId(1);
         $response_homepage = $homepage->select('id');
         $donnees_homepage = $response_homepage->fetch();
-        $donnee_footer['unit_price'] = $donnees_homepage['unit_price'];
         $donnee_footer['logo'] = $donnees_homepage['logo'];
 
         $v = new View('parameters','back');
@@ -105,7 +104,6 @@ class ParametersController
             $modifyHomepage->setAddressCompany($donnees_homepage['address_company']);
             $modifyHomepage->setZipcodeCompany($donnees_homepage['zipcode_company']);
             $modifyHomepage->setCityCompany($donnees_homepage['city_company']);
-            $modifyHomepage->setUnitPrice($infoParameters['unit_price']);
             $modifyHomepage->save();
 
             $response = $modifyFooter->select();
@@ -124,7 +122,6 @@ class ParametersController
             $donnee_footer['url_CGV'] = $infoParameters['old_CGV'];
             $donnee_footer['url_CGU'] = $infoParameters['old_CGU'];
             $donnee_footer['url_legal_mention'] = $infoParameters['old_url_legal_mention'];
-            $donnee_footer['unit_price'] = $infoParameters['unit_price'];
             $donnee_footer['logo'] = $infoParameters['old_logo'];
 
             $v = new View('parameters','back');

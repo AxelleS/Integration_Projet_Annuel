@@ -119,6 +119,10 @@ main{
 //     padding-bottom: 100px;
 // }
 
+.introduction{
+    width: 100%;
+}
+
 .introduction h1{
     margin-top:20px;
     text-align: center;
@@ -178,7 +182,7 @@ main{
     position: absolute;
     bottom: 40%;
     left: 25%;
-    width:50%;
+    width:30%;
     height: 20%;
     background-color: #42BDC4;
     display: flex;
@@ -956,6 +960,7 @@ main{
     padding-top:1%;
     padding-bottom:1%;
     margin-bottom: 2%;
+    width: 30%;
 }
 
 .contact-form input{
@@ -1054,7 +1059,6 @@ main{
 /* FORM - SIGNIN */
 
 .signin-form h1{
-    padding-bottom: 20px;
     background-color: #C4C4C4;
     border-radius: 20px;
     text-align: center;
@@ -1063,6 +1067,7 @@ main{
     padding-top:1%;
     padding-bottom:1%;
     margin-bottom: 2%;
+    width: 30%;
 }
 
 .signin-form input{
@@ -1093,19 +1098,22 @@ main{
     height: 25px;
 }
 
-.signup-via-signin{
-    text-align: center;
-    margin-top: 20px;
+.signup-link a{
+    color: black;
 }
 
-.signup-via-signin a{
-    color: black;
+.signup-link{
+    float: none;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .btn-signin{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    color: black;
 }
 
 @media screen and (max-width : 980px) {
@@ -1418,6 +1426,15 @@ main{
       width: 25%;
   }
 
+    form#signin > div > section {
+        float: none;
+        margin: 0 auto;
+    }
+
+form#signin > div > section > .btn-default {
+    margin-top: 20px;
+}
+
   form#customer-infos > div > section {
       float: none;
       margin: 0 auto;
@@ -1425,4 +1442,31 @@ main{
 
 form#customer-infos > div > section > .btn-default {
     margin-top: 20px;
+}
+
+form#contact > div > section {
+    float: none;
+    margin: 0 auto;
+}
+
+form#contact > div > section > .btn-default {
+    margin-top: 20px;
+}
+
+div.error-page {
+    margin-top: 50px;
+}
+
+div.error-page article{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+div.error-page article h1{
+    font-size: 80px;
+}
+
+div.error-page article p{
+    font-size: 30px;
 }

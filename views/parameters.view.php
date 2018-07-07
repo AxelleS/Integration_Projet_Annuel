@@ -13,10 +13,6 @@
                 <img class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 organization-img-style" src="<?php echo $donnees['logo'];?>">
                 <input type="hidden" name="old_logo" value="<?php echo $donnees['logo'];?>"/>
 
-                <p class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style">Prix par personne</p>
-                <input class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 organization-input-style" type="number" name="unit_price" value="<?= $donnees['unit_price']?>" />
-                <p class="errors"><?php echo isset($error['price']) ? $error['price'] : ''; ?></p>
-
 				<p class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style">URL facebook</p>
 				<input class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 organization-input-style" type="text" name="url_facebook" value="<?= $donnees['url_facebook']?>" />
                 <p class="errors"><?php echo isset($error['url_facebook']) ? $error['url_facebook'] : ''; ?></p>

@@ -103,7 +103,7 @@
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Paramètres</p></figcaption>
             </figure>
           <?php echo '</a>'; ?>
-            <?php echo '<a href="'.DIRNAME.Route::getSlug('users','changePassword').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
+            <?php echo '<a href="'.DIRNAME.Route::getSlug('users','changePasswordBO').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
                 <svg version="1.1" class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 24 24">
                     <title></title>

@@ -54,7 +54,11 @@ class SigninController
             $_SESSION['token'] = $token;
             $_SESSION['id_user'] = $donnees_user['id'];
 
-            header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
+            if($donnees_user['id_type'] == 1) {
+                header("Location: ".DIRNAME.Route::getSlug('dashboardadmin','index'));
+            } else {
+                header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
+            }
         }
     }
 

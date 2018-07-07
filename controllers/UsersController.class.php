@@ -248,7 +248,7 @@ class UsersController
 
     function changePasswordBOAction($params){
         $infoPassword = $params['POST'];
-        if(!is_null($infoPassword)) {
+        if(count($infoPassword) > 0) {
             $errors = Validate::checkForm($infoPassword);
 
             if(count($errors) < 1) {
