@@ -129,7 +129,7 @@ class UsersController
         }
     }
 
-    public function singnupAction($params){
+    public function signupAction($params){
         $infoUser = $params['POST'];
         $user = new User();
 
