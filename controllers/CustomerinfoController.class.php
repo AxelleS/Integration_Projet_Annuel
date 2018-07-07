@@ -4,10 +4,9 @@ class CustomerinfoController
 {
     public function indexAction($params)
     {
-        $id_user = $_SESSION['id_user'];
         // //Va chercher les infos de l'utilisateur
         $user = new User();
-        $user->setId($id_user);
+        $user->setId($_SESSION['id_user']);
         $response = $user->select('id');
         $donnees_user = $response->fetch();
 
@@ -22,7 +21,7 @@ class CustomerinfoController
         $user->setCity($donnees_user['city']);
         $user->setPicture($donnees_user['url_picture']);
 
-        $config = $user->configFormUserAddModify([]);
+        $config = $user->configFormUserInfos([]);
         $v = new View('customerinfo','connected');
         $v->assign('config',$config);
     }

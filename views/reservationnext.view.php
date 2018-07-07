@@ -89,7 +89,9 @@
 
     <section class="row resa-next-price">
         <article class="col-lg-12">
-            <p>Prix Total : <?php echo $roomDetails['price']; ?> €</p>
+            <p>Prix HT : <?php echo $roomDetails['price']; ?> €</p>
+            <p>TVA : 20%</p>
+            <p>Prix TTC : <?php echo $roomDetails['price'] + ($roomDetails['price'] * 0.20); ?> €</p>
         </article>
     </section>
     <?php
@@ -102,7 +104,7 @@
                 <input type='hidden' value="<?php echo $roomDetails['price']; ?>" name="amount" />
                 <input name="currency_code" type="hidden" value="EUR" />
                 <input name="shipping" type="hidden" value="0.00" />
-                <input name="tax" type="hidden" value="0.00" />
+                <input name="tax" type="hidden" value="<?php echo $roomDetails['price'] * 0.20; ?>" />
                 <input name="return" type="hidden" value="<?php echo $url_paid; ?>" />
                 <input name="cancel_return" type="hidden" value="<?php echo $url_cancel; ?>" />
                 <input name="cmd" type="hidden" value="_xclick" />

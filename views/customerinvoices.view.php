@@ -35,10 +35,10 @@
                         </td>
                         <td>
                             <!-- Nb joueurs -->
-                            <?php echo $value['total_price']; ?>€
+                            <?php echo $value['total_price'] + ($value['total_price'] * 0.20); ?>€
                         </td>
                         <td>
-                            <a type="button" class="btn-default" href=<?php echo DIRNAME."Mafacture/index/".$value['id'];?> target="_blank">Afficher</a>
+                            <a type="button" class="btn-default" href=<?php echo DIRNAME.Route::getSlug('myinvoice', 'index').'/'.$value['id'];?> target="_blank">Afficher</a>
                         </td>                    
                     </tr>
                 <?php endforeach; ?>

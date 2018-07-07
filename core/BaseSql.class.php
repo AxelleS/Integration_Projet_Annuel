@@ -91,7 +91,7 @@ class BaseSql{
             $query_columns = array();
             $id_search = $this->columns['id'];
 
-            if(isset($this->columns['password']) && $this->columns['password'] != '') {
+            if(isset($this->columns['password']) && $this->columns['password'] == '') {
                 $unsetColumns[] = 'password';
             }
 

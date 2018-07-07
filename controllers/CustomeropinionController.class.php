@@ -60,9 +60,7 @@ class CustomeropinionController
         
         $time_slot->setIdUser($donnees_timeslot['id_user']);
         
-        $time_slot->setKeyTimeSlot($donnees_timeslot['key_time_slot']);
-        
-        $time_slot->setValueTimeSlot($donnees_timeslot['value_time_slot']);
+        $time_slot->setTimeSlot($donnees_timeslot['time_slot']);
         
         $time_slot->setNumberPlayer($donnees_timeslot['number_player']);
         

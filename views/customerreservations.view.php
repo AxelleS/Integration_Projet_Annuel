@@ -38,22 +38,17 @@
                                 <?php echo $value['number_player']; ?> personnes
                             </td>
                             <td>
-                            <?php
-                                //Si la date de la partie est passée, on affiche un btn pour noter
-                                if($value['date_now'] > $value['date_game']){
-                                    if($value['opinion'] == null){
-                                        echo '<input type="button" class="btn-default" value="Noter" onClick="window.location.href=\''.DIRNAME.'customeropinion/index/'.$value['id'].'\'">';
-                                        
-                                    } else{
-                                        echo '<p>Partie déjà noté</p>';
-                                    }
-                                    
-                                } 
-                                //Sinon, si il reste plus de 7 jours avant l'escape, on affiche un btn annuler 
-                                elseif($value['interval'] >= 7){
-                                    echo '<input type="button" class="btn-default" value="Annuler" onClick=if(window.confirm("Etes-vous sûr de vouloir annuler la partie ?")){window.location.href=\''.DIRNAME.'customerresa/cancel/'.$value['id'].'\';}>';
-                                }
-                            ?>
+                                <!-- Si la date de la partie est passée, on affiche un btn pour noter -->
+                                <?php if($value['date_now'] > $value['date_game']): ?>
+                                    <?php if($value['opinion'] == null): ?>
+                                        <input type="button" class="btn-default" value="Noter" onClick="redirectTo('notation')">
+                                    <?php else : ?>
+                                        <p>Partie déjà noté</p>
+                                    <?php endif; ?>
+                                <!-- Sinon, si il reste plus de 7 jours avant l'escape, on affiche un btn annuler -->
+                                <?php elseif($value['interval'] >= 7): ?>
+                                    <input type="button" class="btn-default" value="Annuler" onClick="redirectTo('cancel')">
+                                <?php endif; ?>
                             </td>                    
                         </tr>
                     <?php endforeach; ?>
@@ -62,3 +57,16 @@
         </article>      
     </section>
 </main>
+
+<script>
+    function redirectTo($to) {
+        if($to == 'notation') {
+            window.location.href = '<?php echo DIRNAME.Route::getSlug('customeropinion', 'index').'/'.$value['id']; ?>';
+        }
+        if($to == 'cancel') {
+            if(window.confirm('Etes-vous sûr de vouloir annuler la partie ?')) {
+                window.location.href = '<?php echo DIRNAME.Route::getSlug('customerreservations', 'cancel').'/'.$value['id']; ?>';
+            }
+        }
+    }
+</script>

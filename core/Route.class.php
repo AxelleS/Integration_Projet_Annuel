@@ -27,9 +27,15 @@ class Route{
             "security"   => true
         ],
         [
-            "slug"       => "enregistrer-user",
+            "slug"       => "enregistrer-infos-user",
             "controller" => "users",
             "action"     => "saveCustomer",
+            "security"   => false
+        ],
+        [
+            "slug"       => "enregistrer-signup-user",
+            "controller" => "users",
+            "action"     => "signup",
             "security"   => false
         ],
         [
@@ -297,10 +303,16 @@ class Route{
             "security"   => false
         ],
         [
-        "slug"       => "changer-mot-de-passe",
+        "slug"       => "changer-mot-de-passe-bo",
         "controller" => "users",
-        "action"     => "changePassword",
+        "action"     => "changePasswordBO",
         "security"   => false
+        ],
+        [
+            "slug"       => "changer-mot-de-passe-fo",
+            "controller" => "users",
+            "action"     => "changePasswordFO",
+            "security"   => true
         ]
     ];
 

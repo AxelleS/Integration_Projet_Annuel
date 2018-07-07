@@ -4,7 +4,7 @@ $errors = $config['errors'][0];
 ?>
 
 
-<form enctype="multipart/form-data" method="<?php echo $config["config"]["method"];?>" action="<?php echo $config["config"]["action"]; ?>" name="<?php echo $config["config"]["name"];?>">
+<form enctype="multipart/form-data" method="<?php echo $config["config"]["method"];?>" action="<?php echo $config["config"]["action"]; ?>" name="<?php echo $config["config"]["name"];?>" id="<?php echo $config["config"]["name"];?>">
     <?php if(array_key_exists('signin', $errors)) : ?>
         <p class="errors"><?php echo $errors['signin']; ?></p>
     <?php endif; ?>
@@ -16,7 +16,7 @@ $errors = $config['errors'][0];
         	<legend><?php echo $key; ?></legend>
 			<section class="row">
 			<?php foreach ($value as $name => $attributs):?>
-					<?php if($attributs["type"]=="text" || $attributs["type"]=="email" || $attributs["type"]=="number" || $attributs["type"]=="password"):?>
+					<?php if($attributs["type"]=="text" || $attributs["type"]=="email" || $attributs["type"]=="number"):?>
 						<article class="<?php echo $attributs['class']; ?>">
 							<label for="<?php echo $name;?>"><?php echo $attributs["placeholder"];?></label>
 							<input 
@@ -35,6 +35,25 @@ $errors = $config['errors'][0];
                             <?php endif; ?>
 						</article>
 					<?php endif;?>
+                    <?php if($attributs["type"]=="password"):?>
+                        <article class="<?php echo $attributs['class']; ?>">
+                            <label for="<?php echo $name;?>"><?php echo $attributs["placeholder"];?></label>
+                            <input
+                                    type="<?php echo $attributs["type"];?>"
+                                    placeholder="<?php echo $attributs["placeholder"];?>"
+                                    name="<?php echo $name;?>"
+                                    id="<?php echo $name;?>"
+                                    value="<?php echo $attributs["value"];?>"
+                                <?php echo ((isset($attributs["required"])) && ($attributs["required"]))?"required='required'":"";?>
+                            >
+                            <?php if(array_key_exists($name, $errors)) : ?>
+                                <p class="errors"><?php echo $errors[$name]; ?></p>
+                            <?php endif; ?>
+                            <?php if($name == 'password' && array_key_exists('pwd_and_conf', $errors)) : ?>
+                                <p class="errors"><?php echo $errors['pwd_and_conf']; ?></p>
+                            <?php endif; ?>
+                        </article>
+                    <?php endif;?>
 					<?php if($attributs["type"]=="file"):?>
 						<article class="<?php echo $attributs['class']; ?>">
                             <input

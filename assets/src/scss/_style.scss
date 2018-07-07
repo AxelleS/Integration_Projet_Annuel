@@ -1167,6 +1167,27 @@ main{
 }
 
 /* SIGN UP */
+.customer-pwd{
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* FORM - signup */
+
+.customer-pwd-form h1{
+    padding-bottom: 20px;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:1%;
+    padding-bottom:1%;
+    margin-bottom: 2%;
+    width:30%;
+}
+
+/* SIGN UP */
 .signup{
     margin-top: 100px;
     margin-bottom: 60px;
@@ -1396,3 +1417,12 @@ main{
   .profil-img {
       width: 25%;
   }
+
+  form#customer-infos > div > section {
+      float: none;
+      margin: 0 auto;
+  }
+
+form#customer-infos > div > section > .btn-default {
+    margin-top: 20px;
+}
