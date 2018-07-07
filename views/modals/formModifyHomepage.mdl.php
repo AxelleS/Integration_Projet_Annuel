@@ -1,12 +1,15 @@
-<form action="<?php echo $config['config']['action']?>"
+<?php
+$errors = $config['errors'][0];
+?>
+<form enctype="multipart/form-data" action="<?php echo $config['config']['action']?>"
       class="row" method="<?php echo $config['config']['method']?>">
       
         <input type="hidden" name="actualPageType" value="<?php echo $config['value']['actualPageTypeValue']?>" />
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['title_introduction']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['input']['title_introduction']['name']?>" value="<?php echo $config['value']['title_introduction']?>" />
 
-        <p class="<?php echo $config['style']['classText']?>"><?= "Ajouter des images" // $config['input']['ajout_images']['nameView']?></p>
-        <input class="<?php echo $config['style']['classInput']?>" type="file" name="images" multiple value="<?= ""//$config['value']['ajout_images']?>" />
+        <p class="<?php echo $config['style']['classText']?>"><?= "Images du caroussel"?></p>
+        <input class="<?php echo $config['style']['classInput']?>" type="file" name="images[]" multiple />
         
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['roomList']['room1']['nameView']?></p>
         <select name="<?php echo $config['input']['roomList']['room1']['name']?>" id="" class="<?php echo $config['style']['classInput']?>">
@@ -34,7 +37,10 @@
         
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['url_video']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['url_video']['name']?>" value="<?php echo $config['value']['url_video']?>" />
-        
+        <?php if(array_key_exists('url_video', $errors)) : ?>
+            <p class="errors"><?php echo $errors['url_video']; ?></p>
+        <?php endif; ?>
+
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['name_company']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['name_company']['name']?>" value="<?php echo $config['value']['name_company']?>" />
         
@@ -43,7 +49,10 @@
         
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['zipcode_company']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['zipcode_company']['name']?>" value="<?php echo $config['value']['zipcode_company']?>" />
-        
+        <?php if(array_key_exists('zipcode_company', $errors)) : ?>
+            <p class="errors"><?php echo $errors['zipcode']; ?></p>
+        <?php endif; ?>
+
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['city_company']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['city_company']['name']?>" value="<?php echo $config['value']['city_company']?>" />
 

@@ -83,35 +83,19 @@ class UsersController
         }
 
         if(count($errors) > 0) {
-            if ($infoUser['id'] != '') {
-                $user->setFirstname($infoUser['firstname']);
-                $user->setLastname($infoUser['lastname']);
-                $user->setYearsOld($infoUser['years_old']);
-                $user->setEmail($infoUser['email']);
-                $user->setPhone($infoUser['phone']);
-                $user->setAddress($infoUser['address']);
-                $user->setAddress2($infoUser['address_2']);
-                $user->setZipcode($infoUser['zipcode']);
-                $user->setCity($infoUser['city']);
+            $user->setFirstname($infoUser['firstname']);
+            $user->setLastname($infoUser['lastname']);
+            $user->setYearsOld($infoUser['years_old']);
+            $user->setEmail($infoUser['email']);
+            $user->setPhone($infoUser['phone']);
+            $user->setAddress($infoUser['address']);
+            $user->setAddress2($infoUser['address_2']);
+            $user->setZipcode($infoUser['zipcode']);
+            $user->setCity($infoUser['city']);
 
-                $config = $user->configFormUserAddModify($errors);
-                $v = new View('customerinfo','connected');
-                $v->assign('config',$config);
-            } else {
-                $user->setFirstname($infoUser['firstname']);
-                $user->setLastname($infoUser['lastname']);
-                $user->setYearsOld($infoUser['years_old']);
-                $user->setEmail($infoUser['email']);
-                $user->setPhone($infoUser['phone']);
-                $user->setAddress($infoUser['address']);
-                $user->setAddress2($infoUser['address_2']);
-                $user->setZipcode($infoUser['zipcode']);
-                $user->setCity($infoUser['city']);
-
-                $config = $user->configFormUserAddModify($errors);
-                $v = new View('signup');
-                $v->assign('config',$config);
-            }
+            $config = $user->configFormUserInfos($errors);
+            $v = new View('customerinfo','connected');
+            $v->assign('config',$config);
         } else {
             if (isset($_FILES) && count($_FILES) > 0) {
                 $varReturn = Files::uploadPicture($_FILES['picture']);
@@ -126,18 +110,70 @@ class UsersController
                 }
             }
 
-            //Si c'est un ancien user
-            if ($infoUser['id'] != '') {
-                $user->setId($infoUser['id']);
-            } else {
-                $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
-                $token = str_shuffle($char);
-                $token = substr($token, 0, 11);
+            $user->setId($infoUser['id']);
 
-                $user->setPassword($infoUser['password']);
-                $user->setToken($token);
-                $_SESSION['token'] = $token;
+            $user->setFirstname($infoUser['firstname']);
+            $user->setLastname($infoUser['lastname']);
+            $user->setYearsOld($infoUser['years_old']);
+            $user->setEmail($infoUser['email']);
+            $user->setPhone($infoUser['phone']);
+            $user->setAddress($infoUser['address']);
+            $user->setAddress2($infoUser['address_2']);
+            $user->setZipcode($infoUser['zipcode']);
+            $user->setCity($infoUser['city']);
+            $user->setStatus(2);
+            $user->setType(2);
+            $user->save();
+
+            header("Location: " . DIRNAME . Route::getSlug('customerinfo', 'index'));
+        }
+    }
+
+    public function singnupAction($params){
+        $infoUser = $params['POST'];
+        $user = new User();
+
+        $errors = Validate::checkForm($infoUser);
+
+        if(!isset($infoUser['cgu'])){
+            $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
+        }
+
+        if(count($errors) > 0) {
+            $user->setFirstname($infoUser['firstname']);
+            $user->setLastname($infoUser['lastname']);
+            $user->setYearsOld($infoUser['years_old']);
+            $user->setEmail($infoUser['email']);
+            $user->setPhone($infoUser['phone']);
+            $user->setAddress($infoUser['address']);
+            $user->setAddress2($infoUser['address_2']);
+            $user->setZipcode($infoUser['zipcode']);
+            $user->setCity($infoUser['city']);
+
+            $config = $user->configFormUserSignup($errors);
+            $v = new View('signup');
+            $v->assign('config',$config);
+        } else {
+            if (isset($_FILES) && count($_FILES) > 0) {
+                $varReturn = Files::uploadPicture($_FILES['picture']);
+                if (!is_array($varReturn)) {
+                    $user->setPicture($varReturn);
+                } else {
+                    if ($infoUser['picture-old'] != '') {
+                        $user->setPicture($infoUser['picture-old']);
+                    } else {
+                        $user->setPicture(null);
+                    }
+                }
             }
+
+            $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            $token = str_shuffle($char);
+            $token = substr($token, 0, 11);
+
+            $user->setPassword($infoUser['password']);
+            $user->setToken($token);
+            $_SESSION['token'] = $token;
 
             $user->setFirstname($infoUser['firstname']);
             $user->setLastname($infoUser['lastname']);
@@ -166,10 +202,8 @@ class UsersController
     public function saveAction($params)
     {        
 		if(!empty($params["POST"])){
-			
-			//$errors = Validate::checkForm($config, $params["POST"]);
 
-            $error = '';
+            $errors = Validate::checkForm($params["POST"]);
 
 			if(empty($errors)){
 			    $user = new User();
@@ -203,6 +237,91 @@ class UsersController
 		} else {
             header("Location: ".DIRNAME.Route::getSlug('users','index'));
         }
+    }
+
+    function addAction($params){
+        $user = new User();
+        $config = $user->configFormUserAddModifyBO([]);
+        $v = new View('userEdit','back');
+        $v->assign('config', $config);
+    }
+
+    function changePasswordBOAction($params){
+        $infoPassword = $params['POST'];
+        if(count($infoPassword) > 0) {
+            $errors = Validate::checkForm($infoPassword);
+
+            if(count($errors) < 1) {
+                $user = new User();
+                $user->setId($_SESSION['id_user']);
+                $response = $user->select('id');
+                $donnees = $response->fetch();
+
+                $user->setType($donnees['id_type']);
+                $user->setFirstname($donnees['firstname']);
+                $user->setLastname($donnees['lastname']);
+                $user->setYearsOld($donnees['years_old']);
+                $user->setEmail($donnees['email']);
+                $user->setPhone($donnees['phone']);
+                $user->setAddress($donnees['address']);
+                $user->setAddress2($donnees['address_2']);
+                $user->setZipcode($donnees['zipcode']);
+                $user->setCity($donnees['city']);
+                $user->setPicture($donnees['url_picture']);
+                $user->setStatus($donnees['status']);
+
+                $user->setPassword($infoPassword['password']);
+
+                $user->save();
+                header("Location: ".DIRNAME.Route::getSlug('dashboardadmin','index'));
+            } else {
+                $v = new View('changepwd','back');
+                $v->assign('errors', $errors);
+            }
+        } else {
+            $v = new View('changepwd','back');
+            $v->assign('errors', []);
+        }
+
+    }
+
+    function changePasswordFOAction($params){
+        $infoPassword = $params['POST'];
+        if(count($infoPassword) > 0) {
+            $errors = Validate::checkForm($infoPassword);
+
+            if(count($errors) < 1) {
+                $user = new User();
+                $user->setId($_SESSION['id_user']);
+                $response = $user->select('id');
+                $donnees = $response->fetch();
+
+                $user->setType($donnees['id_type']);
+                $user->setFirstname($donnees['firstname']);
+                $user->setLastname($donnees['lastname']);
+                $user->setYearsOld($donnees['years_old']);
+                $user->setEmail($donnees['email']);
+                $user->setPhone($donnees['phone']);
+                $user->setAddress($donnees['address']);
+                $user->setAddress2($donnees['address_2']);
+                $user->setZipcode($donnees['zipcode']);
+                $user->setCity($donnees['city']);
+                $user->setPicture($donnees['url_picture']);
+                $user->setStatus($donnees['status']);
+
+                $user->setPassword($infoPassword['password']);
+
+                $user->save();
+                header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
+            } else {
+                $v = new View('changepwdFO','connected');
+                $v->assign('errors', $errors);
+            }
+        } else {
+            $v = new View('changepwdFO','connected');
+            $v->assign('errors', []);
+        }
+
     }
 
 }

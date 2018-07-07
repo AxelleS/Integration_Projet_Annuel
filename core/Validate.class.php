@@ -40,6 +40,26 @@ class Validate{
             if ($key == 'response_captcha') {
 		        $captcha['response'] = $value;
             }
+
+            if ($key == 'url_facebook' && !self::checkFacebook($value)) {
+                $errorsMsg['url_facebook']= "Format de l'url attendue incorrect  : https://www.facebook.com/XXXXX";
+            }
+
+            if ($key == 'url_twitter' && !self::checkTwitter($value)) {
+                $errorsMsg['url_twitter']= "Format de l'url attendue incorrect  : https://twitter.com/XXXXX";
+            }
+
+            if ($key == 'url_youtube' && !self::checkYoutubeAccount($value)) {
+                $errorsMsg['url_youtube']= "Format de l'url attendue incorrect  : https://www.youtube.com/channel/XXXXX";
+            }
+
+            if ($key == 'url_video' && !self::checkYoutubeVideo($value)) {
+                $errorsMsg['url_video']= "Format de l'url attendue incorrect  : https://www.youtube.com/watch?v=XXXXX";
+            }
+
+            if ($key == 'price' && !self::checkNumber($value)) {
+                $errorsMsg['price']= "Le prix n'est pas dans le bon format, un réel est attendu";
+            }
         }
 
         if(isset($password) && isset($passwordConf)) {
@@ -116,17 +136,37 @@ class Validate{
         }
     }
 
-    public static function createErrorsTable($table) {
-        $errorsBlock = $table;
-        $errorsTemp = explode('$', $errorsBlock);
-        unset($errorsTemp[count($errorsTemp)-1]);
-        foreach ($errorsTemp as $errorTemp) {
-            $temp = explode('=', $errorTemp);
-            $errors[$temp[0]] = $temp[1];
+    public static function checkFacebook($url){
+        if(substr($url, 0, 25) != "https://www.facebook.com/" && substr($url, 0, 21) != "https://facebook.com/") {
+            return false;
+        } else {
+            return true;
         }
-        return $errors;
     }
 
+    public static function checkTwitter($url){
+        if(substr($url, 0, 20) != "https://twitter.com/" && substr($url, 0, 24) != "https://www.twitter.com/") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static function checkYoutubeAccount($url){
+        if(substr($url, 0, 32) != "https://www.youtube.com/channel/" && substr($url, 0, 28) != "https://youtube.com/channel/") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static function checkYoutubeVideo($url){
+        if(substr($url, 0, 32) != "https://www.youtube.com/watch?v=" && substr($url, 0, 28) != "https://youtube.com/watch?v=") {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 
 

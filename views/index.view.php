@@ -13,7 +13,7 @@
             </section>
 
             <section class="video col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <?php echo $donnees['url_video'];?>
+                <?php echo $donnees_video; ?>
             </section>
 
             <section class="escape-room row">
@@ -43,7 +43,7 @@
 
         <section class="map row">
             <!-- Map google map -->
-            <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><?php echo $donnees_maps?></article>
+            <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><?php echo $donnees_maps; ?></article>
             <!-- Adresse entreprise -->
             <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1">
                 <h2><?php echo $donnees['name_company'];?></h2>

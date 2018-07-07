@@ -81,6 +81,10 @@ nav ul li {
     cursor: default ;
 }
 
+#user-select{
+    cursor: default ;
+}
+
 nav ul li a {
     display:block;
     width:100px;

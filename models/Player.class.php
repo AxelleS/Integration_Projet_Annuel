@@ -6,7 +6,7 @@ class Player extends BaseSql{
   protected $firstname;
   protected $lastname;
   protected $email;
-  protected $is_surprised = 0;
+  protected $is_surprise = 0;
 
   protected $foreign;
 
@@ -34,8 +34,8 @@ class Player extends BaseSql{
     $this->email=strtolower(trim($email));
   }
 
-  public function setIsSurprised($is_surprised) {
-    $this->is_surprised=$is_surprised;
+  public function setIsSurprise($is_surprise) {
+    $this->is_surprise=$is_surprise;
   }
 
   public function setForeign($foreign){

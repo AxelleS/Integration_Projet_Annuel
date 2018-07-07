@@ -41,15 +41,34 @@ class BaseSql{
             $response = $this->pdo->query(" SELECT * FROM ".$this->table." ORDER BY id ".$order);
             //echo "SELECT * FROM ".$this->table." ORDER BY id ".$order;
         } else {
-            $valeur_recherche = $this->columns[$champ_recherche];
-            if(is_null($valeur_recherche)){
-                $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
-            } else{
-                if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order); 
-                }else{
-                    $response = $this->pdo->query(" SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+            if(!is_array($champ_recherche)) {
+                $valeur_recherche = $this->columns[$champ_recherche];
+                if(is_null($valeur_recherche)){
+                    $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
+                } else{
+                    if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                    }else{
+                        $response = $this->pdo->query(" SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                    }
                 }
+            } else {
+                foreach ($champ_recherche as $champ) {
+                    $valeur_recherche[] = $this->columns[$champ];
+                }
+                switch (count($champ_recherche)) {
+                    case 2:
+                        $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche[0]." LIKE '".$valeur_recherche[0]."' AND ".$champ_recherche[1]." LIKE '".$valeur_recherche[1]."' ORDER BY id ".$order);
+                        break;
+                    case 3:
+                        $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche[0]." LIKE '".$valeur_recherche[0]."' AND ".$champ_recherche[1]." LIKE '".$valeur_recherche[1]."' AND ".$champ_recherche[2]." LIKE '".$valeur_recherche[2]."' ORDER BY id ".$order);
+                        break;
+                    case 4:
+                        $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche[0]." LIKE '".$valeur_recherche[0]."' AND ".$champ_recherche[1]." LIKE '".$valeur_recherche[1]."' AND ".$champ_recherche[2]." LIKE '".$valeur_recherche[2]."' AND ".$champ_recherche[3]." LIKE '".$valeur_recherche[3]."' ORDER BY id ".$order);
+                        break;
+                }
+
             }
+
             //echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         }
         // echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
@@ -59,15 +78,7 @@ class BaseSql{
     public function delete($champs) {
         $this->setColumns();
 
-        try{
-            $this->pdo->query(" DELETE FROM ".$this->table." 
-                                WHERE ".$champs." LIKE ".$this->columns[$champs]
-                            );
-            return true;
-        }
-        catch (Exception $e) {
-            return false;
-        }
+        $this->pdo->query("DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs]);
     }
 
     public function save(){
@@ -75,10 +86,14 @@ class BaseSql{
         $this->setColumns();
 
         if($this->id){
-            $unsetColumns = ['id', 'roomList', 'foreign', 'password', 'token'];
+            $unsetColumns = ['id', 'roomList', 'foreign', 'token'];
             //Update
             $query_columns = array();
             $id_search = $this->columns['id'];
+
+            if(isset($this->columns['password']) && $this->columns['password'] == '') {
+                $unsetColumns[] = 'password';
+            }
 
             foreach($this->columns as $key => $value){
                 if(!in_array($key, $unsetColumns)) {
@@ -106,14 +121,14 @@ class BaseSql{
             implode(',:',array_keys($this->columns))
             .")");
 
-            /*echo "INSERT INTO ".$this->table." (".
+            echo "INSERT INTO ".$this->table." (".
             implode(',',array_keys($this->columns))
             .") VALUES (:".
             implode(',:',array_keys($this->columns))
             .")";
             echo "<br>";
             print_r($this->columns);
-            echo "<br>";*/
+            echo "<br>";
             $query->execute($this->columns);
         }
     }
