@@ -149,6 +149,11 @@ class BaseSql{
             }
             $query = $this->pdo->prepare("  UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
 
+            echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
+            echo "<br>";
+            print_r($this->columns);
+            echo "<br>";
+
             $query->execute($this->columns);
         } else{
             //Insert
@@ -161,6 +166,15 @@ class BaseSql{
             .") VALUES (:".
             implode(',:',array_keys($this->columns))
             .")");
+
+            echo "INSERT INTO ".$this->table." (".
+            implode(',',array_keys($this->columns))
+            .") VALUES (:".
+            implode(',:',array_keys($this->columns))
+            .")";
+            echo "<br>";
+            print_r($this->columns);
+            echo "<br>";
 
             $query->execute($this->columns);
         }
