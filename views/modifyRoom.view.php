@@ -5,7 +5,7 @@
       </div>
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-xs-12">
-                <?php print_r($this->addModal("formModifyRoom", $roomDetails)); ?>
+                <?php // print_r($this->addModal("formModifyRoom", $roomDetails)); ?>
             </div>
             <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 col-xs-12">
                <input class="<?php echo $roomDetails['style']['buttonCancel'];?>" type="button" onclick="deleteQa(<?php echo $roomDetails['id']['value'];?>)" value="Supprimer">

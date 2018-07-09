@@ -26,10 +26,6 @@ class sitemapGenerator {
         array_push($this->urlData, "/s-inscrire");
         array_push($this->urlData, "/reserver");
         array_push($this->urlData, "/faq");
-        echo "<pre>";
-        print_r($this->url_data);
-        echo "</pre>";
-        die;
         $this->generateSitemap();
     }
 
