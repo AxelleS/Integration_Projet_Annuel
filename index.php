@@ -1,5 +1,7 @@
 <?php
 session_start();
+date_default_timezone_set('Europe/Paris');
+
 require "conf.inc.php";
 require 'PHPMailer/_lib/class.phpmailer.php';
 
