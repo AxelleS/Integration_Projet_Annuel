@@ -5,11 +5,12 @@ class StatisticsController {
 	public function indexAction($params)
     {
 
-
-    	$user = new User();
-    	$response_stat = $user->select();
-     	$donnee_stat = $response_stat->rowCount();
-     	//var_dump($donnee_stat);exit;
+    	$date = date('Y-m-d').' %';
+		$users = new User();
+		$users->setDateInserted($date);
+		$response_stat = $users->count('date_inserted');
+		$stats['number_insert_today'] = $response_stat->fetch();
+		//$response_stat = $users->count()
 
 
         $v = new View('statistics','back');

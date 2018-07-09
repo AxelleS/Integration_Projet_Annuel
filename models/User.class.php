@@ -15,6 +15,7 @@ class User extends BaseSql{
   protected $city;
   protected $password = "default";
   protected $token;
+  protected $date_inserted;
 
   protected $status = 2; //Définit l'état de l'utilisateur, 1 banni, 2 toujours ok, etc etc
 
@@ -81,6 +82,10 @@ class User extends BaseSql{
 
   public function setStatus($status) {
     $this->status=$status;
+  }
+
+  public function setDateInserted($date_inserted){
+    $this->date_inserted=$date_inserted;
   }
 
   public function configFormUserSignup($errors){
