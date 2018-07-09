@@ -138,7 +138,6 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
-	    print_r($params);
         if ($params['URL'][0] === "room") {
             $idRoom = $params['URL'][1];
             $delRoom = new Room();
@@ -150,7 +149,6 @@ class OrganizationController {
             $questionAnswer = new Faq();
             $questionAnswer->setId($idFaq);
             $response = $questionAnswer->delete('id');
-            echo $response;
             exit;
         }
     }
