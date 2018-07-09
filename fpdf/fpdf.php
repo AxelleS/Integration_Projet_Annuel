@@ -1005,6 +1005,7 @@ function Output($dest='', $name='', $isUTF8=false)
 				header('Cache-Control: private, max-age=0, must-revalidate');
 				header('Pragma: public');
 			}
+			echo $this->buffer;
 			break;
 		case 'D':
 			// Download file
@@ -1013,6 +1014,7 @@ function Output($dest='', $name='', $isUTF8=false)
 			header('Content-Disposition: attachment; '.$this->_httpencode('filename',$name,$isUTF8));
 			header('Cache-Control: private, max-age=0, must-revalidate');
 			header('Pragma: public');
+			echo $this->buffer;
 			break;
 		case 'F':
 			// Save to local file

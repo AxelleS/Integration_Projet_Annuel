@@ -149,6 +149,7 @@ class OrganizationController {
             $questionAnswer = new Faq();
             $questionAnswer->setId($idFaq);
             $response = $questionAnswer->delete('id');
+            echo $response;
             exit;
         }
     }
