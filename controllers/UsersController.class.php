@@ -209,6 +209,8 @@ class UsersController
 			if(empty($errors)){
 			    $user = new User();
                 if(!is_null($params["POST"]["id"])) {
+			echo 'id : '.$params["POST"]["id"];
+			echo '<br>';
                     $user->setId($params["POST"]["id"]);
                 } else {
 	 	    $user->setPassword('MotDePasse'.date('Y'));
