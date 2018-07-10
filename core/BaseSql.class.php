@@ -162,13 +162,13 @@ class BaseSql{
             implode(',:',array_keys($this->columns))
             .")");
             
-            echo "INSERT INTO ".$this->table." (".
+            /*echo "INSERT INTO ".$this->table." (".
             implode(',',array_keys($this->columns))
             .") VALUES (:".
             implode(',:',array_keys($this->columns))
             .")";
             
-            print_r($this->columns);
+            print_r($this->columns);*/
 
             $query->execute($this->columns);
         }
