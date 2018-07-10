@@ -210,10 +210,17 @@ class UsersController
 			    $user = new User();
                 if(!is_null($params["POST"]["id"])) {
                     $user->setId($params["POST"]["id"]);
-                }
+                } else {
+	 	    $user->setPassword('MotDePasse'.date('Y'));
+		    $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+                    $token = str_shuffle($char);
+                    $token = substr($token, 0, 11);
+                    $user->setToken($token);
+		    $user->setDateInserted(date('Y-m-d H:i:s'));
+		}
                 $response = $user->select('id');
                 $donnees = $response->fetch();
-
+		
                 $user->setType($params['POST']['id_type']);
                 $user->setFirstname($params['POST']['firstname']);
                 $user->setLastname($params['POST']['lastname']);
@@ -226,7 +233,7 @@ class UsersController
                 $user->setCity($params['POST']['city']);
                 $user->setPicture($donnees['url_picture']);
                 $user->setStatus($params['POST']['status']);
-		$user->setDateInserted(date('Y-m-d H:i:s'));
+		
                 $user->save();
 
                 if($params['POST']['id_type'] == 1) {
