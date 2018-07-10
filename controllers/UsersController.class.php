@@ -186,6 +186,7 @@ class UsersController
             $user->setCity($infoUser['city']);
             $user->setStatus(2);
             $user->setType(2);
+	    $user->setDateInserted(date('Y-m-d H:i:s));
             $user->save();
 
             $user->setEmail($infoUser['email']);
