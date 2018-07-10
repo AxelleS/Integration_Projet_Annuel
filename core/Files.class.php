@@ -41,6 +41,10 @@ class Files {
             $nomImage = uniqid().'.'.$extension;
 
             if(count($erreur) < 1){
+                echo 'fichier : '.$files['tmp_name'];
+                echo '<br>';
+                echo 'cible : '.TARGET.$nomImage;
+                echo '<br>';
                 if(move_uploaded_file($files['tmp_name'], TARGET.$nomImage))
                 {
                     return TARGET.$nomImage;
@@ -158,6 +162,10 @@ class Files {
             $nomDoc = uniqid().'.'.$extension;
 
             if(count($erreur) < 1){
+                echo 'fichier : '.$files['tmp_name'];
+                echo '<br>';
+                echo 'cible : '.TARGET.$nomDoc;
+                echo '<br>';
                 if(move_uploaded_file($files['tmp_name'], TARGET.$nomDoc))
                 {
                     return TARGET.$nomDoc;
