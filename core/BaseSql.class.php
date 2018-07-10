@@ -168,7 +168,7 @@ class BaseSql{
             implode(',:',array_keys($this->columns))
             .")";
             
-            print_r($this->columns);die;
+            print_r($this->columns);
 
             $query->execute($this->columns);
         }
