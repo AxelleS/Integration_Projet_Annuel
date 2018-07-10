@@ -66,7 +66,6 @@
                 <p>Choix créneau :</p>
             </article>
             <article class="slots">
-                <select class="creneaux"></select>
                 <select class="creneaux" onchange="saveChoices()"></select>
                 <form action="<?php echo DIRNAME.Route::getSlug('reservationnext','index'); ?>" method="post">
                     <input type="hidden" id="slotChoose" name="slotChoose" value="">
