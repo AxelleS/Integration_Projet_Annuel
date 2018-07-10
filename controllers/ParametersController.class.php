@@ -33,10 +33,11 @@ class ParametersController
         if (isset($_FILES) && count($_FILES) > 0) {
             foreach ($_FILES as $key => $value) {
                 if($key == 'logo') {
-
                     $varReturn = Files::uploadPicture($value);
+                    print_r($varReturn);
                 } else {
                     $varReturn = Files::uploadDoc($value);
+                    print_r($varReturn);
                 }
                 if (!is_array($varReturn)) {
                     switch ($key) {
@@ -91,6 +92,7 @@ class ParametersController
 
         $response = $modifyHomepage->select();
         $donnees_homepage = $response->fetch();
+        die;
 
         if (!isset($error) || count($error) <= 0) {
             echo 'toto';die;
