@@ -12,7 +12,7 @@
                 <p><?php echo $donnees['description_introduction'];?></p>
             </section>
 
-            <section class="video col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <section class="video-promotion col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php echo $donnees_video; ?>
             </section>
 

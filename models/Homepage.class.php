@@ -46,7 +46,7 @@ class Homepage extends BaseSql{
   }
 
   public function setUrlVideo($url_video) {
-    $this->url_video=strtolower(trim($url_video));
+    $this->url_video=trim($url_video);
   }
 
   public function setNameCompany($name_company) {
