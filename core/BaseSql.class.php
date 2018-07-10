@@ -131,7 +131,7 @@ class BaseSql{
         $this->setColumns();
 
         if($this->id){
-            $unsetColumns = ['id', 'roomList', 'foreign', 'token'];
+            $unsetColumns = ['id', 'roomList', 'foreign', 'token', 'date_inserted'];
             //Update
             $query_columns = array();
             $id_search = $this->columns['id'];
