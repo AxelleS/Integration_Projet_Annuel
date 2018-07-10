@@ -138,7 +138,6 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
-	    print_r($params);die;
         if ($params['URL'][0] === "room") {
             $idRoom = $params['URL'][1];
             $delRoom = new Room();
