@@ -186,7 +186,7 @@ class UsersController
             $user->setCity($infoUser['city']);
             $user->setStatus(2);
             $user->setType(2);
-	    $user->setDateInserted(date('Y-m-d H:i:s));
+	    $user->setDateInserted(date('Y-m-d H:i:s'));
             $user->save();
 
             $user->setEmail($infoUser['email']);
@@ -270,6 +270,7 @@ class UsersController
                 $user->setCity($donnees['city']);
                 $user->setPicture($donnees['url_picture']);
                 $user->setStatus($donnees['status']);
+		$user->setDateInserted(date('Y-m-d H:i:s'));
 
                 $user->setPassword($infoPassword['password']);
 
