@@ -93,6 +93,7 @@ class ParametersController
         $donnees_homepage = $response->fetch();
 
         if (!isset($error) || count($error) <= 0) {
+            echo 'toto';die;
             $modifyHomepage->setId($donnees_homepage['id']);
             $modifyHomepage->setIdRoom1($donnees_homepage['id_room_1']);
             $modifyHomepage->setIdRoom2($donnees_homepage['id_room_2']);
