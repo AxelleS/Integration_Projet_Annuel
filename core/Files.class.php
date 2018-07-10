@@ -45,6 +45,14 @@ class Files {
                 echo '<br>';
                 echo 'cible : '.TARGET.$nomImage;
                 echo '<br>';
+                 if(is_writable(TARGET))
+                    {
+                        echo "Le fiche est accessible en écriture !";
+                    }
+                    else
+                    {
+                        echo "Fichier non accessible en écriture !";
+                    }
                 if(move_uploaded_file($files['tmp_name'], TARGET.$nomImage))
                 {
                     return TARGET.$nomImage;
@@ -166,6 +174,14 @@ class Files {
                 echo '<br>';
                 echo 'cible : '.TARGET.$nomDoc;
                 echo '<br>';
+                if(is_writable(TARGET))
+                    {
+                        echo "Le fiche est accessible en écriture !";
+                    }
+                    else
+                    {
+                        echo "Fichier non accessible en écriture !";
+                    }
                 if(move_uploaded_file($files['tmp_name'], TARGET.$nomDoc))
                 {
                     return TARGET.$nomDoc;
