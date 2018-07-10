@@ -123,7 +123,7 @@ class BaseSql{
     public function delete($champs) {
         $this->setColumns();
 
-        echo "DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs];die;
+        //echo "DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs];
         $this->pdo->query("DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs]);
     }
 

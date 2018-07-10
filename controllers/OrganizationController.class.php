@@ -142,7 +142,7 @@ class OrganizationController {
             $idRoom = $params['URL'][1];
             $delRoom = new Room();
             $delRoom->setId($idRoom);
-            $response = $delRoom->delete('id');
+            $delRoom->delete('id');
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else {
             $idFaq = $params['POST']['idFaq'];
