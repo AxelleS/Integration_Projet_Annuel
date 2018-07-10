@@ -252,6 +252,10 @@
             }
         });
     }
+               
+    function saveChoices() {
+        $('#slotChoose').attr('value',  $('.creneaux option:selected').val());
+    }
 
     function loadSelector(theDate, timeSlots) {
         $('.vide input').css('background-color','green');
