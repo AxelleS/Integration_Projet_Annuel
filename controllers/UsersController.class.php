@@ -226,6 +226,7 @@ class UsersController
                 $user->setCity($params['POST']['city']);
                 $user->setPicture($donnees['url_picture']);
                 $user->setStatus($params['POST']['status']);
+		$user->setDateInserted(date('Y-m-d H:i:s'));
                 $user->save();
 
                 if($params['POST']['id_type'] == 1) {
