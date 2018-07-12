@@ -54,7 +54,6 @@ class ReservationnextController
 
     public function saveAction($params)
     {
-        print_r($params);
         $timeSlot = new Time_slot();
         $timeSlot->setId($params['URL'][0]);
         $donneesTimeSlot = $timeSlot->select('id')->fetch();

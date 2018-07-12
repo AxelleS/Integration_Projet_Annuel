@@ -51,18 +51,6 @@ class Room extends BaseSql{
       $this->price=$price;
   }
 
-    public function getPlayerVideo($url_video) {
-    //Récupère l'url de $this->url_video et le parse 
-    //afin d'avoir uniquement l'id de la video, return la balise iframe
-    $parseUrl = parse_url($url_video);
-    if (isset($parseUrl['query'])) {
-        $query = explode('=', $parseUrl['query'])[1];
-        return '<iframe width="800" height="500" src="https://www.youtube.com/embed/'.$query.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-    } else {
-      return '';
-    }
-  }
-
   public function formModifyRoom($errors, $roomsPictures) {
 
     return [

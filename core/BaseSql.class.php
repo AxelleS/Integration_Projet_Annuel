@@ -125,6 +125,7 @@ class BaseSql{
     public function delete($champs) {
         $this->setColumns();
 
+        //echo "DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs];
         $this->pdo->query("DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs]);
     }
 
@@ -133,7 +134,7 @@ class BaseSql{
         $this->setColumns();
 
         if($this->id){
-            $unsetColumns = ['id', 'roomList', 'foreign', 'token'];
+            $unsetColumns = ['id', 'roomList', 'foreign', 'token', 'date_inserted'];
             //Update
             $query_columns = array();
             $id_search = $this->columns['id'];
@@ -151,10 +152,6 @@ class BaseSql{
             }
             $query = $this->pdo->prepare("  UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
 
-            echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
-            echo "<br>";
-            print_r($this->columns);
-            echo "<br>";
             $query->execute($this->columns);
         } else{
             //Insert
@@ -167,15 +164,15 @@ class BaseSql{
             .") VALUES (:".
             implode(',:',array_keys($this->columns))
             .")");
-
-            echo "INSERT INTO ".$this->table." (".
+            
+            /*echo "INSERT INTO ".$this->table." (".
             implode(',',array_keys($this->columns))
             .") VALUES (:".
             implode(',:',array_keys($this->columns))
             .")";
-            echo "<br>";
-            print_r($this->columns);
-            echo "<br>";
+            
+            print_r($this->columns);*/
+
             $query->execute($this->columns);
         }
     }
