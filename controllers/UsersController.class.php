@@ -144,10 +144,7 @@ class UsersController
         $response=$user->count('email');
         $check['email'] = $response->fetch();
 
-        echo $checkDoublonEmail;
-        var_dump($check['email'] != '0');exit;
-
-        if($check['email'] != "0"){
+        if($check['email']['count(*)'] != '0' ){
             $errors['email'] = 'Cette adresse mail existe déjà';
         }
 

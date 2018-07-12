@@ -4,6 +4,19 @@ class IndexController
 {
     public function indexAction($params)
     {
+
+        //Création de cookie
+        $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $cookie = str_shuffle($char);
+        $date = date("Y-m-d H:i:s"); 
+        setcookie('cookie', $cookie, time() + 24*3600, "projet/");
+
+        $statitique = new Statistic();
+        $statitique->setValueCookie($_COOKIE['cookie']);
+        echo $_COOKIE['cookie'];
+        $statitique->save();
+
+
         $homepage = new Homepage();
         $homepage->setId(1);
         $response_homepage = $homepage->select('id');

@@ -8,12 +8,13 @@ class StatisticsController {
     	$date = date('Y-m-d').'%';
 
         //Count du nombre de partie du jour
-        $game = new Calendar();
+        //Necessite un join
+        /*$game = new Calendar();
         $game->setDateCalendar($date);
         $game->set
         $response_game = $game->count('date_calendar');
 
-        var_dump($response_game);exit;
+        var_dump($response_game);exit;*/
 
         //Count du nombre de nouveau utilisateur ce jour
 		$users = new User();

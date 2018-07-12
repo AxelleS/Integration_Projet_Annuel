@@ -5,7 +5,7 @@ class Security {
     public static function generateCaptcha(){
         $char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $char = str_shuffle($char);
-        $length = rand(-8,-6);
+        $length = rand(-6,-5);
         $captcha = substr($char, $length);
         $_SESSION['captcha'] = $captcha;
     }
