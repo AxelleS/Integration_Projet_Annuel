@@ -17,12 +17,12 @@ class SigninController
     }
 
     public function connectAction($params){
-
         $error = false;
 
         $user = new User();
         $user->setEmail($params['POST']['email']);
         $response = $user->select('email');
+        var_dump($response);exit;
 
         if($response != false){
             $donnees_user = $response->fetch();

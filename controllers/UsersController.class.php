@@ -139,6 +139,18 @@ class UsersController
             $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
         }
 
+        $checkDoublonEmail = $infoUser['email'];
+        $user->setEmail($checkDoublonEmail);
+        $response=$user->count('email');
+        $check['email'] = $response->fetch();
+
+        echo $checkDoublonEmail;
+        var_dump($check['email'] != '0');exit;
+
+        if($check['email'] != "0"){
+            $errors['email'] = 'Cette adresse mail existe déjà';
+        }
+
         if(count($errors) > 0) {
             $user->setFirstname($infoUser['firstname']);
             $user->setLastname($infoUser['lastname']);
