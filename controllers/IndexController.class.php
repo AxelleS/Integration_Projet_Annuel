@@ -4,6 +4,15 @@ class IndexController
 {
     public function indexAction($params)
     {
+        if(isset($_COOKIE['cookie'])){
+            $statitique = new Statistic();
+            $statitique->setValueCookie($_COOKIE['cookie']);
+            $nbCookies = $statitique->count('value_cookie')->fetch();
+            if($nbCookies[0] < 1) {
+                $statitique->save();
+            }
+        }
+
         $homepage = new Homepage();
         $homepage->setId(1);
         $response_homepage = $homepage->select('id');

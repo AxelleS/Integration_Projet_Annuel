@@ -90,9 +90,9 @@ class BaseSql{
                 if(is_null($valeur_recherche)){
                     $response = $this->pdo->query("SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
                 } else{
-                    if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                    if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){
+                        $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }else{
-
                         $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }
                 }
@@ -162,6 +162,7 @@ class BaseSql{
             .") VALUES (:".
             implode(',:',array_keys($this->columns))
             .")");
+
             
             /*echo "INSERT INTO ".$this->table." (".
             implode(',',array_keys($this->columns))

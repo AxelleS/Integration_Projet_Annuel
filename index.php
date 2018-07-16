@@ -46,6 +46,8 @@ if ($maroute['security'] == true) {
         }
     }
 }
+//Appel de la fonction cookie 
+Cookie::generateCookie();
 
 //Supprime les deux premières case du tableau
 unset($uriExploded[0]);

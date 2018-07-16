@@ -87,7 +87,7 @@ class OrganizationController {
             $room = new Room();
             $room->setName("Nom de la Room");
             $room->setDescription("Description de la Room");
-            $room->setUrlVideo("url vidéo de la room");
+            $room->setUrlVideo("");
             $room->setCapacity(5);
             $room->setIsPregnant(0);
             $room->setIsWheelchair(0);

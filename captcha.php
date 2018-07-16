@@ -5,7 +5,7 @@ session_start();
 $captcha = $_SESSION['captcha'];
 
 //création de l'image
-$width = 250;
+$width = 200;
 $height = 100;
 $image = imagecreate($width, $height);
 
@@ -17,7 +17,7 @@ $fonts = glob("assets/font/*.ttf");
 // On construit notre image
 $x = rand(10,15);
 for($i = 0; $i < strlen($captcha); $i++){
-    $y = rand(20, $height-20);
+    $y = rand(30, $height-30);
     $angle = rand(-30, 30);
     $size = rand(18,20);
     $fontKey = rand(0, sizeof($fonts)-1);

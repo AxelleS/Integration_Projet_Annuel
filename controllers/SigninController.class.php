@@ -4,6 +4,7 @@ class SigninController
 {
     public function indexAction($params)
     {
+
         //Appelle la vue
         if ($_SESSION['is_connected']) {
             $v = new View('customerreservations','connected');
@@ -17,7 +18,6 @@ class SigninController
     }
 
     public function connectAction($params){
-
         $error = false;
 
         $user = new User();
