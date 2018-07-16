@@ -7,10 +7,11 @@ class IndexController
         if(isset($_COOKIE['cookie'])){
             $statitique = new Statistic();
             $statitique->setValueCookie($_COOKIE['cookie']);
-            echo $_COOKIE['cookie'];
-            $statitique->save();
+            $nbCookies = $statitique->count('value_cookie')->fetch();
+            if($nbCookies[0] < 1) {
+                $statitique->save();
+            }
         }
-
 
         $homepage = new Homepage();
         $homepage->setId(1);
