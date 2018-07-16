@@ -1,7 +1,3 @@
-<pre>
-<?php //print_r($config);?>
-</pre>
-
 <form method="<?php echo $config["config"]["method"]?>" action="<?php echo DIRNAME.Route::getSlug('users','save'); ?>" name="<?php echo $config["config"]["name"]?>">
 
     <?php foreach ($config["input"] as $rows):?>

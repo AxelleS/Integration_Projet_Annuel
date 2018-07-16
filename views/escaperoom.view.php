@@ -66,8 +66,11 @@
                 <p>Choix créneau :</p>
             </article>
             <article class="slots">
-                <select class="creneaux"></select>
-                <?php echo '<input type="submit" value="Valider" href="' . DIRNAME.Route::getSlug('reservationnext','index') . '">'; ?>
+                <select class="creneaux" onchange="saveChoices()"></select>
+                <form action="<?php echo DIRNAME.Route::getSlug('reservationnext','index'); ?>" method="post">
+                    <input type="hidden" id="slotChoose" name="slotChoose" value="">
+                    <input type="submit" value="Valider">
+                </form>
             </article>
         </article>
     </section>
@@ -247,6 +250,10 @@
                 }
             }
         });
+    }
+               
+    function saveChoices() {
+        $('#slotChoose').attr('value',  $('.creneaux option:selected').val());
     }
 
     function loadSelector(theDate, timeSlots) {

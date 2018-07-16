@@ -33,7 +33,6 @@ class ParametersController
         if (isset($_FILES) && count($_FILES) > 0) {
             foreach ($_FILES as $key => $value) {
                 if($key == 'logo') {
-
                     $varReturn = Files::uploadPicture($value);
                 } else {
                     $varReturn = Files::uploadDoc($value);

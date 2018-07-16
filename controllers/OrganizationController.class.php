@@ -87,7 +87,7 @@ class OrganizationController {
             $room = new Room();
             $room->setName("Nom de la Room");
             $room->setDescription("Description de la Room");
-            $room->setUrlVideo("url vidéo de la room");
+            $room->setUrlVideo("");
             $room->setCapacity(5);
             $room->setIsPregnant(0);
             $room->setIsWheelchair(0);
@@ -138,7 +138,6 @@ class OrganizationController {
     }
 
     public function deleteAction($params){
-	    print_r($params);
         if ($params['URL'][0] === "room") {
             $idRoom = $params['URL'][1];
             $delRoom = new Room();

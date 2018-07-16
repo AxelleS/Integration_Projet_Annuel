@@ -1,5 +1,7 @@
 <?php
 session_start();
+date_default_timezone_set('Europe/Paris');
+
 require "conf.inc.php";
 require 'PHPMailer/_lib/class.phpmailer.php';
 
@@ -44,6 +46,8 @@ if ($maroute['security'] == true) {
         }
     }
 }
+//Appel de la fonction cookie 
+Cookie::generateCookie();
 
 //Supprime les deux premières case du tableau
 unset($uriExploded[0]);

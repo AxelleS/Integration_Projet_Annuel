@@ -133,6 +133,15 @@ class UsersController
             $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
         }
 
+        $checkDoublonEmail = $infoUser['email'];
+        $user->setEmail($checkDoublonEmail);
+        $response=$user->count('email');
+        $check['email'] = $response->fetch();
+
+        if($check['email']['count(*)'] != '0' ){
+            $errors['email'] = 'Cette adresse mail existe déjà';
+        }
+
         if(count($errors) > 0) {
             $user->setFirstname($infoUser['firstname']);
             $user->setLastname($infoUser['lastname']);
@@ -180,6 +189,7 @@ class UsersController
             $user->setCity($infoUser['city']);
             $user->setStatus(2);
             $user->setType(2);
+	    $user->setDateInserted(date('Y-m-d H:i:s'));
             $user->save();
 
             $user->setEmail($infoUser['email']);
@@ -201,12 +211,21 @@ class UsersController
 
 			if(empty($errors)){
 			    $user = new User();
-                if(!is_null($params["POST"]["id"])) {
+                if($params["POST"]["id"] != '') {
+			echo 'id : '.$params["POST"]["id"];
+			echo '<br>';
                     $user->setId($params["POST"]["id"]);
-                }
+                } else {
+	 	    $user->setPassword('MotDePasse'.date('Y'));
+		    $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+                    $token = str_shuffle($char);
+                    $token = substr($token, 0, 11);
+                    $user->setToken($token);
+		    $user->setDateInserted(date('Y-m-d H:i:s'));
+		}
                 $response = $user->select('id');
                 $donnees = $response->fetch();
-
+		
                 $user->setType($params['POST']['id_type']);
                 $user->setFirstname($params['POST']['firstname']);
                 $user->setLastname($params['POST']['lastname']);
@@ -274,6 +293,7 @@ class UsersController
                 $user->setCity($donnees['city']);
                 $user->setPicture($donnees['url_picture']);
                 $user->setStatus($donnees['status']);
+		$user->setDateInserted(date('Y-m-d H:i:s'));
 
                 $user->setPassword($infoPassword['password']);
 

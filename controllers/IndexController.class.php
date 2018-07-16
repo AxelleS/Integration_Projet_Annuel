@@ -4,6 +4,15 @@ class IndexController
 {
     public function indexAction($params)
     {
+        if(isset($_COOKIE['cookie'])){
+            $statitique = new Statistic();
+            $statitique->setValueCookie($_COOKIE['cookie']);
+            $nbCookies = $statitique->count('value_cookie')->fetch();
+            if($nbCookies[0] < 1) {
+                $statitique->save();
+            }
+        }
+
         $homepage = new Homepage();
         $homepage->setId(1);
         $response_homepage = $homepage->select('id');
@@ -64,9 +73,9 @@ class IndexController
             $v = new View('index');
         }
 
-        $donnees_maps = $homepage->getMapsModal($donnees_homepage['address_company'], $donnees_homepage['city_company'], $donnees_homepage['zipcode_company']);
+        $donnees_maps = Data::getMapsModal($donnees_homepage['address_company'], $donnees_homepage['city_company'], $donnees_homepage['zipcode_company']);
 
-        $donnees_video = $room->getPlayerVideo($donnees_homepage['url_video']);
+        $donnees_video = Data::getPlayerVideo($donnees_homepage['url_video']);
         $v->assign('donnees_video', $donnees_video);
         $v->assign("donnees_maps", $donnees_maps);
         $v->assign("donnees",$donnees_homepage);
