@@ -67,7 +67,7 @@ class UsersController
         $user->setStatus($donnees_user['status']);
         $user->setType($donnees_user['id_type']);
 
-        $config = $user->configFormUserAddModifyBO();
+        $config = $user->configFormUserAddModifyBO([]);
         $v = new View('userEdit','back');
         $v->assign('config',$config);
     }
