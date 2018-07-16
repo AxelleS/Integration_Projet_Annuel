@@ -129,24 +129,57 @@ $(document).ready(function(){
     url : '<?php echo DIRNAME.Route::getSlug('statistics','ajaxStatistics'); ?>',
     type : 'GET',
     complete : function(data) {
-      console.log("test" + data['responseText']);
+      console.log(data['responseText']);
       var result = JSON.parse(data['responseText']);
+
+      console.log(result['number_visite'][5][0]);
+      //Récuperation de la date du jour
+      var today = new Date();
+      var todayDay = today.getDate()
+      var todayMonth = today.getMonth() +1;
+      var todayYear = today.getFullYear();
+
+      //formatage de la date du jour
+      var todayM = todayDay + '/' +todayMonth + '/' +todayYear;
+
+      var todayDayM1 =today.getDate() -1; 
+      //formatage de la date du jour -1
+      var todayDayM1 = todayDayM1 + '/' +todayMonth + '/' +todayYear;
+
+      var todayDayM2 =today.getDate() -2; 
+      //formatage de la date du jour -2
+      var todayDayM2 = todayDayM2 + '/' +todayMonth + '/' +todayYear;
+
+      var todayDayM3 =today.getDate() -3; 
+      //formatage de la date du jour -3
+      var todayDayM3 = todayDayM3 + '/' +todayMonth + '/' +todayYear;
+
+      var todayDayM4 =today.getDate() -4;
+      //formatage de la date du jour -4
+      var todayDayM4 = todayDayM4 + '/' +todayMonth + '/' +todayYear;
+
+      var todayDayM5 =today.getDate() -5; 
+      //formatage de la date du jour -5
+      var todayDayM5 = todayDayM5 + '/' +todayMonth + '/' +todayYear;
+
+      //date.getMonth() + '/' + date.getDate() + '/' +  date.getFullYear()
 
       var ctx = document.getElementById("line-chart").getContext("2d");
 
       var dataChart = {
-        labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050,4000],
+        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [86,114,106,106,107,111,133,221,783,2478],
+            data: [result['number_visite'][5][0],result['number_visite'][4][0],result['number_visite'][3][0],result['number_visite'][2][0],result['number_visite'][1][0],result['number_visite'][0][0]],
             label: "Par jour",
             borderColor: "#3e95cd",
             fill: false
-          }, {
-            data: [282,350,411,502,635,809,947,1402,3700,5267],
-            label: "Par semaine",
-            borderColor: "#8e5ea2",
-            fill: false
           }
+          // }, {
+          //   data: [282,350,411,502,635,809,947,1402,3700,5267],
+          //   label: "Par semaine",
+          //   borderColor: "#8e5ea2",
+          //   fill: false
+          // }
         ]
       };
 

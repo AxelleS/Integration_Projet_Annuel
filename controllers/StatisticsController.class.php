@@ -12,16 +12,42 @@ class StatisticsController {
         
         //Récupération de la date du jour 
         $date = date('Y-m-d').'%';
+        $datem1 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-1, date('Y'))).'%';
+        $datem2 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-2, date('Y'))).'%';
+        $datem3 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-3, date('Y'))).'%';
+        $datem4 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-4, date('Y'))).'%';
+        $datem5 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-5, date('Y'))).'%';
 
         //Count du nombre de visite
         $visite = new Statistic();
-        $response_visi = $visite->count();
-        $stats['number_visite'] = $response_visi->fetch();
+        // $response_visi = $visite->count();
+        // $stats['number_visite'] = $response_visi->fetch();
 
         //Count du nombre de visite ce jour 
         $visite->setcreated_at($date);
         $response_visi = $visite->count('created_at');
-        $stats['number_visite_today'] = $response_visi->fetch();
+        $stats['number_visite'][0] = $response_visi->fetch();
+        //Count du nombre de visite du jour -1
+        $visite->setcreated_at($datem1);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite'][1] = $response_visi->fetch();
+        //Count du nombre de visite du jour -2
+        $visite->setcreated_at($datem2);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite'][2] = $response_visi->fetch();
+        //Count du nombre de visite du jour -3
+        $visite->setcreated_at($datem3);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite'][3] = $response_visi->fetch();
+        //Count du nombre de visite du jour -4
+        $visite->setcreated_at($datem4);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite'][4] = $response_visi->fetch();
+        //Count du nombre de visite du jour -5
+        $visite->setcreated_at($datem5);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite'][5] = $response_visi->fetch();
+
 
         //Count du nombre de nouveau utilisateur ce jour
         $users = new User();
@@ -37,7 +63,9 @@ class StatisticsController {
 
         //Count du nombre de partie du jour
 
-        
+
+
+
         echo json_encode($stats);
         exit;
 
