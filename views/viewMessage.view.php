@@ -4,8 +4,8 @@
         <h1 class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">Message</h1>
     </div>
     <div class="row site-center">
-        <article class="row col-lg-12 offset-lg-1">
-            <fieldset class="info-contact">
+        <article class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <fieldset class="info-contact col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <legend>Informations</legend>
                 <div class="row">
                     <label>ID : </label>
@@ -20,7 +20,7 @@
                     <?php echo $donnees['date_send']; ?>
                 </div>
             </fieldset>
-            <fieldset class="expediteur-contact">
+            <fieldset class="expediteur-contact col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <legend>Expéditeur</legend>
                 <div class="row">
                     <label>Nom : </label>
@@ -48,8 +48,8 @@
                 </div>
             </fieldset>
         </article>
-        <article class="row col-lg-12 offset-lg-1">
-            <fieldset class="message-contact">
+        <article class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <fieldset class="message-contact col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <legend>Message</legend>
                 <div class="row">
                     <label>Objet :</label>
@@ -65,7 +65,7 @@
                 </div>
             </fieldset>
         </article>
-        <article class="row col-lg-13 offset-lg-1">
+        <article class="validate-sending col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <input type="button" class="btn-default" value="Retour aux messages" onclick="location.href='<?php echo DIRNAME.Route::getSlug("contact", "viewAll"); ?>'">
         </article>
     </div>
