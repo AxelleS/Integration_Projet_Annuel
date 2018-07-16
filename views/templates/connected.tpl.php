@@ -12,6 +12,10 @@ $donneesConstante = $responseHP->fetch();
 
 $room = new Room();
 $responseRoom = $room->select();
+
+$user = new User();
+$user->setId($_SESSION['id_user']);
+$donneesUser = $user->select('id')->fetch();
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,6 +72,7 @@ $responseRoom = $room->select();
                 <li class="<?php echo $pageActive == 'reserver' ? 'active' : 'unactive'; ?>"><a href="<?php echo DIRNAME.Route::getSlug('reservation','index'); ?>" title="">RESERVER</a></li>
                 <li class="<?php echo $pageActive == 'faq' ? 'active' : 'unactive'; ?>"><a href="<?php echo DIRNAME.Route::getSlug('faq','index'); ?>" title="">FAQ</a></li>
                 <li class="<?php echo $pageActive == 'contact' ? 'active' : 'unactive'; ?>"><a href="<?php echo DIRNAME.Route::getSlug('contact','index'); ?>" title="">CONTACT</a></li>
+                <?php if ($donneesUser['id_type'] == 2) : ?>
                 <li class="<?php echo in_array($pageActive, $userMenu) ? 'active' : 'unactive'; ?>" id="user"><a href="" id="user-select" title="">COMPTE</a>
                     <ul>        
                         <?php echo '<li><a href="'.DIRNAME.Route::getSlug('customerreservations','index').'" title="">Mes Réservations</a></li>'; ?>
@@ -77,6 +82,9 @@ $responseRoom = $room->select();
                         <?php echo '<li><hr><a href="'.DIRNAME.Route::getSlug('signin','disconnect').'" title="">Déconnexion</a></li>'; ?>
                     </ul>
                 </li>
+                <?php else: ?>
+                    <li class="unactive"><a href="<?php echo DIRNAME.Route::getSlug('dashboardadmin','index'); ?>" title="">DASHBOARD</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
