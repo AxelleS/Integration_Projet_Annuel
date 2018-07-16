@@ -13,10 +13,10 @@ class User extends BaseSql{
   protected $address_2 = null;
   protected $zipcode;
   protected $city;
-  protected $password = "default";
+  protected $password;
   protected $token;
 
-  protected $status = 2; //Définit l'état de l'utilisateur, 1 banni, 2 toujours ok, etc etc
+  protected $status; //Définit l'état de l'utilisateur, 1 banni, 2 toujours ok, etc etc
 
   public function __construct() {
     parent::__construct();
@@ -35,7 +35,7 @@ class User extends BaseSql{
   }
 
   public function setLastname($lastname) {
-    $this->lastname=ucfirst(strtoupper(trim($lastname)));
+    $this->lastname=strtoupper(trim($lastname));
   }
 
   public function setYearsOld($years_old) {

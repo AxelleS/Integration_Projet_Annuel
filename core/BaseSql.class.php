@@ -91,8 +91,16 @@ class BaseSql{
             $query_columns = array();
             $id_search = $this->columns['id'];
 
-            if(isset($this->columns['password']) && $this->columns['password'] == '') {
+            if($this->columns['password'] == '') {
                 $unsetColumns[] = 'password';
+            }
+
+            if($this->columns['status'] == '') {
+                $unsetColumns[] = 'status';
+            }
+
+            if($this->columns['id_type'] == '') {
+                $unsetColumns[] = 'id_type';
             }
 
             foreach($this->columns as $key => $value){

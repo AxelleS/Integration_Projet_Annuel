@@ -78,10 +78,6 @@ class UsersController
 
         $errors = Validate::checkForm($infoUser);
 
-        if(!isset($infoUser['cgu'])){
-            $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
-        }
-
         if(count($errors) > 0) {
             $user->setFirstname($infoUser['firstname']);
             $user->setLastname($infoUser['lastname']);
@@ -121,8 +117,6 @@ class UsersController
             $user->setAddress2($infoUser['address_2']);
             $user->setZipcode($infoUser['zipcode']);
             $user->setCity($infoUser['city']);
-            $user->setStatus(2);
-            $user->setType(2);
             $user->save();
 
             header("Location: " . DIRNAME . Route::getSlug('customerinfo', 'index'));
@@ -225,6 +219,17 @@ class UsersController
                 $user->setCity($params['POST']['city']);
                 $user->setPicture($donnees['url_picture']);
                 $user->setStatus($params['POST']['status']);
+
+                $firsname = strtoupper(trim($params['POST']['firstname']));
+                $lastname = strtolower(trim($params['POST']['lastname']));
+
+                //Mot de passe par défault à la création d'un compte dans le BO : première lettre prénom en MAJ + 6 première lettres nom famille (ou tout le nom de famille) en MIN + 2 premiers chiffres du code postal
+                $decoup_firsname = substr($firsname, 0, 1);
+                $decoup_lastname = strlen($lastname) < 6 ? $lastname : substr($lastname, 0, 6);
+                $decoup_zipcode = substr($params['POST']['zipcode'], 0, 2);
+                $password = $decoup_firsname.$decoup_lastname.$decoup_zipcode;
+
+                $user->setPassword($password);
                 $user->save();
 
                 if($params['POST']['id_type'] == 1) {
