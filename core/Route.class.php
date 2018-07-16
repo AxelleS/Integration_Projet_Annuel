@@ -171,6 +171,13 @@ class Route{
             "type"       => 1
         ],
         [
+            "slug"       => "statistiques",
+            "controller" => "statistics",
+            "action"     => "ajaxStatistics",
+            "security"   => true,
+            "type"       => 1
+        ],
+        [
             "slug"       => "modifier-les-statistiques",
             "controller" => "statistics",
             "action"     => "edit",

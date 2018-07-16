@@ -4,38 +4,45 @@ class StatisticsController {
 
 	public function indexAction($params)
     {
+        $v = new View('statistics','back');
+        // $v->assign("donnees",$donnee_stat);
+    }
 
-    	$date = date('Y-m-d').'%';
+    public function ajaxStatisticsAction($params){
+        
+        //Récupération de la date du jour 
+        $date = date('Y-m-d').'%';
 
-        //Count du nombre de partie du jour
-        //Necessite un join
-        /*$game = new Calendar();
-        $game->setDateCalendar($date);
-        $game->set
-        $response_game = $game->count('date_calendar');
+        //Count du nombre de visite
+        $visite = new Statistic();
+        $response_visi = $visite->count();
+        $stats['number_visite'] = $response_visi->fetch();
 
-        var_dump($response_game);exit;*/
+        //Count du nombre de visite ce jour 
+        $visite->setcreated_at($date);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite_today'] = $response_visi->fetch();
 
         //Count du nombre de nouveau utilisateur ce jour
-		$users = new User();
-		$users->setDateInserted($date);
-		$response_stat = $users->count('date_inserted');
-		$stats['number_insert_today'] = $response_stat->fetch();
-		
+        $users = new User();
+        $users->setDateInserted($date);
+        $response_stat = $users->count('date_inserted');
+        $stats['number_insert_today'] = $response_stat->fetch();
+        
         //Count du nombre de reservation ce jour
         $resa = new Time_slot();
         $resa->setDateBill($date);
         $response_resa = $resa->count('date_bill');
         $stats['number_resa_today'] = $response_resa->fetch();
 
-        //SELECT count(*) FROM calendar as c left join time_slot as t on t.id_calendar = c.id where t.id_user IS NOT NULL and c.date_calendar like "$date"
+        //Count du nombre de partie du jour
+
+        
+        echo json_encode($stats);
+        exit;
 
 
-        $v = new View('statistics','back');
-        // $v->assign("donnees",$donnee_stat);
     }
-
-    public function editAction($params){}
 
     public function saveAction($params){}
 
