@@ -119,6 +119,10 @@ main{
 //     padding-bottom: 100px;
 // }
 
+.introduction{
+    width: 100%;
+}
+
 .introduction h1{
     margin-top:20px;
     text-align: center;
@@ -178,7 +182,7 @@ main{
     position: absolute;
     bottom: 40%;
     left: 25%;
-    width:50%;
+    width:30%;
     height: 20%;
     background-color: #42BDC4;
     display: flex;
@@ -956,6 +960,7 @@ main{
     padding-top:1%;
     padding-bottom:1%;
     margin-bottom: 2%;
+    width: 30%;
 }
 
 .contact-form input{
@@ -1054,7 +1059,6 @@ main{
 /* FORM - SIGNIN */
 
 .signin-form h1{
-    padding-bottom: 20px;
     background-color: #C4C4C4;
     border-radius: 20px;
     text-align: center;
@@ -1063,6 +1067,7 @@ main{
     padding-top:1%;
     padding-bottom:1%;
     margin-bottom: 2%;
+    width: 30%;
 }
 
 .signin-form input{
@@ -1093,19 +1098,22 @@ main{
     height: 25px;
 }
 
-.signup-via-signin{
-    text-align: center;
-    margin-top: 20px;
+.signup-link a{
+    color: black;
 }
 
-.signup-via-signin a{
-    color: black;
+.signup-link{
+    float: none;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .btn-signin{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    color: black;
 }
 
 @media screen and (max-width : 980px) {
@@ -1167,6 +1175,27 @@ main{
 }
 
 /* SIGN UP */
+.customer-pwd{
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+/* FORM - signup */
+
+.customer-pwd-form h1{
+    padding-bottom: 20px;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:1%;
+    padding-bottom:1%;
+    margin-bottom: 2%;
+    width:30%;
+}
+
+/* SIGN UP */
 .signup{
     margin-top: 100px;
     margin-bottom: 60px;
@@ -1189,6 +1218,10 @@ main{
 
 .signup-form input{
     width: 100%;
+}
+
+.signup-form input[type="checkbox"]{
+    width: 20px;
 }
 
 .signup-form section{
@@ -1224,26 +1257,22 @@ main{
     // margin-top: 3%;
 }
 
-.validation-CGU{
-    // margin-top:1%;
-}
-
 .customer-resa{
     margin-top: 120px;
   }
-  
+
   .customer-resa h1{
     text-align: center;
   }
-  
+
   .customer-fact{
     margin-top: 120px;
   }
-  
+
   .customer-fact h1{
     text-align: center;
   }
-  
+
   .rooms {
     margin-top: 15%;
     margin-bottom: 10%;
@@ -1251,21 +1280,21 @@ main{
     flex-direction: row;
     justify-content: flex-start;
     height: fit-content; }
-  
+
   .rooms input {
     width: 100%;
     display: none;
     background-color: white; }
-  
+
   .rooms-text {
     margin-top: 15%;
     text-align: right;
     margin-right: 10px; }
-  
+
   .resa{
     margin-top: 100px;
   }
-  
+
   .resa h1{
     padding-bottom: 20px;
     background-color: #C4C4C4;
@@ -1274,53 +1303,52 @@ main{
     margin-left: auto;
     margin-right: auto;
     padding-top: 1%;
-    padding-bottom: 1%; 
+    padding-bottom: 1%;
     width: 20%;}
-  
+
   .submit-resa{
     width: 100%;
   }
-  
+
   .resa-next{
-    margin-top: 100px;
+    margin-top: 10%;
   }
-  
+
   .resa-next div{
     background-color: #42BDC4;
   }
-  
+
   .resa-next div:first-child{
     background-color: #FFFFFF;
   }
-  
+
   .resa-next #libel{
     text-align: center;
     font-weight: bold;
   }
-  
+
   .resa-next input{
     width: 100%;
   }
-  
+
   .resa-next div{
     padding-bottom: 20px;
   }
-  
+
   .player_3, .player_4, .player_5{
     display: none;
   }
-  
+
   .resa-next div:last-child{
     text-align: center;
   }
-  
+
   .resa-next-price article{
     margin-top: 40px;
-    background-color: #FFFFFF;
-    text-align: center;
+    text-align: right;
     font-weight: bold;
   }
-  
+
   .resa-next-valid article{
     display:flex;
     justify-content: flex-end;
@@ -1388,3 +1416,57 @@ main{
   .customer-opinion .note div p{
     margin: auto;
   }
+
+  .errors{
+      font-weight: bold;
+      color: $errors;
+  }
+
+  .profil-img {
+      width: 25%;
+  }
+
+    form#signin > div > section {
+        float: none;
+        margin: 0 auto;
+    }
+
+form#signin > div > section > .btn-default {
+    margin-top: 20px;
+}
+
+  form#customer-infos > div > section {
+      float: none;
+      margin: 0 auto;
+  }
+
+form#customer-infos > div > section > .btn-default {
+    margin-top: 20px;
+}
+
+form#contact > div > section {
+    float: none;
+    margin: 0 auto;
+}
+
+form#contact > div > section > .btn-default {
+    margin-top: 20px;
+}
+
+div.error-page {
+    margin-top: 50px;
+}
+
+div.error-page article{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+div.error-page article h1{
+    font-size: 80px;
+}
+
+div.error-page article p{
+    font-size: 30px;
+}

@@ -12,8 +12,8 @@ class Homepage extends BaseSql{
   protected $address_company;
   protected $zipcode_company;
   protected $city_company;
-  protected $url_google;
   protected $roomList;
+  protected $logo;
 
   protected $foreign;
 
@@ -46,7 +46,7 @@ class Homepage extends BaseSql{
   }
 
   public function setUrlVideo($url_video) {
-    $this->url_video=strtolower(trim($url_video));
+    $this->url_video=trim($url_video);
   }
 
   public function setNameCompany($name_company) {
@@ -65,19 +65,19 @@ class Homepage extends BaseSql{
     $this->city_company=strtoupper(trim($city_company));
   }
 
-  public function setUrlGoogle($url_google) {
-    $this->url_google=strtolower(trim($url_google));
-  }
-
   public function setRoomList($roomList) {
     $this->roomList=$roomList;
+  }
+
+  public function setLogo($logo){
+      $this->logo=$logo;
   }
 
   public function setForeign($foreign){
     $this->foreign=$foreign;
   }
 
-  public function formModifyHomepage() {
+  public function formModifyHomepage($errors) {
     $homepageValue = new Homepage();
     $response_homepageValue = $homepageValue->select();
     $response = array();
@@ -96,8 +96,11 @@ class Homepage extends BaseSql{
         "cancel"=>DIRNAME.Route::getSlug('organization','index')
       ],
       "validate"=>[
-        "value"=>"sauvegarder",
-        "type"=>"submit"
+          "value"=>"sauvegarder",
+          "type"=>"submit"
+      ],
+      "errors"=>[
+          $errors
       ],
       "style"=>[
         "classText"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style",
@@ -118,7 +121,6 @@ class Homepage extends BaseSql{
         "address_company"=>$this->address_company,
         "zipcode_company"=>$this->zipcode_company,
         "city_company"=>$this->city_company,
-        "url_google"=>$this->url_google,
         "actualPageTypeValue"=>"Homepage",
         "actualPageType"=>"actualPageType"
       ],
@@ -172,10 +174,6 @@ class Homepage extends BaseSql{
           "city_company"=>[
             "nameView"=>"Ville de l'entreprise",
             "name"=>"city_company"
-          ],
-          "url_google"=>[
-            "nameView"=>"URL google maps",
-            "name"=>"url_google"
           ]
       ]
     ];

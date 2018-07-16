@@ -63,6 +63,12 @@ class IndexController
         } else {
             $v = new View('index');
         }
+
+        $donnees_maps = Data::getMapsModal($donnees_homepage['address_company'], $donnees_homepage['city_company'], $donnees_homepage['zipcode_company']);
+
+        $donnees_video = Data::getPlayerVideo($donnees_homepage['url_video']);
+        $v->assign('donnees_video', $donnees_video);
+        $v->assign("donnees_maps", $donnees_maps);
         $v->assign("donnees",$donnees_homepage);
 
     }

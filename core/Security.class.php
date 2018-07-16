@@ -2,6 +2,14 @@
 
 class Security {
 
+    public static function generateCaptcha(){
+        $char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $char = str_shuffle($char);
+        $length = rand(-8,-6);
+        $captcha = substr($char, $length);
+        $_SESSION['captcha'] = $captcha;
+    }
+
     public static function isConnected(){
 		if((isset($_SESSION['id_user'])) && (isset($_SESSION['token']))){
 			$user = new User();
@@ -20,12 +28,15 @@ class Security {
 				$user->majToken();
 	
 				$_SESSION['token'] = $token;
-	
+
+                $_SESSION['is_connected'] = true;
 				return true;
 			} else {
+                $_SESSION['is_connected'] = false;
 				return false;
 			}
 		} else {
+            $_SESSION['is_connected'] = false;
             return false;
         }
 	}

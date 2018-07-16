@@ -1,3 +1,8 @@
+<?php
+    $homepage = new Homepage();
+    $responseHP = $homepage->select();
+    $donneesHP = $responseHP->fetch();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +15,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="icon" type="image/ico" href="img/favicon.ico" />
+    <link rel="icon" type="image/ico" href="<?php echo DIRNAME."/".$donneesHP['logo']; ?>" />
     <script>
       $(document).ready(function(){
         $('.burgerResponsive, .burgerResponsiveSidebar, .overlay').click(function(){
@@ -45,11 +50,17 @@
     </script>
   </head>
   <body class="container-fluid">
+  <?php
+      $homepage = new Homepage();
+      $response = $homepage->select();
+      $donneesConstante = $response->fetch();
+  ?>
+
     <header class="row">
       <div class="overlay"></div>
       <section id="sidebar" class="dashboard-fullheight background-nav navbar-fixed-left col-lg-3 col-md-3 col-sm-3 col-xs-6">
         <figure class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <img class="logo-dashboard col-lg-2 offset-lg-4 col-md-2 offset-md-4 col-sm-2 offset-sm-4 col-xs-2 offset-xs-4" src="<?php echo DIRNAME."/"?>img/logo.jpg" alt="Logo Play with My CMS">
+          <img class="logo-dashboard col-lg-2 offset-lg-4 col-md-2 offset-md-4 col-sm-2 offset-sm-4 col-xs-2 offset-xs-4" src="<?php echo DIRNAME.$donneesConstante['logo']; ?>" alt="Logo Play with My CMS">
           <svg class="burgerResponsiveSidebar col-lg-1 offset-lg-5 col-md-1 offset-md-5 col-sm-1 offset-sm-5 col-xs-1 offset-xs-5" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
           <path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path>
           </svg>
@@ -92,7 +103,18 @@
               <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Paramètres</p></figcaption>
             </figure>
           <?php echo '</a>'; ?>
-          <?php echo '<a href="'.DIRNAME.'se-deconnecter" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
+            <?php echo '<a href="'.DIRNAME.Route::getSlug('users','changePasswordBO').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
+            <figure class="row align-navbar-details menu-hover">
+                <svg version="1.1" class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 24 24">
+                    <title></title>
+                    <g id="icomoon-ignore">
+                    </g>
+                    <path d="M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-5l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z"/>
+                </svg>
+                <figcaption class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-xs-6 offset-xs-1 align-navbar-text"><p class="fill-color">Changer le mot de passe</p>  </figcaption>
+            </figure>
+            <?php echo '</a>'; ?>
+          <?php echo '<a href="'.DIRNAME.Route::getSlug('signin','disconnect').'" title="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 href-style">'; ?>
             <figure class="row align-navbar-details menu-hover">
               <svg version="1.1" class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 fill-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 512 512">
               <title></title>

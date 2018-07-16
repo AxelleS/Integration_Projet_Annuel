@@ -1,5 +1,7 @@
 <?php
 session_start();
+date_default_timezone_set('Europe/Paris');
+
 require "conf.inc.php";
 require 'PHPMailer/_lib/class.phpmailer.php';
 
@@ -13,6 +15,7 @@ function myAutoloader($class){
 }
 
 spl_autoload_register('myAutoloader');
+sitemapGenerator::generateSitemap();
 
 //Récupère l'url
 $uri = $_SERVER["REQUEST_URI"];
@@ -25,14 +28,23 @@ $maroute = Route::getRoute($uriExploded[0]);
 
 $c = $maroute['controller'];
 $a = $maroute['action'];
-$_SESSION['is_connected'] = false;
+
+if(!isset($_SESSION['is_connected'])) {
+    $_SESSION['is_connected'] = false;
+}
 
 if ($maroute['security'] == true) {
     if (Security::isConnected() == false) {
         $c = 'signin';
         $a = 'index';
     } else {
-        $_SESSION['is_connected'] = true;
+        $user = new User();
+        $user->setId($_SESSION['id_user']);
+        $donneesUser = $user->select('id')->fetch();
+        if($maroute['type'] != $donneesUser['id_type']) {
+            $c = 'errors';
+            $a = 'quatreCentTrois';
+        }
     }
 }
 

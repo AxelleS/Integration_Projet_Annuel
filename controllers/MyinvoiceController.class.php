@@ -105,7 +105,7 @@ class MyInvoiceController
         $pdf->Cell(10,10,'Total TTC');
         $pdf->Cell(26);
         $pdf->SetFont('Times','',12);
-        $pdf->Cell(10,10,iconv('UTF-8', 'windows-1252', $donnees_timeslot['total_price']+($donnees_timeslot['total_price']*0.20).'€'));
+        $pdf->Cell(10,10,iconv('UTF-8', 'windows-1252', $donnees_timeslot['total_price'] + ($donnees_timeslot['total_price'] * 0.20).'€'));
         $pdf->Ln(10);
 
         $pdf->Output();

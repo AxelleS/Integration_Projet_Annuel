@@ -9,6 +9,7 @@ class Room extends BaseSql{
   protected $is_pregnant = 0;
   protected $is_wheelchair = 0;
   protected $is_deaf = 1;
+  protected $price;
 
   public function __construct() {
     parent::__construct();
@@ -46,13 +47,11 @@ class Room extends BaseSql{
     $this->is_deaf=$is_deaf;
   }
 
-  public function getPlayerVideo() {
-    $parseUrl = parse_url($this->url_video);
-    $query = explode('=', $parseUrl['query'])[1];
-    return '<iframe width="800" height="500" src="https://www.youtube.com/embed/'.$query.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  public function setPrice($price) {
+      $this->price=$price;
   }
 
-  public function formModifyRoom() {
+  public function formModifyRoom($errors, $roomsPictures) {
 
     return [
       "config"=>[
@@ -64,6 +63,9 @@ class Room extends BaseSql{
         "value"=>"sauvegarder",
         "type"=>"submit"
       ],
+      "errors"=>[
+          $errors
+      ],
       "style"=>[
         "classText"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style",
         "classInput"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 organization-input-style",
@@ -72,6 +74,7 @@ class Room extends BaseSql{
         "buttonCancel"=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 validate-modify-homepage resize-cancel-button",
         "classValidate"=>"col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage"
       ],
+      "pictures"=>$roomsPictures,
       "value"=>[
         "name"=>$this->name,
         "description"=>$this->description,
@@ -79,7 +82,8 @@ class Room extends BaseSql{
         "capacity"=>$this->capacity,
         "is_pregnant"=>$this->is_pregnant,
         "is_wheelchair"=>$this->is_wheelchair,
-        "is_deaf"=>$this->is_deaf
+        "is_deaf"=>$this->is_deaf,
+        "price"=>$this->price
       ],
       "id"=>[
         "type"=>"hidden",
@@ -111,9 +115,18 @@ class Room extends BaseSql{
         "value"=>$this->url_video
       ],
       "capacity"=>[
+        "type"=>"number",
         "nameView"=>"Capacité max",
         "name"=>"capacity",
+        "required"=>true,
         "value"=>$this->capacity
+      ],
+      "price"=>[
+          "type"=>"number",
+          "nameView"=>"Prix de la salle",
+          "name"=>"price",
+          "required"=>true,
+          "value"=>$this->price
       ],
       "is_pregnant"=>[
         "type"=>"radio",
@@ -192,7 +205,8 @@ class Room extends BaseSql{
         "capacity"=>$this->capacity,
         "is_pregnant"=>$this->is_pregnant,
         "is_wheelchair"=>$this->is_wheelchair,
-        "is_deaf"=>$this->is_deaf
+        "is_deaf"=>$this->is_deaf,
+        "price"=>$this->price
       ],
       "id"=>[
         "type"=>"hidden",
@@ -224,9 +238,18 @@ class Room extends BaseSql{
         "value"=>$this->url_video
       ],
       "capacity"=>[
-        "nameView"=>"Capacité max",
-        "name"=>"capacity",
-        "value"=>$this->capacity
+          "type"=>"number",
+          "nameView"=>"Capacité max",
+          "name"=>"capacity",
+          "required"=>true,
+          "value"=>$this->capacity
+      ],
+      "price"=>[
+          "type"=>"number",
+          "nameView"=>"Prix de la salle",
+          "name"=>"price",
+          "required"=>true,
+          "value"=>$this->price
       ],
       "is_pregnant"=>[
         "type"=>"radio",
@@ -280,5 +303,3 @@ class Room extends BaseSql{
   }
 
 }
-
- ?>

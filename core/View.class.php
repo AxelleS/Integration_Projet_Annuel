@@ -6,7 +6,7 @@ class View
     private $t;
     private $data = [];
 
-    public function __construct($v="default", $t="default"){
+    public function __construct($v="index", $t="default"){
         $this->v = $v.".view.php";
         $this->t = $t.".tpl.php";
 

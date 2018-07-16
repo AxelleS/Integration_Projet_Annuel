@@ -2,7 +2,7 @@
     <section class="row customer-opinion">
         <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 opinion-form">
             <h1>Notez votre partie !</h1>
-            <form action=<?php echo DIRNAME."customeropinion/save";?> method="post" id="opinion-form" name="opinion-form">
+            <form action=<?php echo DIRNAME.Route::getSlug('customeropinion','save');?> method="post" id="opinion-form" name="opinion-form">
                 <input type="hidden" name="id_time_slot" id="id_time_slot" value="<?php echo $donnees['id']; ?>">
                 <div class="row">
                     <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
@@ -15,7 +15,7 @@
                     </article>
                     <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                         <p><b>Heure de la partie : </b></p>
-                        <p><?php echo $donnees['value_time_slot']; ?></p>
+                        <p><?php echo $donnees['time_slot']; ?></p>
                     </article>
                 </div>
                 <div class="row">

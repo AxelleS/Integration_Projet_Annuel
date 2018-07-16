@@ -66,8 +66,11 @@
                 <p>Choix créneau :</p>
             </article>
             <article class="slots">
-                <select class="creneaux"></select>
-                <?php echo '<input type="submit" value="Valider" href="' . DIRNAME.Route::getSlug('reservationnext','index') . '">'; ?>
+                <select class="creneaux" onchange="saveChoices()"></select>
+                <form action="<?php echo DIRNAME.Route::getSlug('reservationnext','index'); ?>" method="post">
+                    <input type="hidden" id="slotChoose" name="slotChoose" value="">
+                    <input type="submit" value="Valider">
+                </form>
             </article>
         </article>
     </section>
@@ -91,12 +94,20 @@
             <?php echo $donnees_video; ?>
         </article>
         <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion row">
+            <?php if(isset($donnees['picture_1'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_1']; ?>" target="_blank"><img src="<?php echo $donnees['picture_1']; ?>" alt=""></a>
+            <?php endif; ?>
+            <?php if(isset($donnees['picture_2'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_2']; ?>" target="_blank"><img src="<?php echo $donnees['picture_2']; ?>" alt=""></a>
+            <?php endif; ?>
         </article>
         <article class="col-lg-8 col-md-6 col-sm-6 col-xs-6 picture-promotion row">
+            <?php if(isset($donnees['picture_3'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_3']; ?>" target="_blank"><img src="<?php echo $donnees['picture_3']; ?>" alt=""></a>
+            <?php endif; ?>
+            <?php if(isset($donnees['picture_4'])) : ?>
             <a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="<?php echo $donnees['picture_4']; ?>" target="_blank"><img src="<?php echo $donnees['picture_4']; ?>" alt=""></a>
+            <?php endif; ?>
         </article>
     </section>
 
@@ -239,6 +250,10 @@
                 }
             }
         });
+    }
+               
+    function saveChoices() {
+        $('#slotChoose').attr('value',  $('.creneaux option:selected').val());
     }
 
     function loadSelector(theDate, timeSlots) {

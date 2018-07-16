@@ -15,6 +15,7 @@ class User extends BaseSql{
   protected $city;
   protected $password = "default";
   protected $token;
+  protected $date_inserted;
 
   protected $status = 2; //Définit l'état de l'utilisateur, 1 banni, 2 toujours ok, etc etc
 
@@ -83,9 +84,13 @@ class User extends BaseSql{
     $this->status=$status;
   }
 
-  public function configFormUserAddModify(){
+  public function setDateInserted($date_inserted){
+    $this->date_inserted=$date_inserted;
+  }
+
+  public function configFormUserSignup($errors){
     return [
-        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','saveCustomer'),"name"=>"signup"],
+        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','signup'),"name"=>"signup"],
         "input"=>[
           "A"=>[
             "Personnel"=>[
@@ -110,7 +115,7 @@ class User extends BaseSql{
                 "value" => $this->firstname
               ],
               "years_old"=>[
-                "type"=>"text",
+                "type"=>"number",
                 "placeholder"=>"Votre âge",
                 "required"=>true,
                 "class" => "col-lg-4",
@@ -132,11 +137,6 @@ class User extends BaseSql{
                 "class" => "col-lg-12",
                 "value" => '',
                 "confirm" => 'password'
-              ],
-              "cgu"=>[
-                "type"=> "checkbox",
-                "text"=> "J'accepte les Conditions Générales d'Utilisation",
-                "class"=> "col-lg-12",
               ]
             ]
           ],
@@ -172,7 +172,7 @@ class User extends BaseSql{
               "address_2"=>[
                 "type"=>"text",
                 "placeholder"=>"Votre adresse suite",
-                "required"=>true,
+                "required"=>false,
                 "class" => "col-lg-12",
                 "value" => $this->address_2
               ],
@@ -196,6 +196,12 @@ class User extends BaseSql{
           ],
           "D"=>[
             "Photo de profil"=>[
+                "preview"=>[
+                    "type"=>"img",
+                    "required"=>false,
+                    "class" => "col-lg-12",
+                    "value" => $this->url_picture
+                ],
               "picture"=>[
                 "type"=>"file",
                 "required"=>false,
@@ -209,11 +215,131 @@ class User extends BaseSql{
               ]
             ]
           ]
+        ],
+        "errors"=>[
+            $errors
         ]
     ];
   }
 
-    public function configFormUserAddModifyBO(){
+    public function configFormUserInfos($errors){
+        return [
+            "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','saveCustomer'),"name"=>"customer-infos"],
+            "input"=>[
+                "A"=>[
+                    "Personnel"=>[
+                        "id"=>[
+                            "type"=>"hidden",
+                            "required"=>false,
+                            "value" => $this->id,
+                            'class' => ''
+                        ],
+                        "lastname"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre nom",
+                            "required"=>true,
+                            "class" => "col-lg-5",
+                            "value" => $this->lastname
+                        ],
+                        "firstname"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre prénom",
+                            "required"=>true,
+                            "class" => "col-lg-5 offset-lg-1",
+                            "value" => $this->firstname
+                        ],
+                        "years_old"=>[
+                            "type"=>"number",
+                            "placeholder"=>"Votre âge",
+                            "required"=>true,
+                            "class" => "col-lg-4",
+                            "value" => $this->years_old
+                        ]
+                    ]
+                ],
+                "B"=>[
+                    "Contact"=>[
+                        "email"=>[
+                            "type"=>"email",
+                            "placeholder"=>"Votre email",
+                            "required"=>true,
+                            "class" => "col-lg-5",
+                            "value" => $this->email
+                        ],
+                        "phone"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre téléphone",
+                            "required"=>true,
+                            "class" => "col-lg-5 offset-lg-1",
+                            "value" => $this->phone,
+                            "maxString" => 10,
+                            "minString" =>  10
+                        ]
+                    ]
+                ],
+                "C"=>[
+                    "Location"=>[
+                        "address"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre adresse",
+                            "required"=>true,
+                            "class" => "col-lg-12",
+                            "value" => $this->address
+                        ],
+                        "address_2"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre adresse suite",
+                            "required"=>false,
+                            "class" => "col-lg-12",
+                            "value" => $this->address_2
+                        ],
+                        "zipcode"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre code postal",
+                            "required"=>true,
+                            "class" => "col-lg-4",
+                            "value" => $this->zipcode,
+                            "maxString" => 5,
+                            "minString" =>  5
+                        ],
+                        "city"=>[
+                            "type"=>"text",
+                            "placeholder"=>"Votre ville",
+                            "required"=>true,
+                            "class" => "col-lg-5 offset-lg-2",
+                            "value" => $this->city
+                        ]
+                    ]
+                ],
+                "D"=>[
+                    "Photo de profil"=>[
+                        "preview"=>[
+                            "type"=>"img",
+                            "required"=>false,
+                            "class" => "col-lg-12",
+                            "value" => $this->url_picture
+                        ],
+                        "picture"=>[
+                            "type"=>"file",
+                            "required"=>false,
+                            "class" => "col-lg-12",
+                            "value" => ''
+                        ],
+                        "picture-old"=>[
+                            "type"=>"hidden",
+                            "class" => "col-lg-12",
+                            "value" => $this->url_picture
+                        ]
+                    ]
+                ]
+            ],
+            "errors"=>[
+                $errors
+            ]
+        ];
+    }
+
+    public function configFormUserAddModifyBO($errors){
         return [
             "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('users','save'),"name"=>"edit"],
             "input"=>[
@@ -280,7 +406,6 @@ class User extends BaseSql{
                         "address_2"=>[
                             "type"=>"text",
                             "placeholder"=>"Votre adresse suite",
-                            "required"=>false,
                             "class" => "col-lg-12",
                             "value" => $this->address_2
                         ],
@@ -316,13 +441,16 @@ class User extends BaseSql{
                         ]
                     ]
                 ]
+            ],
+            "errors"=>[
+                $errors
             ]
         ];
     }
 
-  public function configFormUserConnect(){
+  public function configFormUserConnect($errors){
     return [
-        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('signin','connect'),"name"=>"signup"],
+        "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('signin','connect'),"name"=>"signin"],
         "input"=>[
           "A"=>[
             "Connexion"=>[
@@ -342,6 +470,9 @@ class User extends BaseSql{
               ]
             ]
           ]
+        ],
+        "errors"=>[
+            $errors
         ]
     ];
   }

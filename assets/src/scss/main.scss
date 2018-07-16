@@ -9,12 +9,13 @@ $dashboard-text-color: #2A2A2A;
 $icon-messages: #F2F2F2;
 $organization_page: #CDD5DE;
 $organization_page_hover: #B1CFF6;
+$errors: #FF0000;
 
 @import 'style';
 @import 'dashboard-tpl';
 @import 'dashboard';
 @import 'dashboard_stat';
 @import 'dashboard_orga';
-@import 'dashboard_database';
+@import 'dashboard_parameters';
 @import 'dashboard_calendrier';
 @import 'dashboard_contact';

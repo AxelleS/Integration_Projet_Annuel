@@ -14,5 +14,10 @@
                 <p class="titre-organization"><b>Administrateurs</b></p>
             </div>
         </a>
+        <a class="col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-10 offset-sm-2 col-xs-10 offset-xs-2 placed" href="<?php echo DIRNAME.Route::getSlug('users','add'); ?>">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p class="titre-organization"><b>Ajouter un utilisateur</b></p>
+            </div>
+        </a>
     </div>
 </section>
