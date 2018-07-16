@@ -46,7 +46,7 @@ class BaseSql{
                 if(is_null($valeur_recherche)){
                     $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
                 } else{
-                    if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                    if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }else{
 
                         $response = $this->pdo->query(" SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
@@ -70,9 +70,9 @@ class BaseSql{
 
             }
 
-            //echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+            //echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         }
-        // echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+        // echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         return $response;
     }
 
@@ -91,7 +91,7 @@ class BaseSql{
                     $response = $this->pdo->query("SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
                 } else{
                     if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){
-                        $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                        $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }else{
                         $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }
@@ -111,12 +111,11 @@ class BaseSql{
                         $response = $this->pdo->query("SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche[0]." LIKE '".$valeur_recherche[0]."' AND ".$champ_recherche[1]." LIKE '".$valeur_recherche[1]."' AND ".$champ_recherche[2]." LIKE '".$valeur_recherche[2]."' AND ".$champ_recherche[3]." LIKE '".$valeur_recherche[3]."' ORDER BY id ".$order);
                         break;
                 }
-
             }
 
-            //echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+            //echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         }
-        // echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+        // echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         return $response;   
     }
 
