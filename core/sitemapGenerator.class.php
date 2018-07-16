@@ -5,7 +5,7 @@ class sitemapGenerator {
     public static function generateSitemap() {
 
         $dirPath = 'xml';
-        $filePath = 'sitemap/sitemap.xml';
+        $filePath = 'sitemap.xml';
         $urlData = array();
         $urlPath = "escaperoom"."/";
         $domain = "https://".$_SERVER["SERVER_NAME"];
@@ -35,10 +35,10 @@ class sitemapGenerator {
             $loc_node = $xmlDoc->createElement('loc', $domain.DIRNAME.$url);
             $url_node->appendChild($loc_node);
 
-            // Code XML du sitemap
+            // code xml
             $sitemap_xml_code = $xmlDoc->saveXml();
 
-            // Ecriture du code XML du sitemap dans un fichier
+            // save in the sitemap.xml file
             file_put_contents($filePath, $sitemap_xml_code);
         }
 
