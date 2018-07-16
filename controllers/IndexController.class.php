@@ -4,11 +4,12 @@ class IndexController
 {
     public function indexAction($params)
     {
-
-        $statitique = new Statistic();
-        $statitique->setValueCookie($_COOKIE['cookie']);
-        echo $_COOKIE['cookie'];
-        $statitique->save();
+        if(isset($_COOKIE['cookie'])){
+            $statitique = new Statistic();
+            $statitique->setValueCookie($_COOKIE['cookie']);
+            echo $_COOKIE['cookie'];
+            $statitique->save();
+        }
 
 
         $homepage = new Homepage();

@@ -46,7 +46,7 @@ if ($maroute['security'] == true) {
         }
     }
 }
-//Appel dèun cookie 
+//Appel de la fonction cookie 
 Cookie::generateCookie();
 
 //Supprime les deux premières case du tableau

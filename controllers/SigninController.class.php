@@ -4,6 +4,7 @@ class SigninController
 {
     public function indexAction($params)
     {
+
         //Appelle la vue
         if ($_SESSION['is_connected']) {
             $v = new View('customerreservations','connected');
