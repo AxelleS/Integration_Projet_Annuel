@@ -159,23 +159,19 @@
               <section class="col-lg-12 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
                   <div class="row">
                       <b><?php echo $contact['lastname'].' '.$contact['firstname'];?></b>
-                      <div class="fill-icon offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 messages-informations"><?php echo $contact['date'].' '.$contact['hour']; ?></div>
+                      <div class="fill-icon messages-informations"><?php echo $contact['date'].' '.$contact['hour']; ?></div>
                   </div>
                   <div>
                       <p><?php echo $contact['message']; ?></p>
-                  </div>
-                  <div class="fill-icon icon-hover">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z"/></svg>
-                      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z"/></svg>
                   </div>
               </section>
             </div>
           <?php endforeach; ?>
           </div>
           <div class="">
-            <div class="messages-plus">
-                <a href="<?php echo Route::getSlug('contact', 'viewAll'); ?>"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg></a>
-            </div>    
+            <a class="messages-plus" href="<?php echo Route::getSlug('contact', 'viewAll'); ?>">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg></span>
+            </a>    
           </div>
         </div>
       </div>
