@@ -129,10 +129,9 @@ $(document).ready(function(){
     url : '<?php echo DIRNAME.Route::getSlug('statistics','ajaxStatistics'); ?>',
     type : 'GET',
     complete : function(data) {
-      console.log(data['responseText']);
       var result = JSON.parse(data['responseText']);
+      console.log(result);
 
-      console.log(result['number_visite'][5][0]);
       //Récuperation de la date du jour
       var today = new Date();
       var todayDay = today.getDate()
@@ -198,9 +197,34 @@ $(document).ready(function(){
       var ctx = document.getElementById("line-chart2").getContext("2d");
 
       var dataChart2 = {
-        labels: [10,20,30,40,50,60,70,80,90,100,200],
+        labels: ["00H00","01H00","02H00","03H00","04H00","05H00","06H00","07H00","08H00","09H00","10H00","11H00","12H00","13H00","14H00","15H00","16H00","17H00","18H00","19H00","20H00","21H00","22H00","23H00"],
         datasets: [{
-            data: [2,24,7,45,33,10,66,45,23,17],
+            data: [
+                    result['number_visite_today'][0][0],
+                    result['number_visite_today'][1][0],
+                    result['number_visite_today'][2][0],
+                    result['number_visite_today'][3][0],
+                    result['number_visite_today'][4][0],
+                    result['number_visite_today'][5][0],
+                    result['number_visite_today'][6][0],
+                    result['number_visite_today'][7][0],
+                    result['number_visite_today'][8][0],
+                    result['number_visite_today'][9][0],
+                    result['number_visite_today'][10][0],
+                    result['number_visite_today'][11][0],
+                    result['number_visite_today'][12][0],
+                    result['number_visite_today'][13][0],
+                    result['number_visite_today'][14][0],
+                    result['number_visite_today'][15][0],
+                    result['number_visite_today'][16][0],
+                    result['number_visite_today'][17][0],
+                    result['number_visite_today'][18][0],
+                    result['number_visite_today'][19][0],
+                    result['number_visite_today'][20][0],
+                    result['number_visite_today'][21][0],
+                    result['number_visite_today'][22][0],
+                    result['number_visite_today'][23][0]
+                  ],
             label: "Par jour",
             borderColor: "#FF8000",
             fill: false
@@ -223,10 +247,10 @@ $(document).ready(function(){
       var ctx = document.getElementById("line-chart3").getContext("2d");
 
       var dataChart3 = {
-        labels: [20,24,24,26,33,45,45,45,46,76],
+        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [20,24,24,26,33,45,45,45,46,76],
-            label: "Total",
+            data: [result['number_insert_today'][5][0],result['number_insert_today'][4][0],result['number_insert_today'][3][0],result['number_insert_today'][2][0],result['number_insert_today'][1][0],result['number_insert_today'][0][0]],
+            label: "Par jour",
             borderColor: "#0101DF",
             fill: false
           }
@@ -240,17 +264,17 @@ $(document).ready(function(){
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: 'Nombre de visiteurs'
+            text: 'Nombre d\'inscrit'
           }
         }
       });
       var ctx = document.getElementById("line-chart4").getContext("2d");
 
       var dataChart4 = {
-        labels: ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
+        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [2,1,0,0,0,0,0,0,0,3,1,6,2,2,4,5,2,0,5,11,9,6,3,0], 
-            label: "Ce jour",
+            data: [result['number_resa_today'][5][0],result['number_resa_today'][4][0],result['number_resa_today'][3][0],result['number_resa_today'][2][0],result['number_resa_today'][1][0],result['number_resa_today'][0][0],], 
+            label: "Par jour",
             borderColor: "#DF013A",
             fill: false
           }
