@@ -72,6 +72,12 @@
     </div>
 </div>
 <script>
+
+$(document).ready(function(){
+  refresh();
+  //setInterval("refresh()", 30*60000)
+});
+
 function visible_hidden_visite(){
 
 	if (chart_visite.style.visibility=="hidden"){
@@ -123,45 +129,42 @@ function visible_hidden_nb_partie(){
 	}
 }
 
-$(document).ready(function(){
+//Récuperation de la date du jour
+var today = new Date();
+var todayDay = today.getDate()
+var todayMonth = today.getMonth() +1;
+var todayYear = today.getFullYear();
 
+//formatage de la date du jour
+var todayM = todayDay + '/' +todayMonth + '/' +todayYear;
+
+var todayDayM1 =today.getDate() -1; 
+//formatage de la date du jour -1
+var todayDayM1 = todayDayM1 + '/' +todayMonth + '/' +todayYear;
+
+var todayDayM2 =today.getDate() -2; 
+//formatage de la date du jour -2
+var todayDayM2 = todayDayM2 + '/' +todayMonth + '/' +todayYear;
+
+var todayDayM3 =today.getDate() -3; 
+//formatage de la date du jour -3
+var todayDayM3 = todayDayM3 + '/' +todayMonth + '/' +todayYear;
+
+var todayDayM4 =today.getDate() -4;
+//formatage de la date du jour -4
+var todayDayM4 = todayDayM4 + '/' +todayMonth + '/' +todayYear;
+
+var todayDayM5 =today.getDate() -5; 
+//formatage de la date du jour -5
+var todayDayM5 = todayDayM5 + '/' +todayMonth + '/' +todayYear;
+
+
+function refresh() {
   $.ajax({
     url : '<?php echo DIRNAME.Route::getSlug('statistics','ajaxStatistics'); ?>',
     type : 'GET',
     complete : function(data) {
       var result = JSON.parse(data['responseText']);
-      console.log(result);
-
-      //Récuperation de la date du jour
-      var today = new Date();
-      var todayDay = today.getDate()
-      var todayMonth = today.getMonth() +1;
-      var todayYear = today.getFullYear();
-
-      //formatage de la date du jour
-      var todayM = todayDay + '/' +todayMonth + '/' +todayYear;
-
-      var todayDayM1 =today.getDate() -1; 
-      //formatage de la date du jour -1
-      var todayDayM1 = todayDayM1 + '/' +todayMonth + '/' +todayYear;
-
-      var todayDayM2 =today.getDate() -2; 
-      //formatage de la date du jour -2
-      var todayDayM2 = todayDayM2 + '/' +todayMonth + '/' +todayYear;
-
-      var todayDayM3 =today.getDate() -3; 
-      //formatage de la date du jour -3
-      var todayDayM3 = todayDayM3 + '/' +todayMonth + '/' +todayYear;
-
-      var todayDayM4 =today.getDate() -4;
-      //formatage de la date du jour -4
-      var todayDayM4 = todayDayM4 + '/' +todayMonth + '/' +todayYear;
-
-      var todayDayM5 =today.getDate() -5; 
-      //formatage de la date du jour -5
-      var todayDayM5 = todayDayM5 + '/' +todayMonth + '/' +todayYear;
-
-      //date.getMonth() + '/' + date.getDate() + '/' +  date.getFullYear()
 
       var ctx = document.getElementById("line-chart").getContext("2d");
 
@@ -327,7 +330,8 @@ $(document).ready(function(){
       });
     }
   });
-});
+}
+
   
 
 

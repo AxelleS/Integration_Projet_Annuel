@@ -1,8 +1,10 @@
-<main class="container">
-    <section class="row customer-resa">
-        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<main class="container-fluid">
+    <section class="row promotion">
+    <article class="col-lg-6 col-sm-12 col-xs-12 title-resa">
             <h1>Mes réservations</h1>
-            <table class="centered striped">
+        </article>
+        <article class="content-resa col-lg-12 col-md-12 col-sm-12 col-xs-12">            
+            <table class="centered striped responsive-table">
                 <thead>
                     <tr>
                         <th>Date de réservations</th>
@@ -41,13 +43,13 @@
                                 <!-- Si la date de la partie est passée, on affiche un btn pour noter -->
                                 <?php if($value['date_now'] > $value['date_game']): ?>
                                     <?php if($value['opinion'] == null): ?>
-                                        <input type="button" class="btn-default" value="Noter" onClick="redirectTo('notation')">
+                                        <a type="button" class="btn-default" value="Noter" onClick="redirectTo('notation')">Noter</a>
                                     <?php else : ?>
                                         <p>Partie déjà noté</p>
                                     <?php endif; ?>
                                 <!-- Sinon, si il reste plus de 7 jours avant l'escape, on affiche un btn annuler -->
                                 <?php elseif($value['interval'] >= 7): ?>
-                                    <input type="button" class="btn-default" value="Annuler" onClick="redirectTo('cancel')">
+                                    <a type="button" class="btn-default" value="Annuler" onClick="redirectTo('cancel')">Annuler</a>
                                 <?php endif; ?>
                             </td>                    
                         </tr>
