@@ -143,7 +143,17 @@ class OrganizationController {
             $idRoom = $params['URL'][1];
             $delRoom = new Room();
             $delRoom->setId($idRoom);
-            $response = $delRoom->delete('id');
+
+            $time_slots = new Time_slot();
+            $time_slots->setIdRoom($idRoom);
+            $response_slots = $time_slots->select('id_room');
+
+            while ($donnees_slots = $response_slots->fetch()) {
+                $time_slots->setId($donnees_slots['id']);
+                $time_slots->delete('id');
+            }
+
+            $delRoom->delete('id');
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else {
             $idFaq = $params['POST']['idFaq'];
