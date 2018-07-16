@@ -171,7 +171,7 @@ class Route{
             "type"       => 1
         ],
         [
-            "slug"       => "statistiques",
+            "slug"       => "chargement-statistiques",
             "controller" => "statistics",
             "action"     => "ajaxStatistics",
             "security"   => true,

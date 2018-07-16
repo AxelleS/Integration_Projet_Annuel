@@ -123,15 +123,15 @@ function visible_hidden_nb_partie(){
 	}
 }
 
-window.onload = function() {
+$(document).ready(function(){
 
   $.ajax({
     url : '<?php echo DIRNAME.Route::getSlug('statistics','ajaxStatistics'); ?>',
     type : 'GET',
-    data : {},
-    complete : function(data){
+    complete : function(data) {
       console.log("test" + data['responseText']);
-      var result = JSON.parse(data['responseText']); 
+      var result = JSON.parse(data['responseText']);
+
       var ctx = document.getElementById("line-chart").getContext("2d");
 
       var dataChart = {
@@ -214,7 +214,7 @@ window.onload = function() {
       var ctx = document.getElementById("line-chart4").getContext("2d");
 
       var dataChart4 = {
-        labels: [00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23], 
+        labels: ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
         datasets: [{
             data: [2,1,0,0,0,0,0,0,0,3,1,6,2,2,4,5,2,0,5,11,9,6,3,0], 
             label: "Ce jour",
@@ -262,15 +262,15 @@ window.onload = function() {
       });
 
       window.addEventListener('resize', function () {
-        lineChart.resize()
-        lineChart2.resize()
-        lineChart3.resize()
-        lineChart4.resize()
+        lineChart.resize(),
+        lineChart2.resize(),
+        lineChart3.resize(),
+        lineChart4.resize(),
         lineChart5.resize()
-      })
+      });
     }
   });
-};
+});
   
 
 
