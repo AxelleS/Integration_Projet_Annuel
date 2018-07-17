@@ -1,19 +1,21 @@
-<main class="container">
+<main class="container-fluid">
     <section class="row customer-opinion">
-        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 opinion-form">
+    <article class="col-lg-6 col-sm-12 col-xs-12 title-resa">
             <h1>Notez votre partie !</h1>
+        </article>
+        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 opinion-form">            
             <form action=<?php echo DIRNAME.Route::getSlug('customeropinion','save');?> method="post" id="opinion-form" name="opinion-form">
                 <input type="hidden" name="id_time_slot" id="id_time_slot" value="<?php echo $donnees['id']; ?>">
                 <div class="row">
-                    <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <p><b>Nom de la salle : </b></p>
                         <p><?php echo $donnees['name_room']; ?></p>
                     </article>
-                    <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
+                    <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                         <p><b>Date de la partie : </b></p>
                         <p><?php echo $donnees['date_calendar']; ?></p>
                     </article>
-                    <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
+                    <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                         <p><b>Heure de la partie : </b></p>
                         <p><?php echo $donnees['time_slot']; ?></p>
                     </article>
@@ -32,7 +34,7 @@
                     </article>
                 </div>
                 <div class="row button">
-                    <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <input class="btn-default" type="submit" form="opinion-form" value="Envoyer">
                     </article>
                 </div>

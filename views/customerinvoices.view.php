@@ -1,8 +1,10 @@
-<main class="container">
-    <section class="row customer-fact">
-        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<main class="container-fluid">
+    <section class="row promotion">
+        <article class="col-lg-6 col-sm-12 col-xs-12 title-fact">
             <h1>Mes Factures</h1>
-            <table class="centered striped">
+        </article>
+        <article class="content-fact col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table class="centered striped responsive-table">
                 <thead>
                     <tr>
                         <th>Date de facture</th>
