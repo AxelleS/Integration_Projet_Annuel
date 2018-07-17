@@ -1,28 +1,28 @@
 <main class="container">
     <section class="row resa-next">
-        <div class="col-lg-12 row">
-            <article class="col-lg-1">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row info-resa-next">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <p id="libel">Date : </p>
             </article>
-            <article class="col-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <p><?php echo $calendarDetails['date_calendar']; ?></p>
             </article>
-            <article class="col-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <p id="libel">Créneau : </p>
             </article>
-            <article class="col-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <p><?php echo $slotDetails['time_slot']; ?></p>
             </article>
-            <article class="col-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <p id="libel">Mission : </p>
             </article>
-            <article class="col-lg-2">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <p><?php echo $roomDetails['name']; ?></p>
             </article>
-            <article class="col-lg-2">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <p id="libel">Nombre de joueurs : </p>
             </article>
-            <article class="col-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <select name="nbjoueurs" id="nbjoueurs" onchange="addPlayer()">
                     <?php for($i = 2; $i<$roomDetails['capacity']+1; $i++) : ?>
                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -30,65 +30,65 @@
                 </select>
             </article>
         </div>
-        <div class="col-lg-12 row">
-            <article class="col-lg-1">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <p id="libel">Nom</p>
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <p id="libel">Prénom</p>
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <p id="libel">Email</p>
             </article>
-            <article class="col-lg-1 offset-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <p id="libel">Surprise ?</p>
             </article>
         </div>
-        <div id="player_1" class="col-lg-12 row">
-            <article class="col-lg-1">
+        <div id="player_1" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <p id="libel">Joueur n°1</p>
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="text" name="nom_1" id="nom_1">
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="text" name="prenom_1" id="prenom_1">
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="text" name="email_1" id="email_1">
             </article>
-            <article class="col-lg-1 offset-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="checkbox" name="surprise_1" id="surprise_1">
             </article>
             <input type="hidden" name="info_player_1" id="info_player_1" value="">
         </div>
-        <div id="player_2" class="col-lg-12 row">
-            <article class="col-lg-1">
+        <div id="player_2" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <p id="libel">Joueur n°2</p>
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="text" name="nom_2" id="nom_2">
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="text" name="prenom_2" id="prenom_2">
             </article>
-            <article class="col-lg-2 offset-lg-1">
+            <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="text" name="email_2" id="email_2">
             </article>
-            <article class="col-lg-1 offset-lg-1">
+            <article class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">
                 <input type="checkbox" name="surprise_2" id="surprise_2">
             </article>
             <input type="hidden" name="info_player_2" id="info_player_2" value="">
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p>Merci de renseigner les informations des joueurs (vous y compris si vous participez).<br>Cochez la case “Surprise” pour que les joueurs ne recoivent pas d’informations.</p>
         </div>
     </section>
 
     <section class="row resa-next-price">
-        <article class="col-lg-12">
+        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p>Prix HT : <?php echo $roomDetails['price']; ?> €</p>
             <p>TVA : 20%</p>
             <p>Prix TTC : <?php echo $roomDetails['price'] + ($roomDetails['price'] * 0.20); ?> €</p>
@@ -99,7 +99,7 @@
         $url_paid = 'http://'.$_SERVER['SERVER_NAME'].DIRNAME.Route::getSlug('reservationnext','save').'/'.$slotDetails['id'];
     ?>
     <section class="row resa-next-valid">
-        <article class="col-lg-12">
+        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="formpaypal">
                 <input type='hidden' value="<?php echo $roomDetails['price']; ?>" name="amount" />
                 <input name="currency_code" type="hidden" value="EUR" />
