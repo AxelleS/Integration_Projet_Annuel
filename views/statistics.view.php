@@ -5,7 +5,7 @@
   </div>
 </section>
 <div class="row">
-	<div class="row col-lg-9 col-md-9 col-sm-9 col-xs-9">
+	<div class="row col-lg-8 col-md-8 col-sm-8 col-xs-8">
       	<div id="chart_visite" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Visites</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -37,38 +37,43 @@
             </article>
       	</div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 background-content">
-    	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Activer/Désactiver les statistiques</h2>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 background-content">
+    	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Affichage des statistiques</h2>
     	<section class="row">
-    		<h4>Visite :</h4>
-    		<label for="visite">Afficher</label>
+    		<h4>Visite : </h4>
+    		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite" name="feature" 
 	    	value="Afficher" checked onclick="visible_hidden_visite()" />
-    	</section> 
+    	</section><br> 
     	<section class="row">
-    		<h4>Nombre de visites par jour :</h4>
-    		<label for="visite">Afficher</label>
+    		<h4>Nombre de visites par jour : </h4>
+    		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite_jour" name="feature" 
 	    	value="Afficher" checked  onclick="visible_hidden_visite_jour()" />
-    	</section> 
+    	</section><br> 
     	<section class="row">
-    		<h4>Nombre d'inscrit :</h4>
-    		<label for="visite">Afficher</label>
+    		<h4>Nombre d'inscrit : </h4>
+    		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="nb_inscrit" name="feature" 
 	    	value="Afficher" checked onclick="visible_hidden_nb_inscrit()" />
-    	</section> 
+    	</section><br>
     	<section class="row">
-    		<h4>Nombre de réservation ce jour :</h4>
-    		<label for="visite">Afficher</label>
+    		<h4>Nombre de réservation ce jour : </h4>
+    		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="nb_resa" name="feature" 
 	    	value="Afficher" checked onclick="visible_hidden_nb_resa()" />
-    	</section> 
+    	</section><br>
     	<section class="row">
-    		<h4>Nombre de partie ce jour :</h4>
-    		<label for="visite">Afficher</label>
+    		<h4>Nombre de partie ce jour : </h4>
+    		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="nb_parti" name="feature" 
 	    	value="Afficher" checked onclick="visible_hidden_nb_partie()" />
-    	</section>    	
+    	</section><br>
+      <div class="row button">
+          <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <input class="btn-default" type="submit" form="opinion-form" value="Sauvegarder les préférences">
+          </article>
+      </div>    	
     </div>
 </div>
 <script>

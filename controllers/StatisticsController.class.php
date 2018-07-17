@@ -4,8 +4,16 @@ class StatisticsController {
 
 	public function indexAction($params)
     {
+        $response = [];
+        $activate_stats = new Display_stats();
+        $response_activate = $activate_stats->select();
+        while($donnees = $response_stats->fetch()){
+            $donnees_stats[] = $donnees;
+        }
+
+
         $v = new View('statistics','back');
-        // $v->assign("donnees",$donnee_stat);
+        $v->assign("donnees",$donnee_stat);
     }
 
     public function ajaxStatisticsAction($params){
@@ -17,9 +25,6 @@ class StatisticsController {
         $datem3 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-3, date('Y'))).'%';
         $datem4 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-4, date('Y'))).'%';
         $datem5 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-5, date('Y'))).'%';
-
-        
-        
 
         //Count du nombre de visite du jour
         $visite = new Statistic();
@@ -124,7 +129,7 @@ class StatisticsController {
 
 
 
-
+        //Envoi des données au success de la requête ajax
         echo json_encode($stats);
         exit;
 
