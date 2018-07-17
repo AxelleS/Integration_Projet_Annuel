@@ -7,7 +7,7 @@ class CustomerreservationsController
         //Va chercher toutes les réservations du client
         $time_slot = new Time_slot();
         $time_slot->setIdUser($_SESSION['id_user']);
-        $response_timeslot = $time_slot->select('id_user');
+        $response_timeslot = $time_slot->select('id_user', 'ASC');
         $i = 0;
 
         $array = [];
@@ -70,9 +70,7 @@ class CustomerreservationsController
         
         $time_slot->setIdUser(null);
         
-        $time_slot->setKeyTimeSlot($donnees_timeslot['key_time_slot']);
-        
-        $time_slot->setValueTimeSlot($donnees_timeslot['value_time_slot']);
+        $time_slot->setTimeSlot($donnees_timeslot['time_slot']);
         
         $time_slot->setNumberPlayer(0);
         
@@ -84,6 +82,6 @@ class CustomerreservationsController
 
         $time_slot->save();
 
-        header("Location: ".DIRNAME."customerresa");
+        header("Location: ".DIRNAME.Route::getSlug('customerreservations', 'index'));
     }
 }

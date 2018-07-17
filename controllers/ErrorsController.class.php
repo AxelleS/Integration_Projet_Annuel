@@ -10,6 +10,7 @@ class ErrorsController
         } else {
             $v = new View('404');
         }
+        http_response_code(404);
     }
 
     public function quatreCentTroisAction($params)
@@ -20,5 +21,6 @@ class ErrorsController
         } else {
             $v = new View('403');
         }
+        http_response_code(403);
     }
 }

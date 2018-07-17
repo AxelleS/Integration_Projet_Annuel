@@ -26,3 +26,11 @@ $taille_message: 100%;
   width: $taille_message;
   height: 100px;
 }
+
+.validate-sending {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}

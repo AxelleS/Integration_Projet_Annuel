@@ -825,8 +825,23 @@ main{
         margin: 0;
     }
 
+    .opinion-form{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+
+    .opinion-form div article p{
+        font-size: 40px;
+    }
+
     .opinion article h2{
         font-size: 10px;
+    }
+
+    .customer-opinion article .note div{
+        width: 100px;
+        height: 100px;
     }
 
     .opinion hr{
@@ -934,6 +949,12 @@ main{
     margin-top: 100px;
     margin-bottom: 60px;
 }
+@media screen and (max-width : 980px) {
+    .form-title{
+        font-size: 40px;
+    }
+}   
+
 
 /* PICTURE - CONTACT */
 
@@ -1119,42 +1140,45 @@ main{
 }
 
 @media screen and (max-width : 980px) {
-    
-    section.signin {
-        margin-bottom : 10%;
+
+    .signin{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 20%;
         margin-top: 1%;
     }
 
-    .signin-form input{
-        height: 45px;
-    }
-
-    article.signin-form{
-        flex-basis: 100%;    
+    .signin-form{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
     }
 
     .signin-form h1{
         width: 50%;
+        margin-bottom: 10%;
         font-size: 40px;
-        margin-bottom: 75%;
     }
 
-    .signin-form form{
-        font-size: 200%;
-        margin-top: -70%;
+    .signin-form div article{
         flex-basis: 100%;
+        margin-left:2%;
+        margin-right: 2%;
+        margin-bottom: 2%;
     }
 
-    .signin-form form legend{
-        font-size: 130%;
+    .signin-form div article label{
+        font-size: 35px;
+    }
+
+    .signin-form div article input{
+        height: 45px;
+        font-size: 30px;
     }
 
     .signin-form section.input {
         width : 100%;
-    }
-
-    .signin-form section.title article input {
-        margin-left: -300%;
     }
 
     input.btn-default{
@@ -1165,14 +1189,14 @@ main{
         text-align: center;
     }
 
-    section.row.signup-via-signin {
-        font-size: 250%;
-    }
-
     .btn-signin{
         display: flex; 
         flex-direction: row;
         justify-content: end;
+    }
+
+    .signup-link{
+        font-size: 40px;
     }
 }
 
@@ -1253,6 +1277,87 @@ main{
     margin-bottom: 2%;
 }
 
+@media screen and (max-width : 980px) {
+    .signup{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 20%;
+        margin-top: 1%;
+    }
+
+    .signup-picture{
+        display: none;
+    }
+
+    .signup-form{
+        margin: 0;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+
+    .signup-form h1{
+        width: 50%;
+        margin-bottom: 10%;
+        font-size: 40px;
+    }
+
+    .signup-form div article{
+        flex-basis: 100%;
+        margin-left:2%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+    }
+
+    .signup-form div article label{
+        font-size: 35px;
+    }
+
+    .signup-form div article input{
+        height: 45px;
+        font-size: 30px;
+    }
+
+    .signup-form div section input{
+        height: 45px;
+        font-size: 30px;
+    }
+
+    .signup-form div section p{
+        height: 45px;
+        font-size: 30px;
+    }
+
+    .signup-form div section.signupCaptcha img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .signup-form textarea{
+        width: 100%;
+        max-height: 200px;
+        font-size: 30px;
+    }
+
+    .signup-form div:last-child article{
+        flex-basis: 50%;
+        font-size: 30px;
+    }
+
+    .signup-form div:last-child article input{
+        font-size: 30px;
+        height: 50px;
+    }    
+
+    input.btn-default{
+        margin-top: 10%;
+        font-size: 170%;
+        height: 70px;
+        width: 200%;
+        text-align: center;
+    }
+}
+
 
 /* FORM CUSTOMER INFO */
 .location-section {
@@ -1266,6 +1371,37 @@ main{
   .customer-resa h1{
     text-align: center;
   }
+
+.title-fact{
+    margin-top: 5%;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    padding-top:1%;
+    padding-bottom:1%;
+}
+
+@media screen and (max-width : 980px) {
+    .title-fact{
+        margin-top: 0.5%;
+        margin-bottom: 2%;
+        flex-basis: 50%;
+    }
+
+    .title-fact h1{
+        width:100%;
+        font-size: 40px;
+    }
+
+    .content-fact{
+        font-size: 33px;
+        margin-top: 10%;
+    }
+}
+
 
   .customer-fact{
     margin-top: 120px;
@@ -1356,13 +1492,41 @@ main{
     justify-content: flex-end;
   }
 
+  .title-resa{
+    margin-top: 5%;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    padding-top:1%;
+    padding-bottom:1%;
+}
+
 
 @media screen and (max-width : 980px) {
 
-    article.title-resa{
-        margin-top: -8.5%;
+     .title-resa{
+        margin-top: 0.5%;
         margin-bottom: 2%;
+        flex-basis: 50%;
     }
+
+    .title-resa h1{
+        width:100%;
+        font-size: 40px;
+    }
+
+    .content-resa{
+        font-size: 33px;
+        margin-top: 10%;
+    }
+
+    // article.title-resa{
+    //     margin-top: -8.5%;
+    //     margin-bottom: 2%;
+    // }
 
     section.row .resa {
     margin-top: 100px;
@@ -1388,7 +1552,7 @@ main{
 }
   
   .customer-opinion{
-    margin-top: 120px;
+    // margin-top: 120px;
     text-align: center;
   }
   

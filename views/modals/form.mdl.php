@@ -11,7 +11,7 @@ $errors = $config['errors'][0];
 	<?php foreach ($config["input"] as $rows):?>
 		<div class="row">
 		<?php foreach ($rows as $key => $value):?>
-		<section class="col-lg-4">
+		<section class="col-lg-4 form-title">
 			<fieldset>
         	<legend><?php echo $key; ?></legend>
 			<section class="row">
@@ -111,15 +111,15 @@ $errors = $config['errors'][0];
 	<?php endforeach;?>
     <?php if ($config["config"]["name"] == 'signup') : ?>
     <div class="row">
-        <section class="col-lg-4">
+        <section class="col-lg-4 form-title">
             <fieldset>
                 <legend>Captcha</legend>
-                <section class="row">
+                <section class="row signupCaptcha">
                     <img src="captcha.php" alt="captcha">
-                    <p>Recopiez le captcha en respectant la casse</p>
                 </section>
-                <section class="row">
-                    <input type="text" class="col-lg-6" name="response_captcha" value="">
+                <p>Recopiez le captcha en respectant la casse</p>
+                <section class="row ">
+                    <input type="text" class="col-lg-12" name="response_captcha" value="">
                     <?php if(array_key_exists('captcha', $errors)) : ?>
                         <p class="errors"><?php echo $errors['captcha']; ?></p>
                     <?php endif; ?>
@@ -128,7 +128,7 @@ $errors = $config['errors'][0];
         </section>
 	</div>
     <div class="row">
-        <section class="col-lg-4">
+        <section class="col-lg-4 form-title">
             <input type="checkbox" name="cgu" class="validation-CGU">J'accepte les <a href="files/CGU.pdf" target="_blank">CGU</a> et les <a href="files/CGV.pdf" target="_blank">CGV</a>
             <?php if(array_key_exists('cgu', $errors)) : ?>
                 <p class="errors"><?php echo $errors['cgu']; ?></p>

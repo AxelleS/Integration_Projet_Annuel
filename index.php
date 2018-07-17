@@ -15,6 +15,7 @@ function myAutoloader($class){
 }
 
 spl_autoload_register('myAutoloader');
+sitemapGenerator::generateSitemap();
 
 //Récupère l'url
 $uri = $_SERVER["REQUEST_URI"];
