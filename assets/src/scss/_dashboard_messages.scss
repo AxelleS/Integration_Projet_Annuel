@@ -1,0 +1,22 @@
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.btn-see {
+    width: 100% !important;
+}
+
+.content-scrollable {
+    overflow-y: auto;
+}
+
+// table {
+//     font-size: 0.6rem;
+// }
+
+// .tr-wrap {
+//     display: flex;
+//     flex-wrap: wrap;
+// }
