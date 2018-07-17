@@ -297,7 +297,7 @@ class Route{
             "type"       => 0
         ],
         [
-            "slug"       => "mail-mdp-oublie",
+            "slug"       => "mdp-oublie",
             "controller" => "signin",
             "action"     => "lostpassword",
             "security"   => false,

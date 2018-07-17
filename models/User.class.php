@@ -476,6 +476,28 @@ class User extends BaseSql{
         ]
     ];
   }
+
+    public function configFormLostPassword($errors){
+        return [
+            "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('signin','lostpassword'),"name"=>"lostPassword"],
+            "input"=>[
+                "A"=>[
+                    "Connexion"=>[
+                        "email"=>[
+                            "type"=>"email",
+                            "placeholder"=>"Votre email",
+                            "required"=>true,
+                            "class" => "col-lg-12",
+                            "value" => $this->email
+                        ]
+                    ]
+                ]
+            ],
+            "errors"=>[
+                $errors
+            ]
+        ];
+    }
 }
 
 ?>

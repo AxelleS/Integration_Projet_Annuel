@@ -63,30 +63,50 @@ class SigninController
     }
 
     public function lostpasswordAction($params){
-        $user = new User();
-        $user->setId($_SESSION['id_user']);
-        $request = $user->select('id');
-        $donnees = $request->fetch();
+        $infoUser = $params['POST'];
+        if(count($infoUser) > 0) {
+            $user = new User();
+            $user->setEmail($infoUser['email']);
+            $request = $user->select('email');
+            if($request->rowCount() > 0) {
+                $donnees = $request->fetch();
 
-        $mail = New PhpMailer();
-        $mail->CharSet = "utf-8";
-        $mail->IsHTML(true);
-        $mail->From = 'contact@play-with-my-cms.com';
-        $mail->FromName = 'Team PlayWithMyCMS';
-        $mail->AddAddress($donnees['email']);
+                $mail = New PhpMailer();
+                $mail->CharSet = "utf-8";
+                $mail->IsHTML(true);
+                $mail->From = 'contact@play-with-my-cms.com';
+                $mail->FromName = 'Team PlayWithMyCMS';
+                $mail->AddAddress($donnees['email']);
 
-        $string = str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789");
-        $password = substr($string, strlen($string)-8);
+                $string = str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789");
+                $password = substr($string, strlen($string)-8);
 
-        $user->setPassword($password);
-        $user->save();
+                $user->setPassword($password);
+                $user->save();
 
-        $mail->Subject = "New Password";
-        $mail->Body = 'Hello,<br>You ask for a new password, and here is it : <b>'.$password.'</b>';
+                $mail->Subject = "New Password";
+                $mail->Body = 'Hello,<br>You ask for a new password, and here is it : <b>'.$password.'</b>';
 
-        $mail->Send();
+                $mail->Send();
 
-        header("Location: ".DIRNAME.Route::getSlug('signin','index'));
+                header("Location: ".DIRNAME.Route::getSlug('signin','index'));
+            } else {
+                $errors['email'] = "L'email n'est pas connu";
+
+                $user->setEmail($infoUser['email']);
+                $config = $user->configFormLostPassword($errors);
+                $v = new View('lostPassword');
+                $v->assign('config',$config);
+            }
+
+        } else {
+            $user = new User();
+
+            $config = $user->configFormLostPassword([]);
+            $v = new View('lostPassword');
+            $v->assign('config',$config);
+        }
+
     }
 
     public function disconnectAction($params){
