@@ -14,6 +14,7 @@ class Homepage extends BaseSql{
   protected $city_company;
   protected $roomList;
   protected $logo;
+  protected $email_company;
 
   protected $foreign;
 
@@ -73,6 +74,10 @@ class Homepage extends BaseSql{
       $this->logo=$logo;
   }
 
+  public function setEmailCompany($email_company){
+      $this->email_company=strtolower(trim($email_company));
+  }
+
   public function setForeign($foreign){
     $this->foreign=$foreign;
   }
@@ -120,6 +125,7 @@ class Homepage extends BaseSql{
         "name_company"=>$this->name_company,
         "address_company"=>$this->address_company,
         "zipcode_company"=>$this->zipcode_company,
+        "email_company"=>$this->email_company,
         "city_company"=>$this->city_company,
         "actualPageTypeValue"=>"Homepage",
         "actualPageType"=>"actualPageType"
@@ -158,6 +164,10 @@ class Homepage extends BaseSql{
           "url_video"=>[
             "nameView"=>"URL de la vidéo",
             "name"=>"url_video"
+          ],
+          "email_company"=>[
+              "nameView"=>"Email de l'entreprise",
+              "name"=>"email_company"
           ],
           "name_company"=>[
             "nameView"=>"Nom de l'entreprise",

@@ -55,6 +55,7 @@ class OrganizationController {
             $homepageConfig->setDescriptionIntroduction($homepage[0]['description_introduction']);
             $homepageConfig->setUrlVideo($homepage[0]['url_video']);
             $homepageConfig->setNameCompany($homepage[0]['name_company']);
+            $homepageConfig->setEmailCompany($homepage[0]['email_company']);
             $homepageConfig->setAddressCompany($homepage[0]['address_company']);
             $homepageConfig->setZipcodeCompany($homepage[0]['zipcode_company']);
             $homepageConfig->setCityCompany($homepage[0]['city_company']);
@@ -142,6 +143,16 @@ class OrganizationController {
             $idRoom = $params['URL'][1];
             $delRoom = new Room();
             $delRoom->setId($idRoom);
+
+            $time_slots = new Time_slot();
+            $time_slots->setIdRoom($idRoom);
+            $response_slots = $time_slots->select('id_room');
+
+            while ($donnees_slots = $response_slots->fetch()) {
+                $time_slots->setId($donnees_slots['id']);
+                $time_slots->delete('id');
+            }
+
             $delRoom->delete('id');
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else {
@@ -172,6 +183,7 @@ class OrganizationController {
                 $modifyHomepage->setDescriptionIntroduction($infoOrganization['description_introduction']);
                 $modifyHomepage->setUrlVideo($infoOrganization['url_video']);
                 $modifyHomepage->setNameCompany($infoOrganization['name_company']);
+                $modifyHomepage->setEmailCompany($infoOrganization['email_company']);
                 $modifyHomepage->setAddressCompany($infoOrganization['address_company']);
                 $modifyHomepage->setZipcodeCompany($infoOrganization['zipcode_company']);
                 $modifyHomepage->setCityCompany($infoOrganization['city_company']);
@@ -225,6 +237,7 @@ class OrganizationController {
                 $modifyHomepage->setDescriptionIntroduction($infoOrganization['description_introduction']);
                 $modifyHomepage->setUrlVideo($infoOrganization['url_video']);
                 $modifyHomepage->setNameCompany($infoOrganization['name_company']);
+                $modifyHomepage->setEmailCompany($infoOrganization['email_company']);
                 $modifyHomepage->setAddressCompany($infoOrganization['address_company']);
                 $modifyHomepage->setZipcodeCompany($infoOrganization['zipcode_company']);
                 $modifyHomepage->setCityCompany($infoOrganization['city_company']);

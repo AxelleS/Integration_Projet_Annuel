@@ -100,6 +100,7 @@ class ParametersController
             $modifyHomepage->setDescriptionIntroduction($donnees_homepage['description_introduction']);
             $modifyHomepage->setUrlVideo('@todo');
             $modifyHomepage->setNameCompany($donnees_homepage['name_company']);
+            $modifyHomepage->setEmailCompany($donnees_homepage['email_company']);
             $modifyHomepage->setAddressCompany($donnees_homepage['address_company']);
             $modifyHomepage->setZipcodeCompany($donnees_homepage['zipcode_company']);
             $modifyHomepage->setCityCompany($donnees_homepage['city_company']);

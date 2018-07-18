@@ -41,8 +41,15 @@ class UsersController
         $idUser = $params['GET']['idUser'];
         $customer = new User();
         $customer->setId($idUser);
-        $response = $customer->delete('id');
-        echo $response;
+        $customer->delete('id');
+
+        $customer->setId($idUser);
+        $response = $customer->select('id');
+        if ($response->rowCount() < 1) {
+            echo 1;
+        } else {
+            echo 0;
+        }
         exit;
     }
 
@@ -67,7 +74,7 @@ class UsersController
         $user->setStatus($donnees_user['status']);
         $user->setType($donnees_user['id_type']);
 
-        $config = $user->configFormUserAddModifyBO();
+        $config = $user->configFormUserAddModifyBO([]);
         $v = new View('userEdit','back');
         $v->assign('config',$config);
     }
@@ -77,10 +84,6 @@ class UsersController
         $user = new User();
 
         $errors = Validate::checkForm($infoUser);
-
-        if(!isset($infoUser['cgu'])){
-            $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
-        }
 
         if(count($errors) > 0) {
             $user->setFirstname($infoUser['firstname']);
@@ -121,8 +124,6 @@ class UsersController
             $user->setAddress2($infoUser['address_2']);
             $user->setZipcode($infoUser['zipcode']);
             $user->setCity($infoUser['city']);
-            $user->setStatus(2);
-            $user->setType(2);
             $user->save();
 
             header("Location: " . DIRNAME . Route::getSlug('customerinfo', 'index'));
@@ -218,17 +219,33 @@ class UsersController
 			if(empty($errors)){
 			    $user = new User();
                 if($params["POST"]["id"] != '') {
-			echo 'id : '.$params["POST"]["id"];
-			echo '<br>';
                     $user->setId($params["POST"]["id"]);
                 } else {
-	 	    $user->setPassword('MotDePasse'.date('Y'));
-		    $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+                    $string = md5(uniqid());
+                    $password = substr($string, strlen($string)-8);
+                    $user->setPassword($password);
+
+                    $company = new Homepage();
+                    $donnees_company = $company->select()->fetch();
+
+                    $mail = New PhpMailer();
+                    $mail->CharSet = "utf-8";
+                    $mail->IsHTML(true);
+                    $mail->From = $donnees_company['email_company'];
+                    $mail->FromName = $donnees_company['name_company'];
+                    $mail->AddAddress($params['POST']['email']);
+
+                    $mail->Subject = "Création de votre compte";
+                    $mail->Body = 'Bonjour,<br>Vous recevez ce message car un administrateur de chez <b>'.$donnees_company['name_company'].'</b> vient de créer votre compte.<br>Voici vos identifiants :<br>Identifiant : <b>'.$params['POST']['email'].'</b><br>Mot de passe : <b>'.$password.'</b>';
+                    $mail->Send();
+
+                    $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
                     $token = str_shuffle($char);
                     $token = substr($token, 0, 11);
                     $user->setToken($token);
-		    $user->setDateInserted(date('Y-m-d H:i:s'));
-		}
+
+                    $user->setDateInserted(date('Y-m-d H:i:s'));
+		        }
                 $response = $user->select('id');
                 $donnees = $response->fetch();
 		
@@ -244,7 +261,7 @@ class UsersController
                 $user->setCity($params['POST']['city']);
                 $user->setPicture($donnees['url_picture']);
                 $user->setStatus($params['POST']['status']);
-		
+
                 $user->save();
 
                 if($params['POST']['id_type'] == 1) {

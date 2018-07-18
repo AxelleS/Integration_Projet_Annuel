@@ -46,7 +46,7 @@ class BaseSql{
                 if(is_null($valeur_recherche)){
                     $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
                 } else{
-                    if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                    if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){$response = $this->pdo->query(" SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }else{
 
                         $response = $this->pdo->query(" SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
@@ -70,9 +70,9 @@ class BaseSql{
 
             }
 
-            //echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+            //echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         }
-        // echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+        // echo "SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         return $response;
     }
 
@@ -91,7 +91,7 @@ class BaseSql{
                     $response = $this->pdo->query("SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche." IS NULL ORDER BY id ".$order);
                 } else{
                     if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){
-                        $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+                        $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }else{
                         $response = $this->pdo->query(" SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }
@@ -111,12 +111,11 @@ class BaseSql{
                         $response = $this->pdo->query("SELECT count(*) FROM ".$this->table." WHERE ".$champ_recherche[0]." LIKE '".$valeur_recherche[0]."' AND ".$champ_recherche[1]." LIKE '".$valeur_recherche[1]."' AND ".$champ_recherche[2]." LIKE '".$valeur_recherche[2]."' AND ".$champ_recherche[3]." LIKE '".$valeur_recherche[3]."' ORDER BY id ".$order);
                         break;
                 }
-
             }
 
-            //echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+            //echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         }
-        // echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->columns['table'].".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
+        // echo "SELECT count(*) FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order";
         return $response;   
     }
 
@@ -137,9 +136,20 @@ class BaseSql{
             $query_columns = array();
             $id_search = $this->columns['id'];
 
-            if(isset($this->columns['password']) && $this->columns['password'] == '') {
-                $unsetColumns[] = 'password';
+            if($this->table == 'user') {
+                if($this->columns['password'] == '') {
+                    $unsetColumns[] = 'password';
+                }
+
+                if($this->columns['status'] == '') {
+                    $unsetColumns[] = 'status';
+                }
+
+                if($this->columns['id_type'] == '') {
+                    $unsetColumns[] = 'id_type';
+                }
             }
+
 
             foreach($this->columns as $key => $value){
                 if(!in_array($key, $unsetColumns)) {
@@ -148,8 +158,9 @@ class BaseSql{
                     unset($this->columns[$key]);
                 }
             }
-            $query = $this->pdo->prepare("  UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
-
+            $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
+            //echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
+            //print_r($this->columns);
             $query->execute($this->columns);
         } else{
             //Insert

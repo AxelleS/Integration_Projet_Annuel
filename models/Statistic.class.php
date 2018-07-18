@@ -3,7 +3,6 @@ class Statistic extends BaseSql{
 
   protected $id = null;
   protected $value_cookie;
-  protected $created_at;
 
   public function __construct() {
     parent::__construct();
@@ -15,10 +14,6 @@ class Statistic extends BaseSql{
 
   public function setValueCookie($value_cookie){
     $this->value_cookie= $value_cookie;
-  }
-
-  public function setcreated_at($created_at) {
-    $this->created_at=$created_at;
   }
 }
 
