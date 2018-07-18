@@ -82,6 +82,25 @@ class CustomerreservationsController
 
         $time_slot->save();
 
+        $user = new User();
+        $user->setId($_SESSION['id_user']);
+        $donnees_user = $user->select('id')->fetch();
+
+        $room = new Room();
+        $room->setId($donnees_timeslot['id_room']);
+        $donnees_room = $room->select('id')->fetch();
+        $priceTTC = $donnees_room['price'] + ($donnees_room['price'] * 0.2);
+        echo $priceTTC;
+
+        $contact = new Contact();
+        $contact->setFirstname($donnees_user['firstname']);
+        $contact->setLastname($donnees_user['lastname']);
+        $contact->setEmail($donnees_user['email']);
+        $contact->setPhone($donnees_user['phone']);
+        $contact->setSubject('Demande de remboursement');
+        $contact->setContent('Bonjour, vous recevez ce message car M(me) '.substr($donnees_user['firstname'], 0, 1).'. '.$donnees_user['lastname'].' a annulé sa réservation d\'un montant de '.$priceTTC.'€. Veuillez procéder au remboursement.');
+        $contact->save();
+
         header("Location: ".DIRNAME.Route::getSlug('customerreservations', 'index'));
     }
 }

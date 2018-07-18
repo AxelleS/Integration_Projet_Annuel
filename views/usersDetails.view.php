@@ -78,12 +78,11 @@
                 },
                 complete : function(data) {
                     var isDelete = JSON.parse(data['responseText']);
-                    console.log(isDelete);
-                    if(isDelete == true) {
+                    if(isDelete == 1) {
                         alert("Suppression effectuée !");
                         generateArray();
                     } else {
-                        alert("Suppression échouée !");
+                        alert("Suppression échouée ! L'utilisateur est lié à des réservations.");
                     }
                 }
             });

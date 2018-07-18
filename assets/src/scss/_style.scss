@@ -1065,8 +1065,11 @@ main{
 
 /* SIGNIN */
 
-.title-connexion{
-
+.signin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
 }
 
 .signin{
@@ -1074,7 +1077,6 @@ main{
     flex-direction: row;
     justify-content: center;
     margin-top: 100px;
-    margin-bottom: 60px;
 }
 
 /* FORM - SIGNIN */
@@ -1536,7 +1538,6 @@ main{
 
     section.row .resa {
     margin-top: 100px;
-    text-align: justify;
     margin-left: 5%;
     margin-right: 5%;
     font-size: 35px;
@@ -1592,6 +1593,7 @@ main{
   .errors{
       font-weight: bold;
       color: $errors;
+      text-align: center;
   }
 
   .profil-img {
@@ -1603,7 +1605,16 @@ main{
         margin: 0 auto;
     }
 
+form#lostPassword > div > section {
+    float: none;
+    margin: 0 auto;
+}
+
 form#signin > div > section > .btn-default {
+    margin-top: 20px;
+}
+
+form#lostPassword > div > section > .btn-default {
     margin-top: 20px;
 }
 

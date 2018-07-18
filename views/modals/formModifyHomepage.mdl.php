@@ -41,6 +41,12 @@ $errors = $config['errors'][0];
             <p class="errors"><?php echo $errors['url_video']; ?></p>
         <?php endif; ?>
 
+        <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['email_company']['nameView']?></p>
+        <input class="<?php echo $config['style']['classInput']?>"  type="email" name="<?php echo $config['input']['email_company']['name']?>" value="<?php echo $config['value']['email_company']?>" />
+        <?php if(array_key_exists('email_company', $errors)) : ?>
+            <p class="errors"><?php echo $errors['email_company']; ?></p>
+        <?php endif; ?>
+
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['name_company']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['name_company']['name']?>" value="<?php echo $config['value']['name_company']?>" />
         

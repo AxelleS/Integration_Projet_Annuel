@@ -77,7 +77,7 @@ class ReservationnextController
 
         $timeSlot->save();
 
-        header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
+        header("Location: ".DIRNAME.Route::getSlug('reservationnext','mail'));
     }
 
     public function mailAction($params)
@@ -87,15 +87,18 @@ class ReservationnextController
         $request = $user->select('id');
         $donnees = $request->fetch();
 
+        $company = new Homepage();
+        $donnees_company = $company->select()->fetch();
+
         $mail = New PhpMailer();
         $mail->CharSet = "utf-8";
         $mail->IsHTML(true);
-        $mail->From = 'contact@play-with-my-cms.com';
-        $mail->FromName = 'Team PlayWithMyCMS';
+        $mail->From = $donnees_company['email_company'];
+        $mail->FromName = $donnees_company['name_company'];
         $mail->AddAddress($donnees['email']);
 
-        $mail->Subject = "Booking confirmation";
-        $mail->Body = 'Hello,<br>You\'re successfully booked a game.<br>To view the invoice or to cancel the booking please signin to your account.';
+        $mail->Subject = "Confirmation de votre réservation";
+        $mail->Body = 'Bonjour,<br>Nouis vous confirmons la réservation de votre partie.<br>Pour consulter la facture ou pour annuler la réservation, merci de vous connecter sur votre compte client.';
 
         $mail->Send();
 

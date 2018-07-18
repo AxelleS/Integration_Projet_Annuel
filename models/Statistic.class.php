@@ -17,8 +17,8 @@ class Statistic extends BaseSql{
     $this->value_cookie= $value_cookie;
   }
 
-  public function setcreated_at($created_at) {
-    $this->created_at=$created_at;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 }
 
