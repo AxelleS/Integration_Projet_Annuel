@@ -4,8 +4,14 @@ class StatisticsController {
 
 	public function indexAction($params)
     {
+        $activate_stats = new Display_stats();
+        $response_activate = $activate_stats->select();
+        while($donnees = $response_activate->fetch()){
+            $donnees_stats[] = $donnees;
+        }
+
         $v = new View('statistics','back');
-        // $v->assign("donnees",$donnee_stat);
+        $v->assign("donnees",$donnees_stats);
     }
 
     public function ajaxStatisticsAction($params){
@@ -17,9 +23,6 @@ class StatisticsController {
         $datem3 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-3, date('Y'))).'%';
         $datem4 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-4, date('Y'))).'%';
         $datem5 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-5, date('Y'))).'%';
-
-        
-        
 
         //Count du nombre de visite du jour
         $visite = new Statistic();
@@ -124,15 +127,33 @@ class StatisticsController {
 
 
 
-
+        //Envoi des données au success de la requête ajax
         echo json_encode($stats);
         exit;
 
 
     }
 
-    public function saveAction($params){}
+    public function saveAction($params){ 
+        $stats[] = $params['GET']['visite'];
+        $stats[] = $params['GET']['visite_jour'];
+        $stats[] = $params['GET']['nb_inscrit'];
+        $stats[] = $params['GET']['nb_resa'];
+        $stats[] = $params['GET']['nb_parti'];
 
+        $activate_stats = new Display_stats();
+        $response_activate = $activate_stats->count();
+        $i = 0;
+        while($donnees = $response_activate->fetch()){
+            $activate_stats->setActivate($stats[$i]);
+            var_dump($activate_stats->setActivate($stats[$i]));
+            $activate_stats->save();
+            $i++;
+        }
+
+    }
+         
+    
 }
 
  ?>

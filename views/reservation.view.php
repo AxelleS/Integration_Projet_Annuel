@@ -1,5 +1,5 @@
-<main>
-    <section class="row resa">
+<main class="container-fluid">
+    <section class="row promotion">
         <article class="col-lg-12 col-sm-12 title-resa">
             <h1>Réserver une salle</h1>
         </article>
@@ -36,11 +36,15 @@
             </article>
             <article class="col-lg-3 col-sm-3 slots">
                 <select class="creneaux" onchange="saveChoices()"></select>
+            </article>
+        </div>
+        <div class="row button slots">
+            <article class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <form action="<?php echo DIRNAME.Route::getSlug('reservationnext','index'); ?>" method="post">
                     <input type="hidden" id="slotChoose" name="slotChoose" value="">
-                    <input type="submit" value="Valider">
+                    <input class="btn-default" type="submit" value="Valider">
                 </form>
-            </article>
+            </article>  
         </div>        
     </section>
 </main>
