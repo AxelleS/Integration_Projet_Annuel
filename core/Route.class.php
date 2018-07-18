@@ -1,6 +1,11 @@
 <?php
 class Route{
 
+    //type :
+    // 0 = visiteur
+    // 1 = admin
+    // 2 = client
+    //Pour parametrer qui a le droit de voir quoi
     static $routes = [
         [
             "slug"       => "contact",
@@ -315,7 +320,7 @@ class Route{
             "controller" => "reservationnext",
             "action"     => "mail",
             "security"   => false,
-            "type"       => 0
+            "type"       => 2
         ],
         [
             "slug"       => "charger-calendrier-bo",

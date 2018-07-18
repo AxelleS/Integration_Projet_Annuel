@@ -22,15 +22,18 @@ class SignUpController
         $request = $user->select('id');
         $donnees = $request->fetch();
 
+        $company = new Homepage();
+        $donnees_company = $company->select()->fetch();
+
         $mail = New PhpMailer();
         $mail->CharSet = "utf-8";
         $mail->IsHTML(true);
-        $mail->From = 'contact@play-with-my-cms.com';
-        $mail->FromName = 'Team PlayWithMyCMS';
+        $mail->From = $donnees_company['email_company'];
+        $mail->FromName = $donnees_company['name_company'];
         $mail->AddAddress($donnees['email']);
 
-        $mail->Subject = 'Registration confirmation';
-        $mail->Body = 'Hello,<br>You\'re successfully registered.<br>Your login : <b>'.$donnees['email'].'</b><br>Your password : <b>Only you know him</b>';
+        $mail->Subject = 'Confirmation d\'inscription';
+        $mail->Body = 'Bonjour,<br>Nous vous confirmons votre inscription.<br>Votre identifiant : <b>'.$donnees['email'].'</b><br>Votre mot de passe : <b>Celui que vous avez choisi</b>';
 
         $mail->Send();
 

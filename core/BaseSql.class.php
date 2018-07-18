@@ -136,17 +136,20 @@ class BaseSql{
             $query_columns = array();
             $id_search = $this->columns['id'];
 
-            if($this->columns['password'] == '') {
-                $unsetColumns[] = 'password';
+            if($this->table == 'user') {
+                if($this->columns['password'] == '') {
+                    $unsetColumns[] = 'password';
+                }
+
+                if($this->columns['status'] == '') {
+                    $unsetColumns[] = 'status';
+                }
+
+                if($this->columns['id_type'] == '') {
+                    $unsetColumns[] = 'id_type';
+                }
             }
 
-            if($this->columns['status'] == '') {
-                $unsetColumns[] = 'status';
-            }
-
-            if($this->columns['id_type'] == '') {
-                $unsetColumns[] = 'id_type';
-            }
 
             foreach($this->columns as $key => $value){
                 if(!in_array($key, $unsetColumns)) {
@@ -155,8 +158,9 @@ class BaseSql{
                     unset($this->columns[$key]);
                 }
             }
-            $query = $this->pdo->prepare("  UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
-
+            $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search);
+            //echo "UPDATE ".$this->table." SET ".implode(',',$query_columns)." WHERE id LIKE ".$id_search;
+            //print_r($this->columns);
             $query->execute($this->columns);
         } else{
             //Insert

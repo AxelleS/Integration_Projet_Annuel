@@ -18,23 +18,35 @@ class SigninController
     }
 
     public function connectAction($params){
-        $error = false;
+        $error['mpd'] = false;
+        $error['status'] = false;
 
         $user = new User();
         $user->setEmail($params['POST']['email']);
         $response = $user->select('email');
 
-        if($response != false){
+        if($response->rowCount() > 0){
             $donnees_user = $response->fetch();
             if (!password_verify($params['POST']['password'], $donnees_user['password'])) {
-                $error = true;
+                $error['mpd'] = true;
+            }
+
+            if($donnees_user['status'] != 2) {
+                $error['status'] = true;
             }
         } else{
-            $error = true;
+            $error['mpd'] = true;
         }
 
-        if ($error == true) {
-            $errors['signin'] = "L'email ou le mot de passse est incorrect";
+        if ($error['mpd'] == true || $error['status'] == true) {
+
+            if($error['mpd'] == true) {
+                $errors['signin'] = "L'email ou le mot de passse est incorrect";
+            } else {
+                if($error['status'] == true) {
+                    $errors['signin'] = "Votre compte est désactivé, veuillez nous contacter pour plus d'information";
+                }
+            }
 
             $user->setEmail($params['POST']['email']);
             $config = $user->configFormUserConnect($errors);
@@ -69,26 +81,40 @@ class SigninController
             $user->setEmail($infoUser['email']);
             $request = $user->select('email');
             if($request->rowCount() > 0) {
-                $donnees = $request->fetch();
+                $donnees_user = $request->fetch();
+
+                $company = new Homepage();
+                $donnees_company = $company->select()->fetch();
 
                 $mail = New PhpMailer();
                 $mail->CharSet = "utf-8";
                 $mail->IsHTML(true);
-                $mail->From = 'contact@play-with-my-cms.com';
-                $mail->FromName = 'Team PlayWithMyCMS';
-                $mail->AddAddress($donnees['email']);
+                $mail->From = $donnees_company['email_company'];
+                $mail->FromName = $donnees_company['name_company'];
+                $mail->AddAddress($donnees_user['email']);
 
-                $string = str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789");
+                $string = md5(uniqid());
                 $password = substr($string, strlen($string)-8);
+
+                $user->setId($donnees_user['id']);
+
+                $user->setFirstname($donnees_user['firstname']);
+                $user->setLastname($donnees_user['lastname']);
+                $user->setYearsOld($donnees_user['years_old']);
+                $user->setPicture($donnees_user['url_picture']);
+                $user->setPhone($donnees_user['phone']);
+                $user->setAddress($donnees_user['address']);
+                $user->setAddress2($donnees_user['address_2']);
+                $user->setZipcode($donnees_user['zipcode']);
+                $user->setCity($donnees_user['city']);
 
                 $user->setPassword($password);
                 $user->save();
 
-                $mail->Subject = "New Password";
-                $mail->Body = 'Hello,<br>You ask for a new password, and here is it : <b>'.$password.'</b>';
+                $mail->Subject = "Mot de passe oublié";
+                $mail->Body = 'Bonjour,<br>Voici le nouveau mot de passe que vous avez demandé : <b>'.$password.'</b>';
 
                 $mail->Send();
-
                 header("Location: ".DIRNAME.Route::getSlug('signin','index'));
             } else {
                 $errors['email'] = "L'email n'est pas connu";
