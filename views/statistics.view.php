@@ -43,94 +43,112 @@
     		<h4>Visite : </h4>
     		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite" name="feature" 
-	    	value="Afficher" checked onclick="visible_hidden_visite()" />
+	    	value="<?= $donnees[0]['activate']?>" <?php echo ($donnees[0]['activate'] == 1 ?  "checked" : " "); ?> onclick="visible_hidden_visite()" />
     	</section><br> 
     	<section class="row">
     		<h4>Nombre de visites par jour : </h4>
     		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite_jour" name="feature" 
-	    	value="Afficher" checked  onclick="visible_hidden_visite_jour()" />
+	    	value="<?= $donnees[1]['activate']?>" <?php echo ($donnees[1]['activate'] == 1 ?  "checked" : " "); ?>  onclick="visible_hidden_visite_jour()" />
     	</section><br> 
     	<section class="row">
     		<h4>Nombre d'inscrit : </h4>
     		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="nb_inscrit" name="feature" 
-	    	value="Afficher" checked onclick="visible_hidden_nb_inscrit()" />
+	    	value="<?= $donnees[1]['activate']?>" <?php echo ($donnees[2]['activate'] == 1 ?  "checked" : " "); ?> onclick="visible_hidden_nb_inscrit()" />
     	</section><br>
     	<section class="row">
     		<h4>Nombre de réservation ce jour : </h4>
     		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="nb_resa" name="feature" 
-	    	value="Afficher" checked onclick="visible_hidden_nb_resa()" />
+	    	value="<?= $donnees[1]['activate']?>" <?php echo ($donnees[3]['activate'] == 1 ?  "checked" : " "); ?> onclick="visible_hidden_nb_resa()" />
     	</section><br>
     	<section class="row">
     		<h4>Nombre de partie ce jour : </h4>
     		<label for="visite"> Afficher</label>
 	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="nb_parti" name="feature" 
-	    	value="Afficher" checked onclick="visible_hidden_nb_partie()" />
+	    	value="<?= $donnees[1]['activate']?>" <?php echo ($donnees[4]['activate'] == 1 ?  "checked" : " "); ?> onclick="visible_hidden_nb_partie()" />
     	</section><br>
       <div class="row button">
           <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-              <input class="btn-default" type="submit" form="opinion-form" value="Sauvegarder les préférences">
+              <input class="btn-default" type="submit" form="opinion-form" value="Sauvegarder les préférences" onclick="save_stats_preference()">
           </article>
+          <div id="message_valid">
+
+          </div>
       </div>    	
     </div>
 </div>
 <script>
 
 $(document).ready(function(){
+  visible_hidden_visite();
+  visible_hidden_visite_jour();
+  visible_hidden_nb_inscrit();
+  visible_hidden_nb_resa();
+  visible_hidden_nb_partie();
   refresh();
   //setInterval("refresh()", 30*60000)
 });
 
 function visible_hidden_visite(){
 
-	if (chart_visite.style.visibility=="hidden"){
+	if ($('#visite').val()=="1"){
 		chart_visite.style.visibility = "visible";
-		chart_visite.style.height = "auto";	
-	}else{
+		chart_visite.style.height = "auto";
+    $('#visite').val("0");	
+  }else{
 		chart_visite.style.visibility = "hidden";
 		chart_visite.style.height = "0";
+    $('#visite').val("1");
 	}
 }
 
 function visible_hidden_visite_jour(){
-	if (chart_visite_jour.style.visibility=="hidden"){
+	if ($('#visite_jour').val()=="1"){
 		chart_visite_jour.style.visibility = "visible";
 		chart_visite_jour.style.height = "auto";	
+    $('#visite_jour').val("0");
 	}else{
 		chart_visite_jour.style.visibility = "hidden";
 		chart_visite_jour.style.height = "0";
+    $('#visite_jour').val("1");
 	}
 }
 
 function visible_hidden_nb_inscrit(){
-	if (chart_nb_inscrit.style.visibility=="hidden"){
+	if ($('#nb_inscrit').val()=="1"){
 		chart_nb_inscrit.style.visibility = "visible";
 		chart_nb_inscrit.style.height = "auto";	
+    $('#nb_inscrit').val("0");
 	}else{
 		chart_nb_inscrit.style.visibility = "hidden";
 		chart_nb_inscrit.style.height = "0";
+    $('#nb_inscrit').val("1");
 	}
 }	
 
 function visible_hidden_nb_resa(){
-	if (chart_nb_resa.style.visibility=="hidden"){
+	if ($('#nb_resa').val()=="1"){
 		chart_nb_resa.style.visibility = "visible";
-		chart_nb_resa.style.height = "auto";	
+		chart_nb_resa.style.height = "auto";
+    $('#nb_resa').val("0");	
 	}else{
 		chart_nb_resa.style.visibility = "hidden";
 		chart_nb_resa.style.height = "0";
+    $('#nb_resa').val("1");
 	}
 }	
 
 function visible_hidden_nb_partie(){
-	if (chart_nb_partie.style.visibility=="hidden"){
+	if ($('#nb_parti').val()=="1"){
 		chart_nb_partie.style.visibility = "visible";
 		chart_nb_partie.style.height = "auto";	
+    $('#nb_parti').val("0");
 	}else{
 		chart_nb_partie.style.visibility = "hidden";
 		chart_nb_partie.style.height = "0";
+    $('#nb_parti').val("1");
 	}
 }
 
@@ -337,7 +355,25 @@ function refresh() {
   });
 }
 
-  
+function save_stats_preference(){
+  $.ajax({
+    url : '<?php echo DIRNAME.Route::getSlug('statistics','save'); ?>',
+    type : 'GET',
+    data : {
+                visite :$('#visite').val(),
+                visite_jour :$('#visite_jour').val(),
+                nb_inscrit :$('#nb_inscrit').val(),
+                nb_resa :$('#nb_resa').val(),
+                nb_parti :$('#nb_parti').val()
+            },
+    complete : function(data) {
+      document.getElementById('message_valid').innerHTML ="<p style=\"color:green;\"><b> Vos préférences ont bien été enregistrée(s) </b></p>";
+      setTimeout(function() {
+        document.getElementById('message_valid').innerHTML = " ";
+      },5000);
+    }
+  });
+}
 
 
 </script>

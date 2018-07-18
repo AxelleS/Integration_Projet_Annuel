@@ -4,16 +4,14 @@ class StatisticsController {
 
 	public function indexAction($params)
     {
-        $response = [];
         $activate_stats = new Display_stats();
         $response_activate = $activate_stats->select();
-        while($donnees = $response_stats->fetch()){
+        while($donnees = $response_activate->fetch()){
             $donnees_stats[] = $donnees;
         }
 
-
         $v = new View('statistics','back');
-        $v->assign("donnees",$donnee_stat);
+        $v->assign("donnees",$donnees_stats);
     }
 
     public function ajaxStatisticsAction($params){
@@ -136,8 +134,26 @@ class StatisticsController {
 
     }
 
-    public function saveAction($params){}
+    public function saveAction($params){ 
+        $stats[] = $params['GET']['visite'];
+        $stats[] = $params['GET']['visite_jour'];
+        $stats[] = $params['GET']['nb_inscrit'];
+        $stats[] = $params['GET']['nb_resa'];
+        $stats[] = $params['GET']['nb_parti'];
 
+        $activate_stats = new Display_stats();
+        $response_activate = $activate_stats->count();
+        $i = 0;
+        while($donnees = $response_activate->fetch()){
+            $activate_stats->setActivate($stats[$i]);
+            var_dump($activate_stats->setActivate($stats[$i]));
+            $activate_stats->save();
+            $i++;
+        }
+
+    }
+         
+    
 }
 
  ?>
