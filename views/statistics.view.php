@@ -5,39 +5,39 @@
   </div>
 </section>
 <div class="row">
-	<div class="row col-lg-8 col-md-8 col-sm-8 col-xs-8">
-      	<div id="chart_visite" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+	<div class="row col-lg-8 col-md-10 col-sm-10 col-xs-10 content-stats">
+      	<div id="chart_visite" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Visites</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart"></canvas>
             </article>
       	</div>
-      	<div id="chart_visite_jour" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_visite_jour" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de visites par jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart2"></canvas>
             </article>
       	</div>
-      	<div id="chart_nb_inscrit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_nb_inscrit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre d'inscrit ce jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart3"></canvas>
             </article>
       	</div>
-      	<div id="chart_nb_resa" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_nb_resa" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de réservation ce jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart4"></canvas>
             </article>
       	</div>
-      	<div id="chart_nb_partie" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_nb_partie" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de partie ce jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart5"></canvas>
             </article>
       	</div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 background-content">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 background-content content-stats">
     	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Affichage des statistiques</h2>
     	<section class="row">
     		<h4>Visite : </h4>
@@ -70,7 +70,7 @@
 	    	<?php echo ($donnees['parti_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_partie()" />
     	</section><br>
       <div class="row button">
-          <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <article class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
               <input class="btn-default" type="submit" form="opinion-form" value="Sauvegarder les préférences" onclick="save_stats_preference()">
           </article>
           <div id="message_valid">
