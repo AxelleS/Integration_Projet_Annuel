@@ -38,40 +38,42 @@
       	</div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 background-content content-stats">
-    	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Affichage des statistiques</h2>
-    	<section class="row">
-    		<h4>Visite : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visites" name="feature"
-                <?php echo ($donnees['visites'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_visite()" />
-    	</section><br> 
-    	<section class="row">
-    		<h4>Nombre de visites par jour : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite_jour" name="feature" 
-	    	<?php echo ($donnees['visite_jour'] == 1 ?  "checked" : ""); ?>  onclick="visible_hidden_visite_jour()" />
-    	</section><br> 
-    	<section class="row">
-    		<h4>Nombre d'inscrit : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="inscrit_jour" name="feature"
-	    	<?php echo ($donnees['inscrit_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_inscrit()" />
-    	</section><br>
-    	<section class="row">
-    		<h4>Nombre de réservation ce jour : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="reservation_jour" name="feature"
-	    	<?php echo ($donnees['reservation_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_resa()" />
-    	</section><br>
-    	<section class="row">
-    		<h4>Nombre de partie ce jour : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="parti_jour" name="feature"
-	    	<?php echo ($donnees['parti_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_partie()" />
-    	</section><br>
+      <section class="param_stats">
+    	  <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Affichage des statistiques</h2><br>
+      	<section class="row">
+      		<h4>Visite : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visites" name="feature"
+                  <?php echo ($donnees['visites'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_visite()" />
+      	</section><br> 
+      	<section class="row">
+      		<h4>Nombre de visites par jour : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite_jour" name="feature" 
+  	    	<?php echo ($donnees['visite_jour'] == 1 ?  "checked" : ""); ?>  onclick="visible_hidden_visite_jour()" />
+      	</section><br> 
+      	<section class="row">
+      		<h4>Nombre d'inscrit : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="inscrit_jour" name="feature"
+  	    	<?php echo ($donnees['inscrit_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_inscrit()" />
+      	</section><br>
+      	<section class="row">
+      		<h4>Nombre de réservation ce jour : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="reservation_jour" name="feature"
+  	    	<?php echo ($donnees['reservation_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_resa()" />
+      	</section><br>
+      	<section class="row">
+      		<h4>Nombre de partie ce jour : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="parti_jour" name="feature"
+  	    	<?php echo ($donnees['parti_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_partie()" />
+      	</section><br>
+      </section>
       <div class="row button">
           <article class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
-              <input class="btn-default" type="submit" form="opinion-form" value="Sauvegarder les préférences" onclick="save_stats_preference()">
+              <input class="btn-default btn_stats" type="submit" form="opinion-form" value="Sauvegarder les préférences" onclick="save_stats_preference()">
           </article>
           <div id="message_valid">
 
