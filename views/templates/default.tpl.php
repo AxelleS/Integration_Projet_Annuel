@@ -18,14 +18,14 @@ $responseRoom = $room->select();
 <base href=<?php echo 'http://'.$_SERVER["SERVER_NAME"].'/'.DIRNAME; ?>>
     <meta charset="utf-8" />
     <title>Play with my CMS</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/dist/grid.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/dist/default.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo DIRNAME; ?>assets/dist/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo DIRNAME; ?>assets/dist/default.css" />
     <!-- Seul CSS à modifier -->
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/dist/css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo DIRNAME; ?>assets/dist/css/main.css" />
     <!--  -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="icon" type="image/ico" href="<?php echo DIRNAME."/".$donneesConstante['logo']; ?>" />
+    <link rel="icon" type="image/ico" href="<?php echo DIRNAME.$donneesConstante['logo']; ?>" />
 
     <script>
         $(document).ready(function(){
