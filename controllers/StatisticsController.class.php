@@ -7,7 +7,7 @@ class StatisticsController {
         $activate_stats = new Display_stats();
         $response_activate = $activate_stats->select();
         while($donnees = $response_activate->fetch()){
-            $donnees_stats[] = $donnees;
+            $donnees_stats[$donnees['name']] = $donnees['activate'];
         }
 
         $v = new View('statistics','back');
@@ -135,22 +135,20 @@ class StatisticsController {
     }
 
     public function saveAction($params){ 
-        $stats[] = $params['GET']['visite'];
-        $stats[] = $params['GET']['visite_jour'];
-        $stats[] = $params['GET']['nb_inscrit'];
-        $stats[] = $params['GET']['nb_resa'];
-        $stats[] = $params['GET']['nb_parti'];
+        $stats['visites'] = $params['GET']['visites'];
+        $stats['visite_jour'] = $params['GET']['visite_jour'];
+        $stats['inscrit_jour'] = $params['GET']['inscrit_jour'];
+        $stats['reservation_jour'] = $params['GET']['reservation_jour'];
+        $stats['parti_jour'] = $params['GET']['parti_jour'];
 
-        $activate_stats = new Display_stats();
-        $response_activate = $activate_stats->count();
-        $i = 0;
-        while($donnees = $response_activate->fetch()){
-            $activate_stats->setActivate($stats[$i]);
-            var_dump($activate_stats->setActivate($stats[$i]));
+        foreach ($stats as $key=>$value) {
+            $activate_stats = new Display_stats();
+            $activate_stats->setName($key);
+            $donnees_stats = $activate_stats->select('name')->fetch();
+            $activate_stats->setId($donnees_stats['id']);
+            $activate_stats->setActivate($value);
             $activate_stats->save();
-            $i++;
         }
-
     }
          
     

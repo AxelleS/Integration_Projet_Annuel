@@ -5,8 +5,10 @@ class IndexController
     public function indexAction($params)
     {
         if(isset($_COOKIE['cookie'])){
+            $date = date("Y-m-d H:i:s");
             $statitique = new Statistic();
             $statitique->setValueCookie($_COOKIE['cookie']);
+            $statitique->setcreated_at($date);
             $nbCookies = $statitique->count('value_cookie')->fetch();
             if($nbCookies[0] < 1) {
                 $statitique->save();
