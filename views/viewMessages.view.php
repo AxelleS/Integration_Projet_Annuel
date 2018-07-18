@@ -3,23 +3,23 @@
         <svg class="burgerResponsive col-lg-2 col-sm-2 col-md-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
         <h1 class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1">Messages</h1>
     </div>
-    <div class="row site-center">
-        <article class="col-lg-10 offset-lg-1">
-            <table class="bordered centered">
-                <thead>
-                <tr>
-                    <th>Lu/Non lu</th>
-                    <th>Date d'envoi</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Email</th>
-                    <th>Téléphone</th>
-                    <th>Objet</th>
-                    <th>Message</th>
-                    <th></th>
-                </tr>
+    <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table class="bordered centered responsive-table wrap">
+                <thead class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <th>Lu/Non lu</th>
+                        <th>Date d'envoi</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <!-- <th>Objet</th> -->
+                        <th>Message</th>
+                        <th></th>
+                    </tr>
                 </thead>
-                <tbody id="tbody">
+                <tbody id="tbody" class="content-scrollable">
                     <?php foreach ($donnees as $donnee) : ?>
                     <?php
                         if ($donnee['is_read']) {
@@ -28,16 +28,16 @@
                             $envelope = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.971l-11.986 9.713zm-5.425-1.822l-6.575-5.329v12.501l6.575-7.172zm10.85 0l6.575 7.172v-12.501l-6.575 5.329zm-1.557 1.261l-3.868 3.135-3.868-3.135-8.11 8.848h23.956l-8.11-8.848z"/></svg>';
                         }
                         ?>
-                        <tr>
+                        <tr class="tr-wrap">
                             <td><?php echo $envelope; ?></td>
                             <td><?php echo $donnee['date_send']; ?></td>
                             <td><?php echo $donnee['lastname']; ?></td>
                             <td><?php echo $donnee['firstname']; ?></td>
                             <td><?php echo $donnee['email']; ?>
                             <td><?php echo $donnee['phone']; ?></td>
-                            <td><?php echo $donnee['subject']; ?></td>
+                            <!-- <td><?php echo $donnee['subject']; ?></td> -->
                             <td><?php echo $donnee['content']; ?></td>
-                            <td><input type="button" value="Voir" class="btn-default" onclick="location.href='<?php echo Route::getSlug("contact", "openMessage")."/".$donnee["id"]; ?>'"></td>
+                            <td><input type="button" value="Voir" class="btn-default btn-see" onclick="location.href='<?php echo Route::getSlug("contact", "openMessage")."/".$donnee["id"]; ?>'"></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
