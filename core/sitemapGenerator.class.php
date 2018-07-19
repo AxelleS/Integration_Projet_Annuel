@@ -39,7 +39,12 @@ class sitemapGenerator {
             $sitemap_xml_code = $xmlDoc->saveXml();
 
             // save in the sitemap.xml file
-            file_put_contents($filePath, $sitemap_xml_code);
+            
+            $handle = fopen($filePath, 'w+');
+            fwrite($handle, $sitemap_xml_code);
+            fclose($handle);
+
+            //file_put_contents($filePath, $sitemap_xml_code);
         }
 
 
