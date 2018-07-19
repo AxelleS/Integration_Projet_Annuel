@@ -96,7 +96,7 @@ class OrganizationController {
             $room->setPrice(0);
 
 
-            $config = $room->formCreateRoom();
+            $config = $room->formCreateRoom([]);
 
             $v = new View('modifyRoom', 'back');
             $v->assign('roomDetails', $config);
@@ -270,6 +270,38 @@ class OrganizationController {
             
         } else if($infoOrganization['actualPageType'] == "Nouvelle page") {
             unset($infoOrganization['actualPageType']);
+            $errors = Validate::checkForm($infoOrganization);
+            if (isset($_FILES) && count($_FILES) > 0) {
+                foreach ($_FILES as $key=>$value) {
+                    if($value['error'] == 0) {
+                        $varReturn = Files::uploadPicture($value);
+                        if(!is_array($varReturn)) {
+                            $picture = new Picture();
+                            $picture->setIdRoom($infoOrganization['id']);
+                            $picture->setOrderPicture($key);
+                            $response = $picture->select(['id_room', 'order_picture']);
+
+                            if($response->rowCount() > 0) {
+                                $donneesPicture = $response->fetch();
+                                $picture->setId($donneesPicture['id']);
+                            } else {
+                                $picture->setOrderPicture($key);
+                            }
+
+                            if($key == 1) {
+                                $picture->setIsMain(1);
+                            } else {
+                                $picture->setIsMain(0);
+                            }
+
+                            $picture->setUrlPicture($varReturn);
+
+                            $picture->save();
+                        }
+                    }
+                }
+            }
+
             $room = new Room();
             $room->setName($infoOrganization['name']);
             $room->setDescription($infoOrganization['description']);
@@ -279,12 +311,22 @@ class OrganizationController {
             $room->setIsWheelchair($infoOrganization['is_wheelchair']);
             $room->setIsDeaf($infoOrganization['is_deaf']);
             $room->setPrice($infoOrganization['price']);
-            $room->save();
 
-            $responseRoom = $room->select('name');
-            $donneesRoom = $responseRoom->fetch();
+            if(count($errors) > 0) {
+                $config = $room->formCreateRoom($errors);
 
-            header("Location: ".DIRNAME.Route::getSlug('calendar','insertNewSlot').'/'.$donneesRoom['id']);
+                $v = new View('modifyRoom', 'back');
+                $v->assign('roomDetails', $config);
+
+            } else {
+                $room->save();
+
+                $responseRoom = $room->select('name');
+                $donneesRoom = $responseRoom->fetch();
+
+                header("Location: ".DIRNAME.Route::getSlug('calendar','insertNewSlot').'/'.$donneesRoom['id']);
+            }
+
         } else {
             unset($infoOrganization['actualPageType']);
             $errors = Validate::checkForm($infoOrganization);
