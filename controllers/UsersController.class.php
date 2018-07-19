@@ -228,16 +228,10 @@ class UsersController
                     $company = new Homepage();
                     $donnees_company = $company->select()->fetch();
 
-                    $mail = New PhpMailer();
-                    $mail->CharSet = "utf-8";
-                    $mail->IsHTML(true);
-                    $mail->From = $donnees_company['email_company'];
-                    $mail->FromName = $donnees_company['name_company'];
-                    $mail->AddAddress($params['POST']['email']);
+                    $subject = "Création de votre compte";
+                    $body = 'Bonjour,<br>Vous recevez ce message car un administrateur de chez <b>'.$donnees_company['name_company'].'</b> vient de créer votre compte.<br>Voici vos identifiants :<br>Identifiant : <b>'.$params['POST']['email'].'</b><br>Mot de passe : <b>'.$password.'</b>';
 
-                    $mail->Subject = "Création de votre compte";
-                    $mail->Body = 'Bonjour,<br>Vous recevez ce message car un administrateur de chez <b>'.$donnees_company['name_company'].'</b> vient de créer votre compte.<br>Voici vos identifiants :<br>Identifiant : <b>'.$params['POST']['email'].'</b><br>Mot de passe : <b>'.$password.'</b>';
-                    $mail->Send();
+                    Data::sendMail($params['POST']['email'], $donnees_company['email_company'], $donnees_company['name_company'], $subject, $body);
 
                     $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
                     $token = str_shuffle($char);

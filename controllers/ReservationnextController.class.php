@@ -90,17 +90,10 @@ class ReservationnextController
         $company = new Homepage();
         $donnees_company = $company->select()->fetch();
 
-        $mail = New PhpMailer();
-        $mail->CharSet = "utf-8";
-        $mail->IsHTML(true);
-        $mail->From = $donnees_company['email_company'];
-        $mail->FromName = $donnees_company['name_company'];
-        $mail->AddAddress($donnees['email']);
+        $subject = "Confirmation de votre réservation";
+        $body = 'Bonjour,<br>Nouis vous confirmons la réservation de votre partie.<br>Pour consulter la facture ou pour annuler la réservation, merci de vous connecter sur votre compte client.';
 
-        $mail->Subject = "Confirmation de votre réservation";
-        $mail->Body = 'Bonjour,<br>Nouis vous confirmons la réservation de votre partie.<br>Pour consulter la facture ou pour annuler la réservation, merci de vous connecter sur votre compte client.';
-
-        $mail->Send();
+        Data::sendMail($donnees['email'], $donnees_company['email_company'], $donnees_company['name_company'], $subject, $body);
 
         header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
     }

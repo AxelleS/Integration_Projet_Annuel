@@ -86,15 +86,13 @@ class SigninController
                 $company = new Homepage();
                 $donnees_company = $company->select()->fetch();
 
-                $mail = New PhpMailer();
-                $mail->CharSet = "utf-8";
-                $mail->IsHTML(true);
-                $mail->From = $donnees_company['email_company'];
-                $mail->FromName = $donnees_company['name_company'];
-                $mail->AddAddress($donnees_user['email']);
-
                 $string = md5(uniqid());
                 $password = substr($string, strlen($string)-8);
+
+                $subject = "Mot de passe oublié";
+                $body = 'Bonjour,<br>Voici le nouveau mot de passe que vous avez demandé : <b>'.$password.'</b>';
+
+                Data::sendMail($donnees_user['email'], $donnees_company['email_company'], $donnees_company['name_company'], $subject, $body);
 
                 $user->setId($donnees_user['id']);
 
@@ -111,10 +109,6 @@ class SigninController
                 $user->setPassword($password);
                 $user->save();
 
-                $mail->Subject = "Mot de passe oublié";
-                $mail->Body = 'Bonjour,<br>Voici le nouveau mot de passe que vous avez demandé : <b>'.$password.'</b>';
-
-                $mail->Send();
                 header("Location: ".DIRNAME.Route::getSlug('signin','index'));
             } else {
                 $errors['email'] = "L'email n'est pas connu";
