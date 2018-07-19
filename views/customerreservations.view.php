@@ -43,13 +43,13 @@
                                 <!-- Si la date de la partie est passée, on affiche un btn pour noter -->
                                 <?php if($value['date_now'] > $value['date_game']): ?>
                                     <?php if($value['opinion'] == null): ?>
-                                        <a type="button" class="btn-default" value="Noter" onClick="redirectTo('notation')">Noter</a>
+                                        <a type="button" class="btn-default" value="Noter" onClick="redirectTo('notation', <?php echo $value['id']; ?>)">Noter</a>
                                     <?php else : ?>
                                         <p>Partie déjà noté</p>
                                     <?php endif; ?>
                                 <!-- Sinon, si il reste plus de 7 jours avant l'escape, on affiche un btn annuler -->
                                 <?php elseif($value['interval'] >= 7): ?>
-                                    <a type="button" class="btn-default" value="Annuler" onClick="redirectTo('cancel')">Annuler</a>
+                                    <a type="button" class="btn-default" value="Annuler" onClick="redirectTo('cancel', <?php echo $value['id']; ?>)">Annuler</a>
                                 <?php endif; ?>
                             </td>                    
                         </tr>
@@ -61,13 +61,13 @@
 </main>
 
 <script>
-    function redirectTo($to) {
-        if($to == 'notation') {
-            window.location.href = '<?php echo DIRNAME.Route::getSlug('customeropinion', 'index').'/'.$value['id']; ?>';
+    function redirectTo(redirectURL, idResa) {
+        if(redirectURL == 'notation') {
+            window.location.href = '<?php echo DIRNAME.Route::getSlug('customeropinion', 'index').'/'; ?>'+idResa;
         }
-        if($to == 'cancel') {
+        if(redirectURL == 'cancel') {
             if(window.confirm('Etes-vous sûr de vouloir annuler la partie ?')) {
-                window.location.href = '<?php echo DIRNAME.Route::getSlug('customerreservations', 'cancel').'/'.$value['id']; ?>';
+                window.location.href = '<?php echo DIRNAME.Route::getSlug('customerreservations', 'cancel').'/'; ?>'+idResa;
             }
         }
     }
