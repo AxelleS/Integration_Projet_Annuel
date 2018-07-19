@@ -26,7 +26,7 @@ class DashboardadminController
                 }
 
                 $donnees_contact['message'] = $message;
-                if ($i < 2) {
+                if ($i < 1) {
                     array_push($contactArray, $donnees_contact);
                 }
 

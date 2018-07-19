@@ -74,7 +74,8 @@ $donneesUser = $user->select('id')->fetch();
                 <li class="<?php echo $pageActive == 'contact' ? 'active' : 'unactive'; ?>"><a href="<?php echo DIRNAME.Route::getSlug('contact','index'); ?>" title="">CONTACT</a></li>
                 <?php if ($donneesUser['id_type'] == 2) : ?>
                 <li class="<?php echo in_array($pageActive, $userMenu) ? 'active' : 'unactive'; ?>" id="user"><a href="" id="user-select" title="">COMPTE</a>
-                    <ul>        
+                    <ul> 
+                        <li><hr><img src="<?php echo (isset($donneesUser['url_picture']))? $donneesUser['url_picture'] : 'img/user.svg'; ?>"></img></li>       
                         <?php echo '<li><a href="'.DIRNAME.Route::getSlug('customerreservations','index').'" title="">Mes Réservations</a></li>'; ?>
                         <?php echo '<li><hr><a href="'.DIRNAME.Route::getSlug('customerinvoices','index').'" title="">Mes Factures</a></li>'; ?>
                         <?php echo '<li><hr><a href="'.DIRNAME.Route::getSlug('customerinfo','index').'" title="">Mes Informations</a></li>'; ?>

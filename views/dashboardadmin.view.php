@@ -11,7 +11,7 @@
         <?php foreach ($users as $user) : ?>
           <div class="row placing-content">
             <figure class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <img class="avatar-activities" src="<?php echo DIRNAME.$user['url_picture']; ?>" alt="">
+          <img class="avatar-activities" src="<?php echo (isset($user['url_picture']))? DIRNAME.$user['url_picture'] : 'img/user.svg'; ?>" alt="">
             </figure>
             <section class="col-lg-8 offset-lg-1 col-md-8 offset-md-1 col-sm-8 offset-sm-1 col-xs-8 offset-xs-1 center-content">
               <p><b><?php echo $user['lastname'].' '.$user['firstname']; ?></b> vient de s'inscrire !</p>
