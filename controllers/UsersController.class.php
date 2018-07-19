@@ -216,7 +216,7 @@ class UsersController
 
             $errors = Validate::checkForm($params["POST"]);
 
-			if(empty($errors)){
+			if(count($errors) < 1){
 			    $user = new User();
                 if($params["POST"]["id"] != '') {
                     $user->setId($params["POST"]["id"]);
@@ -253,7 +253,6 @@ class UsersController
                 $user->setAddress2($params['POST']['address_2']);
                 $user->setZipcode($params['POST']['zipcode']);
                 $user->setCity($params['POST']['city']);
-                $user->setPicture($donnees['url_picture']);
                 $user->setStatus($params['POST']['status']);
 
                 $user->save();
@@ -264,7 +263,24 @@ class UsersController
                     $nextURL = 'customer';
                 }
                 header("Location: ".DIRNAME.Route::getSlug('users','index')."/".$nextURL);
-			}
+			} else {
+                $user = new User();
+                $user->setType($params['POST']['id_type']);
+                $user->setFirstname($params['POST']['firstname']);
+                $user->setLastname($params['POST']['lastname']);
+                $user->setYearsOld($params['POST']['years_old']);
+                $user->setEmail($params['POST']['email']);
+                $user->setPhone($params['POST']['phone']);
+                $user->setAddress($params['POST']['address']);
+                $user->setAddress2($params['POST']['address_2']);
+                $user->setZipcode($params['POST']['zipcode']);
+                $user->setCity($params['POST']['city']);
+                $user->setStatus($params['POST']['status']);
+
+                $config = $user->configFormUserAddModifyBO($errors);
+                $v = new View('userEdit','back');
+                $v->assign('config',$config);
+            }
 		} else {
             header("Location: ".DIRNAME.Route::getSlug('users','index'));
         }
