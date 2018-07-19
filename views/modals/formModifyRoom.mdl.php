@@ -19,13 +19,21 @@ $errors = $config['errors'][0];
 
 <p class="<?php echo $config['style']['classText']?>"><?= "Images de la Room"?></p>
 <input class="<?php echo $config['style']['classInput']?>" type="file" name="1" />
+    <?php if (isset($config['pictures'])) : ?>
     <img class="miniature" src="<?php echo DIRNAME.$config['pictures'][0]?>">
+    <?php endif; ?>
 <input class="<?php echo $config['style']['classInput']?>" type="file" name="2" />
+    <?php if (isset($config['pictures'])) : ?>
     <img class="miniature" src="<?php echo DIRNAME.$config['pictures'][1]?>">
+    <?php endif; ?>
 <input class="<?php echo $config['style']['classInput']?>" type="file" name="3" />
+    <?php if (isset($config['pictures'])) : ?>
     <img class="miniature" src="<?php echo DIRNAME.$config['pictures'][2]?>">
+    <?php endif; ?>
 <input class="<?php echo $config['style']['classInput']?>" type="file" name="4" />
+    <?php if (isset($config['pictures'])) : ?>
     <img class="miniature" src="<?php echo DIRNAME.$config['pictures'][3]?>">
+    <?php endif; ?>
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['capacity']['nameView']?></p>
 <input class="<?php echo $config['style']['classInput']?>"  type="number" name="<?php echo $config['capacity']['name']?>" value="<?php echo $config['value']['capacity']?>" />
