@@ -5,7 +5,7 @@ class sitemapGenerator {
     public static function generateSitemap() {
 
         $dirPath = 'xml';
-        $filePath = 'sitemap.xml';
+        $filePath = '/files/sitemap.xml';
         $urlData = array();
         $urlPath = "escaperoom"."/";
         $domain = "https://".$_SERVER["SERVER_NAME"];
