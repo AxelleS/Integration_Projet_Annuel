@@ -25,17 +25,10 @@ class SignUpController
         $company = new Homepage();
         $donnees_company = $company->select()->fetch();
 
-        $mail = New PhpMailer();
-        $mail->CharSet = "utf-8";
-        $mail->IsHTML(true);
-        $mail->From = $donnees_company['email_company'];
-        $mail->FromName = $donnees_company['name_company'];
-        $mail->AddAddress($donnees['email']);
+        $subject = 'Confirmation d\'inscription';
+        $body = 'Bonjour,<br>Nous vous confirmons votre inscription.<br>Votre identifiant : <b>'.$donnees['email'].'</b><br>Votre mot de passe : <b>Celui que vous avez choisi</b>';
 
-        $mail->Subject = 'Confirmation d\'inscription';
-        $mail->Body = 'Bonjour,<br>Nous vous confirmons votre inscription.<br>Votre identifiant : <b>'.$donnees['email'].'</b><br>Votre mot de passe : <b>Celui que vous avez choisi</b>';
-
-        $mail->Send();
+        Data::sendMail($donnees['email'], $donnees_company['email_company'], $donnees_company['name_company'], $subject, $body);
 
         header("Location: ".DIRNAME.Route::getSlug('customerreservations','index'));
     }

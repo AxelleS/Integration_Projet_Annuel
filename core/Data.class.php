@@ -30,4 +30,24 @@ class Data {
 
         return "<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;width:700px;'><div id='gmap_canvas' style='height:440px;width:700px;'></div><div><small><a href='emg.com/fr'>https://embedgooglemaps.com/fr/</a></small></div><div><small><a href='http://botonmegusta.org/'>fb agregar</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(".$lat.",".$lng."),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(48.849145,2.389659100000017)});infowindow = new google.maps.InfoWindow({content:'<strong>Titre</strong><br>242 rue du faubourg saint antoine<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>";
     }
+
+    public static function sendMail($to, $from, $from_name, $subject, $body) {
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'ssl';
+        $mail->Host = MAIL_HOST;
+        $mail->Port = MAIL_PORT;
+        $mail->Username = MAIL_USER;
+        $mail->Password = MAIL_PWD;
+        $mail->CharSet = "utf-8";
+        $mail->IsHTML(true);
+        $mail->From = $from;
+        $mail->FromName = $from_name;
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+        $mail->AddAddress($to);
+        $mail->Send();
+    }
 }

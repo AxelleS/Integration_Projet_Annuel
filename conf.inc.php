@@ -12,6 +12,16 @@ define("DBNAME", "cms_escape");
 //port BDD
 define("DBPORT", "3306");
 
+//Paramètres mails
+//host STMP (gmail)
+define("MAIL_HOST", "smtp.gmail.com");
+//port SMTP (gmail)
+define("MAIL_PORT", 465);
+//user gmail
+define("MAIL_USER", "3iw2.groupe7@gmail.com");
+//pwd gmail
+define("MAIL_PWD", "CMSPROJECT");
+
 //Paramètres pour les fichiers
 //Repertoire d'upload
 define('TARGET', 'files/');
