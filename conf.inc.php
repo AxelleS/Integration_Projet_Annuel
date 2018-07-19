@@ -12,6 +12,11 @@ define("DBNAME", "cms_escape");
 //port BDD
 define("DBPORT", "3306");
 
+//Constante status room
+define("ACTIF", 1);
+define("INACTIF", 2);
+define("SUPPRIME", 3);
+
 //Paramètres mails
 //host STMP (gmail)
 define("MAIL_HOST", "smtp.gmail.com");
