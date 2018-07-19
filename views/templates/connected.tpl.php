@@ -1,5 +1,6 @@
 <?php
 $url = explode('/', $_SERVER['REQUEST_URI']);
+print_r($url);
 unset($url[0]);
 unset($url[1]);
 $url = array_values($url);
