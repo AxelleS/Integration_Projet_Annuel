@@ -1,8 +1,9 @@
 <?php
 $url = explode('/', $_SERVER['REQUEST_URI']);
-print_r($url);
 unset($url[0]);
-unset($url[1]);
+if($url[1] == str_ireplace('/', '', DIRNAME)) {
+    unset($url[1]);
+}
 $url = array_values($url);
 $pageActive = $url[0];
 $userMenu = ['mes-infos', 'mes-reservations', 'mes-factures'];
