@@ -166,6 +166,7 @@ class OrganizationController {
     }
 
     public function saveAction($params){
+	    print($params);die;
         $infoOrganization = $params['POST'];
 
         if($infoOrganization['actualPageType'] == "Homepage") {
