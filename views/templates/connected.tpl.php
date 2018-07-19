@@ -5,6 +5,7 @@ if($url[1] == str_ireplace('/', '', DIRNAME)) {
     unset($url[1]);
 }
 $url = array_values($url);
+print_r($url);
 $pageActive = $url[0];
 $userMenu = ['mes-infos', 'mes-reservations', 'mes-factures'];
 
