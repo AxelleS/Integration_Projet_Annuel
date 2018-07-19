@@ -4,9 +4,14 @@ unset($url[0]);
 if($url[1] == str_ireplace('/', '', DIRNAME)) {
     unset($url[1]);
 }
+
 $url = array_values($url);
-print_r($url);
-$pageActive = $url[0];
+if (count($url) < 1) {
+    $pageActive = '';
+} else {
+    $pageActive = $url[0];
+}
+
 $userMenu = ['mes-infos', 'mes-reservations', 'mes-factures'];
 
 $homepage = new Homepage();
@@ -64,7 +69,7 @@ $donneesUser = $user->select('id')->fetch();
         <div class="logo"><a href="<?php echo DIRNAME.Route::getSlug('index','index'); ?>"><img src="<?php echo DIRNAME.$donneesConstante['logo']; ?>" alt=""></a></div>
         <nav>
             <ul>
-                <li class="<?php echo ($pageActive == 'page-accueil' || $pageActive == '') ? 'active' : 'unactive'; ?>"><a href="<?php echo DIRNAME.Route::getSlug('index','index'); ?>" title="" active>ACCUEIL</a></li>
+                <li class="<?php echo $pageActive == '' ? 'active' : 'unactive'; ?>"><a href="<?php echo DIRNAME.Route::getSlug('index','index'); ?>" title="" active>ACCUEIL</a></li>
                 <li class="<?php echo $pageActive == 'escaperoom' ? 'active' : 'unactive'; ?>" id="mission"><a id="mission-select" href="" title="">MISSION</a>
                     <ul>
                         <?php while ($donneesRoom = $responseRoom->fetch()) : ?>
