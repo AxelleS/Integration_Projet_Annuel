@@ -17,7 +17,8 @@ $responseHP = $homepage->select();
 $donneesConstante = $responseHP->fetch();
 
 $room = new Room();
-$responseRoom = $room->select();
+$room->setStatus(ACTIF);
+$responseRoom = $room->select('status');
 ?>
 <!DOCTYPE html>
 <html>

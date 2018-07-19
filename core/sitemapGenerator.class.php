@@ -11,7 +11,8 @@ class sitemapGenerator {
         $domain = "https://".$_SERVER["SERVER_NAME"];
         //Take all room's URL
         $roomContent = new Room();
-        $responseRoom = $roomContent->select();
+        $roomContent->setStatus(ACTIF);
+        $responseRoom = $roomContent->select('status');
         foreach($responseRoom->fetchAll() as $key=>$content) {
             array_push($urlData, $urlPath.$content['id']);
         }

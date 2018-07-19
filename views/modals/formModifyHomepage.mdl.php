@@ -14,21 +14,33 @@ $errors = $config['errors'][0];
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['roomList']['room1']['nameView']?></p>
         <select name="<?php echo $config['input']['roomList']['room1']['name']?>" id="" class="<?php echo $config['style']['classInput']?>">
         <?php foreach($config['roomList'] as $key=>$value): ?>
+            <?php if ($config['roomList'][$key]['id'] == $config['value']['id_room_1']) : ?>
+                <option value="<?php echo $config['roomList'][0]['id'];?>" selected><?php echo $config['roomList'][$key]['name'];?></option>
+            <?php else : ?>
                 <option value="<?php echo $config['roomList'][$key]['id'];?>"><?php echo $config['roomList'][$key]['name'];?></option>
+            <?php endif; ?>
         <?php endforeach; ?>
         </select>
 
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['roomList']['room2']['nameView']?></p>
         <select name="<?php echo $config['input']['roomList']['room2']['name']?>" id="" class="<?php echo $config['style']['classInput']?>">
         <?php foreach($config['roomList'] as $key=>$value): ?>
+            <?php if ($config['roomList'][$key]['id'] == $config['value']['id_room_2']) : ?>
+                <option value="<?php echo $config['roomList'][$key]['id'];?>" selected><?php echo $config['roomList'][$key]['name'];?></option>
+            <?php else : ?>
                 <option value="<?php echo $config['roomList'][$key]['id'];?>"><?php echo $config['roomList'][$key]['name'];?></option>
+            <?php endif; ?>
         <?php endforeach; ?>
         </select>
 
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['roomList']['room3']['nameView']?></p>
         <select name="<?php echo $config['input']['roomList']['room3']['name']?>" id="" class="<?php echo $config['style']['classInput']?>">
         <?php foreach($config['roomList'] as $key=>$value): ?>
+            <?php if ($config['roomList'][$key]['id'] == $config['value']['id_room_3']) : ?>
+                <option value="<?php echo $config['roomList'][$key]['id'];?>" selected><?php echo $config['roomList'][$key]['name'];?></option>
+            <?php else : ?>
                 <option value="<?php echo $config['roomList'][$key]['id'];?>"><?php echo $config['roomList'][$key]['name'];?></option>
+            <?php endif; ?>
         <?php endforeach; ?>
         </select>
 

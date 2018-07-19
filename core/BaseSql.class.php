@@ -64,6 +64,13 @@ class BaseSql{
         $this->pdo->exec("UPDATE user SET token = '".$this->columns['token']."' WHERE id LIKE ".$this->columns['id']);
     }
 
+    public function selectNotLike($champ_recherche = null, $order = 'ASC'){
+        $this->setColumns();
+        $valeur_recherche = $this->columns[$champ_recherche];
+        $response = $this->pdo->query(" SELECT * FROM ".$this->table." WHERE ".$champ_recherche." NOT LIKE '".$valeur_recherche."' ORDER BY id ".$order);
+        return $response;
+    }
+
     //function select avec passage en paramètre du champs sur lequel va s'effectuer la recherche
     public function select($champ_recherche = null, $order = 'ASC'){
         $this->setColumns();
@@ -151,11 +158,18 @@ class BaseSql{
         return $response;   
     }
 
-    public function delete($champs) {
+    public function delete($champs, $table = null) {
+        if($table == 'room') {
+            $this->setColumns();
+            $this->pdo->query("UPDATE ".$this->table." SET status = 3 WHERE ".$champs." LIKE ".$this->columns[$champs]);
+        } else {
+            $this->setColumns();
+            $this->pdo->query("DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs]);
+        }
         $this->setColumns();
 
         //echo "DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs];
-        $this->pdo->query("DELETE FROM ".$this->table." WHERE ".$champs." LIKE ".$this->columns[$champs]);
+
     }
 
     public function save(){

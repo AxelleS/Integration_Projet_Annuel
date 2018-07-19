@@ -10,6 +10,7 @@ class Room extends BaseSql{
   protected $is_wheelchair = 0;
   protected $is_deaf = 1;
   protected $price;
+  protected $status;
 
   public function __construct() {
     parent::__construct();
@@ -51,6 +52,32 @@ class Room extends BaseSql{
       $this->price=$price;
   }
 
+  public function setStatus($status) {
+      $this->status=$status;
+  }
+
+  public static function getStatusLibel($status) {
+      switch ($status) {
+          case ACTIF:
+              return 'Active';
+              break;
+          case INACTIF:
+              return 'Inactive';
+              break;
+          case SUPPRIME:
+              return 'Supprimée';
+              break;
+      }
+  }
+
+    public static function getAllStatus() {
+        return [
+            ACTIF => 'Active',
+            INACTIF=> 'Inactive',
+            SUPPRIME=> 'Supprimée'
+        ];
+    }
+
   public function formModifyRoom($errors, $roomsPictures) {
 
     return [
@@ -83,7 +110,8 @@ class Room extends BaseSql{
         "is_pregnant"=>$this->is_pregnant,
         "is_wheelchair"=>$this->is_wheelchair,
         "is_deaf"=>$this->is_deaf,
-        "price"=>$this->price
+        "price"=>$this->price,
+        "status"=>$this->status
       ],
       "id"=>[
         "type"=>"hidden",
@@ -176,6 +204,13 @@ class Room extends BaseSql{
           ]
         ]
       ],
+      "status"=>[
+          "nameView"=>"Statut",
+          "name"=>"status"
+      ],
+      "allStatus"=>[
+          self::getAllStatus()
+      ]
     ];
 
   }

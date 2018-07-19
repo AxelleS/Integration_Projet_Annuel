@@ -6,7 +6,9 @@ class OrganizationController {
         $donnees_pages = array();
         array_push($donnees_pages, "Homepage");
         $roomList = new Room();
-        $response_roomList = $roomList->select();
+        $roomList->setStatus(SUPPRIME);
+        $response_roomList = $roomList->selectNotLike('status');
+
         while($donnees_roomList = $response_roomList->fetch()){
             array_push($donnees_pages, $donnees_roomList['name']);
         }
@@ -23,7 +25,8 @@ class OrganizationController {
 
         if($params['URL'][0] == "Homepage") {
             $roomList = new Room();
-            $response_roomList = $roomList->select();
+            $roomList->setStatus(ACTIF);
+            $response_roomList = $roomList->select('status');
 
             $homepageConfig = new Homepage();
             $response_homepageConfig = $homepageConfig->select();
@@ -117,6 +120,7 @@ class OrganizationController {
             $room->setIsWheelchair($donneesRoom['is_wheelchair']);
             $room->setIsDeaf($donneesRoom['is_deaf']);
             $room->setPrice($donneesRoom['price']);
+            $room->setStatus($donneesRoom['status']);
 
             $pictures = new Picture();
             $pictures->setIdRoom($donneesRoom['id']);
@@ -141,19 +145,13 @@ class OrganizationController {
     public function deleteAction($params){
         if ($params['URL'][0] === "room") {
             $idRoom = $params['URL'][1];
+
             $delRoom = new Room();
+
             $delRoom->setId($idRoom);
 
-            $time_slots = new Time_slot();
-            $time_slots->setIdRoom($idRoom);
-            $response_slots = $time_slots->select('id_room');
+            $delRoom->delete('id', 'room');
 
-            while ($donnees_slots = $response_slots->fetch()) {
-                $time_slots->setId($donnees_slots['id']);
-                $time_slots->delete('id');
-            }
-
-            $delRoom->delete('id');
             header("Location: ".DIRNAME.Route::getSlug('organization','index'));
         } else {
             $idFaq = $params['POST']['idFaq'];
@@ -189,7 +187,8 @@ class OrganizationController {
                 $modifyHomepage->setCityCompany($infoOrganization['city_company']);
 
                 $roomList = new Room();
-                $response_roomList = $roomList->select();
+                $roomList->setId(ACTIF);
+                $response_roomList = $roomList->select('status');
 
                 $roomListDetails = array();
                 foreach($response_roomList->fetchAll() as $keyRoom=>$content) {
@@ -281,6 +280,7 @@ class OrganizationController {
             $room->setIsWheelchair($infoOrganization['is_wheelchair']);
             $room->setIsDeaf($infoOrganization['is_deaf']);
             $room->setPrice($infoOrganization['price']);
+            $room->setStatus(ACTIF);
 
             if(count($errors) > 0) {
                 $config = $room->formCreateRoom($errors);
@@ -375,6 +375,7 @@ class OrganizationController {
             $room->setIsWheelchair($infoOrganization['is_wheelchair']);
             $room->setIsDeaf($infoOrganization['is_deaf']);
             $room->setPrice($infoOrganization['price']);
+            $room->setStatus($infoOrganization['status']);
 
             if(count($errors) > 0) {
                 $config = $room->formModifyRoom($errors);

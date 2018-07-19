@@ -60,8 +60,30 @@ $errors = $config['errors'][0];
 <input <?php echo ($config['is_deaf']['is_deaf'] === "1" ? "checked": null); ?> class="<?php echo $config['style']['classInput']?>"  type="radio" name="<?php echo $config['is_deaf']['name']?>" value="<?php echo $config['is_deaf']['button_choice']['yes']['value']?>"><?php echo $config['is_pregnant']['button_choice']['yes']['name']?>
 <input <?php echo ($config['is_deaf']['is_deaf'] === "0" ? "checked": null); ?> class="<?php echo $config['style']['classInput']?>"  type="radio" name="<?php echo $config['is_deaf']['name']?>" value="<?php echo $config['is_deaf']['button_choice']['no']['value']?>"><?php echo $config['is_pregnant']['button_choice']['no']['name']?>
 
+<?php if (isset($config['status'])) : ?>
+<p class="<?php echo $config['style']['classText']?>"><?php echo $config['status']['nameView']?></p>
+<select class="<?php echo $config['style']['classInput']?>" id="<?php echo $config['status']['name']?>" name="<?php echo $config['status']['name']?>" onchange="deleteRoom(<?php echo $config['id']['value']; ?>)">
+    <?php foreach ($config['allStatus'][0] as $key=>$value) : ?>
+        <?php if ($key == $config['value']['status']) : ?>
+            <option value="<?php echo $key; ?>" selected><?php echo $value; ?></option>
+        <?php else : ?>
+            <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</select>
+<?php endif; ?>
 
 <a href="<?php echo $config['config']['cancel']?>" class="<?php echo $config['style']['classCancel']?>"><button class="<?php echo $config['style']['buttonCancel']?>">Retour</button></a>
-<input class="<?php echo $config['style']['classValidate']?>" type="<?php echo $config['validate']['type']?>" value="<?php echo $config['validate']['value']?>"></p>
+<input class="<?php echo $config['style']['classValidate']?>" type="<?php echo $config['validate']['type']?>" value="<?php echo $config['validate']['value']?>">
 
 </form>
+
+<script>
+    function deleteRoom(idRoom) {
+        if ($('#status').val() == 3) {
+            if (confirm("Etes vous sûr de vouloir supprimer cette room ? Cette action est irréversible ")) {
+                location.href = '<?php echo DIRNAME.Route::getSlug('organization', 'delete'); ?>'+'/room/'+idRoom;
+            }
+        }
+    }
+</script>

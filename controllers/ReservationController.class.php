@@ -5,7 +5,8 @@ class ReservationController
     public function indexAction($params)
     {
         $room = new Room();
-        $response = $room->select();
+        $room->setStatus(ACTIF);
+        $response = $room->select('status');
 
          //Appelle la vue
          if ($_SESSION['is_connected']) {

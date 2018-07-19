@@ -5,7 +5,8 @@ class CalendarController {
 	public function indexAction($params)
     {
         $rooms = new Room();
-        $response = $rooms->select();
+        $rooms->setStatus(ACTIF);
+        $response = $rooms->select('status');
 
         $rooms_data = [];
         while($donnees_rooms = $response->fetch()){

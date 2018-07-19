@@ -19,7 +19,8 @@ $responseHP = $homepage->select();
 $donneesConstante = $responseHP->fetch();
 
 $room = new Room();
-$responseRoom = $room->select();
+$room->setStatus(ACTIF);
+$responseRoom = $room->select('status');
 
 $user = new User();
 $user->setId($_SESSION['id_user']);
