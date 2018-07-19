@@ -271,36 +271,6 @@ class OrganizationController {
         } else if($infoOrganization['actualPageType'] == "Nouvelle page") {
             unset($infoOrganization['actualPageType']);
             $errors = Validate::checkForm($infoOrganization);
-            if (isset($_FILES) && count($_FILES) > 0) {
-                foreach ($_FILES as $key=>$value) {
-                    if($value['error'] == 0) {
-                        $varReturn = Files::uploadPicture($value);
-                        if(!is_array($varReturn)) {
-                            $picture = new Picture();
-                            $picture->setIdRoom($infoOrganization['id']);
-                            $picture->setOrderPicture($key);
-                            $response = $picture->select(['id_room', 'order_picture']);
-
-                            if($response->rowCount() > 0) {
-                                $donneesPicture = $response->fetch();
-                                $picture->setId($donneesPicture['id']);
-                            } else {
-                                $picture->setOrderPicture($key);
-                            }
-
-                            if($key == 1) {
-                                $picture->setIsMain(1);
-                            } else {
-                                $picture->setIsMain(0);
-                            }
-
-                            $picture->setUrlPicture($varReturn);
-
-                            $picture->save();
-                        }
-                    }
-                }
-            }
 
             $room = new Room();
             $room->setName($infoOrganization['name']);
@@ -320,6 +290,39 @@ class OrganizationController {
 
             } else {
                 $room->save();
+
+                $donnees_room = $room->select('name')->fetch();
+
+                if (isset($_FILES) && count($_FILES) > 0) {
+                    foreach ($_FILES as $key=>$value) {
+                        if($value['error'] == 0) {
+                            $varReturn = Files::uploadPicture($value);
+                            if(!is_array($varReturn)) {
+                                $picture = new Picture();
+                                $picture->setIdRoom($donnees_room['id']);
+                                $picture->setOrderPicture($key);
+                                $response = $picture->select(['id_room', 'order_picture']);
+
+                                if($response->rowCount() > 0) {
+                                    $donneesPicture = $response->fetch();
+                                    $picture->setId($donneesPicture['id']);
+                                } else {
+                                    $picture->setOrderPicture($key);
+                                }
+
+                                if($key == 1) {
+                                    $picture->setIsMain(1);
+                                } else {
+                                    $picture->setIsMain(0);
+                                }
+
+                                $picture->setUrlPicture($varReturn);
+
+                                $picture->save();
+                            }
+                        }
+                    }
+                }
 
                 $responseRoom = $room->select('name');
                 $donneesRoom = $responseRoom->fetch();
