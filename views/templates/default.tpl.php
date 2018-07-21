@@ -23,7 +23,6 @@ $responseRoom = $room->select('status');
 <!DOCTYPE html>
 <html>
 <head>
-<base href=<?php echo 'http://'.$_SERVER["SERVER_NAME"].'/'.DIRNAME; ?>>
     <meta charset="utf-8" />
     <title>Play with my CMS</title>
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo DIRNAME; ?>assets/dist/grid.css" />
