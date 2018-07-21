@@ -298,7 +298,7 @@ class UsersController
         $user->setId($params['URL'][0]);
         $response = $user->select('id');
         $donnees = $response->fetch();
-        if ($donnees['token'] === $params['URL'][1] && $donnees['status'] === 4) {
+        if ($donnees['token'] === $params['URL'][1] && $donnees['status'] == 4) {
             $user->setType($donnees['id_type']);
             $user->setFirstname($donnees['firstname']);
             $user->setLastname($donnees['lastname']);
@@ -312,7 +312,7 @@ class UsersController
             $user->setStatus(2);
             $user->save();
         } else {
-            header("Location: ".DIRNAME.Route::getSlug('users','index'));
+            header("Location: ".DIRNAME.Route::getSlug('index','index'));
         }
     }
 
