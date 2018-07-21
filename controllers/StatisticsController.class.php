@@ -24,6 +24,8 @@ class StatisticsController {
         $datem3 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-3, date('Y'))).'%';
         $datem4 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-4, date('Y'))).'%';
         $datem5 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-5, date('Y'))).'%';
+        $datem6 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-6, date('Y'))).'%';
+        $datem7 = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d')-7, date('Y'))).'%';
 
         //Count du nombre de visite du jour
         $visite = new Statistic();
@@ -68,6 +70,15 @@ class StatisticsController {
         $visite->setCreatedAt($datem5);
         $response_visi = $visite->count('created_at');
         $stats['number_visite'][5] = $response_visi->fetch();
+        //Count du nombre de visite du jour -6
+        $visite->setCreatedAt($datem6);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite'][6] = $response_visi->fetch();
+        //Count du nombre de visite du jour -7
+        $visite->setCreatedAt($datem7);
+        $response_visi = $visite->count('created_at');
+        $stats['number_visite'][7] = $response_visi->fetch();
+
 
 
         //Count du nombre de nouveau utilisateur
@@ -95,6 +106,14 @@ class StatisticsController {
         $users->setDateInserted($datem5);
         $response_stat = $users->count('date_inserted');
         $stats['number_insert_today'][5] = $response_stat->fetch();
+        //Count du nombre de nouveau utilisateur ce jour -6
+        $users->setDateInserted($datem6);
+        $response_stat = $users->count('date_inserted');
+        $stats['number_insert_today'][6] = $response_stat->fetch();
+        //Count du nombre de nouveau utilisateur ce jour -7
+        $users->setDateInserted($datem7);
+        $response_stat = $users->count('date_inserted');
+        $stats['number_insert_today'][7] = $response_stat->fetch();
 
 
         
@@ -123,6 +142,14 @@ class StatisticsController {
         $resa->setDateBill($datem5);
         $response_resa = $resa->count('date_bill');
         $stats['number_resa_today'][5] = $response_resa->fetch();
+        //Count du nombre de reservation ce jour -6
+        $resa->setDateBill($datem6);
+        $response_resa = $resa->count('date_bill');
+        $stats['number_resa_today'][6] = $response_resa->fetch();
+        //Count du nombre de reservation ce jour -7
+        $resa->setDateBill($datem7);
+        $response_resa = $resa->count('date_bill');
+        $stats['number_resa_today'][7] = $response_resa->fetch();
 
         //Count du nombre de partie du jour
         $parti = new Statistic();

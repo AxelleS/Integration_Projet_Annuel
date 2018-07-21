@@ -188,14 +188,23 @@ function refresh() {
     complete : function(data) {
       var result = JSON.parse(data['responseText']);
 
-      console.log(result.game);
+      console.log(result);
 
       var ctx = document.getElementById("line-chart").getContext("2d");
 
       var dataChart = {
-        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [result['number_visite'][5][0],result['number_visite'][4][0],result['number_visite'][3][0],result['number_visite'][2][0],result['number_visite'][1][0],result['number_visite'][0][0]],
+            data: [
+            result['number_visite'][7][0],
+            result['number_visite'][6][0],
+            result['number_visite'][5][0],
+            result['number_visite'][4][0],
+            result['number_visite'][3][0],
+            result['number_visite'][2][0],
+            result['number_visite'][1][0],
+            result['number_visite'][0][0]
+            ],
             label: "Par jour",
             borderColor: "#3e95cd",
             fill: false
@@ -268,9 +277,19 @@ function refresh() {
       var ctx = document.getElementById("line-chart3").getContext("2d");
 
       var dataChart3 = {
-        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [result['number_insert_today'][5][0],result['number_insert_today'][4][0],result['number_insert_today'][3][0],result['number_insert_today'][2][0],result['number_insert_today'][1][0],result['number_insert_today'][0][0]],
+            data: [
+            result['number_insert_today'][7][0],
+            result['number_insert_today'][6][0],
+            result['number_insert_today'][5][0],
+            result['number_insert_today'][5][0],
+            result['number_insert_today'][4][0],
+            result['number_insert_today'][3][0],
+            result['number_insert_today'][2][0],
+            result['number_insert_today'][1][0],
+            result['number_insert_today'][0][0]
+            ],
             label: "Par jour",
             borderColor: "#0101DF",
             fill: false
@@ -292,9 +311,18 @@ function refresh() {
       var ctx = document.getElementById("line-chart4").getContext("2d");
 
       var dataChart4 = {
-        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [result['number_resa_today'][5][0],result['number_resa_today'][4][0],result['number_resa_today'][3][0],result['number_resa_today'][2][0],result['number_resa_today'][1][0],result['number_resa_today'][0][0],], 
+            data: [
+            result['number_resa_today'][7][0],
+            result['number_resa_today'][6][0],
+            result['number_resa_today'][5][0],
+            result['number_resa_today'][4][0],
+            result['number_resa_today'][3][0],
+            result['number_resa_today'][2][0],
+            result['number_resa_today'][1][0],
+            result['number_resa_today'][0][0]
+            ], 
             label: "Par jour",
             borderColor: "#DF013A",
             fill: false
@@ -316,13 +344,13 @@ function refresh() {
 
       var ctx = document.getElementById("line-chart5").getContext("2d");
 
-      var game = [];
-      result.game.forEach(function(element) {
-        console.log(element)
-        // game.push({
-        //   element
-        // });        
-      });
+      // var game = [];
+      // result.game.forEach(function(element) {
+      //   console.log(element)
+      //   // game.push({
+      //   //   element
+      //   // });        
+      // });
 
       var dataChart5 = {
         labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
