@@ -44,7 +44,12 @@ class SigninController
                 $errors['signin'] = "L'email ou le mot de passse est incorrect";
             } else {
                 if($error['status'] == true) {
-                    $errors['signin'] = "Votre compte est désactivé, veuillez nous contacter pour plus d'information";
+                    if ($donnees_user['status'] != 4) {
+                        $errors['signin'] = "Votre compte est désactivé, veuillez nous contacter pour plus d'information";
+                    } else {
+                        $errors['signin'] = "Votre compte n'est pas encore activé, merci de confirmer votre adresse email par le mail que vous avez reçu";
+
+                    }
                 }
             }
 
