@@ -4,3 +4,4 @@ assets/dist/css/main.css
 conf.inc.php
 package-lock.json
 package.json
+files/sitemap.xml
