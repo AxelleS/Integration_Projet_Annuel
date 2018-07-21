@@ -4,6 +4,7 @@ class StatisticsController {
 
 	public function indexAction($params)
     {
+
         $activate_stats = new Display_stats();
         $response_activate = $activate_stats->select();
         while($donnees = $response_activate->fetch()){
@@ -124,6 +125,8 @@ class StatisticsController {
         $stats['number_resa_today'][5] = $response_resa->fetch();
 
         //Count du nombre de partie du jour
+        $parti = new Statistic();
+        $stats['game'] = $parti->getNbGames();
 
         //Envoi des données au success de la requête ajax
         echo json_encode($stats);
