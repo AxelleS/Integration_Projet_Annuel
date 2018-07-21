@@ -90,7 +90,7 @@ $(document).ready(function(){
   visible_hidden_nb_resa();
   visible_hidden_nb_partie();
   refresh();
-  //setInterval("refresh()", 30*60000)
+  //setInterval("refresh()", 5000)
 });
 
 function visible_hidden_visite(){
@@ -173,6 +173,13 @@ var todayDayM5 =today.getDate() -5;
 //formatage de la date du jour -5
 var todayDayM5 = todayDayM5 + '/' +todayMonth + '/' +todayYear;
 
+var todayDayM6 =today.getDate() -6; 
+//formatage de la date du jour -6
+var todayDayM6 = todayDayM6 + '/' +todayMonth + '/' +todayYear;
+
+var todayDayM7 =today.getDate() -7; 
+//formatage de la date du jour -7
+var todayDayM7 = todayDayM7 + '/' +todayMonth + '/' +todayYear;
 
 function refresh() {
   $.ajax({
@@ -180,6 +187,8 @@ function refresh() {
     type : 'GET',
     complete : function(data) {
       var result = JSON.parse(data['responseText']);
+
+      console.log(result.game);
 
       var ctx = document.getElementById("line-chart").getContext("2d");
 
@@ -191,12 +200,6 @@ function refresh() {
             borderColor: "#3e95cd",
             fill: false
           }
-          // }, {
-          //   data: [282,350,411,502,635,809,947,1402,3700,5267],
-          //   label: "Par semaine",
-          //   borderColor: "#8e5ea2",
-          //   fill: false
-          // }
         ]
       };
 
@@ -313,10 +316,18 @@ function refresh() {
 
       var ctx = document.getElementById("line-chart5").getContext("2d");
 
+      var game = [];
+      result.game.forEach(function(element) {
+        console.log(element)
+        // game.push({
+        //   element
+        // });        
+      });
+
       var dataChart5 = {
-        labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050,4000],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [86,114,106,106,107,111,133,221,783,2478],
+            data: [game],
             label: "Ce jour",
             borderColor: "#01DF3A",
             fill: false
