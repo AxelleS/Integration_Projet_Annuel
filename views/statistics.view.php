@@ -344,18 +344,15 @@ function refresh() {
 
       var ctx = document.getElementById("line-chart5").getContext("2d");
 
-      // var game = [];
-      // result.game.forEach(function(element) {
-      //   console.log(element)
-      //   // game.push({
-      //   //   element
-      //   // });        
-      // });
+      var allGames = [];
+      for (var eachGame in result['game']) {
+          allGames.push(result['game'][eachGame]);
+      }
 
       var dataChart5 = {
         labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [game],
+            data: allGames,
             label: "Ce jour",
             borderColor: "#01DF3A",
             fill: false
