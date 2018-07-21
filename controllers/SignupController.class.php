@@ -21,12 +21,13 @@ class SignUpController
         $user->setId($_SESSION['id_user']);
         $request = $user->select('id');
         $donnees = $request->fetch();
+        
 
         $company = new Homepage();
         $donnees_company = $company->select()->fetch();
-
+        $validateUrl = 'https://www.play-with-my-cms.ovh/valider-inscription/'.$donnees['id'].'/'.$donnees['token'];
         $subject = 'Confirmation d\'inscription';
-        $body = 'Bonjour,<br>Nous vous confirmons votre inscription.<br>Votre identifiant : <b>'.$donnees['email'].'</b><br>Votre mot de passe : <b>Celui que vous avez choisi</b>';
+        $body = 'Bonjour,<br>Nous vous confirmons votre inscription.<br>Votre identifiant : <b>'.$donnees['email'].'</b><br>Votre mot de passe : <b>Celui que vous avez choisi</b><br>Confirmez votre inscription <a href='.$validateUrl.'> en cliquant ici</a>, ou en copiant ce lien dans votre navigateur : '.$validateUrl;
 
         Data::sendMail($donnees['email'], $donnees_company['email_company'], $donnees_company['name_company'], $subject, $body);
 

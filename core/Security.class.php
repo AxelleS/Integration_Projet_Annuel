@@ -16,8 +16,11 @@ class Security {
 			$user->setId($_SESSION['id_user']);
 			$response = $user->select('id');
 			$donnees_user = $response->fetch();
-	
-			if($donnees_user['token'] == $_SESSION['token']) {
+			if ($donnees_user['status'] == 4) {
+				$_SESSION['is_connected'] = false;
+				return false;
+			}
+			else if($donnees_user['token'] == $_SESSION['token']) {
 	
 				$char = 'abcdefghijklmnopqrstuvwxyz0123456789';
 				$token = str_shuffle($char);
@@ -29,15 +32,15 @@ class Security {
 	
 				$_SESSION['token'] = $token;
 
-                $_SESSION['is_connected'] = true;
+				$_SESSION['is_connected'] = true;
 				return true;
 			} else {
-                $_SESSION['is_connected'] = false;
+				$_SESSION['is_connected'] = false;
 				return false;
 			}
 		} else {
-            $_SESSION['is_connected'] = false;
-            return false;
-        }
+			$_SESSION['is_connected'] = false;
+			return false;
+		}
 	}
 }

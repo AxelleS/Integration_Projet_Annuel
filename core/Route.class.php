@@ -50,6 +50,13 @@ class Route{
             "type"       => 0
         ],
         [
+            "slug"       => "valider-inscription",
+            "controller" => "users",
+            "action"     => "validatesignup",
+            "security"   => false,
+            "type"       => 0
+        ],
+        [
             "slug"       => "noter-la-partie",
             "controller" => "customeropinion",
             "action"     => "index",
