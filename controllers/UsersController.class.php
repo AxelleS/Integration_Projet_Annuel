@@ -194,7 +194,7 @@ class UsersController
             $user->setAddress2($infoUser['address_2']);
             $user->setZipcode($infoUser['zipcode']);
             $user->setCity($infoUser['city']);
-            $user->setStatus(2);
+            $user->setStatus(4);
             $user->setType(2);
 	    $user->setDateInserted(date('Y-m-d H:i:s'));
             $user->save();
@@ -291,6 +291,29 @@ class UsersController
         $config = $user->configFormUserAddModifyBO([]);
         $v = new View('userEdit','back');
         $v->assign('config', $config);
+    }
+
+    function validatesignupAction($params) {
+        $user = new User();
+        $user->setId($params['URL'][0]);
+        $response = $user->select('id');
+        $donnees = $response->fetch();
+        if ($donnees['token'] === $params['URL'][1] && $donnees['status'] === 4) {
+            $user->setType($donnees['id_type']);
+            $user->setFirstname($donnees['firstname']);
+            $user->setLastname($donnees['lastname']);
+            $user->setYearsOld($donnees['years_old']);
+            $user->setEmail($donnees['email']);
+            $user->setPhone($donnees['phone']);
+            $user->setAddress($donnees['address']);
+            $user->setAddress2($donnees['address_2']);
+            $user->setZipcode($donnees['zipcode']);
+            $user->setCity($donnees['city']);
+            $user->setStatus(2);
+            $user->save();
+        } else {
+            header("Location: ".DIRNAME.Route::getSlug('users','index'));
+        }
     }
 
     function changePasswordBOAction($params){
