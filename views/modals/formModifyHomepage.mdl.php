@@ -45,7 +45,7 @@ $errors = $config['errors'][0];
         </select>
 
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['description_introduction']['nameView']?></p>
-        <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['description_introduction']['name']?>" value="<?php echo $config['value']['description_introduction']?>" /> 
+        <textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['input']['description_introduction']['name']?>"><?php echo $config['value']['description_introduction']?></textarea>
         
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['url_video']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['url_video']['name']?>" value="<?php echo $config['value']['url_video']?>" />
