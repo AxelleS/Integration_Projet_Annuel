@@ -128,9 +128,9 @@ class Room extends BaseSql{
         "value" => $this->id,
         "name"=>"actualPageType"
       ],
-      "title_introduction"=>[
+      "name"=>[
         "type"=>"text",
-        "nameView"=>"Titre d'introduction",
+        "nameView"=>"Nom",
         "required"=>true,
         "name"=> "name",
         "value"=>$this->name
@@ -261,9 +261,9 @@ class Room extends BaseSql{
         "value" => "Nouvelle page",
         "name"=>"actualPageType"
       ],
-      "title_introduction"=>[
+      "name"=>[
         "type"=>"text",
-        "nameView"=>"Titre d'introduction",
+        "nameView"=>"Nom",
         "required"=>true,
         "name"=> "name",
         "value"=>$this->name

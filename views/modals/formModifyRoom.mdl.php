@@ -6,10 +6,10 @@ $errors = $config['errors'][0];
 <input type="hidden" name="<?php echo $config['id']['name']?>" value="<?php echo $config['id']['value']?>" />
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['title_introduction']['nameView']?></p>
-<input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['title_introduction']['name']?>" value="<?php echo $config['value']['name']?>" />
+<input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['title_introduction']['name']?>" value="<?php echo $config['value']['name']?>" required>
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['description']['nameView']?></p>
-<textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['input']['description']['name']?>"><?php echo $config['value']['description']?></textarea>
+<textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['input']['description']['name']?>" required><?php echo $config['value']['description']?></textarea>
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['url_video']['nameView']?></p>
 <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['url_video']['name']?>" value="<?php echo $config['value']['url_video']?>" />
