@@ -106,7 +106,6 @@ class ContactController
 
         $toCut = explode(' ', $donnees['date_send']);
         $dateExplode = explode('-', $toCut[0]);
-        print_r($dateExplode);
         $date = $dateExplode[2].'/'.$dateExplode[1].'/'.$dateExplode[0];
         $hour = substr($toCut[1], 0, 5);
         $donnees['date_send'] = $date.' '.$hour;
