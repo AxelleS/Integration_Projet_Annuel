@@ -12,7 +12,7 @@ $errors = $config['errors'][0];
 <?php endif; ?>
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['description']['nameView']?></p>
-<textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['input']['description']['name']?>" required><?php echo $config['value']['description']?></textarea>
+<textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['description']['name']?>" required><?php echo $config['value']['description']?></textarea>
 <?php if(array_key_exists('description', $errors)) : ?>
     <p class="errors"><?php echo $errors['url_video']; ?></p>
 <?php endif; ?>
