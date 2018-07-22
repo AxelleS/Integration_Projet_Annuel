@@ -6,7 +6,10 @@ $errors = $config['errors'][0];
       
         <input type="hidden" name="actualPageType" value="<?php echo $config['value']['actualPageTypeValue']?>" />
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['title_introduction']['nameView']?></p>
-        <input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['input']['title_introduction']['name']?>" value="<?php echo $config['value']['title_introduction']?>" />
+        <input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['input']['title_introduction']['name']?>" value="<?php echo $config['value']['title_introduction']?>" required>
+        <?php if(array_key_exists('title_introduction', $errors)) : ?>
+            <p class="errors"><?php echo $errors['title_introduction']; ?></p>
+        <?php endif; ?>
 
         <p class="<?php echo $config['style']['classText']?>"><?= "Images du caroussel"?></p>
         <input class="<?php echo $config['style']['classInput']?>" type="file" name="images[]" multiple />
@@ -45,8 +48,11 @@ $errors = $config['errors'][0];
         </select>
 
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['description_introduction']['nameView']?></p>
-        <textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['input']['description_introduction']['name']?>"><?php echo $config['value']['description_introduction']?></textarea>
-        
+        <textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['input']['description_introduction']['name']?>" required><?php echo $config['value']['description_introduction']?></textarea>
+        <?php if(array_key_exists('description_introduction', $errors)) : ?>
+            <p class="errors"><?php echo $errors['description_introduction']; ?></p>
+        <?php endif; ?>
+
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['url_video']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['url_video']['name']?>" value="<?php echo $config['value']['url_video']?>" />
         <?php if(array_key_exists('url_video', $errors)) : ?>

@@ -172,6 +172,14 @@ class OrganizationController {
 
             $errors = Validate::checkForm($infoOrganization);
 
+            if(trim($infoOrganization['title_introduction']) == '') {
+                $errors['title_introduction'] = 'Le titre ne peut pas être vide';
+            }
+
+            if(trim($infoOrganization['description_introduction']) == '') {
+                $errors['description_introduction'] = 'La description ne peut pas être vide';
+            }
+
             if(count($errors) > 0) {
                 $modifyHomepage->setId(1);
                 $modifyHomepage->setIdRoom1($infoOrganization['id_room_1']);
