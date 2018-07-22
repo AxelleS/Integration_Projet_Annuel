@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jdomange
- * Date: 05/07/2018
- * Time: 15:19
- * Cette class permet la création des fichiers nécessaires à l'installation de TOSLE
- */
+
 class Installer
 {
 
@@ -35,8 +29,6 @@ class Installer
             fputs($file, '	define(\'DBHOST\', \''.$arrayData['dbhost'].'\');'.PHP_EOL);
             fputs($file, '	define(\'DBNAME\', \''.$arrayData['dbname'].'\');'.PHP_EOL);
             fputs($file, '	define(\'DBPORT\', \''.$arrayData['dbport'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'GUSER\', \''.$arrayData['guser'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'GPWD\', \''.$arrayData['gpwd'].'\');'.PHP_EOL);
             fclose($file);
             return 1;
         }
@@ -52,4 +44,28 @@ class Installer
             return 0;
         }
     }
+
+    public function setConfiguration($arrayData)
+    {
+    	if(!file_exists("../baseToImportFinal.sql")){
+	    	try {
+	            $bdd = new PDO('mysql:host='.DBHOST.';charset=UTF8',DBUSER,DBPWD);
+	        } catch(PDOException $e) {
+	            return ['SQL' => 'Failed to access at the database'];;
+	        }
+	        $bdd->query(file_get_contents("../baseToImportFinal.sql"));
+	        $user = new User();
+	        $user->setId($arrayData['id']);
+	        $user->setFirstname($arrayData['firstname']);
+	        $user->setLastname($arrayData['lastname']);
+	        $user->setYearsOld($arrayData['years_old']);
+	        $user->setEmail($arrayData['email']);
+	        $user->setPhone($arrayData['phone']);
+	        $user->setAddress($arrayData['address']);
+	        $user->setAddress2($arrayData['address_2']);
+	        $user->setZipcode($arrayData['zipcode']);
+	        $user->setCity($arrayData['city']);
+	        $user->save();
+	    }
+	}
 }
