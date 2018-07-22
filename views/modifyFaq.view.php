@@ -21,7 +21,7 @@
       <?php endforeach; ?>
   <input type="button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addNewQuestion" id="addQA" value="Ajouter une nouvelle question" >
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
-    <input class="col-lg-2 offset-lg-2 col-md-2 offset-md-2 col-sm-2 offset-sm-2 col-xs-2 offset-xs-2 validate-modify-homepage" type="button" value="Retour" onclick="backTo()">
+    <input class="col-lg-2 offset-lg-2 col-md-2 offset-md-2 col-sm-2 offset-sm-2 col-xs-2 offset-xs-2 validate-modify-homepage" type="button" value="Retour" onclick="window.location.href='<?php echo DIRNAME . Route::getSlug('organization', 'index'); ?>'">
     <input class="col-lg-2 offset-lg-2 col-md-2 offset-md-2 col-sm-2 offset-sm-2 col-xs-2 offset-xs-2 validate-modify-homepage" type="submit" value="Sauvegarder">
   </div>
   </form>
@@ -34,7 +34,7 @@
     });
 
     function backTo() {
-        window.location.href = "<?php DIRNAME.Route::getSlug('organization','index')?>";
+        window.location.href = "<?php echo DIRNAME . Route::getSlug('organization', 'index'); ?>";
     }
 
     function deleteQa(idQA) {
