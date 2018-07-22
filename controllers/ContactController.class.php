@@ -95,7 +95,6 @@ class ContactController
 
         $response = $contact->select('id');
         $donnees = $response->fetch();
-        print_r($donnees);die;
         $contact->setLastname($donnees['lastname']);
         $contact->setFirstname($donnees['firstname']);
         $contact->setPhone($donnees['phone']);
@@ -106,6 +105,7 @@ class ContactController
         $contact->save();
 
         $toCut = explode(' ', $donnees['date_send']);
+        print_r($toCut);die;
         $dateExplode = explode('-', $toCut[0]);
         $date = $dateExplode[2].'/'.$dateExplode[1].'/'.$dateExplode[0];
         $hour = substr($toCut[1], 0, 5);
