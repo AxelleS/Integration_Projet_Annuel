@@ -5,6 +5,7 @@ class BaseSql{
     private $table;
     private $pdo;
     private $columns;
+    private $dates;
 
     public function __construct(){
 
@@ -27,31 +28,37 @@ class BaseSql{
     }
 
     public function getNbGames() {
+
         $dateJMoins7 = date('Y-m-d', mktime(0,0,0,date('m'),date('d')-7,date('Y')));
         $dateJMoins1 = date('Y-m-d', mktime(0,0,0,date('m'),date('d')-1,date('Y')));
 
-        for($i=7;$i>0;$i++){
+        for($i=0;$i>7;$i++){
             $dates[date('Y-m-d', mktime(0,0,0,date('m'),date('d')-$i,date('Y')))] = "";
-        }
+        } 
 
         $response = $this->pdo->query("
-          SELECT calendar.date_calendar, COUNT(calendar.date_calendar) as nbGames
+          SELECT calendar.date_calendar, COUNT(calendar.date_calendar) as nbGames, IFNULL(id_user, 0) as exist
           FROM calendar
           LEFT JOIN time_slot ON calendar.id = time_slot.id_calendar
           WHERE calendar.date_calendar BETWEEN '".$dateJMoins7."' AND '".$dateJMoins1."'
-          AND time_slot.id_user IS NOT NULL
-          GROUP BY calendar.date_calendar
+          GROUP BY calendar.date_calendar, id_user          
         ");
 
         while($donnees = $response->fetch()){
-            $donnees_date[$donnees['date_calendar']] = $donnees['nbGames'];
-        }
-
-        foreach ($dates as $key=>$value) {
-            if(!array_key_exists($key, $donnees_date)) {
-                $donnees_date[$key] = 0;
+            $donnees_date[$donnees['date_calendar']] = "0";
+            if($donnees['exist'] != 0){
+                $donnees_date[$donnees['date_calendar']] = $donnees['nbGames'];
             }
         }
+
+        if($donnees){
+            foreach ($donnees as $key=>$value) {
+                if(!array_key_exists($key, $donnees_date)) {
+                    $donnees_date[$key] = 0;
+                }
+            }
+        }
+        
 
         ksort($donnees_date);
 

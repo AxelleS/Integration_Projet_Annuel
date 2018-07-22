@@ -5,73 +5,75 @@
   </div>
 </section>
 <div class="row">
-	<div class="row col-lg-8 col-md-8 col-sm-8 col-xs-8">
-      	<div id="chart_visite" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+	<div class="row col-lg-8 col-md-10 col-sm-10 col-xs-10 content-stats">
+      	<div id="chart_visite" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Visites</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart"></canvas>
             </article>
       	</div>
-      	<div id="chart_visite_jour" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_visite_jour" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de visites par jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart2"></canvas>
             </article>
       	</div>
-      	<div id="chart_nb_inscrit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_nb_inscrit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre d'inscrit ce jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart3"></canvas>
             </article>
       	</div>
-      	<div id="chart_nb_resa" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_nb_resa" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de réservation ce jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart4"></canvas>
             </article>
       	</div>
-      	<div id="chart_nb_partie" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
+      	<div id="chart_nb_partie" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
         	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de partie ce jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart5"></canvas>
             </article>
       	</div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 background-content">
-    	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Affichage des statistiques</h2>
-    	<section class="row">
-    		<h4>Visite : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visites" name="feature"
-                <?php echo ($donnees['visites'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_visite()" />
-    	</section><br> 
-    	<section class="row">
-    		<h4>Nombre de visites par jour : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite_jour" name="feature" 
-	    	<?php echo ($donnees['visite_jour'] == 1 ?  "checked" : ""); ?>  onclick="visible_hidden_visite_jour()" />
-    	</section><br> 
-    	<section class="row">
-    		<h4>Nombre d'inscrit : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="inscrit_jour" name="feature"
-	    	<?php echo ($donnees['inscrit_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_inscrit()" />
-    	</section><br>
-    	<section class="row">
-    		<h4>Nombre de réservation ce jour : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="reservation_jour" name="feature"
-	    	<?php echo ($donnees['reservation_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_resa()" />
-    	</section><br>
-    	<section class="row">
-    		<h4>Nombre de partie ce jour : </h4>
-    		<label for="visite"> Afficher</label>
-	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="parti_jour" name="feature"
-	    	<?php echo ($donnees['parti_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_partie()" />
-    	</section><br>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 background-content content-stats">
+      <section class="param_stats">
+    	  <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Affichage des statistiques</h2><br>
+      	<section class="row">
+      		<h4>Visite : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visites" name="feature"
+                  <?php echo ($donnees['visites'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_visite()" />
+      	</section><br> 
+      	<section class="row">
+      		<h4>Nombre de visites par jour : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite_jour" name="feature" 
+  	    	<?php echo ($donnees['visite_jour'] == 1 ?  "checked" : ""); ?>  onclick="visible_hidden_visite_jour()" />
+      	</section><br> 
+      	<section class="row">
+      		<h4>Nombre d'inscrit : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="inscrit_jour" name="feature"
+  	    	<?php echo ($donnees['inscrit_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_inscrit()" />
+      	</section><br>
+      	<section class="row">
+      		<h4>Nombre de réservation ce jour : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="reservation_jour" name="feature"
+  	    	<?php echo ($donnees['reservation_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_resa()" />
+      	</section><br>
+      	<section class="row">
+      		<h4>Nombre de partie ce jour : </h4>
+      		<label for="visite"> Afficher</label>
+  	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="parti_jour" name="feature"
+  	    	<?php echo ($donnees['parti_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_partie()" />
+      	</section><br>
+      </section>
       <div class="row button">
-          <article class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-              <input class="btn-default" type="submit" form="opinion-form" value="Sauvegarder les préférences" onclick="save_stats_preference()">
+          <article class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
+              <input class="btn-default btn_stats" type="submit" form="opinion-form" value="Sauvegarder les préférences" onclick="save_stats_preference()">
           </article>
           <div id="message_valid">
 
@@ -88,7 +90,7 @@ $(document).ready(function(){
   visible_hidden_nb_resa();
   visible_hidden_nb_partie();
   refresh();
-  //setInterval("refresh()", 30*60000)
+  //setInterval("refresh()", 5000)
 });
 
 function visible_hidden_visite(){
@@ -171,6 +173,13 @@ var todayDayM5 =today.getDate() -5;
 //formatage de la date du jour -5
 var todayDayM5 = todayDayM5 + '/' +todayMonth + '/' +todayYear;
 
+var todayDayM6 =today.getDate() -6; 
+//formatage de la date du jour -6
+var todayDayM6 = todayDayM6 + '/' +todayMonth + '/' +todayYear;
+
+var todayDayM7 =today.getDate() -7; 
+//formatage de la date du jour -7
+var todayDayM7 = todayDayM7 + '/' +todayMonth + '/' +todayYear;
 
 function refresh() {
   $.ajax({
@@ -179,22 +188,27 @@ function refresh() {
     complete : function(data) {
       var result = JSON.parse(data['responseText']);
 
+      console.log(result);
+
       var ctx = document.getElementById("line-chart").getContext("2d");
 
       var dataChart = {
-        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [result['number_visite'][5][0],result['number_visite'][4][0],result['number_visite'][3][0],result['number_visite'][2][0],result['number_visite'][1][0],result['number_visite'][0][0]],
+            data: [
+            result['number_visite'][7][0],
+            result['number_visite'][6][0],
+            result['number_visite'][5][0],
+            result['number_visite'][4][0],
+            result['number_visite'][3][0],
+            result['number_visite'][2][0],
+            result['number_visite'][1][0],
+            result['number_visite'][0][0]
+            ],
             label: "Par jour",
             borderColor: "#3e95cd",
             fill: false
           }
-          // }, {
-          //   data: [282,350,411,502,635,809,947,1402,3700,5267],
-          //   label: "Par semaine",
-          //   borderColor: "#8e5ea2",
-          //   fill: false
-          // }
         ]
       };
 
@@ -263,9 +277,19 @@ function refresh() {
       var ctx = document.getElementById("line-chart3").getContext("2d");
 
       var dataChart3 = {
-        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [result['number_insert_today'][5][0],result['number_insert_today'][4][0],result['number_insert_today'][3][0],result['number_insert_today'][2][0],result['number_insert_today'][1][0],result['number_insert_today'][0][0]],
+            data: [
+            result['number_insert_today'][7][0],
+            result['number_insert_today'][6][0],
+            result['number_insert_today'][5][0],
+            result['number_insert_today'][5][0],
+            result['number_insert_today'][4][0],
+            result['number_insert_today'][3][0],
+            result['number_insert_today'][2][0],
+            result['number_insert_today'][1][0],
+            result['number_insert_today'][0][0]
+            ],
             label: "Par jour",
             borderColor: "#0101DF",
             fill: false
@@ -287,9 +311,18 @@ function refresh() {
       var ctx = document.getElementById("line-chart4").getContext("2d");
 
       var dataChart4 = {
-        labels: [todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [result['number_resa_today'][5][0],result['number_resa_today'][4][0],result['number_resa_today'][3][0],result['number_resa_today'][2][0],result['number_resa_today'][1][0],result['number_resa_today'][0][0],], 
+            data: [
+            result['number_resa_today'][7][0],
+            result['number_resa_today'][6][0],
+            result['number_resa_today'][5][0],
+            result['number_resa_today'][4][0],
+            result['number_resa_today'][3][0],
+            result['number_resa_today'][2][0],
+            result['number_resa_today'][1][0],
+            result['number_resa_today'][0][0]
+            ], 
             label: "Par jour",
             borderColor: "#DF013A",
             fill: false
@@ -311,10 +344,15 @@ function refresh() {
 
       var ctx = document.getElementById("line-chart5").getContext("2d");
 
+      var allGames = [];
+      for (var eachGame in result['game']) {
+          allGames.push(result['game'][eachGame]);
+      }
+
       var dataChart5 = {
-        labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050,4000],
+        labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
-            data: [86,114,106,106,107,111,133,221,783,2478],
+            data: allGames,
             label: "Ce jour",
             borderColor: "#01DF3A",
             fill: false

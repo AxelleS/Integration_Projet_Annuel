@@ -1653,3 +1653,21 @@ div.error-page article h1{
 div.error-page article p{
     font-size: 30px;
 }
+
+@media screen and (max-width : 980px) {
+    div.content-stats{
+        margin: auto;
+    }
+
+    div div.graph_stat{
+        margin: 1% 0;
+    }
+
+    div article input.btn_stats{
+        width: 100%;
+    }
+
+    div section.param_stats{
+        font-size: 25px;
+    }
+}
