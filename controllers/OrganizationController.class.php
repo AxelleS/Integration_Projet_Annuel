@@ -344,7 +344,6 @@ class OrganizationController {
             }
 
         } else {
-            print_r($infoOrganization);die;
             unset($infoOrganization['actualPageType']);
             $errors = Validate::checkForm($infoOrganization);
 
