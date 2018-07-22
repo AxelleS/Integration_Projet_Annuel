@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set('Europe/Paris');
 
-require "conf.inc.php";
+require "configGlobal.inc.php";
 require 'PHPMailer/_lib/class.phpmailer.php';
 
 function myAutoloader($class){
@@ -15,67 +15,126 @@ function myAutoloader($class){
 }
 
 spl_autoload_register('myAutoloader');
-sitemapGenerator::generateSitemap();
 
-//Récupère l'url
-$uri = $_SERVER["REQUEST_URI"];
-$uri = explode("?", $uri);
-$uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
-//$uri -> controller/action
-$uriExploded = explode(DS, $uri);
+//Verification de l'existance du fichier de configuration
+if(file_exists("conf.inc.php")) {
+    require "conf.inc.php";
+    //verification de la connexion à la base de donnees
+    if(Installer::checkDatabaseConnexion()){
 
-$maroute = Route::getRoute($uriExploded[0]);
+        sitemapGenerator::generateSitemap();
 
-$c = $maroute['controller'];
-$a = $maroute['action'];
+        //Récupère l'url
+        $uri = $_SERVER["REQUEST_URI"];
+        $uri = explode("?", $uri);
+        $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
+        //$uri -> controller/action
+        $uriExploded = explode(DS, $uri);
 
-if(!isset($_SESSION['is_connected'])) {
-    $_SESSION['is_connected'] = false;
-}
+        $maroute = Route::getRoute($uriExploded[0]);
 
-if ($maroute['security'] == true) {
-    if (Security::isConnected() == false) {
-        $c = 'signin';
-        $a = 'index';
-    } else {
-        $user = new User();
-        $user->setId($_SESSION['id_user']);
-        $donneesUser = $user->select('id')->fetch();
-        if($maroute['type'] != $donneesUser['id_type']) {
-            $c = 'errors';
-            $a = 'quatreCentTrois';
+        $c = $maroute['controller'];
+        $a = $maroute['action'];
+
+        if(!isset($_SESSION['is_connected'])) {
+            $_SESSION['is_connected'] = false;
         }
-    }
-}
-//Appel de la fonction cookie 
-Cookie::generateCookie();
 
-//Supprime les deux premières case du tableau
-unset($uriExploded[0]);
+        if ($maroute['security'] == true) {
+            if (Security::isConnected() == false) {
+                $c = 'signin';
+                $a = 'index';
+            } else {
+                $user = new User();
+                $user->setId($_SESSION['id_user']);
+                $donneesUser = $user->select('id')->fetch();
+                if($maroute['type'] != $donneesUser['id_type']) {
+                    $c = 'errors';
+                    $a = 'quatreCentTrois';
+                }
+            }
+        }
+        //Appel de la fonction cookie 
+        Cookie::generateCookie();
 
-// Controller : NameController
-$c = ucfirst(strtolower($c)) . "Controller";
-// Action : nameAction
-$a = strtolower($a) . "Action";
+        //Supprime les deux premières case du tableau
+        unset($uriExploded[0]);
 
-//Récupère les paramètre POST GET et URL en fonction de l'url
-$params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];
+        // Controller : NameController
+        $c = ucfirst(strtolower($c)) . "Controller";
+        // Action : nameAction
+        $a = strtolower($a) . "Action";
 
-//Est-ce que le controller existe
-if (file_exists("controllers/" . $c . ".class.php")) {
-    include "controllers/" . $c . ".class.php";
-    //Est-ce que la class existe
-    if (class_exists($c)) {
-        $objC = new $c();
-        //Vérifie si la méthode existe
-        if (method_exists($objC, $a)) {
-            $objC->$a($params);
+        //Récupère les paramètre POST GET et URL en fonction de l'url
+        $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];
+
+        //Est-ce que le controller existe
+        if (file_exists("controllers/" . $c . ".class.php")) {
+            include "controllers/" . $c . ".class.php";
+            //Est-ce que la class existe
+            if (class_exists($c)) {
+                $objC = new $c();
+                //Vérifie si la méthode existe
+                if (method_exists($objC, $a)) {
+                    $objC->$a($params);
+                } else {
+                    die("L'action " . $a . " n'existe pas");
+                }
+            } else {
+                die("La classe " . $c . " n'existe pas");
+            }
         } else {
-            die("L'action " . $a . " n'existe pas");
+            die("le controller " . $c . " n'existe pas");
         }
-    } else {
-        die("La classe " . $c . " n'existe pas");
+    }else{
+        $controller = "IndexController";
+        $action = "configAction";
+        $tempUri = explode("?", substr(urldecode($_SERVER["REQUEST_URI"]), strlen(DIRNAME)));
+        $uriExploded = explode(DS, $tempUri[0]);
+
+        //var_dump($uriExploded);exit;
+
+        $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];        
+        if (file_exists("Src/Controllers/" . $controller . ".php")) {
+            include "Src/Controllers/" . $controller . ".php";
+            if (file_exists("controllers/" . $c . ".class.php")) {
+                include "controllers/" . $c . ".class.php";
+                //Est-ce que la class existe
+                if (class_exists($c)) {
+                    $objC = new $c();
+                    //Vérifie si la méthode existe
+                    if (method_exists($objC, $a)) {
+                        $objC->$a($params);
+                    }
+                }
+            }
+        }
     }
-} else {
-    die("le controller " . $c . " n'existe pas");
+}else{
+    $controller = "IndexController";
+    $action = "installAction";
+    //Récupère l'url
+    $uri = $_SERVER["REQUEST_URI"];var_dump($uri);exit;
+    $uri = explode("?", $uri);
+    $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
+    //$uri -> controller/action
+    $uriExploded = explode(DS, $uri);
+
+    var_dump($uriExploded);exit;
+
+    $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];        
+    if (file_exists("Src/Controllers/" . $controller . ".php")) {
+        include "Src/Controllers/" . $controller . ".php";
+        if (file_exists("controllers/" . $c . ".class.php")) {
+            include "controllers/" . $c . ".class.php";
+            //Est-ce que la class existe
+            if (class_exists($c)) {
+                $objC = new $c();
+                //Vérifie si la méthode existe
+                if (method_exists($objC, $a)) {
+                    $objC->$a($params);
+                }
+            }
+        }
+    }
 }
