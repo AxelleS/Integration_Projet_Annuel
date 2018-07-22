@@ -21,7 +21,7 @@ class Room extends BaseSql{
   }
 
   public function setName($name) {
-    $this->name=ucfirst(strtolower(trim($name)));
+    $this->name=trim($name);
   }
 
   public function setDescription($description) {

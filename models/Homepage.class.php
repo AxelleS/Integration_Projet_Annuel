@@ -39,7 +39,7 @@ class Homepage extends BaseSql{
   }
 
   public function setTitleIntroduction($title_introduction) {
-    $this->title_introduction=ucfirst(strtolower(trim($title_introduction)));
+    $this->title_introduction=trim($title_introduction);
   }
 
   public function setDescriptionIntroduction($description_introduction) {
