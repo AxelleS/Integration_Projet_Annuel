@@ -202,7 +202,6 @@ class OrganizationController {
                     }
                     $roomListDetails[] = $temp2;
                 }
-
                 $modifyHomepage->setRoomlist($roomListDetails);
                 $config = $modifyHomepage->formModifyHomepage($errors);
                 $v = new View('modifyHomePage', 'back');
@@ -243,11 +242,9 @@ class OrganizationController {
                 $modifyHomepage->setLogo($donneesHomepage['logo']);
 
                 $modifyHomepage->save();
-
                 header("Location: ".DIRNAME.Route::getSlug('organization','index'));
             }
         } else if($infoOrganization['actualPageType'] == "Foire à questions") {
-            
             unset($infoOrganization['actualPageType']);
             foreach($infoOrganization as $key => $value) {
                 $sendFaq = new Faq();
@@ -270,6 +267,14 @@ class OrganizationController {
         } else if($infoOrganization['actualPageType'] == "Nouvelle page") {
             unset($infoOrganization['actualPageType']);
             $errors = Validate::checkForm($infoOrganization);
+
+            if(trim($infoOrganization['name']) == '' ) {
+                $errors['name'] = 'Le nom de la room ne peut pas être vide.';
+            }
+
+            if(trim($infoOrganization['description']) == '') {
+                $errors['name'] = 'La description de la room ne peut pas être vide.';
+            }
 
             $room = new Room();
             $room->setName($infoOrganization['name']);
@@ -333,6 +338,14 @@ class OrganizationController {
         } else {
             unset($infoOrganization['actualPageType']);
             $errors = Validate::checkForm($infoOrganization);
+
+            if(trim($infoOrganization['name']) == '' ) {
+                $errors['name'] = 'Le nom de la room ne peut pas être vide.';
+            }
+
+            if(trim($infoOrganization['description']) == '') {
+                $errors['name'] = 'La description de la room ne peut pas être vide.';
+            }
 
             if (isset($_FILES) && count($_FILES) > 0) {
                 foreach ($_FILES as $key=>$value) {
