@@ -24,10 +24,10 @@
     </div>
     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 placing-content content-container content-padding">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing background-content content-padding dashboard-chart">
-        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Inscriptions</h2>
-        <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Visites ce jour</h2>
+          <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart"></canvas>
-            </article>
+          </article>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 placing placing-content background-content content-padding">
         <div class="row activities-title content-padding">
@@ -57,3 +57,55 @@
       </div>
     </div>
 </div>
+
+<script>
+    var ctx = document.getElementById("line-chart").getContext("2d");
+
+    var dataChart = {
+        labels: ["00H00","01H00","02H00","03H00","04H00","05H00","06H00","07H00","08H00","09H00","10H00","11H00","12H00","13H00","14H00","15H00","16H00","17H00","18H00","19H00","20H00","21H00","22H00","23H00"],
+        datasets: [{
+            data: [
+                '<?php echo $stats['number_visite_today'][0][0]; ?>',
+                '<?php echo $stats['number_visite_today'][1][0]; ?>',
+                '<?php echo $stats['number_visite_today'][2][0]; ?>',
+                '<?php echo $stats['number_visite_today'][3][0]; ?>',
+                '<?php echo $stats['number_visite_today'][4][0]; ?>',
+                '<?php echo $stats['number_visite_today'][5][0]; ?>',
+                '<?php echo $stats['number_visite_today'][6][0]; ?>',
+                '<?php echo $stats['number_visite_today'][7][0]; ?>',
+                '<?php echo $stats['number_visite_today'][8][0]; ?>',
+                '<?php echo $stats['number_visite_today'][9][0]; ?>',
+                '<?php echo $stats['number_visite_today'][10][0]; ?>',
+                '<?php echo $stats['number_visite_today'][11][0]; ?>',
+                '<?php echo $stats['number_visite_today'][12][0]; ?>',
+                '<?php echo $stats['number_visite_today'][13][0]; ?>',
+                '<?php echo $stats['number_visite_today'][14][0]; ?>',
+                '<?php echo $stats['number_visite_today'][15][0]; ?>',
+                '<?php echo $stats['number_visite_today'][16][0]; ?>',
+                '<?php echo $stats['number_visite_today'][17][0]; ?>',
+                '<?php echo $stats['number_visite_today'][18][0]; ?>',
+                '<?php echo $stats['number_visite_today'][19][0]; ?>',
+                '<?php echo $stats['number_visite_today'][20][0]; ?>',
+                '<?php echo $stats['number_visite_today'][21][0]; ?>',
+                '<?php echo $stats['number_visite_today'][22][0]; ?>',
+                '<?php echo $stats['number_visite_today'][23][0]; ?>'
+            ],
+            label: "Par heure",
+            borderColor: "#FF8000",
+            fill: false
+        }
+        ]
+    };
+
+    var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: dataChart,
+        options: {
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Nombre de visiteurs'
+            }
+        }
+    });
+</script>

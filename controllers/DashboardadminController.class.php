@@ -57,10 +57,27 @@ class DashboardadminController
             }
         }
 
+        $visite = new Statistic();
+        for ($i=0; $i<10; $i++) {
+            $dateHeure = date('Y-m-d').' 0'.$i.'%';
+
+            $visite->setCreatedAt($dateHeure);
+            $response_visi = $visite->count('created_at');
+            $stats['number_visite_today'][$i] = $response_visi->fetch();
+        }
+
+        for ($i=10; $i <24 ; $i++) {
+            $dateHeure = date('Y-m-d').' '.$i.'%';
+
+            $visite->setCreatedAt($dateHeure);
+            $response_visi = $visite->count('created_at');
+            $stats['number_visite_today'][$i] = $response_visi->fetch();
+        }
 
         $v = new View('dashboardadmin', 'back');
         $v->assign('nbMessages', $nbMessages);
         $v->assign('contacts', $contactArray);
         $v->assign('users', $usersArray);
+        $v->assign('stats', $stats);
     }
 }

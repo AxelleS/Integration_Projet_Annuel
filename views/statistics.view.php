@@ -7,31 +7,31 @@
 <div class="row">
 	<div class="row col-lg-8 col-md-10 col-sm-10 col-xs-10 content-stats">
       	<div id="chart_visite" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
-        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Visites</h2>
+        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de visites par jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart"></canvas>
             </article>
       	</div>
       	<div id="chart_visite_jour" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
-        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de visites par jour</h2>
+        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de visites par heure (ce jour)</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart2"></canvas>
             </article>
       	</div>
       	<div id="chart_nb_inscrit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
-        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre d'inscrit ce jour</h2>
+        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre d'inscriptions par jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart3"></canvas>
             </article>
       	</div>
       	<div id="chart_nb_resa" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
-        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de réservation ce jour</h2>
+        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de réservation effectuées par jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart4"></canvas>
             </article>
       	</div>
       	<div id="chart_nb_partie" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 graph_stat placing background-content content-padding dashboard-chart">
-        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de partie ce jour</h2>
+        	<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Nombre de parties réservées par jour</h2>
         	<article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
              	<canvas class="col-lg-12 col-md-12 col-sm-12 col-xs-12 canvas_dashboard" id="line-chart5"></canvas>
             </article>
@@ -41,31 +41,31 @@
       <section class="param_stats">
     	  <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 activities-title">Affichage des statistiques</h2><br>
       	<section class="row">
-      		<h4>Visite : </h4>
+      		<h4>Nombre de visites par jour : </h4>
       		<label for="visite"> Afficher</label>
   	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visites" name="feature"
                   <?php echo ($donnees['visites'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_visite()" />
       	</section><br> 
       	<section class="row">
-      		<h4>Nombre de visites par jour : </h4>
+      		<h4>Nombre de visites ce jour : </h4>
       		<label for="visite"> Afficher</label>
   	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="visite_jour" name="feature" 
   	    	<?php echo ($donnees['visite_jour'] == 1 ?  "checked" : ""); ?>  onclick="visible_hidden_visite_jour()" />
       	</section><br> 
       	<section class="row">
-      		<h4>Nombre d'inscrit : </h4>
+      		<h4>Nombre d'inscriptions par jour : </h4>
       		<label for="visite"> Afficher</label>
   	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="inscrit_jour" name="feature"
   	    	<?php echo ($donnees['inscrit_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_inscrit()" />
       	</section><br>
       	<section class="row">
-      		<h4>Nombre de réservation ce jour : </h4>
+      		<h4>Nombre de réservations par jour : </h4>
       		<label for="visite"> Afficher</label>
   	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="reservation_jour" name="feature"
   	    	<?php echo ($donnees['reservation_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_resa()" />
       	</section><br>
       	<section class="row">
-      		<h4>Nombre de partie ce jour : </h4>
+      		<h4>Nombre de parties par jour : </h4>
       		<label for="visite"> Afficher</label>
   	    	<input class="offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1" type="checkbox" id="parti_jour" name="feature"
   	    	<?php echo ($donnees['parti_jour'] == 1 ?  "checked" : ""); ?> onclick="visible_hidden_nb_partie()" />
@@ -255,7 +255,7 @@ function refresh() {
                     result['number_visite_today'][22][0],
                     result['number_visite_today'][23][0]
                   ],
-            label: "Par jour",
+            label: "Par heure",
             borderColor: "#FF8000",
             fill: false
           }
@@ -337,7 +337,7 @@ function refresh() {
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: 'Nombre de visiteurs'
+            text: 'Nombre de réservations'
           }
         }
       });
@@ -353,7 +353,7 @@ function refresh() {
         labels: [todayDayM7,todayDayM6,todayDayM5,todayDayM4,todayDayM3,todayDayM2,todayDayM1,todayM],
         datasets: [{
             data: allGames,
-            label: "Ce jour",
+            label: "Par jour",
             borderColor: "#01DF3A",
             fill: false
           }
@@ -367,7 +367,7 @@ function refresh() {
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: 'Nombre de visiteurs'
+            text: 'Nombre de parties'
           }
         }
       });
