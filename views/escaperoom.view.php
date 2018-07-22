@@ -9,7 +9,7 @@
             </p>
         </article>
         <article class="col-lg-4 offset-lg-4 order">
-            <img src="img/order/chrono.png" alt="The timer is 60 minutes">
+            <img src="<?php echo DIRNAME; ?>img/order/chrono.png" alt="The timer is 60 minutes">
             
             <?php if($donnees['is_pregnant']) :?>
                 <img src="<?php echo DIRNAME; ?>img/order/pregnant_ok.png" alt="The room is allowed to pregnant woman">
