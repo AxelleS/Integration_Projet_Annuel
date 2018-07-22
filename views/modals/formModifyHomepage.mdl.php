@@ -74,7 +74,7 @@ $errors = $config['errors'][0];
         <p class="<?php echo $config['style']['classText']?>"><?php echo $config['input']['city_company']['nameView']?></p>
         <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['input']['city_company']['name']?>" value="<?php echo $config['value']['city_company']?>" />
 
-        <input class="<?php echo $config['style']['buttonCancel']?>" type="button" value="Retour" onclick="backTo()">
+        <input class="<?php echo $config['style']['buttonCancel'].' '.$config['style']['classCancel']?>" type="button" value="Retour" onclick="backTo()">
         <input class="<?php echo $config['style']['classValidate']?>" type="<?php echo $config['validate']['type']?>" value="<?php echo $config['validate']['value']?>">
       </form>
 
