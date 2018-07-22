@@ -13,9 +13,9 @@
           <fieldset class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fieldset-none-center fieldset-content">
               <legend>Question-Réponse</legend>
               <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-style" for="<?php echo 'question_'.$key;?>">Question</label>
-              <input type="text" class="organization-input-style" name="<?php echo $key.'[question]';?>" value="<?php echo $value['question'];?>">
+              <input type="text" class="organization-input-style" name="<?php echo $key.'[question]';?>" value="<?php echo $value['question'];?>" required>
               <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" for="<?php echo 'answer_'.$key;?>">Réponse</label>
-              <textarea class="organization-input-style" name="<?php echo $key.'[answer]';?>"><?php echo $value['answer'];?></textarea>
+              <textarea class="organization-input-style" name="<?php echo $key.'[answer]';?>" required><?php echo $value['answer'];?></textarea>
               <input type="button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addNewQuestion" id="delQA" onclick="deleteQa(<?php echo $key; ?>)" value="Supprimer la question/réponse">
           </fieldset>
       <?php endforeach; ?>
@@ -32,10 +32,6 @@
       addQA();
       });
     });
-
-    function backTo() {
-        window.location.href = "<?php echo DIRNAME . Route::getSlug('organization', 'index'); ?>";
-    }
 
     function deleteQa(idQA) {
       console.log(idQA);
