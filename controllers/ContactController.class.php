@@ -95,6 +95,7 @@ class ContactController
 
         $response = $contact->select('id');
         $donnees = $response->fetch();
+        print_r($donnees);die;
         $contact->setLastname($donnees['lastname']);
         $contact->setFirstname($donnees['firstname']);
         $contact->setPhone($donnees['phone']);

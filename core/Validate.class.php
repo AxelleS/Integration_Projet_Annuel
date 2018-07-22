@@ -6,6 +6,10 @@ class Validate{
 		$errorsMsg = [];
 
 		foreach ($allData as $key => $value) {
+            if ($key == 'email_company' && !self::checkEmail($value)) {
+                $errorsMsg['email_company']= "Format de l'email incorrect";
+            }
+
 		    if ($key == 'email' && !self::checkEmail($value)) {
                 $errorsMsg['email']= "Format de l'email incorrect";
             }
