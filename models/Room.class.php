@@ -86,8 +86,12 @@ class Room extends BaseSql{
         "action"=>DIRNAME.Route::getSlug('organization','save'),
         "cancel"=>DIRNAME.Route::getSlug('organization','index')
       ],
+      "cancel"=>[
+        "value"=>"Retour",
+        "type"=>"button"
+      ],
       "validate"=>[
-        "value"=>"sauvegarder",
+        "value"=>"Sauvegarder",
         "type"=>"submit"
       ],
       "errors"=>[
@@ -96,9 +100,8 @@ class Room extends BaseSql{
       "style"=>[
         "classText"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 form-style",
         "classInput"=>"col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 organization-input-style",
-        "classCancel"=>"col-lg-2 offset-lg-3 col-md-2 offset-md-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2",
         "classDelete"=>" col-lg-12 col-md-12 col-sm-12 col-xs-12 validate-modify-homepage",
-        "buttonCancel"=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 validate-modify-homepage resize-cancel-button",
+        "buttonCancel"=>"col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage",
         "classValidate"=>"col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage"
       ],
       "pictures"=>$roomsPictures,

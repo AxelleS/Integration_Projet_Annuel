@@ -73,9 +73,8 @@ $errors = $config['errors'][0];
 </select>
 <?php endif; ?>
 
-<a href="<?php echo $config['config']['cancel']?>" class="<?php echo $config['style']['classCancel']?>"><button class="<?php echo $config['style']['buttonCancel']?>">Retour</button></a>
+<input class="<?php echo $config['style']['buttonCancel']?>" type="<?php echo $config['cancel']['type']?>" value="<?php echo $config['cancel']['value']?>" onclick="backTo()">
 <input class="<?php echo $config['style']['classValidate']?>" type="<?php echo $config['validate']['type']?>" value="<?php echo $config['validate']['value']?>">
-
 </form>
 
 <script>
@@ -85,5 +84,9 @@ $errors = $config['errors'][0];
                 location.href = '<?php echo DIRNAME.Route::getSlug('organization', 'delete'); ?>'+'/room/'+idRoom;
             }
         }
+    }
+
+    function backTo() {
+        window.location.href = "<?php echo $config['config']['cancel']?>";
     }
 </script>

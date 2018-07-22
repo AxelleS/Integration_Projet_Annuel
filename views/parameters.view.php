@@ -43,11 +43,17 @@
                 <input type="hidden" name="old_CGU" value="<?php echo $donnees['url_CGU'];?>"/>
                 <p class="errors"><?php echo isset($error['CGU']) ? $error['CGU'] : ''; ?></p>
 
-				<a href="/projet/voir-les-pages-site" class="col-lg-2 offset-lg-3 col-md-2 offset-md-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2"><button class="col-lg-12 col-md-12 col-sm-12 col-xs-12 validate-modify-homepage resize-cancel-button">Retour</button></a>
-				<input class="col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage" type="submit" value="sauvegarder"></p>
+                <input class="col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage" type="button" value="Retour" onclick="backTo()">
+				<input class="col-lg-2 offset-lg-3 col-md-2 offset-lg-2 col-sm-2 offset-sm-4 col-xs-2 offset-xs-2 validate-modify-homepage" type="submit" value="Sauvegarder"></p>
 			</form>
 		</div>
 
 		</div>
 	</div>
 </section>
+
+<script>
+    function backTo() {
+        window.location.href = "<?php echo $config['config']['cancel']?>";
+    }
+</script>
