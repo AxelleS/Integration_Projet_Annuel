@@ -12,21 +12,21 @@
             <img src="img/order/chrono.png" alt="The timer is 60 minutes">
             
             <?php if($donnees['is_pregnant']) :?>
-                <img src="img/order/pregnant_ok.png" alt="The room is allowed to pregnant woman">
+                <img src="<?php echo DIRNAME; ?>img/order/pregnant_ok.png" alt="The room is allowed to pregnant woman">
             <?php else :?>
-                <img src="img/order/pregnant_no.png" alt="The room is not allowed to pregnant woman">
+                <img src="<?php echo DIRNAME; ?>img/order/pregnant_no.png" alt="The room is not allowed to pregnant woman">
             <?php endif; ?>
 
             <?php if($donnees['is_wheelchair']) :?>
-                <img src="img/order/wheelchair_ok.png" alt="The room is allowed to wheelchair persons">
+                <img src="<?php echo DIRNAME; ?>img/order/wheelchair_ok.png" alt="The room is allowed to wheelchair persons">
             <?php else :?>
-                <img src="img/order/wheelchair_no.png" alt="The room is not allowed to wheelchair persons">
+                <img src="<?php echo DIRNAME; ?>img/order/wheelchair_no.png" alt="The room is not allowed to wheelchair persons">
             <?php endif; ?>
             
             <?php if($donnees['is_deaf']) :?>
-                <img src="img/order/deaf_ok.png" alt="The room is allowed to deaf persons">
+                <img src="<?php echo DIRNAME; ?>img/order/deaf_ok.png" alt="The room is allowed to deaf persons">
             <?php else :?>
-                <img src="img/order/deaf_no.png" alt="The room is not allowed to deaf persons">
+                <img src="<?php echo DIRNAME; ?>img/order/deaf_no.png" alt="The room is not allowed to deaf persons">
             <?php endif; ?>
 
         </article>
