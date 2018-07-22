@@ -5,11 +5,17 @@ $errors = $config['errors'][0];
 <input type="hidden" name="<?php echo $config['actualPageType']['name']?>" value="<?php echo $config['actualPageType']['value']?>" />
 <input type="hidden" name="<?php echo $config['id']['name']?>" value="<?php echo $config['id']['value']?>" />
 
-<p class="<?php echo $config['style']['classText']?>"><?php echo $config['title_introduction']['nameView']?></p>
-<input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['title_introduction']['name']?>" value="<?php echo $config['value']['name']?>" required>
+<p class="<?php echo $config['style']['classText']?>"><?php echo $config['name']['nameView']?></p>
+<input class="<?php echo $config['style']['classInput']?>" type="text" name="<?php echo $config['name']['name']?>" value="<?php echo $config['value']['name']?>" required>
+<?php if(array_key_exists('name', $errors)) : ?>
+    <p class="errors"><?php echo $errors['name']; ?></p>
+<?php endif; ?>
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['description']['nameView']?></p>
 <textarea class="<?php echo $config['style']['classInput']?>" name="<?php echo $config['input']['description']['name']?>" required><?php echo $config['value']['description']?></textarea>
+<?php if(array_key_exists('description', $errors)) : ?>
+    <p class="errors"><?php echo $errors['url_video']; ?></p>
+<?php endif; ?>
 
 <p class="<?php echo $config['style']['classText']?>"><?php echo $config['url_video']['nameView']?></p>
 <input class="<?php echo $config['style']['classInput']?>"  type="text" name="<?php echo $config['url_video']['name']?>" value="<?php echo $config['value']['url_video']?>" />
