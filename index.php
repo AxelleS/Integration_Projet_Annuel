@@ -87,44 +87,19 @@ if(file_exists("conf.inc.php")) {
             die("le controller " . $c . " n'existe pas");
         }
     }else{
-        $controller = "IndexController";
-        $action = "configAction";
-        $tempUri = explode("?", substr(urldecode($_SERVER["REQUEST_URI"]), strlen(DIRNAME)));
-        $uriExploded = explode(DS, $tempUri[0]);
+        unset($uriExploded[0]);
 
-        //var_dump($uriExploded);exit;
+        $uri = $_SERVER["REQUEST_URI"];
+        $uri = explode("?", $uri);
+        $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
+        //$uri -> controller/action
+        $uriExploded = explode(DS, $uri);
 
-        $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];        
-        if (file_exists("Src/Controllers/" . $controller . ".php")) {
-            include "Src/Controllers/" . $controller . ".php";
-            if (file_exists("controllers/" . $c . ".class.php")) {
-                include "controllers/" . $c . ".class.php";
-                //Est-ce que la class existe
-                if (class_exists($c)) {
-                    $objC = new $c();
-                    //Vérifie si la méthode existe
-                    if (method_exists($objC, $a)) {
-                        $objC->$a($params);
-                    }
-                }
-            }
-        }
-    }
-}else{
-    $controller = "IndexController";
-    $action = "installAction";
-    //Récupère l'url
-    $uri = $_SERVER["REQUEST_URI"];var_dump($uri);exit;
-    $uri = explode("?", $uri);
-    $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
-    //$uri -> controller/action
-    $uriExploded = explode(DS, $uri);
+        $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];
 
-    var_dump($uriExploded);exit;
+        $c = "IndexController";
+        $a = "configAction";
 
-    $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];        
-    if (file_exists("Src/Controllers/" . $controller . ".php")) {
-        include "Src/Controllers/" . $controller . ".php";
         if (file_exists("controllers/" . $c . ".class.php")) {
             include "controllers/" . $c . ".class.php";
             //Est-ce que la class existe
@@ -134,6 +109,29 @@ if(file_exists("conf.inc.php")) {
                 if (method_exists($objC, $a)) {
                     $objC->$a($params);
                 }
+            }
+        }
+    }
+}else{
+    $c = "IndexController";
+    $a = "installAction";
+
+    $uri = $_SERVER["REQUEST_URI"];
+    $uri = explode("?", $uri);
+    $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
+    //$uri -> controller/action
+    $uriExploded = explode(DS, $uri);
+
+    $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];
+
+    if (file_exists("controllers/" . $c . ".class.php")) {
+        include "controllers/" . $c . ".class.php";
+        //Est-ce que la class existe
+        if (class_exists($c)) {
+            $objC = new $c();
+            //Vérifie si la méthode existe
+            if (method_exists($objC, $a)) {
+                $objC->$a($params);
             }
         }
     }

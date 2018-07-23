@@ -4,7 +4,7 @@ class IndexController
 {
     public function indexAction($params)
     {
-	if(isset($_COOKIE['cookie'])){
+        if(isset($_COOKIE['cookie'])){
             $date = date("Y-m-d H:i:s");
             $statitique = new Statistic();
             $statitique->setValueCookie($_COOKIE['cookie']);
@@ -82,5 +82,16 @@ class IndexController
         $v->assign("donnees_maps", $donnees_maps);
         $v->assign("donnees",$donnees_homepage);
 
+    }
+
+     function installAction($params)
+    {
+       $Installer = new Installer();
+       $config = $Installer->configFormInstaller();
+    }
+
+     function configAction($params)
+    {
+        echo "config";
     }
 }
