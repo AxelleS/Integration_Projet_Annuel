@@ -1,0 +1,1 @@
+Sitemap: https://play-with-my-cms.ovh/files/sitemap.xml
