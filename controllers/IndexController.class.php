@@ -101,8 +101,6 @@ class IndexController
 
      function configAction($params)
     {
-        echo 'form : ' . $_SESSION['captcha'];
-        echo '<br>';
         $infoUser = $params['POST'];
         $user = new User();
 
