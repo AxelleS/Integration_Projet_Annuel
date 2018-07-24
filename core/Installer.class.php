@@ -39,11 +39,14 @@ class Installer
             $_SESSION['install_finish'] = false;
 
             include 'conf.inc.php';
-
             $pdo = new PDO('mysql:host='.DBHOST.';charset=UTF8',DBUSER,DBPWD);
             $pdo->query("CREATE DATABASE ".DBNAME."");
 
-            header("Location: ".DIRNAME.Route::getSlug('index','setConfig'));
+            $user = new User();
+
+            $config = $user->configFormUserInstaller([]);
+            $v = new View('newUserBDD','installer');
+            $v->assign('config',$config);
         }
     }
 

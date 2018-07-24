@@ -99,22 +99,6 @@ class IndexController
         }
     }
 
-    function setConfigAction($params)
-    {
-        echo 'A : ' . $_SESSION['captcha'];
-        echo '<br>';
-        $user = new User();
-        echo 'B : ' . $_SESSION['captcha'];
-        echo '<br>';
-        $config = $user->configFormUserInstaller([]);
-        echo 'C : ' . $_SESSION['captcha'];
-        echo '<br>';
-        $v = new View('newUserBDD','installer');
-        echo 'D : ' . $_SESSION['captcha'];
-        echo '<br>';
-        $v->assign('config',$config);
-    }
-
     function configAction($params)
     {
         echo '1 : ' . $_SESSION['captcha'];

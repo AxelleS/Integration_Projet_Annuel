@@ -7,8 +7,6 @@ class Security {
         $char = str_shuffle($char);
         $length = rand(-6,-5);
         $captcha = substr($char, $length);
-        echo 'class : ' . $captcha;
-        echo '<br>';
         $_SESSION['captcha'] = $captcha;
     }
 

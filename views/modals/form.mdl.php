@@ -1,8 +1,10 @@
 <?php
-Security::generateCaptcha();
+if (count($errors) > 0 || !isset($_SESSION['captcha'])) {
+    Security::generateCaptcha();
+}
+
 $errors = $config['errors'][0];
 
-echo 'mdl : ' . $_SESSION['captcha'];
 ?>
 
 

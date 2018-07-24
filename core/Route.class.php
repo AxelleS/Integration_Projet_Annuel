@@ -400,13 +400,6 @@ class Route{
             "type"       => 0
         ],
         [
-            "slug"       => "creation-configuration",
-            "controller" => "index",
-            "action"     => "setConfig",
-            "security"   => false,
-            "type"       => 0
-        ],
-        [
         "slug"       => "configuration",
         "controller" => "index",
         "action"     => "config",
