@@ -77,6 +77,8 @@ class Validate{
         }
 
         if(isset($captcha['response'])) {
+		    echo 'input: ' . $captcha['response'];
+		    echo 'session : ' . $_SESSION['captcha']; die;
             if ($captcha['response'] != $_SESSION['captcha']) {
                 $errorsMsg['captcha']= "Le captcha est incorrect";
             }
