@@ -164,7 +164,6 @@ class UsersController
             $v = new View('signup');
             $v->assign('config',$config);
         } else {
-            $_SESSION['captcha'] = '';
             if (isset($_FILES) && count($_FILES) > 0) {
                 $varReturn = Files::uploadPicture($_FILES['picture']);
                 if (!is_array($varReturn)) {

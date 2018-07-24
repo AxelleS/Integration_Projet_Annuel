@@ -1,8 +1,5 @@
 <?php
-if (count($errors) > 0 || (!isset($_SESSION['captcha']) || $_SESSION['captcha'] == '')) {
-    Security::generateCaptcha();
-}
-
+Security::generateCaptcha();
 $errors = $config['errors'][0];
 
 ?>

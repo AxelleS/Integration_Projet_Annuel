@@ -52,7 +52,6 @@ class Installer
 
     public function setConfiguration($userInfo)
     {
-        $_SESSION['captcha'] = '';
     	if(file_exists("sql/baseToImportFinal.sql")){
             $pdo = new PDO('mysql:host='.DBHOST.';port='.DBPORT.'dbname='.DBNAME,DBUSER,DBPWD);
             $pdo->query(file_get_contents("sql/baseToImportFinal.sql"));
