@@ -196,7 +196,6 @@ class UsersController
             $user->setCity($infoUser['city']);
             $user->setStatus(4);
             $user->setType(2);
-	    $user->setDateInserted(date('Y-m-d H:i:s'));
             $user->save();
 
             $user->setEmail($infoUser['email']);
@@ -237,8 +236,6 @@ class UsersController
                     $token = str_shuffle($char);
                     $token = substr($token, 0, 11);
                     $user->setToken($token);
-
-                    $user->setDateInserted(date('Y-m-d H:i:s'));
 		        }
                 $response = $user->select('id');
                 $donnees = $response->fetch();
@@ -339,7 +336,6 @@ class UsersController
                 $user->setCity($donnees['city']);
                 $user->setPicture($donnees['url_picture']);
                 $user->setStatus($donnees['status']);
-		$user->setDateInserted(date('Y-m-d H:i:s'));
 
                 $user->setPassword($infoPassword['password']);
 

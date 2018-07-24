@@ -3,7 +3,7 @@
             <div class="page-title col-md-12 col-sm-12 col-xs-12"><p>Play with my CMS</p></div>
             <section class="carrousel">
                 <?php for($i=0; $i<count($donnees['carrousel']);$i++) :?>
-                <img src="<?php echo $donnees['carrousel'][$i]; ?>" alt="image <?php echo $i; ?> du carrousel" id="image<?php echo $i; ?>">
+                <img src="<?php echo $donnees['carrousel'][$i]; ?>" alt="image <?php echo $i + 1; ?> du carrousel">
                 <?php endfor; ?>
             </section>
 
