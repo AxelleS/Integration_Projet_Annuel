@@ -82,6 +82,5 @@ class Installer
 
             header("Location: ".DIRNAME.Route::getSlug('index','index'));
     	}
-    	die;
 	}
 }

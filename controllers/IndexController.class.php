@@ -107,10 +107,6 @@ class IndexController
 
         $errors = Validate::checkForm($infoUser);
 
-        if(!isset($infoUser['cgu'])){
-            $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
-        }
-
         if(count($errors) > 0) {
             $user->setFirstname($infoUser['firstname']);
             $user->setLastname($infoUser['lastname']);

@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 class Validate{
 
 	public static function checkForm($allData){
