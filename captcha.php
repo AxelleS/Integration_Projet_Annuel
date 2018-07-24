@@ -4,7 +4,7 @@ session_start();
 
 $captcha = $_SESSION['captcha'];
 echo 'image : '. $captcha;
-echo '<br>';die;
+echo '<br>';
 
 //création de l'image
 $width = 200;
@@ -59,7 +59,7 @@ for($j = 0; $j < rand(3,6); $j++){
     }
 */
 
-header('Content-Type: image/png');
+//header('Content-Type: image/png');
 
 //affichage de l'image
-imagepng($image);
+//imagepng($image);

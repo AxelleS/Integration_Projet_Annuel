@@ -115,8 +115,7 @@ $errors = $config['errors'][0];
             <fieldset>
                 <legend>Captcha</legend>
                 <section class="row signupCaptcha">
-                    <input type="hidden" value="captcha.php">
-                    <!--<img src="captcha.php" alt="captcha">-->
+                    <img src="captcha.php" alt="captcha">
                 </section>
                 <p>Recopiez le captcha en respectant la casse</p>
                 <section class="row ">
