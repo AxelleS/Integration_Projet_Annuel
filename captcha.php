@@ -3,6 +3,8 @@
 session_start();
 
 $captcha = $_SESSION['captcha'];
+echo 'image : '. $captcha;
+echo '<br>';
 
 //création de l'image
 $width = 200;
