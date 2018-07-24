@@ -25,7 +25,7 @@ class SignUpController
 
         $company = new Homepage();
         $donnees_company = $company->select()->fetch();
-        $validateUrl = 'https://www.play-with-my-cms.ovh/valider-inscription/'.$donnees['id'].'/'.$donnees['token'];
+        $validateUrl = 'https://play-with-my-cms.ovh/valider-inscription/'.$donnees['id'].'/'.$donnees['token'];
         $subject = 'Confirmation d\'inscription';
         $body = 'Bonjour,<br>Nous vous confirmons votre inscription.<br>Votre identifiant : <b>'.$donnees['email'].'</b><br>Votre mot de passe : <b>Celui que vous avez choisi</b><br>Confirmez votre inscription <a href='.$validateUrl.'> en cliquant ici</a>, ou en copiant ce lien dans votre navigateur : '.$validateUrl;
 
