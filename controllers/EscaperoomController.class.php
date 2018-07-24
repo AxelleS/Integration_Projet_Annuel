@@ -99,13 +99,19 @@ class EscaperoomController
             $temp = array();
             $timeSlot = new Time_slot();
             $timeSlot->setIdCalendar($donnees_date['id']);
-            $response_timeSlot = $timeSlot->select('id_calendar');
+            $timeSlot->setIdRoom($id_salle);
+            $response_timeSlot = $timeSlot->select(['id_calendar', 'id_room']);
             while($donnees_timeSlot = $response_timeSlot->fetch()){
-                if($id_salle == $donnees_timeSlot['id_room']){
-                    if(is_null($donnees_timeSlot['id_user'])){
+                if(is_null($donnees_timeSlot['id_user'])){
+                    if ($donnees_date['date_calendar'] == date('Y-m-d')) {
+                        if (substr($donnees_timeSlot['time_slot'], 0, 2) > date('H')) {
+                            $temp[$donnees_timeSlot['id']] = $donnees_timeSlot['time_slot'];
+                        }
+                    } else {
                         $temp[$donnees_timeSlot['id']] = $donnees_timeSlot['time_slot'];
                     }
                 }
+
             }
             $timeSlot_Tab[$day] = $temp;
         }
