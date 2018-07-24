@@ -99,12 +99,21 @@ class IndexController
         }
     }
 
-     function configAction($params)
+    function setConfigAction($params)
+    {
+        $user = new User();
+
+        $config = $user->configFormUserInstaller([]);
+        $v = new View('newUserBDD','installer');
+        $v->assign('config',$config);
+    }
+
+    function configAction($params)
     {
         $infoUser = $params['POST'];
         $user = new User();
 
-        $errors = Validate::checkForm($infoUser);
+        $errors = Validate::checkForm($infoUser);die;
 
         if(!isset($infoUser['cgu'])){
             $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
