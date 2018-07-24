@@ -81,7 +81,6 @@ class IndexController
         $v->assign('donnees_video', $donnees_video);
         $v->assign("donnees_maps", $donnees_maps);
         $v->assign("donnees",$donnees_homepage);
-
     }
 
      function installAction($params)
@@ -102,6 +101,8 @@ class IndexController
 
      function configAction($params)
     {
+        echo 'form : ' . $_SESSION['captcha'];
+        echo '<br>';
         $infoUser = $params['POST'];
         $user = new User();
 
