@@ -1,6 +1,8 @@
 <?php
 Security::generateCaptcha();
 $errors = $config['errors'][0];
+
+echo 'mdl : ' . $_SESSION['captcha'];
 ?>
 
 
