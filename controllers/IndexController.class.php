@@ -113,7 +113,7 @@ class IndexController
         $infoUser = $params['POST'];
         $user = new User();
 
-        $errors = Validate::checkForm($infoUser);die;
+        $errors = Validate::checkForm($infoUser);
 
         if(!isset($infoUser['cgu'])){
             $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
