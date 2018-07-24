@@ -95,7 +95,7 @@ class BaseSql{
                     if(isset($this->columns['foreign']) && $this->colums['foreign'] != ""){
                         $response = $this->pdo->query("SELECT * FROM ".$this->table." LEFT JOIN ".$this->columns['foreign']." ON ".$this->table.".".$champ_recherche." = ".$this->columns['foreign'].".id WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     } else{
-                        $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." = '".$valeur_recherche."' ORDER BY id ".$order);
+                        $response = $this->pdo->query("SELECT * FROM ".$this->table." WHERE ".$champ_recherche." LIKE '".$valeur_recherche."' ORDER BY id ".$order);
                     }
                 }
             } else {
