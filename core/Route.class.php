@@ -407,7 +407,7 @@ class Route{
             "type"       => 0
         ],
         [
-        "slug"       => "creation-configuration",
+        "slug"       => "configuration",
         "controller" => "index",
         "action"     => "config",
         "security"   => false,

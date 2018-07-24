@@ -110,10 +110,15 @@ class IndexController
 
     function configAction($params)
     {
+        echo '1 : ' . $_SESSION['captcha'];
         $infoUser = $params['POST'];
+        echo '2 : ' . $_SESSION['captcha'];
         $user = new User();
+        echo '3 : ' . $_SESSION['captcha'];
 
         $errors = Validate::checkForm($infoUser);
+
+        echo '4 : ' . $_SESSION['captcha'];
 
         if(!isset($infoUser['cgu'])){
             $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
