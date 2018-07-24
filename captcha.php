@@ -1,5 +1,6 @@
 <?php
 //Si la session n'est pas réalisé, il faut l'initialiser (dans le cas d'un non routeur)
+session_start();
 
 $captcha = $_SESSION['captcha'];
 
