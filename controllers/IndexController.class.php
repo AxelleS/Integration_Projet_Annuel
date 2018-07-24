@@ -4,7 +4,7 @@ class IndexController
 {
     public function indexAction($params)
     {
-	if(isset($_COOKIE['cookie'])){
+        if(isset($_COOKIE['cookie'])){
             $date = date("Y-m-d H:i:s");
             $statitique = new Statistic();
             $statitique->setValueCookie($_COOKIE['cookie']);
@@ -82,5 +82,29 @@ class IndexController
         $v->assign("donnees_maps", $donnees_maps);
         $v->assign("donnees",$donnees_homepage);
 
+    }
+
+     function installAction($params)
+    {
+        if (count($params['POST']) < 1) {
+            $v = new View('installerInfos', 'installer');
+        } else {
+            $isConnected = Installer::testConnectionBDD($params['POST']);
+            if($isConnected) {
+                $installer = new Installer();
+                $installer->setParameterFile($params['POST']);
+            } else {
+                $v = new View('installerInfos', 'installer');
+                $v->assign('errors', 'La connexion à la BDD a échouée. Veuillez vérifier les informations fournis.');
+            }
+            
+        }
+       
+       //$config = $Installer->configFormInstaller();
+    }
+
+     function configAction($params)
+    {
+        echo "config";
     }
 }
