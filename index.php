@@ -19,8 +19,8 @@ spl_autoload_register('myAutoloader');
 //Verification de l'existance du fichier de configuration
 if(file_exists("conf.inc.php")) {
     require "conf.inc.php";
-    //verification de la connexion à la base de donnees
-    if(Installer::checkDatabaseConnexion()){
+
+    if ($_SESSION['install_finish']) {
 
         sitemapGenerator::generateSitemap();
 
@@ -36,7 +36,7 @@ if(file_exists("conf.inc.php")) {
         $c = $maroute['controller'];
         $a = $maroute['action'];
 
-        if(!isset($_SESSION['is_connected'])) {
+        if (!isset($_SESSION['is_connected'])) {
             $_SESSION['is_connected'] = false;
         }
 
@@ -48,13 +48,13 @@ if(file_exists("conf.inc.php")) {
                 $user = new User();
                 $user->setId($_SESSION['id_user']);
                 $donneesUser = $user->select('id')->fetch();
-                if($maroute['type'] != $donneesUser['id_type']) {
+                if ($maroute['type'] != $donneesUser['id_type']) {
                     $c = 'errors';
                     $a = 'quatreCentTrois';
                 }
             }
         }
-        //Appel de la fonction cookie 
+        //Appel de la fonction cookie
         Cookie::generateCookie();
 
         //Supprime les deux premières case du tableau
@@ -86,20 +86,14 @@ if(file_exists("conf.inc.php")) {
         } else {
             die("le controller " . $c . " n'existe pas");
         }
-    }else{
-        unset($uriExploded[0]);
+    } else {
+        $c = 'IndexController';
+        $a = 'configAction';
+        //Récupère les paramètre POST GET et URL en fonction de l'url
+        $params = ["POST" => $_POST, "GET" => $_GET, "URL" => []];
 
-        $uri = $_SERVER["REQUEST_URI"];
-        $uri = explode("?", $uri);
-        $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
-        //$uri -> controller/action
-        $uriExploded = explode(DS, $uri);
 
-        $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];
-
-        $c = "IndexController";
-        $a = "configAction";
-
+        //Est-ce que le controller existe
         if (file_exists("controllers/" . $c . ".class.php")) {
             include "controllers/" . $c . ".class.php";
             //Est-ce que la class existe
@@ -108,8 +102,14 @@ if(file_exists("conf.inc.php")) {
                 //Vérifie si la méthode existe
                 if (method_exists($objC, $a)) {
                     $objC->$a($params);
+                } else {
+                    die("L'action " . $a . " n'existe pas");
                 }
+            } else {
+                die("La classe " . $c . " n'existe pas");
             }
+        } else {
+            die("le controller " . $c . " n'existe pas");
         }
     }
 }else{

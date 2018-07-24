@@ -89,8 +89,7 @@ class IndexController
         if (count($params['POST']) < 1) {
             $v = new View('installerInfos', 'installer');
         } else {
-            $isConnected = Installer::testConnectionBDD($params['POST']);
-            if($isConnected) {
+            if(Installer::testConnectionBDD($params['POST'])) {
                 $installer = new Installer();
                 $installer->setParameterFile($params['POST']);
             } else {
@@ -99,12 +98,36 @@ class IndexController
             }
             
         }
-       
-       //$config = $Installer->configFormInstaller();
     }
 
      function configAction($params)
     {
-        echo "config";
+        $infoUser = $params['POST'];
+        $user = new User();
+
+        $errors = Validate::checkForm($infoUser);
+
+        if(!isset($infoUser['cgu'])){
+            $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
+        }
+
+        if(count($errors) > 0) {
+            $user->setFirstname($infoUser['firstname']);
+            $user->setLastname($infoUser['lastname']);
+            $user->setYearsOld($infoUser['years_old']);
+            $user->setEmail($infoUser['email']);
+            $user->setPhone($infoUser['phone']);
+            $user->setAddress($infoUser['address']);
+            $user->setAddress2($infoUser['address_2']);
+            $user->setZipcode($infoUser['zipcode']);
+            $user->setCity($infoUser['city']);
+
+            $config = $user->configFormUserInstaller($errors);
+            $v = new View('newUserBDD','installer');
+            $v->assign('config',$config);
+        } else {
+            $installer = new Installer();
+            $installer->setConfiguration($infoUser);
+        }
     }
 }

@@ -12,7 +12,7 @@ class Installer
         }
 
         try {
-            $testConnexion = new PDO('mysql:host='.$infosBDD['pathBDD'].';port='.$infosBDD['portBDD'].';charset=UTF8',$infosBDD['userBDD'],$infosBDD['pwdBDD']);
+            $testconnection = new PDO('mysql:host='.$infosBDD['pathBDD'].';port='.$infosBDD['portBDD'].';charset=UTF8',$infosBDD['userBDD'],$infosBDD['pwdBDD']);
         } catch(PDOException $e) {
             return false;
         }
@@ -29,39 +29,62 @@ class Installer
 
         if($file = fopen("conf.inc.php", 'w')){
             fputs($file, '<?php'.PHP_EOL);
-            fputs($file, '	define(\'DBUSER\', \''.$infosBDD['userBDD'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBPWD\', \''.$infosBDD['pwdBDD'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBHOST\', \''.$infosBDD['pathBDD'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBNAME\', \''.$infosBDD['nameBDD'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBPORT\', \''.$infosBDD['portBDD'].'\');'.PHP_EOL);
+            fputs($file, '	define("DBUSER", "'.$infosBDD['userBDD'].'");'.PHP_EOL);
+            fputs($file, '	define("DBPWD", "'.$infosBDD['pwdBDD'].'");'.PHP_EOL);
+            fputs($file, '	define("DBHOST", "'.$infosBDD['pathBDD'].'");'.PHP_EOL);
+            fputs($file, '	define("DBNAME", "'.$infosBDD['nameBDD'].'");'.PHP_EOL);
+            fputs($file, '	define("DBPORT", "'.$infosBDD['portBDD'].'");'.PHP_EOL);
             fclose($file);
 
-            $v = new View('newUserBDD', 'installer');
+            $_SESSION['install_finish'] = false;
+
+            include 'conf.inc.php';
+            $pdo = new PDO('mysql:host='.DBHOST.';charset=UTF8',DBUSER,DBPWD);
+            $pdo->query("CREATE DATABASE ".DBNAME."");
+
+            $user = new User();
+
+            $config = $user->configFormUserInstaller([]);
+            $v = new View('newUserBDD','installer');
+            $v->assign('config',$config);
         }
-        echo 'failed';die;
     }
 
-    public function setConfiguration($infosBDD)
+    public function setConfiguration($userInfo)
     {
-    	if(!file_exists("../baseToImportFinal.sql")){
-	    	try {
-	            $bdd = new PDO('mysql:host='.DBHOST.';charset=UTF8',DBUSER,DBPWD);
-	        } catch(PDOException $e) {
-	            return ['SQL' => 'Failed to access at the database'];;
-	        }
-	        $bdd->query(file_get_contents("../baseToImportFinal.sql"));
-	        $user = new User();
-	        $user->setId($infosBDD['id']);
-	        $user->setFirstname($infosBDD['firstname']);
-	        $user->setLastname($infosBDD['lastname']);
-	        $user->setYearsOld($infosBDD['years_old']);
-	        $user->setEmail($infosBDD['email']);
-	        $user->setPhone($infosBDD['phone']);
-	        $user->setAddress($infosBDD['address']);
-	        $user->setAddress2($infosBDD['address_2']);
-	        $user->setZipcode($infosBDD['zipcode']);
-	        $user->setCity($infosBDD['city']);
-	        $user->save();
-	    }
+        echo DIRNAME."sql/baseToImportFinal.sql";
+        echo '<br>';
+        echo "sql/baseToImportFinal.sql";
+    	if(file_exists("sql/baseToImportFinal.sql")){
+            $pdo = new PDO('mysql:host='.DBHOST.';port='.DBPORT.'dbname='.DBNAME,DBUSER,DBPWD);
+            $pdo->query(file_get_contents("sql/baseToImportFinal.sql"));
+
+            $user = new User();
+
+            $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            $token = str_shuffle($char);
+            $token = substr($token, 0, 11);
+
+            $user->setToken($token);
+
+            $user->setFirstname($userInfo['firstname']);
+            $user->setLastname($userInfo['lastname']);
+            $user->setYearsOld($userInfo['years_old']);
+            $user->setEmail($userInfo['email']);
+            $user->setPhone($userInfo['phone']);
+            $user->setAddress($userInfo['address']);
+            $user->setAddress2($userInfo['address_2']);
+            $user->setZipcode($userInfo['zipcode']);
+            $user->setCity($userInfo['city']);
+            $user->setPassword($userInfo['password']);
+            $user->setStatus(2);
+            $user->setType(1);
+            $user->save();
+
+            $_SESSION['install_finish'] = true;
+
+            header("Location: ".DIRNAME.Route::getSlug('index','index'));
+    	}
+    	die;
 	}
 }
