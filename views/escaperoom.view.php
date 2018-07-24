@@ -67,7 +67,7 @@
                 <select class="creneaux" onchange="saveChoices()"></select>
                 <form action="<?php echo DIRNAME.Route::getSlug('reservationnext','index'); ?>" method="post">
                     <input type="hidden" id="slotChoose" name="slotChoose" value="">
-                    <input type="submit" value="Valider">
+                    <input type="submit" class="btn-default validate-button" value="Valider">
                 </form>
             </article>
         </article>
