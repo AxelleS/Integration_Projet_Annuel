@@ -384,6 +384,13 @@ class Route{
             "action"     => "quatreCentTrois",
             "security"   => true,
             "type"       => 1
+        ],
+        [
+            "slug"       => "installation",
+            "controller" => "index",
+            "action"     => "install",
+            "security"   => false,
+            "type"       => 0
         ]
     ];
 

@@ -86,8 +86,21 @@ class IndexController
 
      function installAction($params)
     {
-       $Installer = new Installer();
-       $config = $Installer->configFormInstaller();
+        if (count($params['POST']) < 1) {
+            $v = new View('installerInfos', 'installer');
+        } else {
+            $isConnected = Installer::testConnectionBDD($params['POST']);
+            if($isConnected) {
+                $installer = new Installer();
+                $installer->setParameterFile($params['POST']);
+            } else {
+                $v = new View('installerInfos', 'installer');
+                $v->assign('errors', 'La connexion à la BDD a échouée. Veuillez vérifier les informations fournis.');
+            }
+            
+        }
+       
+       //$config = $Installer->configFormInstaller();
     }
 
      function configAction($params)

@@ -116,13 +116,7 @@ if(file_exists("conf.inc.php")) {
     $c = "IndexController";
     $a = "installAction";
 
-    $uri = $_SERVER["REQUEST_URI"];
-    $uri = explode("?", $uri);
-    $uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
-    //$uri -> controller/action
-    $uriExploded = explode(DS, $uri);
-
-    $params = ["POST" => $_POST, "GET" => $_GET, "URL" => array_values($uriExploded)];
+    $params = ["POST" => $_POST, "GET" => $_GET, "URL" => []];
 
     if (file_exists("controllers/" . $c . ".class.php")) {
         include "controllers/" . $c . ".class.php";

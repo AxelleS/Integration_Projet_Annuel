@@ -21,7 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `cms_escape`
 --
-DROP TABLE IF EXISTS `cms_escape`;
 CREATE DATABASE IF NOT EXISTS `cms_escape` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `cms_escape`;
 

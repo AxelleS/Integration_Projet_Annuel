@@ -60,6 +60,10 @@ class Validate{
             if ($key == 'price' && !self::checkNumber($value)) {
                 $errorsMsg['price']= "Le prix n'est pas dans le bon format, un réel est attendu";
             }
+
+            if ($key == 'pathBDD' && !self::checkURL($value)) {
+                $errorsMsg['price']= "Le prix n'est pas dans le bon format, un réel est attendu";
+            }
         }
 
         if(isset($password) && isset($passwordConf)) {

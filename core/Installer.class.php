@@ -3,49 +3,45 @@
 class Installer
 {
 
-	public function testConnectionBDD($arrayData)
+	public static function testConnectionBDD($infosBDD)
     {
+        error_reporting(0);
+
+        if(empty($infosBDD['portBDD'])){
+            $infosBDD['portBDD'] = 3306;
+        }
+
         try {
-            $testConnexion = new PDO('mysql:host='.$arrayData['dbhost'].';charset=UTF8',$arrayData['dbuser'],$arrayData['dbpwd']);
+            $testConnexion = new PDO('mysql:host='.$infosBDD['pathBDD'].';port='.$infosBDD['portBDD'].';charset=UTF8',$infosBDD['userBDD'],$infosBDD['pwdBDD']);
         } catch(PDOException $e) {
-            return 0;
+            return false;
         }
-        return 1;
+        return true;
     }
 
-    public function setParameterFile($arrayData)
+    public function setParameterFile($infosBDD)
     {
-        CoreFile::testAppDirectory('config');
-        if(empty($arrayData['dbport'])){
-            $arrayData['dbport'] = 3306;
+        if(empty($infosBDD['portBDD'])){
+            $infosBDD['portBDD'] = 3306;
         }
-        if(empty($arrayData['dbname'])){
-            $arrayData['dbname'] = "tosle_database";
-        }
-        if($file = fopen("App/config/parameter.php", 'w')){
+        
+        $infosBDD['nameBDD'] = "cms_escape";
+
+        if($file = fopen("conf.inc.php", 'w')){
             fputs($file, '<?php'.PHP_EOL);
-            fputs($file, '	define(\'DBUSER\', \''.$arrayData['dbuser'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBPWD\', \''.$arrayData['dbpwd'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBHOST\', \''.$arrayData['dbhost'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBNAME\', \''.$arrayData['dbname'].'\');'.PHP_EOL);
-            fputs($file, '	define(\'DBPORT\', \''.$arrayData['dbport'].'\');'.PHP_EOL);
+            fputs($file, '	define(\'DBUSER\', \''.$infosBDD['userBDD'].'\');'.PHP_EOL);
+            fputs($file, '	define(\'DBPWD\', \''.$infosBDD['pwdBDD'].'\');'.PHP_EOL);
+            fputs($file, '	define(\'DBHOST\', \''.$infosBDD['pathBDD'].'\');'.PHP_EOL);
+            fputs($file, '	define(\'DBNAME\', \''.$infosBDD['nameBDD'].'\');'.PHP_EOL);
+            fputs($file, '	define(\'DBPORT\', \''.$infosBDD['portBDD'].'\');'.PHP_EOL);
             fclose($file);
-            return 1;
+
+            $v = new View('newUserBDD', 'installer');
         }
-        return 0;
+        echo 'failed';die;
     }
 
-    public static function checkDatabaseConnexion()
-    {
-        try {
-            $database = new PDO("mysql:host=".DBHOST.";dbname=".DBNAME.";charset=UTF8",DBUSER,DBPWD);
-            return 1;
-        } catch(Exception $e){
-            return 0;
-        }
-    }
-
-    public function setConfiguration($arrayData)
+    public function setConfiguration($infosBDD)
     {
     	if(!file_exists("../baseToImportFinal.sql")){
 	    	try {
@@ -55,16 +51,16 @@ class Installer
 	        }
 	        $bdd->query(file_get_contents("../baseToImportFinal.sql"));
 	        $user = new User();
-	        $user->setId($arrayData['id']);
-	        $user->setFirstname($arrayData['firstname']);
-	        $user->setLastname($arrayData['lastname']);
-	        $user->setYearsOld($arrayData['years_old']);
-	        $user->setEmail($arrayData['email']);
-	        $user->setPhone($arrayData['phone']);
-	        $user->setAddress($arrayData['address']);
-	        $user->setAddress2($arrayData['address_2']);
-	        $user->setZipcode($arrayData['zipcode']);
-	        $user->setCity($arrayData['city']);
+	        $user->setId($infosBDD['id']);
+	        $user->setFirstname($infosBDD['firstname']);
+	        $user->setLastname($infosBDD['lastname']);
+	        $user->setYearsOld($infosBDD['years_old']);
+	        $user->setEmail($infosBDD['email']);
+	        $user->setPhone($infosBDD['phone']);
+	        $user->setAddress($infosBDD['address']);
+	        $user->setAddress2($infosBDD['address_2']);
+	        $user->setZipcode($infosBDD['zipcode']);
+	        $user->setCity($infosBDD['city']);
 	        $user->save();
 	    }
 	}
