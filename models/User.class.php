@@ -224,7 +224,7 @@ class User extends BaseSql{
 
     public function configFormUserInstaller($errors){
         return [
-            "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('index', 'config'),"name"=>"signup"],
+            "config"=>["method"=>"POST","action"=>DIRNAME.Route::getSlug('index', 'config'),"name"=>"installer"],
             "input"=>[
                 "A"=>[
                     "Personnel"=>[
