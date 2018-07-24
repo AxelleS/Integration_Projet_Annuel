@@ -49,9 +49,6 @@ class Installer
 
     public function setConfiguration($userInfo)
     {
-        echo DIRNAME."sql/baseToImportFinal.sql";
-        echo '<br>';
-        echo "sql/baseToImportFinal.sql";
     	if(file_exists("sql/baseToImportFinal.sql")){
             $pdo = new PDO('mysql:host='.DBHOST.';port='.DBPORT.'dbname='.DBNAME,DBUSER,DBPWD);
             $pdo->query(file_get_contents("sql/baseToImportFinal.sql"));

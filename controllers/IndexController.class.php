@@ -101,24 +101,35 @@ class IndexController
 
     function setConfigAction($params)
     {
+        echo 'A : ' . $_SESSION['captcha'];
+        echo '<br>';
         $user = new User();
-
+        echo 'B : ' . $_SESSION['captcha'];
+        echo '<br>';
         $config = $user->configFormUserInstaller([]);
+        echo 'C : ' . $_SESSION['captcha'];
+        echo '<br>';
         $v = new View('newUserBDD','installer');
+        echo 'D : ' . $_SESSION['captcha'];
+        echo '<br>';
         $v->assign('config',$config);
     }
 
     function configAction($params)
     {
         echo '1 : ' . $_SESSION['captcha'];
+        echo '<br>';
         $infoUser = $params['POST'];
         echo '2 : ' . $_SESSION['captcha'];
+        echo '<br>';
         $user = new User();
         echo '3 : ' . $_SESSION['captcha'];
+        echo '<br>';
 
         $errors = Validate::checkForm($infoUser);
 
         echo '4 : ' . $_SESSION['captcha'];
+        echo '<br>';
 
         if(!isset($infoUser['cgu'])){
             $errors['cgu'] = 'Vous devez accepter les CGU et CGV';
