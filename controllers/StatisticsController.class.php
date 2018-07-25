@@ -155,9 +155,6 @@ class StatisticsController {
         $parti = new Statistic();
         $stats['game'] = $parti->getNbGames();
 
-        // echo "<pre>";
-        // var_dump($stats);exit;
-
         //Envoi des données au success de la requête ajax
         echo json_encode($stats);
         exit;
