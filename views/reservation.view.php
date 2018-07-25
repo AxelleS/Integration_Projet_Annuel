@@ -5,8 +5,8 @@
         </article>
     </section>
     <section class="row">
-        <article class="col-lg-4 col-sm-5 offset-lg-1 calendar">
-            <article class="calendar col-lg-4 col-md-4 col-sm-4 col-xs-4 offset-lg-2">
+        <article class="col-lg-3 col-sm-5 offset-lg-1 calendar">
+            <article class="calendar col-lg-3 col-md-3 col-sm-3 col-xs-3 offset-lg-2">
                 <table>
                     <thead>
                         <tr>
@@ -18,7 +18,7 @@
                 </table>
             </article>
         </article>
-        <div class="row col-lg-3 selection-resa">
+        <div class="row col-lg-2 offset-lg-1 selection-resa">
             <article class="col-lg-4 col-sm-2 rooms-text">
                 <p>Choix salle</p>
             </article>
@@ -30,8 +30,8 @@
                 </select>
             </article>
         </div>
-        <div class="row col-lg-3 selection-resa">
-            <article class="col-lg-4 col-sm-2 slots-text">
+        <div class="row col-lg-2 offset-lg-1 selection-resa">
+            <article class="col-lg-4 col-sm-2 offset-lg-1 slots-text">
                 <p>Choix créneau</p>
             </article>
             <article class="col-lg-3 col-sm-3 slots">
@@ -42,7 +42,7 @@
             <article class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <form action="<?php echo DIRNAME.Route::getSlug('reservationnext','index'); ?>" method="post">
                     <input type="hidden" id="slotChoose" name="slotChoose" value="">
-                    <input class="btn-default" type="submit" value="Valider">
+                    <input class="btn-default validate-button" type="submit" value="Valider">
                 </form>
             </article>  
         </div>        

@@ -709,6 +709,16 @@ main{
     margin-left: -100%;
 }
 
+.validate-button {
+    margin: 0 !important;
+    padding: 10px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
 .selection-resa{
     margin-top: 10%;
 }
