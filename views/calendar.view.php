@@ -37,7 +37,7 @@
                             <th>ID Client</th>
                             <th>Créneaux</th>
                             <th>Nb Joueurs</th>
-                            <th>Prix</th>
+                            <th>Prix HT</th>
                             <th>Est Active</th>
                         </tr>
                     </thead>
