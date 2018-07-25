@@ -62,33 +62,12 @@
                     cell = newLigne.insertCell();
                     cell.innerHTML = users[property]['city'];
                     cell = newLigne.insertCell();
-                    cell.innerHTML = '<input type="button" class="btn-default" onclick="modifyUser('+users[property]['id']+')" value="Modifier"><input type="button" class="btn-default" onclick="deleteUser('+users[property]['id']+')" value="Supprimer">';
+                    cell.innerHTML = '<input type="button" class="btn-default" onclick="modifyUser('+users[property]['id']+')" value="Modifier">';
                 }
             }
         });
     }
-
-    function deleteUser(idUser) {
-        if (confirm("Etes vous sûr de vouloir supprimer l'utilisateur ?")) {
-            $.ajax({
-                url: '<?php echo DIRNAME . Route::getSlug('users', 'delete'); ?>',
-                type: 'GET',
-                data: {
-                    idUser : idUser
-                },
-                complete : function(data) {
-                    var isDelete = JSON.parse(data['responseText']);
-                    if(isDelete == 1) {
-                        alert("Suppression effectuée !");
-                        generateArray();
-                    } else {
-                        alert("Suppression échouée ! L'utilisateur est lié à des réservations.");
-                    }
-                }
-            });
-        }
-    }
-
+    
     function modifyUser(idUser) {
         var url = '<?php echo DIRNAME . Route::getSlug('users', 'edit').'/'; ?>';
         document.location.href = url + idUser;
