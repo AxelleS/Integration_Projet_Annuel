@@ -91,7 +91,7 @@ class ReservationnextController
         $donnees_company = $company->select()->fetch();
 
         $subject = "Confirmation de votre réservation";
-        $body = 'Bonjour,<br>Nouis vous confirmons la réservation de votre partie.<br>Pour consulter la facture ou pour annuler la réservation, merci de vous connecter sur votre compte client.';
+        $body = 'Bonjour,<br>Nous vous confirmons la réservation de votre partie.<br>Pour consulter la facture ou pour annuler la réservation, merci de vous connecter sur votre compte client.';
 
         Data::sendMail($donnees['email'], $donnees_company['email_company'], $donnees_company['name_company'], $subject, $body);
 
