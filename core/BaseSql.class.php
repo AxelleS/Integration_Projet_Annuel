@@ -30,7 +30,7 @@ class BaseSql{
     public function getNbGames() {
 
         $dateJMoins7 = date('Y-m-d', mktime(0,0,0,date('m'),date('d')-7,date('Y')));
-        $dateJMoins1 = date('Y-m-d', mktime(0,0,0,date('m'),date('d')-1,date('Y')));
+        $dateJ = date('Y-m-d', mktime(0,0,0,date('m'),date('d'),date('Y')));
 
         for($i=0;$i>7;$i++){
             $dates[date('Y-m-d', mktime(0,0,0,date('m'),date('d')-$i,date('Y')))] = "";
@@ -40,7 +40,7 @@ class BaseSql{
           SELECT calendar.date_calendar, COUNT(calendar.date_calendar) as nbGames, IFNULL(id_user, 0) as exist
           FROM calendar
           LEFT JOIN time_slot ON calendar.id = time_slot.id_calendar
-          WHERE calendar.date_calendar BETWEEN '".$dateJMoins7."' AND '".$dateJMoins1."'
+          WHERE calendar.date_calendar BETWEEN '".$dateJMoins7."' AND '".$dateJ."'
           GROUP BY calendar.date_calendar, id_user          
         ");
 
