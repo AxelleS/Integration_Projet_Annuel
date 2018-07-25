@@ -18,27 +18,27 @@ class Footer extends BaseSql{
   }
 
   public function setUrlFacebook($url_facebook) {
-    $this->url_facebook=strtolower(trim($url_facebook));
+    $this->url_facebook=trim($url_facebook);
   }
 
   public function setUrlTwitter($url_twitter) {
-    $this->url_twitter=strtolower(trim($url_twitter));
+    $this->url_twitter=trim($url_twitter);
   }
 
   public function setUrlYoutube($url_youtube) {
-    $this->url_youtube=strtolower(trim($url_youtube));
+    $this->url_youtube=trim($url_youtube);
   }
 
   public function setUrlCGV($url_CGV) {
-    $this->url_CGV=strtolower(trim($url_CGV));
+    $this->url_CGV=trim($url_CGV);
   }
 
   public function setUrlCGU($url_CGU) {
-    $this->url_CGU=strtolower(trim($url_CGU));
+    $this->url_CGU=trim($url_CGU);
   }
 
   public function setUrlLegalMention($url_legal_mention) {
-    $this->url_legal_mention=strtolower(trim($url_legal_mention));
+    $this->url_legal_mention=trim($url_legal_mention);
   }
 
 }
